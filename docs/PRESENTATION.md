@@ -75,6 +75,23 @@ Reflection + What's next (incl. FinOps X 2026 validation).
 The five brand values used as the lens: **Efficiency · Depth · Creativity ·
 Bias to action · Trust.**
 
+## Standing CSS conventions — agents-deck.html only
+
+These rules apply **to the presentation deck (`agents-deck.html`) only**.
+Do NOT assume them for the portfolio site pages (`index.html`, `agents.html`, etc.).
+
+1. **Running text size** — `p`, `.lede`, and `ul.clean li` use `clamp(17px, <cqw>, 24px)`.
+   Never below 17px (readable at any stage size), never above 24px (no runaway large-screen growth).
+2. **h2 bottom margin** — always `margin-bottom:24px`, including inside `.slide.concept h2`.
+3. **Running text color** — `p`, `.lede`, `ul.clean li` use `color:var(--ink)` (`#17160F`, true black).
+   Muted / secondary text (eyebrows, captions, `.desc`, `.note`, `.step .d`, etc.) keeps `var(--muted)` or `var(--ink-soft)` — do not change those.
+4. **Quotes (`.pcell .cryt`, `.emph`)** — sans-serif (`var(--sans)`), not serif; not italic; weight 500;
+   `font-size:clamp(17px, <cqw>, 24px)`; `line-height:1.4`; `color:var(--ink)`;
+   left accent bar `border-left:3px solid #BADA55`; `padding-left:14px`; `border-radius:0`.
+5. **Concept "click to open ↗" hint (`.chint`)** — hidden by default (`display:none`).
+   Shown only when the user presses **L** (which adds `body.labels`), consistent with dev image
+   labels (`.shot-id`). The click-to-open *behaviour* (iframe / zoom) is unaffected.
+
 ## When improving the deck
 
 - Keep the writing rules from the `new-case-study` skill (first person,
