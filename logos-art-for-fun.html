@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Logos & Icons — Sapir Levi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── V1: WARM PAPER — editorial, generous whitespace, serif-led ── */
+:root{
+  --bg:#F7F6F1;--bg2:#FBFAF7;--ink:#17160F;--soft:#3A382E;
+  --muted:#8C897C;--line:#E3E0D6;--hi:#BADA55;
+  --sidebar:#242323;--sw:71px;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Avenir','Montserrat',sans-serif;
+  --col:720px;--wide:1080px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.72;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.018'/%3E%3C/svg%3E")}
+
+/* sidebar */
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:#ffffff;z-index:100;display:flex;flex-direction:column;align-items:center}
+.sb-about{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;letter-spacing:.01em;text-transform:none;padding:0;margin-top:48px;transition:color .2s;text-decoration:none}
+.sb-about:hover{color:#8067F2}
+.sb-back{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;letter-spacing:.01em;text-transform:none;padding:0;margin-top:auto;margin-bottom:40px;transition:color .2s;text-decoration:none}
+.sb-back:hover{color:#8067F2}
+
+/* wrap — centered */
+.page{position:relative;z-index:1;margin-left:var(--sw)}
+.wrap{max-width:var(--wide);margin:0 auto;padding:0 48px}
+.col{max-width:var(--col);margin:0 auto}
+
+/* hero */
+.hero-wrapper{display:flex;flex-direction:column}
+.hero{padding:80px 0 48px;order:1}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:22px}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;max-width:14ch;margin-bottom:28px}
+.hero h1 em{font-style:italic;font-weight:400}
+.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch}
+.lede strong{color:var(--ink);font-weight:600}
+mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
+
+.hero-shot{margin-top:52px;order:2}
+
+/* hero-shot @500px — see consolidated block below */
+figure{margin:0}
+figcaption{font-size:14px;color:var(--muted);margin-top:16px;font-style:italic;text-align:center}
+.ph{background:var(--line);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;position:relative;min-height:220px;container-type:inline-size}
+.ph-id{display:none;position:absolute;top:10px;left:10px;background:var(--ink);color:var(--hi);font-size:10px;font-weight:600;font-family:monospace;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
+body.show-labels .ph-id{display:block}
+.ph svg{width:24px;height:24px;opacity:.3}
+
+/* real image inside placeholder — when it loads, it fills the width and
+   sets its own natural height, overriding the placeholder's aspect-ratio */
+.ph:has(.ph-img),.ph.has-img{aspect-ratio:auto !important;min-height:0;background:transparent;display:block}
+.ph-img{width:100%;height:auto;display:block;border-radius:clamp(6px,2.3cqw,18px);position:relative;z-index:2;box-shadow:0 4px 59px 25px rgba(57,59,98,0.10)}
+/* hide the placeholder icon/label once a real image is present */
+.ph:has(.ph-img) > svg,
+.ph:has(.ph-img) > span,
+.ph.has-img > svg,
+.ph.has-img > span{display:none}
+
+/* project info */
+.pinfo{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:52px}
+.pi{background:var(--bg2);padding:22px 24px}
+.pi-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+.pi-role{font-size:16px;font-weight:600;color:#8067F2;margin-bottom:5px}
+.pi p{font-size:16px;color:var(--soft);line-height:1.55}
+
+/* sections */
+section{padding:64px 0}
+.sec-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
+.sec-head{display:flex;align-items:center;gap:18px;margin-bottom:28px}
+.num{font-family:var(--serif);font-size:clamp(40px,5.5vw,55px);color:var(--hi);font-weight:700;flex:none;letter-spacing:-.02em;line-height:1;padding-bottom:.12em;position:relative;top:-2px}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,3.6vw,44px);line-height:1.02;letter-spacing:-.02em}
+h2 em{font-style:italic;font-weight:400}
+.body p{max-width:700px;color:var(--soft);font-size:17px}.body p+p{margin-top:16px}
+.body strong{color:var(--ink);font-weight:600}
+.body ul{margin-top:16px;list-style:none;display:grid;gap:9px}
+.body ul li{font-size:17px;color:var(--soft);padding-left:28px;position:relative}
+.body ul li::before{content:"—";position:absolute;left:0;color:var(--hi);font-weight:800;font-size:19px;top:0.15em;line-height:1}
+
+/* image blocks */
+.img-mt{margin-top:32px}
+.img-mt .ph,.img-mt img{width:100%;display:block;border-radius:8px;background:var(--line)}
+.img-row{display:grid;gap:28px;margin-top:32px}
+.img-row.c2{grid-template-columns:1fr 1fr}
+.img-row.c3{
+  grid-template-columns:1fr 1fr 1fr;
+  max-width:var(--wide);
+  margin-left:auto;
+  margin-right:auto;
+  width:100%;
+  position:relative;
+}
+/* c3 inside a .col — break out to full wrap width */
+.col .img-row.c3{
+  left:50%;
+  right:50%;
+  margin-left:calc(var(--wide) / -2);
+  margin-right:calc(var(--wide) / -2);
+  width:var(--wide);
+  max-width:none;
+  position:relative;
+}
+.img-stack{display:grid;gap:100px;margin-top:32px}
+figcaption{font-size:14px;color:var(--soft);margin-top:16px;font-style:italic;text-align:center}
+
+/* stats */
+.stat-band{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:28px}
+.sb{background:var(--bg2);padding:20px 18px}
+.sb .v{font-family:var(--serif);font-size:38px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.sb .l{font-size:16px;color:var(--soft);margin-top:7px;line-height:1.4}
+
+/* 2-col */
+.tcols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:24px}
+.tc{background:var(--bg2);padding:20px 22px}
+.tc h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:10px}
+.tc ul{list-style:none;display:grid;gap:8px}
+.tc ul li{font-size:16px;color:var(--soft);padding-left:22px;position:relative}
+.tc ul li::before{content:"→";position:absolute;left:0;font-weight:600;color:var(--ink)}
+.tc.ac h4{color:var(--ink)}.tc.ac{border-left:2px solid var(--hi)}
+
+/* callout — Quote style C */
+.callout{
+  border-left:2px solid var(--hi);
+  background:rgba(186,218,85,0.07);
+  border-radius:0 6px 6px 0;
+  padding:14px 18px;
+  margin-top:36px;
+  max-width:var(--col);
+  margin-left:auto;
+  margin-right:auto;
+}
+.callout p{
+  font-family:var(--sans);
+  font-size:20px;
+  font-weight:500;
+  font-style:italic;
+  line-height:1.55;
+  color:var(--ink);
+}
+
+/* footer */
+footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
+.footer-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0 16px;border-top:none}
+.footer-nav #nextBtn{margin-left:auto}
+footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(13px,1.6vw,16px);transition:color .2s}footer a:hover{color:#8067F2}
+.footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
+
+/* lightbox */
+.lightbox{display:none;position:fixed;inset:0;left:0;background:rgba(23,22,15,.95);z-index:9999;align-items:center;justify-content:center;padding:24px;flex-direction:column;gap:16px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:80vh;width:auto;height:auto;border-radius:20px;display:block}
+.lb-ph{background:var(--bg2);border:1px solid var(--line);border-radius:8px;width:clamp(280px,90vw,1196px);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;font-family:monospace}
+.lb-caption{font-size:17px;color:rgba(242,239,232,0.75);font-family:var(--sans);font-weight:300;font-style:normal;text-align:center;max-width:70ch;line-height:1.5}
+.lb-close{position:fixed;top:20px;right:24px;background:none;border:none;cursor:pointer;color:#F2EFE8;font-size:28px;line-height:1;padding:4px 8px;transition:color .2s;z-index:10000}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);cursor:pointer;color:#F2EFE8;font-size:24px;line-height:1;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;z-index:10000}
+.lb-nav:hover{background:rgba(255,255,255,0.18)}
+.lb-prev{left:24px}
+.lb-next{right:24px}
+.lb-nav[hidden]{display:none}
+.lb-close:hover{color:#BADA55}
+
+@media(min-width:601px){
+  .img-mt figure,.img-row figure,.img-stack figure{cursor:zoom-in}
+  .img-mt .ph,.img-row .ph,.img-stack .ph{cursor:zoom-in}
+}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.7,.2,1),transform .65s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+
+@media(max-width:900px){.pinfo,.tcols,.stat-band{grid-template-columns:1fr}.img-row.c2,.img-row.c3{grid-template-columns:1fr}}
+@media(max-width:680px){.page{margin-left:0;margin-top:44px}.sidebar{width:100%;height:44px;bottom:auto;flex-direction:row}.sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;padding:0 20px;font-size:16px}.sb-back{writing-mode:horizontal-tb;transform:none;margin:0 16px 0 auto;font-size:16px}.wrap{padding:0 20px}}
+@media(max-width:480px){
+  /* images never overflow */
+  .ph,.img-mt .ph,.img-mt img,.img-row .ph,.img-stack .ph,
+  .img-row img,.img-stack img{max-width:100%;width:100%;overflow:hidden}
+  figure{overflow:hidden;max-width:100%}
+  /* footer: buttons on top, copyright below with divider */
+  footer{flex-direction:column;align-items:stretch;gap:0;padding:0 0 40px}
+  .footer-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:1px solid var(--line)}
+  footer a{font-size:clamp(14px,4vw,18px)}
+  .footer-copy{text-align:center;padding-top:16px;border-top:1px solid var(--line);font-size:13px}
+}
+/* ── IMPACT BLOCK ────────────────────────────────
+   שני מופעים — רק אחד יופיע בכל עמוד.
+   מופע 1 (.impact-numbers): מספרים כמותיים
+   מופע 2 (.impact-quote): ציטוט טקסטואלי
+   ─────────────────────────────────────────────── */
+.impact-numbers{
+  border-top:0.5px solid var(--line);
+  border-bottom:0.5px solid var(--line);
+  padding:16px 0;
+  display:grid;
+  grid-template-columns:auto 1fr 1fr 1fr;
+  gap:0 24px;
+  align-items:start;
+  max-width:var(--col);
+  margin:0 auto;
+}
+.impact-label{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:500;color:var(--muted);font-family:var(--sans);
+  padding-top:4px;white-space:nowrap;
+}
+.impact-stat{padding-right:20px;border-right:0.5px solid var(--line)}
+.impact-stat.mid{border-right:0.5px solid var(--line);padding:0 20px}
+.impact-stat.last{padding-left:20px;border-right:none}
+.impact-stat .val{
+  font-family:var(--serif);font-size:40px;font-weight:700;
+  line-height:1;letter-spacing:-.025em;color:var(--ink);
+  font-variant-numeric:oldstyle-nums;
+}
+.impact-stat .lbl{
+  font-size:14px;font-weight:400;color:var(--muted);
+  font-family:var(--sans);margin-top:7px;line-height:1.4;
+}
+/* text fallback — same grid, text instead of numbers */
+.impact-stat .txt{
+  font-size:15px;font-weight:500;color:var(--ink);
+  font-family:var(--sans);line-height:1.45;
+}
+
+.impact-quote{
+  max-width:var(--col);
+  margin:0 auto;
+}
+.impact-quote .inner{
+  border-left:2px solid var(--hi);
+  padding:2px 0 2px 18px;
+}
+.impact-quote p{
+  font-family:var(--sans);
+  font-size:20px;font-weight:500;font-style:italic;
+  line-height:1.55;color:var(--ink);
+}
+/* about panel — injected from about-panel.html via about-loader.js */
+
+/* ── GALLERY PAGE — sania.io exact layout ── */
+.gallery-hero{padding:80px 12px 60px;text-align:center}
+.gallery-hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;margin:0 auto 28px;max-width:18ch}
+.gallery-hero h1 em{font-style:italic;font-weight:400}
+.gallery-lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch;margin:0 auto}
+
+/* ── SANIA STICKY GRID — exact ── */
+/* hero sits above the gallery so sticky images with negative top never cover it */
+.gallery-hero{position:relative;z-index:5;background:var(--bg)}
+.s-work{position:relative;width:100%;z-index:1}
+/* hidden gallery items — flip to display:none to reserve them for later */
+.work-ph.hidden-item,.work-img.hidden-item{display:none}
+/* a whole set whose images are all hidden — collapses the empty grid row */
+.work-grid.hidden-grid{display:none}
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(9,1fr);
+  gap:12px;
+  max-width:1984px;
+  margin:0 auto;
+  padding:0 12px 120px;
+}
+.work-img,.work-ph{
+  width:100%;display:block;
+  position:sticky;top:0;
+  border-radius:3px;
+}
+.work-img{height:auto;object-fit:cover}
+.work-ph{
+  aspect-ratio:auto;
+  min-height:60px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:monospace;font-size:11px;font-weight:600;
+  letter-spacing:.06em;color:rgba(0,0,0,0.28);
+}
+.ph-label{pointer-events:none;user-select:none}
+/* real image dropped into a placeholder — fills it, hides the color tile + label */
+.work-ph{position:sticky}
+.work-img-real{position:relative;width:100%;height:auto;object-fit:contain;border-radius:3px;display:block;z-index:2}
+.work-ph:has(.work-img-real) .ph-label{display:none}
+.work-ph:has(.work-img-real){background:transparent!important;min-height:0;aspect-ratio:auto}
+
+/* per-image positions (1:1 with sania) */
+.g1-1{grid-column:span 5;grid-row:span 2;top:-640px}
+.g1-2{grid-column:span 4;grid-row:span 1;top:-576px;margin-top:-128px}
+.g1-3{grid-column:span 2;grid-row:span 1;top:0px;align-self:end}
+.g1-4{grid-column:span 2;grid-row:span 1;top:0px;align-self:end}
+.g1-5{grid-column:span 5;grid-row:span 1;top:0px}
+.g2-1{grid-column:span 11;grid-row:span 1;top:-640px}
+.g2-2{grid-column:span 10;grid-row:span 1;top:-480px}
+.g2-3{grid-column:8/12;grid-row:3/4;top:128px}
+.g2-4{grid-column:span 11;grid-row:span 1;top:0px;margin-top:224px}
+.g3-1{grid-column:span 11;grid-row:span 1;top:0px}
+.g4-1{grid-column:1/9;grid-row:1/2;top:-400px;padding-bottom:96px}
+.g4-2{grid-column:8/11;grid-row:2/4;top:0px;align-self:end}
+.g4-3{grid-column:5/8;grid-row:2/4;top:0px}
+.g5-1{grid-column:span 5;grid-row:span 1;top:0px}
+.g5-2{grid-column:span 4;grid-row:span 1;top:0px;margin-bottom:256px}
+.g5-3{grid-column:7/10;grid-row:2/3;top:0px}
+.g6-1{grid-column:span 7;grid-row:span 1;top:0px}
+.g6-2{grid-column:8/10;grid-row:1/2;top:0px}
+.g7-1{grid-column:span 6;grid-row:span 1;top:12px;margin-bottom:416px}
+.g7-2{grid-column:5/10;grid-row:2/3;top:0px}
+.g8-1{grid-column:span 6;grid-row:span 1;top:-432px;margin-bottom:160px}
+.g8-2{grid-column:1/3;grid-row:2/3;top:0px;margin-top:640px;align-self:end}
+.g8-3{grid-column:4/10;grid-row:2/3;top:-240px}
+.g9-1{grid-column:1/6;grid-row:1/2;top:-320px;margin-bottom:1240px}
+.g9-2{grid-column:5/10;grid-row:1/2;top:-160px;margin-bottom:160px}
+.g9-3{grid-column:span 7;grid-row:span 1;top:0px}
+.g10-1{grid-column:3/10;grid-row:1/2;top:-320px}
+.g10-2{grid-column:1/8;grid-row:2/3;top:0px;margin-bottom:320px}
+.g10-3{grid-column:3/10;grid-row:3/4;top:0px}
+.g11-1{grid-column:span 9;grid-row:span 1;top:0px;margin-bottom:384px}
+.g11-2{grid-column:span 9;grid-row:span 1;top:0px}
+.g12-1{grid-column:4/10;grid-row:2/3;top:12px}
+.g12-2{grid-column:1/7;grid-row:3/4;top:0px}
+.g12-3{grid-column:2/7;grid-row:1/2;top:-336px}
+.g13-1{grid-column:4/10;grid-row:1/2;top:-160px}
+.g13-2{grid-column:1/8;grid-row:2/3;top:0px}
+.g14-1{grid-column:4/8;grid-row:1/2;top:0px}
+.g15-1{grid-column:span 9;grid-row:span 1;top:-384px;margin-bottom:64px}
+.g15-2{grid-column:1/5;grid-row:3/4;top:0px}
+.g15-3{grid-column:3/10;grid-row:2/3;top:0px}
+.g16-1{grid-column:span 7;grid-row:span 1;top:-96px;margin-bottom:320px}
+.g16-2{grid-column:4/10;grid-row:2/3;top:0px}
+
+/* RESPONSIVE — tablet */
+@media(max-width:991px){
+  .work-grid{grid-template-columns:repeat(6,1fr);padding:0 12px 64px}
+  .g1-1,.g1-2,.g1-3,.g1-4,.g1-5,.g2-1,.g2-2,.g2-3,.g2-4,.g3-1,.g4-1,.g4-2,.g4-3,.g5-1,.g5-2,.g5-3,.g6-1,.g6-2,.g7-1,.g7-2,.g8-1,.g8-2,.g8-3,.g9-1,.g9-2,.g9-3,.g10-1,.g10-2,.g10-3,.g11-1,.g11-2,.g12-1,.g12-2,.g12-3,.g13-1,.g13-2,.g14-1,.g15-1,.g15-2,.g15-3,.g16-1,.g16-2{
+    grid-column:span 6!important;grid-row:auto!important;
+    top:0!important;position:relative!important;
+    margin-top:0!important;margin-bottom:0!important;
+    padding-bottom:0!important;align-self:auto!important;
+  }
+}
+/* RESPONSIVE — mobile */
+@media(max-width:767px){
+  .work-grid{grid-template-columns:1fr;gap:8px;padding:0 0 48px}
+  .g1-1,.g1-2,.g1-3,.g1-4,.g1-5,.g2-1,.g2-2,.g2-3,.g2-4,.g3-1,.g4-1,.g4-2,.g4-3,.g5-1,.g5-2,.g5-3,.g6-1,.g6-2,.g7-1,.g7-2,.g8-1,.g8-2,.g8-3,.g9-1,.g9-2,.g9-3,.g10-1,.g10-2,.g10-3,.g11-1,.g11-2,.g12-1,.g12-2,.g12-3,.g13-1,.g13-2,.g14-1,.g15-1,.g15-2,.g15-3,.g16-1,.g16-2{grid-column:1/-1!important}
+}
+
+/* hero-shot — always centred, never cropped */
+.hero-shot{margin-top:52px;order:2;display:flex;justify-content:center}
+.hero-shot figure{width:100%;max-width:var(--wide)}
+
+@media(max-width:500px){
+  .hero-wrapper{display:flex;flex-direction:column}
+  .hero-shot{
+    order:-1;
+    margin-top:32px;
+    margin-bottom:24px;
+    margin-left:0;
+    margin-right:0;
+    width:100%;
+    overflow:visible;
+    justify-content:center;
+  }
+  .hero-shot figure{overflow:visible;width:100%}
+  .hero-shot .ph{
+    border-radius:8px;
+    aspect-ratio:4/3;
+    width:100%;
+  }
+  .hero-shot img{
+    border-radius:8px;
+    width:100%;
+    height:auto;
+    aspect-ratio:auto;
+    object-fit:contain;
+    display:block;
+  }
+  .hero-shot figcaption{display:none}
+  .hero{padding:24px 0 32px}
+}
+@media(max-width:500px){
+  .impact-numbers{
+    grid-template-columns:1fr;
+    gap:16px 0;
+    padding:16px 0;
+  }
+  .impact-label{white-space:normal;padding-top:0;margin-bottom:8px}
+  .impact-stat{padding-right:0;border-right:none;border-bottom:0.5px solid var(--line);padding-bottom:16px}
+  .impact-stat.mid{padding:0 0 16px;border-right:none;border-bottom:0.5px solid var(--line)}
+  .impact-stat.last{padding-left:0;border-bottom:none;padding-bottom:0}
+}
+@media(max-width:500px){
+  .img-row.c3{grid-template-columns:1fr!important;left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
+  .col .img-row.c3{left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
+}
+</style>
+</head>
+<body data-content="logos-art-for-fun-content.txt" data-about="light">
+
+<aside class="sidebar">
+  <button class="sb-about" onclick="toggleAbout(event)">About</button>
+  <a class="sb-back" href="index.html">Back to my projects</a>
+</aside>
+
+<!-- ABOUT OVERLAY -->
+<div class="page">
+
+<!-- HERO (centered) -->
+<div class="gallery-hero">
+  <h1>Logos and icons<br><em>and art for fun</em></h1>
+  <p class="gallery-lede">A selection of logos, icons, logotypes, and illustrations I have created over the years.</p>
+</div>
+
+<!-- GALLERY — sania.io exact composition, 16 sets / 42 images -->
+<div class="s-work">
+
+  <div class="work-grid">
+    <div class="work-ph g1-1" style="background:#E8E4DB" id="GALLERY-01"><span class="ph-label">GALLERY-01</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-01.png" alt="GALLERY-01" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g1-2" style="background:#DDD8CE" id="GALLERY-02"><span class="ph-label">GALLERY-02</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-02.png" alt="GALLERY-02" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g1-3" style="background:#E3E0D6" id="GALLERY-03"><span class="ph-label">GALLERY-03</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-03.png" alt="GALLERY-03" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g1-4" style="background:#D8D3C8" id="GALLERY-04"><span class="ph-label">GALLERY-04</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-04.png" alt="GALLERY-04" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g1-5" style="background:#E6E2D8" id="GALLERY-05"><span class="ph-label">GALLERY-05</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-05.png" alt="GALLERY-05" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid">
+    <div class="work-ph g2-1" style="background:#DEDAD0" id="GALLERY-06"><span class="ph-label">GALLERY-06</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-06.png" alt="GALLERY-06" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g2-2" style="background:#E0DCD2" id="GALLERY-07"><span class="ph-label">GALLERY-07</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-07.png" alt="GALLERY-07" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g2-3" style="background:#D5D0C5" id="GALLERY-08"><span class="ph-label">GALLERY-08</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-08.png" alt="GALLERY-08" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g2-4 hidden-item" style="background:#EAE6DC" id="GALLERY-09"><span class="ph-label">GALLERY-09</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-09.png" alt="GALLERY-09" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g3-1 hidden-item" style="background:#D9D5CB" id="GALLERY-10"><span class="ph-label">GALLERY-10</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-10.png" alt="GALLERY-10" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid">
+    <div class="work-ph g4-1 hidden-item" style="background:#E5E1D7" id="GALLERY-11"><span class="ph-label">GALLERY-11</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-11.png" alt="GALLERY-11" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g4-2" style="background:#DAD6CC" id="GALLERY-12"><span class="ph-label">GALLERY-12</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-12.png" alt="GALLERY-12" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g4-3" style="background:#E7E3D9" id="GALLERY-13"><span class="ph-label">GALLERY-13</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-13.png" alt="GALLERY-13" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid">
+    <div class="work-ph g5-1" style="background:#DCDBCF" id="GALLERY-14"><span class="ph-label">GALLERY-14</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-14.png" alt="GALLERY-14" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g5-2" style="background:#E2DED4" id="GALLERY-15"><span class="ph-label">GALLERY-15</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-15.png" alt="GALLERY-15" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g5-3 hidden-item" style="background:#D7D3C9" id="GALLERY-16"><span class="ph-label">GALLERY-16</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-16.png" alt="GALLERY-16" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g6-1 hidden-item" style="background:#E9E5DB" id="GALLERY-17"><span class="ph-label">GALLERY-17</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-17.png" alt="GALLERY-17" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g6-2 hidden-item" style="background:#DCD8CE" id="GALLERY-18"><span class="ph-label">GALLERY-18</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-18.png" alt="GALLERY-18" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g7-1 hidden-item" style="background:#E4E0D6" id="GALLERY-19"><span class="ph-label">GALLERY-19</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-19.png" alt="GALLERY-19" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g7-2 hidden-item" style="background:#D6D2C8" id="GALLERY-20"><span class="ph-label">GALLERY-20</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-20.png" alt="GALLERY-20" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g8-1 hidden-item" style="background:#E8E4DB" id="GALLERY-21"><span class="ph-label">GALLERY-21</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-21.png" alt="GALLERY-21" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g8-2 hidden-item" style="background:#DDD8CE" id="GALLERY-22"><span class="ph-label">GALLERY-22</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-22.png" alt="GALLERY-22" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g8-3 hidden-item" style="background:#E3E0D6" id="GALLERY-23"><span class="ph-label">GALLERY-23</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-23.png" alt="GALLERY-23" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g9-1 hidden-item" style="background:#D8D3C8" id="GALLERY-24"><span class="ph-label">GALLERY-24</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-24.png" alt="GALLERY-24" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g9-2 hidden-item" style="background:#E6E2D8" id="GALLERY-25"><span class="ph-label">GALLERY-25</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-25.png" alt="GALLERY-25" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g9-3 hidden-item" style="background:#DEDAD0" id="GALLERY-26"><span class="ph-label">GALLERY-26</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-26.png" alt="GALLERY-26" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g10-1 hidden-item" style="background:#E0DCD2" id="GALLERY-27"><span class="ph-label">GALLERY-27</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-27.png" alt="GALLERY-27" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g10-2 hidden-item" style="background:#D5D0C5" id="GALLERY-28"><span class="ph-label">GALLERY-28</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-28.png" alt="GALLERY-28" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g10-3 hidden-item" style="background:#EAE6DC" id="GALLERY-29"><span class="ph-label">GALLERY-29</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-29.png" alt="GALLERY-29" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g11-1 hidden-item" style="background:#D9D5CB" id="GALLERY-30"><span class="ph-label">GALLERY-30</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-30.png" alt="GALLERY-30" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g11-2 hidden-item" style="background:#E5E1D7" id="GALLERY-31"><span class="ph-label">GALLERY-31</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-31.png" alt="GALLERY-31" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g12-1 hidden-item" style="background:#DAD6CC" id="GALLERY-32"><span class="ph-label">GALLERY-32</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-32.png" alt="GALLERY-32" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g12-2 hidden-item" style="background:#E7E3D9" id="GALLERY-33"><span class="ph-label">GALLERY-33</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-33.png" alt="GALLERY-33" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g12-3 hidden-item" style="background:#DCDBCF" id="GALLERY-34"><span class="ph-label">GALLERY-34</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-34.png" alt="GALLERY-34" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g13-1 hidden-item" style="background:#E2DED4" id="GALLERY-35"><span class="ph-label">GALLERY-35</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-35.png" alt="GALLERY-35" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g13-2 hidden-item" style="background:#D7D3C9" id="GALLERY-36"><span class="ph-label">GALLERY-36</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-36.png" alt="GALLERY-36" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g14-1 hidden-item" style="background:#E9E5DB" id="GALLERY-37"><span class="ph-label">GALLERY-37</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-37.png" alt="GALLERY-37" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g15-1 hidden-item" style="background:#DCD8CE" id="GALLERY-38"><span class="ph-label">GALLERY-38</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-38.png" alt="GALLERY-38" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g15-2 hidden-item" style="background:#E4E0D6" id="GALLERY-39"><span class="ph-label">GALLERY-39</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-39.png" alt="GALLERY-39" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g15-3 hidden-item" style="background:#D6D2C8" id="GALLERY-40"><span class="ph-label">GALLERY-40</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-40.png" alt="GALLERY-40" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+  <div class="work-grid hidden-grid">
+    <div class="work-ph g16-1 hidden-item" style="background:#E8E4DB" id="GALLERY-41"><span class="ph-label">GALLERY-41</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-41.png" alt="GALLERY-41" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g16-2 hidden-item" style="background:#DDD8CE" id="GALLERY-42"><span class="ph-label">GALLERY-42</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-42.png" alt="GALLERY-42" class="work-img-real" onerror="this.remove()"></div>
+  </div>
+
+</div><!-- /s-work -->
+
+<div style="height:40px"></div>
+
+<footer style="max-width:var(--wide);margin:0 auto">
+  <div class="footer-nav">
+    <a href="#" id="prevBtn">← Previous work</a>
+    <a href="#" id="nextBtn">Next work →</a>
+  </div>
+  <div class="footer-copy">© 2026 · Designed &amp; built by Sapir Levi</div>
+</footer>
+
+</div><!-- /page -->
+
+<script>
+document.addEventListener('keydown',e=>{
+  if(e.key==='l'||e.key==='L') document.body.classList.toggle('show-labels');
+  if(e.key==='Escape') closeAbout();
+});
+
+function toggleAbout(e){
+  if(e) e.stopPropagation();
+  const panel=document.getElementById('about-panel');
+  const overlay=document.getElementById('about-overlay');
+  if(!panel||!overlay) return; /* הפאנל עדיין נטען מהמאסטר */
+  if(panel.classList.contains('open')) closeAbout();
+  else { panel.classList.add('open'); overlay.classList.add('open'); }
+}
+function closeAbout(){
+  const panel=document.getElementById('about-panel');
+  const overlay=document.getElementById('about-overlay');
+  if(panel) panel.classList.remove('open');
+  if(overlay) overlay.classList.remove('open');
+}
+// close on outside click
+document.addEventListener('click',function(e){
+  const panel=document.getElementById('about-panel');
+  if(panel.classList.contains('open')&&!panel.contains(e.target)){
+    const btn=document.querySelector('.sb-about');
+    if(!btn||!btn.contains(e.target)) closeAbout();
+  }
+});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// ── LIGHTBOX ──────────────────────────────────
+const lb      = document.getElementById('lightbox');
+const lbClose = document.getElementById('lbClose');
+const lbContent = document.getElementById('lbContent');
+
+let lbGallery = [];   // array of {src, alt, caption} for current section
+let lbIndex = 0;
+
+function renderLightbox() {
+  const item = lbGallery[lbIndex];
+  if (!item) return;
+  lbContent.innerHTML = item.src
+    ? `<img src="${item.src}" alt="${item.alt||''}">`
+    : `<div class="lb-ph">${item.alt||'Image preview'}</div>`;
+  document.getElementById('lbCaption').textContent = item.caption || '';
+  // show/hide nav based on gallery size
+  const multi = lbGallery.length > 1;
+  document.getElementById('lbPrev').hidden = !multi;
+  document.getElementById('lbNext').hidden = !multi;
+}
+
+function openLightbox(gallery, index) {
+  if (window.innerWidth <= 600) return;
+  lbGallery = gallery;
+  lbIndex = index;
+  renderLightbox();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function lbStep(dir) {
+  if (lbGallery.length < 2) return;
+  lbIndex = (lbIndex + dir + lbGallery.length) % lbGallery.length;
+  renderLightbox();
+}
+
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+lbClose.addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); lbStep(-1); });
+document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); lbStep(1); });
+lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lbStep(-1);
+  if (e.key === 'ArrowRight') lbStep(1);
+});
+
+// build a gallery per section-container, attach click to each figure
+document.querySelectorAll('section, .img-row, .img-stack').forEach(container => {
+  const figs = [...container.querySelectorAll('.img-mt figure, .img-row figure, .img-stack figure')];
+  if (!figs.length) return;
+  // de-dup: only handle figures whose closest gallery container is THIS one
+  figs.forEach((fig) => {
+    if (fig.dataset.lbBound) return;
+    fig.dataset.lbBound = '1';
+    fig.addEventListener('click', () => {
+      if (window.innerWidth <= 600) return;
+      // gather all sibling figures within the same logical group
+      const group = fig.closest('.img-row, .img-stack') || fig.closest('section');
+      const groupFigs = [...group.querySelectorAll('figure')];
+      const gallery = groupFigs.map(f => {
+        const img = f.querySelector('img');
+        const ph  = f.querySelector('.ph');
+        const cap = f.querySelector('figcaption');
+        const captionText = cap ? cap.textContent : '';
+        const alt = img ? img.alt : (ph ? ph.querySelector('span')?.textContent : captionText);
+        return { src: img ? img.src : null, alt, caption: captionText };
+      });
+      const idx = groupFigs.indexOf(fig);
+      openLightbox(gallery, idx);
+    });
+  });
+});
+
+// ── PROJECT NAVIGATION ────────────────────────
+// לשינוי סדר: ערכי רק את הרשימה הזאת (ואת projects-order.js)
+const PROJECTS = [
+  'agents.html',             // Card 1 — ללא Previous work
+  'dspm.html',               // Card 2
+  'violation-pane.html',     // Card 3
+  'retraining-model.html',   // Card 4
+  'security-dashboard.html', // Card 5
+  'logos-art-for-fun.html'   // Card 6
+];
+
+const raw = window.location.pathname.split('/').pop();
+const currentFile = raw.endsWith('.html') ? raw : raw + '.html';
+const currentIdx  = PROJECTS.indexOf(currentFile);
+
+function getNav(direction) {
+  if (currentIdx === -1) return 'index.html';
+  const total = PROJECTS.length;
+  const idx = (currentIdx + direction + total) % total;
+  return PROJECTS[idx];
+}
+
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+// Card 1 (first in PROJECTS) never shows "Previous work"
+if (currentIdx === 0) {
+  if (prevBtn) prevBtn.style.display = 'none';
+} else {
+  if (prevBtn) prevBtn.href = getNav(-1);
+}
+if (nextBtn) nextBtn.href = getNav(+1);
+</script>
+<script src="about-loader.js"></script>
+<script src="about-content-loader.js"></script>
+<script src="content-loader.js"></script>
+</body>
+</html>

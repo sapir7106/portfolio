@@ -1,0 +1,56 @@
+PROJECT CONTENT — logos-art-for-fun.html
+=========================================
+כדי לעדכן: תעלי קובץ זה + logos-art-for-fun.html לקלוד
+
+HERO
+----
+Title: Logos and iconsand art for fun
+Lede: A selection of logos, icons, logotypes, and illustrations I have created over the years.
+
+GALLERY IMAGES
+--------------
+כל תמונה מזוהה לפי ID. כדי לעדכן כיתוב — ציינו את ה-ID והכיתוב.
+נתיב תמונות: portfolio images/logos-art-for-fun/GALLERY-XX.png
+
+GALLERY-01: [caption here]
+GALLERY-02: [caption here]
+GALLERY-03: [caption here]
+GALLERY-04: [caption here]
+GALLERY-05: [caption here]
+GALLERY-06: [caption here]
+GALLERY-07: [caption here]
+GALLERY-08: [caption here]
+GALLERY-09: [caption here]
+GALLERY-10: [caption here]
+GALLERY-11: [caption here]
+GALLERY-12: [caption here]
+GALLERY-13: [caption here]
+GALLERY-14: [caption here]
+GALLERY-15: [caption here]
+GALLERY-16: [caption here]
+GALLERY-17: [caption here]
+GALLERY-18: [caption here]
+GALLERY-19: [caption here]
+GALLERY-20: [caption here]
+GALLERY-21: [caption here]
+GALLERY-22: [caption here]
+GALLERY-23: [caption here]
+GALLERY-24: [caption here]
+GALLERY-25: [caption here]
+GALLERY-26: [caption here]
+GALLERY-27: [caption here]
+GALLERY-28: [caption here]
+GALLERY-29: [caption here]
+GALLERY-30: [caption here]
+GALLERY-31: [caption here]
+GALLERY-32: [caption here]
+GALLERY-33: [caption here]
+GALLERY-34: [caption here]
+GALLERY-35: [caption here]
+GALLERY-36: [caption here]
+GALLERY-37: [caption here]
+GALLERY-38: [caption here]
+GALLERY-39: [caption here]
+GALLERY-40: [caption here]
+GALLERY-41: [caption here]
+GALLERY-42: [caption here]

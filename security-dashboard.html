@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Turning security noise into a clear next move — Sapir Levi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── V1: WARM PAPER — editorial, generous whitespace, serif-led ── */
+:root{
+  --bg:#F7F6F1;--bg2:#FBFAF7;--ink:#17160F;--soft:#3A382E;
+  --muted:#8C897C;--line:#E3E0D6;--hi:#BADA55;
+  --sidebar:#242323;--sw:71px;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Avenir','Montserrat',sans-serif;
+  --col:720px;--wide:1080px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.72;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.018'/%3E%3C/svg%3E")}
+
+/* sidebar */
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:#ffffff;z-index:100;display:flex;flex-direction:column;align-items:center}
+.sb-about{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;letter-spacing:.01em;text-transform:none;padding:0;margin-top:48px;transition:color .2s;text-decoration:none}
+.sb-about:hover{color:#8067F2}
+.sb-back{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;letter-spacing:.01em;text-transform:none;padding:0;margin-top:auto;margin-bottom:40px;transition:color .2s;text-decoration:none}
+.sb-back:hover{color:#8067F2}
+
+/* wrap — centered */
+.page{position:relative;z-index:1;margin-left:var(--sw)}
+.wrap{max-width:var(--wide);margin:0 auto;padding:0 48px}
+.col{max-width:var(--col);margin:0 auto}
+
+/* hero */
+.hero-wrapper{display:flex;flex-direction:column}
+.hero{padding:80px 0 48px;order:1}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:22px}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;max-width:14ch;margin-bottom:28px}
+.hero h1 em{font-style:italic;font-weight:400}
+.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch}
+.lede strong{color:var(--ink);font-weight:600}
+mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
+
+.hero-shot{margin-top:52px;order:2}
+
+/* hero-shot @500px — see consolidated block below */
+figure{margin:0}
+figcaption{font-size:14px;color:var(--muted);margin-top:16px;font-style:italic;text-align:center}
+.ph{background:var(--line);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;position:relative;min-height:220px;container-type:inline-size}
+.ph-id{display:none;position:absolute;top:10px;left:10px;background:var(--ink);color:var(--hi);font-size:10px;font-weight:600;font-family:monospace;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
+body.show-labels .ph-id{display:block}
+.ph svg{width:24px;height:24px;opacity:.3}
+
+/* real image inside placeholder — when it loads, it fills the width and
+   sets its own natural height, overriding the placeholder's aspect-ratio */
+.ph:has(.ph-img),.ph.has-img{aspect-ratio:auto !important;min-height:0;background:transparent;display:block}
+.ph-img{width:100%;height:auto;display:block;border-radius:clamp(6px,2.3cqw,18px);position:relative;z-index:2;box-shadow:0 4px 59px 25px rgba(57,59,98,0.10)}
+/* hide the placeholder icon/label once a real image is present */
+.ph:has(.ph-img) > svg,
+.ph:has(.ph-img) > span,
+.ph.has-img > svg,
+.ph.has-img > span{display:none}
+
+/* project info */
+.pinfo{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:52px}
+.pi{background:var(--bg2);padding:22px 24px}
+.pi-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+.pi-role{font-size:16px;font-weight:600;color:#8067F2;margin-bottom:5px}
+.pi p{font-size:16px;color:var(--soft);line-height:1.55}
+
+/* sections */
+section{padding:64px 0}
+.sec-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
+.sec-head{display:flex;align-items:center;gap:18px;margin-bottom:28px}
+.num{font-family:var(--serif);font-size:clamp(40px,5.5vw,55px);color:var(--hi);font-weight:700;flex:none;letter-spacing:-.02em;line-height:1;padding-bottom:.12em;position:relative;top:-2px}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,3.6vw,44px);line-height:1.02;letter-spacing:-.02em}
+h2 em{font-style:italic;font-weight:400}
+.body p{max-width:700px;color:var(--soft);font-size:17px}.body p+p{margin-top:16px}
+.body strong{color:var(--ink);font-weight:600}
+.body ul{margin-top:16px;list-style:none;display:grid;gap:9px}
+.body ul li{font-size:17px;color:var(--soft);padding-left:28px;position:relative}
+.body ul li::before{content:"—";position:absolute;left:0;color:var(--hi);font-weight:800;font-size:19px;top:0.15em;line-height:1}
+
+/* image blocks */
+.img-mt{margin-top:32px}
+.img-mt .ph,.img-mt img{width:100%;display:block;border-radius:8px;background:var(--line)}
+.img-row{display:grid;gap:28px;margin-top:32px}
+.img-row.c2{grid-template-columns:1fr 1fr}
+.img-row.c3{
+  grid-template-columns:1fr 1fr 1fr;
+  max-width:var(--wide);
+  margin-left:auto;
+  margin-right:auto;
+  width:100%;
+  position:relative;
+}
+/* c3 inside a .col — break out to full wrap width on large screens only */
+@media(min-width:901px){
+  .col .img-row.c3{
+    left:50%;
+    right:50%;
+    margin-left:calc(var(--wide) / -2);
+    margin-right:calc(var(--wide) / -2);
+    width:var(--wide);
+    max-width:none;
+    position:relative;
+  }
+}
+.img-stack{display:grid;gap:100px;margin-top:32px}
+figcaption{font-size:14px;color:var(--soft);margin-top:16px;font-style:italic;text-align:center}
+
+/* stats */
+.stat-band{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:28px}
+.sb{background:var(--bg2);padding:20px 18px}
+.sb .v{font-family:var(--serif);font-size:38px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.sb .l{font-size:16px;color:var(--soft);margin-top:7px;line-height:1.4}
+
+/* 2-col */
+.tcols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:24px}
+.tc{background:var(--bg2);padding:20px 22px}
+.tc h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:10px}
+.tc ul{list-style:none;display:grid;gap:8px}
+.tc ul li{font-size:16px;color:var(--soft);padding-left:22px;position:relative}
+.tc ul li::before{content:"→";position:absolute;left:0;font-weight:600;color:var(--ink)}
+.tc.ac h4{color:var(--ink)}.tc.ac{border-left:2px solid var(--hi)}
+
+/* callout — Quote style C */
+.callout{
+  border-left:2px solid var(--hi);
+  background:rgba(186,218,85,0.07);
+  border-radius:0 6px 6px 0;
+  padding:14px 18px;
+  margin-top:36px;
+  max-width:var(--col);
+  margin-left:auto;
+  margin-right:auto;
+}
+.callout p{
+  font-family:var(--sans);
+  font-size:20px;
+  font-weight:500;
+  font-style:italic;
+  line-height:1.55;
+  color:var(--ink);
+}
+
+/* footer */
+footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
+.footer-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0 16px;border-top:none}
+.footer-nav #nextBtn{margin-left:auto}
+footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(13px,1.6vw,16px);transition:color .2s}footer a:hover{color:#8067F2}
+.footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
+
+/* lightbox */
+.lightbox{display:none;position:fixed;inset:0;left:0;background:rgba(23,22,15,.95);z-index:9999;align-items:center;justify-content:center;padding:24px;flex-direction:column;gap:16px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:80vh;width:auto;height:auto;border-radius:20px;display:block}
+.lb-ph{background:var(--bg2);border:1px solid var(--line);border-radius:8px;width:clamp(280px,90vw,1196px);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;font-family:monospace}
+.lb-caption{font-size:17px;color:rgba(242,239,232,0.75);font-family:var(--sans);font-weight:300;font-style:normal;text-align:center;max-width:70ch;line-height:1.5}
+.lb-close{position:fixed;top:20px;right:24px;background:none;border:none;cursor:pointer;color:#F2EFE8;font-size:28px;line-height:1;padding:4px 8px;transition:color .2s;z-index:10000}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);cursor:pointer;color:#F2EFE8;font-size:24px;line-height:1;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;z-index:10000}
+.lb-nav:hover{background:rgba(255,255,255,0.18)}
+.lb-prev{left:24px}
+.lb-next{right:24px}
+.lb-nav[hidden]{display:none}
+.lb-close:hover{color:#BADA55}
+
+@media(min-width:601px){
+  .img-mt figure,.img-row figure,.img-stack figure{cursor:zoom-in}
+  .img-mt .ph,.img-row .ph,.img-stack .ph{cursor:zoom-in}
+}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.7,.2,1),transform .65s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .pinfo,.tcols,.stat-band{grid-template-columns:1fr}
+  .img-row.c2{grid-template-columns:1fr}
+  .img-row.c3{
+    grid-template-columns:1fr 1fr;
+    left:auto!important;right:auto!important;
+    margin-left:0!important;margin-right:0!important;
+    width:100%!important;max-width:100%!important;
+  }
+}
+@media(max-width:600px){
+  .img-row.c3{
+    grid-template-columns:1fr!important;
+  }
+}
+@media(max-width:680px){.page{margin-left:0;margin-top:44px}.sidebar{width:100%;height:44px;bottom:auto;flex-direction:row}.sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;padding:0 20px;font-size:16px}.sb-back{writing-mode:horizontal-tb;transform:none;margin:0 16px 0 auto;font-size:16px}.wrap{padding:0 20px}}
+@media(max-width:480px){
+  /* images never overflow */
+  .ph,.img-mt .ph,.img-mt img,.img-row .ph,.img-stack .ph,
+  .img-row img,.img-stack img{max-width:100%;width:100%;overflow:hidden}
+  figure{overflow:hidden;max-width:100%}
+  /* footer: buttons on top, copyright below with divider */
+  footer{flex-direction:column;align-items:stretch;gap:0;padding:0 0 40px}
+  .footer-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:1px solid var(--line)}
+  footer a{font-size:clamp(14px,4vw,18px)}
+  .footer-copy{text-align:center;padding-top:16px;border-top:1px solid var(--line);font-size:13px}
+}
+/* ── IMPACT BLOCK ────────────────────────────────
+   שני מופעים — רק אחד יופיע בכל עמוד.
+   מופע 1 (.impact-numbers): מספרים כמותיים
+   מופע 2 (.impact-quote): ציטוט טקסטואלי
+   ─────────────────────────────────────────────── */
+.impact-numbers{
+  border-top:0.5px solid var(--line);
+  border-bottom:0.5px solid var(--line);
+  padding:16px 0;
+  display:grid;
+  grid-template-columns:auto 1fr 1fr 1fr;
+  gap:0 24px;
+  align-items:start;
+  max-width:var(--col);
+  margin:0 auto;
+}
+.impact-label{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:500;color:var(--muted);font-family:var(--sans);
+  padding-top:4px;white-space:nowrap;
+}
+.impact-stat{padding-right:20px;border-right:0.5px solid var(--line)}
+.impact-stat.mid{border-right:0.5px solid var(--line);padding:0 20px}
+.impact-stat.last{padding-left:20px;border-right:none}
+.impact-stat .val{
+  font-family:var(--serif);font-size:40px;font-weight:700;
+  line-height:1;letter-spacing:-.025em;color:var(--ink);
+  font-variant-numeric:oldstyle-nums;
+}
+.impact-stat .lbl{
+  font-size:14px;font-weight:400;color:var(--muted);
+  font-family:var(--sans);margin-top:7px;line-height:1.4;
+}
+/* text fallback — same grid, text instead of numbers */
+.impact-stat .txt{
+  font-size:15px;font-weight:500;color:var(--ink);
+  font-family:var(--sans);line-height:1.45;
+}
+
+.impact-quote{
+  max-width:var(--col);
+  margin:0 auto;
+}
+.impact-quote .inner{
+  border-left:2px solid var(--hi);
+  padding:2px 0 2px 18px;
+}
+.impact-quote p{
+  font-family:var(--sans);
+  font-size:20px;font-weight:500;font-style:italic;
+  line-height:1.55;color:var(--ink);
+}
+/* about panel — injected from about-panel.html via about-loader.js */
+
+/* hero-shot — always centred, never cropped */
+.hero-shot{margin-top:52px;order:2;display:flex;justify-content:center}
+.hero-shot figure{width:100%;max-width:var(--wide)}
+
+@media(max-width:500px){
+  .hero-wrapper{display:flex;flex-direction:column}
+  .hero-shot{
+    order:-1;
+    margin-top:32px;
+    margin-bottom:24px;
+    margin-left:0;
+    margin-right:0;
+    width:100%;
+    overflow:visible;
+    justify-content:center;
+  }
+  .hero-shot figure{overflow:visible;width:100%}
+  .hero-shot .ph{
+    border-radius:8px;
+    aspect-ratio:4/3;
+    width:100%;
+  }
+  .hero-shot img{
+    border-radius:8px;
+    width:100%;
+    height:auto;
+    aspect-ratio:auto;
+    object-fit:contain;
+    display:block;
+  }
+  .hero-shot figcaption{display:none}
+  .hero{padding:24px 0 32px}
+}
+@media(max-width:500px){
+  .impact-numbers{
+    grid-template-columns:1fr;
+    gap:16px 0;
+    padding:16px 0;
+  }
+  .impact-label{white-space:normal;padding-top:0;margin-bottom:8px}
+  .impact-stat{padding-right:0;border-right:none;border-bottom:0.5px solid var(--line);padding-bottom:16px}
+  .impact-stat.mid{padding:0 0 16px;border-right:none;border-bottom:0.5px solid var(--line)}
+  .impact-stat.last{padding-left:0;border-bottom:none;padding-bottom:0}
+}
+@media(max-width:500px){
+  .img-row.c3{grid-template-columns:1fr!important;left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
+  .col .img-row.c3{left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
+}
+</style>
+</head>
+<body data-content="security-dashboard-content.txt" data-about="light">
+
+<aside class="sidebar">
+  <button class="sb-about" onclick="toggleAbout(event)">About</button>
+  <a class="sb-back" href="index.html">Back to my projects</a>
+</aside>
+
+<!-- ABOUT OVERLAY -->
+<div class="page">
+<div class="wrap">
+
+<div class="hero-wrapper">
+
+<header class="hero col rv">
+  <div class="eyebrow">Velocity · Cybersecurity · 2021</div>
+  <h1>Turning security noise into <em>a clear next move</em></h1>
+  <p class="lede">Velocity is a comprehensive cybersecurity platform for detecting and responding to threats. I designed a centralized <mark>security dashboard</mark> that turns complex security data into a <strong>practical decision-making tool.</strong></p>
+</header>
+
+</div><!-- /hero-wrapper -->
+
+<!-- ══════════════════════════════════════════════
+     IMPACT BLOCK — השאירי רק מופע אחד פעיל!
+     מופע 1: מספרים כמותיים → השתמשי ב-.impact-numbers
+     מופע 2: ציטוט טקסטואלי → השתמשי ב-.impact-quote
+     ══════════════════════════════════════════════ -->
+
+<div class="impact-quote col rv">
+  <div class="inner">
+    <p>Security teams weren't short on data — they were short on clarity. I designed for the decision, not the dashboard.</p>
+  </div>
+</div>
+
+<div class="hero-shot rv" style="max-width:var(--wide)">
+  <figure>
+    <div class="ph" data-img-id="IMG-01" style="aspect-ratio:16/8"><div class="ph-id">IMG-01</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Hero image · IMG-01</span><img src="portfolio%20images/security-dashboard/IMG-01.png" alt="Hero image · IMG-01" class="ph-img" onerror="this.remove()"></div>
+    <figcaption>The Velocity security dashboard — security health, top alerts, entities at risk and activity timeline in one view.</figcaption>
+  </figure>
+</div>
+
+<div class="pinfo col rv">
+  <div class="pi"><div class="pi-label">My role</div><div class="pi-role">Product Designer</div><p>Sketching, visual design, user journeys, wireframing, dev handoff and support through development.</p></div>
+  <div class="pi"><div class="pi-label">Tools</div><p>Figma, Miro, Notion, Zeplin, pen and paper.</p></div>
+  <div class="pi"><div class="pi-label">Team</div><p>1 Product Design Lead<br>1 Product Manager<br>2 Full-stack Developers</p></div>
+</div>
+
+<section class="col rv">
+  <div class="sec-label">Goals</div>
+  <div class="sec-head"><span class="num">01</span><h2>The challenges</h2></div>
+  <div class="body">
+    <p>Security teams face an overwhelming amount of information every day — alerts, incidents, risk indicators and system events, generated constantly and spread across multiple systems. The hard part isn't finding data, it's <mark>telling critical issues apart from background noise.</mark></p>
+    <p>Designing a security dashboard meant balancing large volumes of real-time data with the need for clarity, speed, and action. Through research and exploration, I identified four core challenges to solve.</p>
+    <ul>
+      <li>Visualizing complex security data — present large amounts of security information in a way that's easy to scan, understand, and act upon.</li>
+      <li>Providing context and prioritization — help users quickly understand severity, impact, and urgency through a clear visual hierarchy.</li>
+      <li>Supporting fast decision-making — surface meaningful insights and recommended actions that let users respond quickly to threats.</li>
+      <li>Reducing alert fatigue — highlight critical information while minimizing noise, helping users stay focused on what matters most.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="col rv">
+<!-- Section 02 — hidden for this project -->
+
+</section>
+
+<section class="col rv">
+  <div class="sec-label">Design exploration</div>
+  <div class="sec-head"><span class="num">02</span><h2>Research and user needs</h2></div>
+  <div class="body"><p>Through 5 user interviews and close collaboration with security stakeholders, I identified the core needs: immediate situational awareness, clear risk prioritization, actionable information (context and next steps, not just more data), real-time visibility, and reduced cognitive effort. These findings became the foundation for the dashboard structure and information hierarchy.</p></div>
+  <div class="stat-band"><div class="sb"><div class="v">11K+</div><div class="l">Alerts a security team receives per day (Forrester, 2020)</div></div><div class="sb"><div class="v">~70%</div><div class="l">Of analyst time spent triaging alerts, not hunting threats (Forrester)</div></div><div class="sb"><div class="v">67%</div><div class="l">Of IT teams ignore lower-priority alerts (State of Network Security, 2020–21)</div></div></div>
+
+</section>
+
+<section class="col rv">
+  <div class="sec-label">Design exploration</div>
+  <div class="sec-head"><span class="num">03</span><h2>Wireframes</h2></div>
+  <div class="body"><p>Following research and a competitive market analysis, I designed three distinct wireframe concepts for the dashboard layout and weighting system. The wireframe phase answered hard questions: what belongs above the fold, how risk indicators should be prioritized, which metrics deserve permanent visibility, and how a user moves from overview to investigation without friction.</p></div>
+  <div class="img-row c3 rv">
+    <figure><div class="ph" data-img-id="IMG-05" style="aspect-ratio:4/3"><div class="ph-id">IMG-05</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Concept 1 · IMG-05</span><img src="portfolio%20images/security-dashboard/IMG-05.png" alt="Concept 1 · IMG-05" class="ph-img" onerror="this.remove()"></div><figcaption>Wireframe concept 1 — exploring layout and content hierarchy for the dashboard.</figcaption></figure>
+    <figure><div class="ph" data-img-id="IMG-06" style="aspect-ratio:4/3"><div class="ph-id">IMG-06</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Concept 2 · IMG-06</span><img src="portfolio%20images/security-dashboard/IMG-06.png" alt="Concept 2 · IMG-06" class="ph-img" onerror="this.remove()"></div><figcaption>Wireframe concept 2 — a different weighting of monitoring vs investigation.</figcaption></figure>
+    <figure><div class="ph" data-img-id="IMG-07" style="aspect-ratio:4/3"><div class="ph-id">IMG-07</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Concept 3 · IMG-07</span><img src="portfolio%20images/security-dashboard/IMG-07.png" alt="Concept 3 · IMG-07" class="ph-img" onerror="this.remove()"></div><figcaption>Wireframe concept 3 — balancing high-level overview with detailed drill-down.</figcaption></figure>
+  </div>
+</section>
+
+<section class="col rv">
+  <div class="sec-label">Research</div>
+  <div class="sec-head"><span class="num">04</span><h2>User flow</h2></div>
+  <div class="body"><p>Before visual design, I mapped the investigation workflow of a security analyst — from opening the dashboard, to reviewing overall health, identifying critical alerts, investigating affected entities, understanding severity and impact, reviewing recommendations, taking action, and monitoring the outcome. Mapping it end to end surfaced the key decision points and shaped the dashboard's architecture.</p></div>
+  <div class="img-mt rv"><figure><div class="ph" data-img-id="IMG-08" style="aspect-ratio:16/7"><div class="ph-id">IMG-08</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>IMG-08</span><img src="portfolio%20images/security-dashboard/IMG-08.png" alt="IMG-08" class="ph-img" onerror="this.remove()"></div><figcaption>The security analyst's investigation flow — from dashboard overview to action and monitoring.</figcaption></figure></div>
+</section>
+
+<section class="rv" style="max-width:var(--wide);padding:64px 0;border-top:1px solid var(--line)">
+  <div class="col"><div class="sec-label">Final</div><div class="sec-head"><span class="num">05</span><h2>The final design</h2></div><div class="body"><p>The final dashboard combines real-time monitoring, prioritization, and actionable insights in one view. A Security Health overview puts the overall state of the environment up top; Top Alerts highlights the most critical threats first; Entities at Risk surfaces affected assets, systems and users; an Activity Timeline gives context around events and trends; Recommendation cards turn data into clear next steps; and Protection Progress lets teams track how their security posture improves over time.</p></div></div>
+  <div class="img-stack" style="max-width:var(--wide)">
+    <figure class="rv"><div class="ph" data-img-id="IMG-09" style="aspect-ratio:16/9"><div class="ph-id">IMG-09</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Screen 1 · IMG-09</span><img src="portfolio%20images/security-dashboard/IMG-09.png" alt="Screen 1 · IMG-09" class="ph-img" onerror="this.remove()"></div><figcaption>Security Health overview — key metrics and risk indicators at the top of the dashboard 1.</figcaption></figure>
+    <figure class="rv"><div class="ph" data-img-id="IMG-10" style="aspect-ratio:16/9"><div class="ph-id">IMG-10</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Screen 2 · IMG-10</span><img src="portfolio%20images/security-dashboard/IMG-10.png" alt="Screen 2 · IMG-10" class="ph-img" onerror="this.remove()"></div><figcaption>Top Alerts and Entities at Risk — the most critical threats and affected assets, prioritized 2.</figcaption></figure>
+    <figure class="rv"><div class="ph" data-img-id="IMG-11" style="aspect-ratio:16/9"><div class="ph-id">IMG-11</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Screen 3 · IMG-11</span><img src="portfolio%20images/security-dashboard/IMG-11.png" alt="Screen 3 · IMG-11" class="ph-img" onerror="this.remove()"></div><figcaption>Activity Timeline — visual context around security events and trends 3.</figcaption></figure>
+  </div>
+  <div class="col"><p class="callout">"The goal was never to show more — it was to make the most important thing impossible to miss."</p></div>
+</section>
+
+<section class="col rv">
+  <div class="sec-label">Outcome</div>
+  <div class="sec-head"><span class="num">06</span><h2>Outcome &amp; reflection</h2></div>
+  <div class="body">
+    <p>The redesigned dashboard gives security teams a clearer, more actionable view of organizational security. Stronger information hierarchy, better prioritization, and real-time visibility turn complex cybersecurity data into a practical decision-making tool — directly answering the problem the research surfaced: teams weren't short on data, they were short on clarity.</p>
+    <p>Looking back, the core lesson holds up: in a domain where an analyst faces thousands of alerts a day, the design's job isn't to display everything — it's to make the one thing that matters impossible to miss, and the next action obvious.</p>
+    <ul>
+      <li>Helps teams identify critical threats faster and reduce investigation time.</li>
+      <li>Keeps analysts focused on high-priority risks while maintaining awareness of overall posture.</li>
+    </ul>
+  </div>
+</section>
+
+<footer style="max-width:var(--wide);margin:0 auto">
+  <div class="footer-nav">
+    <a href="#" id="prevBtn">← Previous work</a>
+    <a href="#" id="nextBtn">Next work →</a>
+  </div>
+  <div class="footer-copy">© 2026 · Designed &amp; built by Sapir Levi</div>
+</footer>
+</div></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+  <div id="lbContent"></div>
+  <p class="lb-caption" id="lbCaption"></p>
+</div>
+
+<script src="projects-order.js"></script>
+<script>
+document.addEventListener('keydown',e=>{
+  if(e.key==='l'||e.key==='L') document.body.classList.toggle('show-labels');
+  if(e.key==='Escape') closeAbout();
+});
+
+function toggleAbout(e){
+  if(e) e.stopPropagation();
+  const panel=document.getElementById('about-panel');
+  const overlay=document.getElementById('about-overlay');
+  if(!panel||!overlay) return; /* הפאנל עדיין נטען מהמאסטר */
+  if(panel.classList.contains('open')) closeAbout();
+  else { panel.classList.add('open'); overlay.classList.add('open'); }
+}
+function closeAbout(){
+  const panel=document.getElementById('about-panel');
+  const overlay=document.getElementById('about-overlay');
+  if(panel) panel.classList.remove('open');
+  if(overlay) overlay.classList.remove('open');
+}
+// close on outside click
+document.addEventListener('click',function(e){
+  const panel=document.getElementById('about-panel');
+  if(panel.classList.contains('open')&&!panel.contains(e.target)){
+    const btn=document.querySelector('.sb-about');
+    if(!btn||!btn.contains(e.target)) closeAbout();
+  }
+});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// ── LIGHTBOX ──────────────────────────────────
+const lb      = document.getElementById('lightbox');
+const lbClose = document.getElementById('lbClose');
+const lbContent = document.getElementById('lbContent');
+
+let lbGallery = [];   // array of {src, alt, caption} for current section
+let lbIndex = 0;
+
+function renderLightbox() {
+  const item = lbGallery[lbIndex];
+  if (!item) return;
+  lbContent.innerHTML = item.src
+    ? `<img src="${item.src}" alt="${item.alt||''}">`
+    : `<div class="lb-ph">${item.alt||'Image preview'}</div>`;
+  document.getElementById('lbCaption').textContent = item.caption || '';
+  // show/hide nav based on gallery size
+  const multi = lbGallery.length > 1;
+  document.getElementById('lbPrev').hidden = !multi;
+  document.getElementById('lbNext').hidden = !multi;
+}
+
+function openLightbox(gallery, index) {
+  if (window.innerWidth <= 600) return;
+  lbGallery = gallery;
+  lbIndex = index;
+  renderLightbox();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function lbStep(dir) {
+  if (lbGallery.length < 2) return;
+  lbIndex = (lbIndex + dir + lbGallery.length) % lbGallery.length;
+  renderLightbox();
+}
+
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+lbClose.addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); lbStep(-1); });
+document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); lbStep(1); });
+lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lbStep(-1);
+  if (e.key === 'ArrowRight') lbStep(1);
+});
+
+// build a gallery per section-container, attach click to each figure
+document.querySelectorAll('section, .img-row, .img-stack').forEach(container => {
+  const figs = [...container.querySelectorAll('.img-mt figure, .img-row figure, .img-stack figure')];
+  if (!figs.length) return;
+  // de-dup: only handle figures whose closest gallery container is THIS one
+  figs.forEach((fig) => {
+    if (fig.dataset.lbBound) return;
+    fig.dataset.lbBound = '1';
+    fig.addEventListener('click', () => {
+      if (window.innerWidth <= 600) return;
+      // gather all sibling figures within the same logical group
+      const group = fig.closest('.img-row, .img-stack') || fig.closest('section');
+      const groupFigs = [...group.querySelectorAll('figure')];
+      const gallery = groupFigs.map(f => {
+        const img = f.querySelector('img');
+        const ph  = f.querySelector('.ph');
+        const cap = f.querySelector('figcaption');
+        const captionText = cap ? cap.textContent : '';
+        const alt = img ? img.alt : (ph ? ph.querySelector('span')?.textContent : captionText);
+        return { src: img ? img.src : null, alt, caption: captionText };
+      });
+      const idx = groupFigs.indexOf(fig);
+      openLightbox(gallery, idx);
+    });
+  });
+});
+
+// ── PROJECT NAVIGATION ────────────────────────
+// לשינוי סדר: ערכי רק את הרשימה הזאת (ואת projects-order.js)
+const PROJECTS = [
+  'agents.html',             // Card 1 — ללא Previous work
+  'dspm.html',               // Card 2
+  'violation-pane.html',     // Card 3
+  'retraining-model.html',   // Card 4
+  'security-dashboard.html', // Card 5
+  'logos-art-for-fun.html'   // Card 6
+];
+
+const raw = window.location.pathname.split('/').pop();
+const currentFile = raw.endsWith('.html') ? raw : raw + '.html';
+const currentIdx  = PROJECTS.indexOf(currentFile);
+
+function getNav(direction) {
+  if (currentIdx === -1) return 'index.html';
+  const total = PROJECTS.length;
+  const idx = (currentIdx + direction + total) % total;
+  return PROJECTS[idx];
+}
+
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+// Card 1 (first in PROJECTS) never shows "Previous work"
+if (currentIdx === 0) {
+  if (prevBtn) prevBtn.style.display = 'none';
+} else {
+  if (prevBtn) prevBtn.href = getNav(-1);
+}
+if (nextBtn) nextBtn.href = getNav(+1);
+</script>
+<script src="about-loader.js"></script>
+<script src="about-content-loader.js"></script>
+<script src="content-loader.js"></script>
+</body>
+</html>

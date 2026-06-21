@@ -1,0 +1,70 @@
+MAIN PAGE CONTENT — main.html
+==============================
+קובץ זה שולט על:
+1. כותרות ותת-כותרות של קארדים
+2. סדר הקארדים בגריד
+3. ניווט Next/Previous בין עמודי פרויקטים
+
+כדי לעדכן: תעלי קובץ זה + main.html לקלוד ותגידי "עדכן את main.html לפי main-content.txt"
+
+══════════════════════════════════════════
+CARDS — סדר, כותרות, ניווט
+══════════════════════════════════════════
+הסדר שרשום כאן = הסדר בגריד ובניווט Next/Previous.
+שינוי מספר = שינוי מיקום בגריד + עדכון ניווט אוטומטי.
+
+CARD 1
+------
+File: agents.html
+Title: Autonomous agents
+Subtitle: AI · FinOps · PointFive
+Background color: #E8EDF2
+
+CARD 2
+------
+File: dspm.html
+Title: Cloud data security
+Subtitle: Cyber · Laminar
+Background color: #E5E2D8
+
+CARD 3
+------
+File: violation-pane.html
+Title: The violation pane
+Subtitle: Cloud Data Security · Laminar
+Background color: #E8EDF2
+
+CARD 4
+------
+File: retraining-model.html
+Title: Security dashboard
+Subtitle: Detection and monitoring · Cyber
+Background color: #E5E2D8
+
+CARD 5
+------
+File: security-dashboard.html
+Title: Logos & Icons
+Subtitle: And art for fun
+Background color: #E8EDF2
+
+CARD 6
+------
+File: logos-art-for-fun.html
+Title: Doc.
+Subtitle: Medical service
+Background color: #E5E2D8
+
+══════════════════════════════════════════
+HERO TEXT
+══════════════════════════════════════════
+(לשינוי הטקסט בצד שמאל — שם + תיאור)
+Name line 1: Sapir
+Name line 2: Levi
+Description: Product designer
+Location: Tel Aviv
+
+══════════════════════════════════════════
+FOOTER
+══════════════════════════════════════════
+Footer text: © 2026 · Designed & built by Sapir Levi

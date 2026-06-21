@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Case Study — Managing AI Agents · Sapir Levi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   THEME — swap these to recolor the whole deck
+   ============================================================ */
+:root{
+  --bg:#F7F6F1; --bg-alt:#FBFAF7; --panel:#FFFFFF;
+  --ink:#17160F; --ink-soft:#3A382E; --muted:#8C897C;
+  --line:#E3E0D6;
+  --accent:#8067F2; --accent-soft:#EDE9FD;
+  --hi:rgba(128,103,242,.20);
+  --warn:#C9772B; --warn-soft:#FBEEDF;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Montserrat',-apple-system,sans-serif;
+  --mono:'Space Mono',monospace;
+  --ok:#3F9D5A; --pend:#C9772B; --run:#2F6BD8; --err:#C2453B;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--sans);font-weight:400;color:var(--ink);background:#222;overflow:hidden;-webkit-font-smoothing:antialiased}
+
+/* ===================== DECK LAYOUT (framed) =====================
+   [ left rail (width = widest button) ][ stage-wrap (20px padding) ] */
+#deck{position:fixed;inset:0;display:flex;align-items:stretch}
+.rail{flex:none;width:max-content;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:20px 16px}
+.rail button{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:none;color:#9a9a9a;cursor:pointer;font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;transition:.15s;text-align:left;white-space:nowrap}
+.rail button .ri{font-weight:700;color:#6f6f6f}
+.rail button:hover{background:rgba(255,255,255,.06);color:#fff}
+.rail button:hover .ri,.rail button.active .ri{color:var(--accent)}
+.rail button.active{color:#fff}
+
+.stage-wrap{
+  flex:1;min-width:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:20px 20px 20px 0;
+  transition:padding-bottom .28s ease;
+}
+body.help .stage-wrap{padding-bottom:8px}
+/* hint sits inside stage-wrap, below the stage, not an overlay */
+.hint{
+  width:100%;display:flex;justify-content:center;
+  pointer-events:none;margin-top:0;
+  position:relative;z-index:1;
+}
+.hint-inner{
+  font-family:var(--mono);font-size:11px;letter-spacing:.03em;
+  color:#ccc;background:rgba(0,0,0,.72);border:1px solid #444;
+  border-radius:8px;padding:0 16px;white-space:nowrap;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .28s ease,opacity .22s ease,padding .28s ease,margin .28s ease;
+  margin-top:0;
+}
+.hint-inner b{color:#fff}
+body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:12px}
+.stage{
+  position:relative;width:min(100%,calc((100vh - 40px) * 1.6));aspect-ratio:16/10;
+  background:var(--bg);border-radius:10px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  container-type:size;container-name:stage;
+}
+
+/* ===================== OPTION B — frameless fullscreen (press D) ===================== */
+body.fs{background:var(--bg)}
+body.fs #deck{display:block}
+body.fs .rail{display:none}
+body.fs .stage-wrap{padding:0;display:block}
+body.fs .stage{width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;box-shadow:none}
+
+.slide{position:absolute;inset:0;padding:6cqh 6.2cqw 5.4cqh;display:none;flex-direction:column;opacity:0;transition:opacity .35s ease}
+.slide.active{display:flex;opacity:1}
+.slide::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.02'/%3E%3C/svg%3E")}
+.slide>*{position:relative;z-index:1}
+
+.progress{position:absolute;top:0;left:0;right:0;height:.7cqh;background:var(--line);z-index:40}
+.progress .bar{height:100%;width:0;background:var(--accent);transition:width .35s ease}
+
+/* label layer (press L): slide number + placeholder IMG-IDs */
+.slideno{position:absolute;top:2.4cqh;right:2.6cqw;z-index:45;display:none;font-family:var(--mono);font-weight:700;font-size:1.5cqw;color:#fff;background:var(--accent);border-radius:8px;padding:.5cqh 1cqw;letter-spacing:.05em}
+body.labels .slideno{display:block}
+.shot-id{display:none;position:absolute;top:10px;left:10px;z-index:5;font-family:var(--mono);font-weight:700;font-size:1cqw;color:var(--accent);background:var(--ink);border-radius:5px;padding:.35cqh .8cqw;letter-spacing:.05em}
+body.labels .shot-id{display:block}
+
+/* ===================== TYPE ===================== */
+.eyebrow{font-family:var(--mono);font-weight:700;font-size:1.05cqw;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4cqh}
+h1{font-family:var(--serif);font-weight:700;font-size:6cqw;line-height:.98;letter-spacing:-.02em}
+h2{font-family:var(--serif);font-weight:700;font-size:3.9cqw;line-height:1.04;letter-spacing:-.02em;margin-bottom:.45em}
+h2 em{font-style:italic;font-weight:400}
+h3{font-family:var(--serif);font-weight:600;font-size:2.2cqw;line-height:1.1;letter-spacing:-.01em}
+p{font-size:1.75cqw;line-height:1.55;color:var(--ink-soft);max-width:46ch;font-weight:400}
+.lede{font-size:2.15cqw;line-height:1.5;color:var(--ink-soft);max-width:48ch;font-weight:400}
+strong{color:var(--ink);font-weight:600}
+mark{background:var(--hi);padding:0 .14em;border-radius:3px;color:var(--ink)}
+.num{font-family:var(--serif);font-weight:700;color:var(--accent);font-size:3.6cqw;line-height:1}
+
+ul.clean{list-style:none;display:grid;gap:1.1cqh;margin-top:.6cqh}
+ul.clean li{font-size:1.72cqw;line-height:1.45;color:var(--ink-soft);padding-left:1.3em;position:relative;max-width:52ch;font-weight:400}
+ul.clean li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+ul.clean li b{color:var(--ink);font-weight:600}
+
+.flex-mid{flex:1;display:flex;flex-direction:column;justify-content:center}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;align-items:center;flex:1}
+
+.divider{justify-content:center}
+.divider .eyebrow{font-size:1.3cqw}
+.divider h1{font-size:5.6cqw;max-width:18ch}
+.divider .role{margin-top:1.8cqh;font-family:var(--mono);font-size:1.3cqw;color:var(--muted);letter-spacing:.04em}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2cqh 1.6cqw;margin-top:1.2cqh}
+.step{border-top:.35cqh solid var(--line);padding-top:1cqh}
+.step .k{font-family:var(--mono);font-weight:700;font-size:1cqw;color:var(--accent);letter-spacing:.1em}
+.step .t{font-weight:600;font-size:1.5cqw;color:var(--ink);margin:.3em 0 .35em;line-height:1.1}
+.step .d{font-size:1.18cqw;line-height:1.4;color:var(--ink-soft)}
+
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4cqw;margin-top:2cqh}
+.val{background:var(--panel);border:1px solid var(--line);border-left:.5cqh solid var(--accent);border-radius:10px;padding:1.6cqh 1.2cqw}
+.val .w{font-family:var(--serif);font-weight:700;font-size:2.2cqw;color:var(--ink);line-height:1.05}
+.val .s{font-family:var(--mono);font-size:1.05cqw;color:var(--muted);margin-top:.6cqh;letter-spacing:.02em}
+.values-cap{margin-top:1.4cqh;font-family:var(--mono);font-size:1.1cqw;color:var(--muted);letter-spacing:.04em}
+
+.partners{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw;margin-top:1cqh}
+.partner{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.5cqh 1.4cqw}
+.partner h4{font-size:1.5cqw;font-weight:600;color:var(--ink);margin-bottom:.3em}
+.partner p{font-size:1.18cqw;color:var(--muted);line-height:1.45}
+
+.princ{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1cqw;margin-top:1.4cqh}
+.pr{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.4cqh 1.1cqw;display:flex;flex-direction:column;gap:.8cqh}
+.pr .ic{width:2.4cqw;height:2.4cqw;color:var(--accent)}
+.pr .ic svg{width:100%;height:100%}
+.pr h4{font-size:1.4cqw;font-weight:600;color:var(--ink);line-height:1.1}
+.pr p{font-size:1.1cqw;color:var(--muted);line-height:1.4}
+.pr .tag{margin-top:auto;font-family:var(--mono);font-weight:700;font-size:.86cqw;color:var(--accent);letter-spacing:.03em}
+
+.pain{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:1.2cqw;margin-top:1.4cqh}
+.pcell{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.5cqh 1.3cqw}
+.pcell.cry{background:var(--accent-soft);border-color:transparent}
+.pcell .h{font-family:var(--mono);font-weight:700;font-size:.98cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.7em}
+.pcell .cryt{font-family:var(--serif);font-style:italic;font-size:1.6cqw;line-height:1.3;color:var(--ink)}
+.pcell ul{list-style:none;display:grid;gap:.7cqh}
+.pcell li{font-size:1.2cqw;color:var(--ink-soft);padding-left:1.1em;position:relative;line-height:1.35}
+.pcell li::before{content:"›";position:absolute;left:0;color:var(--muted)}
+.pcell li.win{color:var(--ink);font-weight:600}
+.pcell li.win::before{content:"✓";color:var(--accent)}
+
+.emph{font-family:var(--serif);font-style:italic;font-size:2cqw;color:var(--ink)}
+
+.shot{flex:1;min-height:0;margin-top:1.4cqh;border:1px dashed var(--line);border-radius:10px;background:repeating-linear-gradient(45deg,var(--bg-alt),var(--bg-alt) 12px,#fff 12px,#fff 24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1cqh;text-align:center;padding:2cqh;position:relative}
+/* when a real image is dropped in: fill the frame, hide the placeholder hints */
+.shot.has-shot-img{border-style:solid;border-color:var(--line);background:#fff;padding:0;overflow:hidden}
+.shot.has-shot-img .tag,.shot.has-shot-img .desc{display:none}
+.shot-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:2;border-radius:10px}
+.shot .tag{font-family:var(--mono);font-weight:700;font-size:1.2cqw;color:var(--accent);letter-spacing:.03em}
+.shot .desc{font-size:1.2cqw;color:var(--muted);max-width:42ch}
+
+.slide.concept h2{margin-bottom:0;padding-bottom:12px}
+.cframe{flex:1;min-height:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative;background:#fff;cursor:zoom-in}
+.cprev{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;transform-origin:top left;pointer-events:none}
+.chint{position:absolute;bottom:1cqh;right:1cqw;font-family:var(--mono);font-weight:700;font-size:1cqw;color:#fff;background:rgba(23,22,15,.78);border-radius:7px;padding:.5cqh 1cqw;letter-spacing:.03em;pointer-events:none}
+
+/* ============ MOCKUP — Direction 03 ============ */
+.mock-wrap{position:relative;flex:1;min-height:0;display:flex;margin-top:1.2cqh}
+.mock{flex:1;min-height:0;background:#0f1117;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;color:#cfd3dc;font-size:1cqw}
+.mock .topbar{display:flex;align-items:center;gap:1cqw;padding:1.2cqh 1.2cqw;border-bottom:1px solid #1e2230}
+.mock .topbar b{color:#fff;font-weight:600;font-size:1.2cqw}
+.mock .kpis{display:flex;gap:.8cqw;margin-left:auto}
+.mock .kpi{background:#171a24;border:1px solid #232838;border-radius:7px;padding:.7cqh .9cqw}
+.mock .kpi .n{color:#fff;font-weight:600;font-size:1.25cqw}
+.mock .kpi .k{color:#737a8c;font-size:.82cqw}
+.mock .banner{display:flex;align-items:center;gap:.8cqw;margin:1.2cqh 1.2cqw 0;padding:1cqh 1cqw;background:rgba(128,103,242,.14);border:1px solid rgba(128,103,242,.4);border-radius:8px;color:#cdbffb;font-size:1cqw}
+.mock .banner b{color:#fff}
+.mock .banner .btn{margin-left:auto;background:var(--accent);color:#fff;border-radius:6px;padding:.6cqh 1cqw;font-weight:600;font-size:.95cqw}
+.mock .filters{display:flex;gap:.55cqw;padding:1.2cqh 1.2cqw .6cqh}
+.mock .chip{background:#171a24;border:1px solid #232838;border-radius:20px;padding:.5cqh .9cqw;color:#9aa1b2;font-size:.86cqw}
+.mock .chip.on{background:#232838;color:#fff}
+.mock .tbl{flex:1;overflow:hidden;margin:.5cqh 1.2cqw 1.2cqh;border:1px solid #1e2230;border-radius:8px}
+.mock .row{display:grid;grid-template-columns:2.2fr 1fr 1fr .9fr;gap:.8cqw;align-items:center;padding:1cqh 1cqw;border-bottom:1px solid #1a1e2a}
+.mock .row.head{color:#737a8c;font-size:.82cqw;text-transform:uppercase;letter-spacing:.1em}
+.mock .row:last-child{border-bottom:none}
+.mock .ag b{color:#fff;font-weight:600;display:block;font-size:1.08cqw}
+.mock .ag span{color:#737a8c;font-size:.86cqw}
+.mock .scope{display:inline-flex;align-items:center;gap:.3cqw;background:#171a24;border:1px solid #232838;border-radius:6px;padding:.4cqh .7cqw;color:#9aa1b2;font-size:.86cqw}
+.mock .pill{display:inline-block;border-radius:20px;padding:.4cqh .8cqw;font-size:.86cqw;font-weight:600}
+.mock .pill.run{background:rgba(47,107,216,.18);color:#7aa6ef}
+.mock .pill.pend{background:rgba(201,119,43,.2);color:#e0a268}
+.mock .pill.done{background:rgba(63,157,90,.18);color:#69c187}
+.mock .dec{font-size:.86cqw;color:#9aa1b2}
+.mock .drawer{position:absolute;right:0;top:0;bottom:0;width:18%;background:#11141d;border-left:1px solid #1e2230;padding:1.2cqh 1cqw;display:flex;flex-direction:column;gap:.7cqh}
+.mock .drawer .dh{color:#737a8c;font-size:.82cqw;text-transform:uppercase;letter-spacing:.1em}
+.mock .drawer .msg{background:#171a24;border-radius:7px;padding:.8cqh .7cqw;color:#aab0c0;font-size:.88cqw;line-height:1.4}
+
+.pitch{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6cqw;margin-top:1.4cqh}
+.pitch .col h4{font-family:var(--serif);font-weight:600;font-size:1.75cqw;color:var(--ink);margin-bottom:.4em;line-height:1.1}
+.pitch .col p{font-size:1.3cqw;color:var(--muted);line-height:1.5}
+
+.thanks{justify-content:center}
+.thanks h1{font-size:5cqw}
+.thanks .c{margin-top:1.8cqh;font-family:var(--mono);font-size:1.4cqw;color:var(--ink-soft);display:grid;gap:.5cqh}
+.thanks .c a{color:var(--accent);text-decoration:none}
+
+.note{display:none;margin-top:auto;background:var(--warn-soft);border:1px solid var(--warn);border-radius:8px;padding:1cqh 1.1cqw;font-family:var(--mono);font-size:1.02cqw;line-height:1.5;color:#7a4a18}
+.note b{color:var(--warn)}
+body.notes .note{display:block}
+
+.gap{align-items:flex-start;justify-content:center}
+.gap .badge{font-family:var(--mono);font-weight:700;font-size:1.15cqw;letter-spacing:.08em;color:var(--warn);background:var(--warn-soft);border:1px solid var(--warn);border-radius:20px;padding:.6cqh 1.2cqw;margin-bottom:1.6cqh;display:inline-block}
+.gap h2{color:var(--ink)}
+.gap .why{font-size:1.5cqw;color:var(--ink-soft);max-width:50ch;margin-top:.4em;line-height:1.5}
+.gap .todo{margin-top:1.6cqh;display:grid;gap:.8cqh;max-width:56ch}
+.gap .todo li{list-style:none;font-size:1.3cqw;color:var(--ink-soft);padding-left:1.5em;position:relative;line-height:1.45}
+.gap .todo li::before{content:"☐";position:absolute;left:0;color:var(--warn)}
+
+/* concept overlay */
+#cfs{position:fixed;inset:0;z-index:9999;background:rgba(17,17,17,.92);display:none;align-items:center;justify-content:center}
+#cfs.open{display:flex}
+#cfs iframe{width:92vw;height:90vh;border:0;border-radius:8px;display:block;background:#fff}
+#cfs .x{position:fixed;top:18px;right:22px;z-index:10000;background:none;border:none;color:rgba(255,255,255,.45);font-size:26px;line-height:1;cursor:pointer;padding:4px;transition:color .15s}
+#cfs .x:hover{color:#fff}
+
+/* chrome */
+.dmode{display:none}   /* hidden — keyboard P / פ only */
+.helpbtn{position:fixed;left:20px;bottom:20px;z-index:60;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.32);border:1px solid #444;color:#aaa;font-family:var(--mono);font-size:13px;line-height:26px;text-align:center;cursor:pointer;transition:.15s}
+.helpbtn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+/* hint: in-flow below the stage, not overlay */
+.hint{width:100%;display:flex;justify-content:center;pointer-events:none}
+.hint-inner{font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:#ccc;background:rgba(0,0,0,.72);border:1px solid #444;border-radius:8px;padding:0 16px;white-space:nowrap;max-height:0;overflow:hidden;opacity:0;transition:max-height .28s ease,opacity .22s ease,padding .28s ease,margin-top .28s ease;margin-top:0}
+.hint-inner b{color:#fff}
+body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px}
+
+/* ── SLIDE 3: TIMELINE ── */
+.tl-slide{padding-bottom:4cqh}
+.tl-rows{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;min-height:0}
+.tl-row{display:grid;grid-template-columns:repeat(4,1fr);column-gap:2cqw;position:relative}
+/* continuous line */
+.tl-row::before{
+  content:"";position:absolute;
+  top:36px;height:1px;background:var(--line);z-index:0;
+  left:8px;right:calc(25% - 8px - 2cqw);
+}
+/* row 1: extend to right edge */
+.tl-row-1::before{right:calc(-6.2cqw)}
+.tl-step{display:flex;flex-direction:column;position:relative;z-index:1}
+.tl-label{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);height:28px;display:flex;align-items:flex-end;padding-bottom:4px}
+.tl-dz{height:16px;position:relative;margin-bottom:20px}
+.tl-dot{position:absolute;top:0;left:0;width:16px;height:16px;border-radius:50%;background:var(--accent);z-index:2}
+.tl-title{font-family:var(--sans);font-weight:600;font-size:1.5cqw;color:var(--ink);line-height:1.2;margin-bottom:.45cqh}
+.tl-desc{font-family:var(--sans);font-weight:400;font-size:1.18cqw;color:var(--ink-soft);line-height:1.5}
+.tl-ai{color:var(--accent)}
+
+/* toosmall */
+.toosmall{display:none;position:fixed;inset:0;z-index:9998;background:#111;color:#ccc;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:32px;font-family:'Montserrat',sans-serif}
+.toosmall .ts-icon{font-size:38px;opacity:.45}
+.toosmall h3{font-size:17px;font-weight:600;color:#fff;line-height:1.3}
+.toosmall p{font-size:13px;color:#777;max-width:24ch;line-height:1.6}
+@media(max-width:470px){
+  .toosmall{display:flex}
+  #deck,.helpbtn,.hint{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     PASSWORD GATE — protects this presentation.
+     Password is checked client-side. To change it,
+     edit the value of DECK_PASSWORD below.
+     Note: client-side gating deters casual access but
+     is not bank-level security (the password lives in
+     the page source). Good enough for a private deck.
+     ══════════════════════════════════════════════════ -->
+<div id="pw-gate">
+  <a href="../agents.html" id="pw-exit-x" title="Exit">✕</a>
+  <a href="../agents.html" id="pw-exit-btn">← Exit the rabbit hole</a>
+  <div class="pw-box">
+    <img class="pw-img" src="presentation-images/Shh.png" alt="" onerror="this.remove()">
+    <div class="pw-title" style="margin-left:16px;margin-right:16px;margin-top:64px;margin-bottom:24px"><strong style="font-weight:700;color:#F2EFE8;font-style:italic">Well, well, well...</strong><br><em style="font-weight:400">looks like you found my secret corner of the internet</em></div>
+    <div class="pw-row">
+      <div class="pw-input-col">
+        <input id="pw-input" type="password" inputmode="numeric" autocomplete="off" placeholder="55555" autofocus>
+        <div id="pw-error">Incorrect password — try again</div>
+      </div>
+      <button id="pw-submit">Enter</button>
+    </div>
+  </div>
+</div>
+<style>
+  #pw-gate{
+    position:fixed;inset:0;z-index:99999;
+    background:#15140F;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Montserrat',sans-serif;
+    padding:24px;
+    animation:pwGateIn .4s ease forwards;
+  }
+  @keyframes pwGateIn{from{opacity:0}to{opacity:1}}
+  #pw-gate.unlocked{display:none}
+  /* playful staggered entrance */
+  @keyframes pwFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @keyframes pwPop{0%{opacity:0;transform:scale(.8) rotate(-4deg)}60%{transform:scale(1.04) rotate(1deg)}100%{opacity:1;transform:none}}
+  .pw-box>*{opacity:0;animation:pwFadeUp .55s cubic-bezier(.2,.7,.2,1) forwards}
+  .pw-img{animation:pwPop .7s cubic-bezier(.34,1.56,.64,1) forwards!important}
+  .pw-box>*:nth-child(1){animation-delay:.05s}
+  .pw-box>*:nth-child(2){animation-delay:.22s}
+  .pw-box>*:nth-child(3){animation-delay:.36s}
+  .pw-box>*:nth-child(4){animation-delay:.48s}
+  @media(prefers-reduced-motion:reduce){
+    .pw-box>*{animation:none;opacity:1}
+  }
+  .pw-box{display:flex;flex-direction:column;gap:14px;width:min(520px,90vw);text-align:center;align-items:center}
+  .pw-img{max-width:480px;width:100%;height:auto;margin-bottom:0;display:block}
+  .pw-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);line-height:1.2;color:#F2EFE8;font-weight:700}
+  .pw-sub{font-size:14px;color:#8C897C;margin-bottom:6px}
+  .pw-row{display:flex;gap:10px;justify-content:center;align-items:flex-start}
+  .pw-input-col{display:flex;flex-direction:column;gap:8px;max-width:240px;flex:1}
+  #pw-input{
+    height:32px;padding:0 14px;font-size:15px;border-radius:4px;
+    border:1px solid #3A382E;background:#1F1E18;color:#F2EFE8;
+    outline:none;text-align:center;letter-spacing:.1em;
+    font-family:'Montserrat',sans-serif;transition:border-color .2s;
+    width:100%;
+  }
+  #pw-input:focus{border-color:#BADA55}
+  #pw-input.error,#pw-input.error:focus{border-color:#E0726A}
+  #pw-input::placeholder{font-size:14px;letter-spacing:normal;color:#8C897C;opacity:1}
+  #pw-submit{
+    height:32px;padding:0 18px;font-size:14px;font-weight:600;cursor:pointer;
+    border:none;border-radius:4px;background:#BADA55;color:#15140F;
+    transition:opacity .2s;font-family:'Montserrat',sans-serif;white-space:nowrap;
+  }
+  #pw-submit:hover{opacity:.88}
+  #pw-error{font-size:13px;color:#E0726A;height:16px;opacity:0;transition:opacity .2s;text-align:center}
+  #pw-error.show{opacity:1}
+  #pw-exit-x{position:fixed;top:20px;right:24px;color:#8C897C;text-decoration:none;font-size:20px;line-height:1;padding:6px 8px;transition:color .2s;z-index:100000}
+  #pw-exit-x:hover{color:#F2EFE8}
+  #pw-exit-btn{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);color:#BADA55;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:400;letter-spacing:.04em;padding:8px 16px;z-index:100000;white-space:nowrap}
+  #pw-exit-btn::after{content:'';display:block;width:0;height:1.5px;background:#BADA55;transition:width .3s ease;margin:0 16px}
+  #pw-exit-btn:hover::after{width:calc(100% - 32px)}
+</style>
+<script>
+  (function(){
+    const DECK_PASSWORD = "2849";           // ← change here to update the password
+    const KEY = "deck-unlocked-agents";
+    const gate = document.getElementById('pw-gate');
+    const input = document.getElementById('pw-input');
+    const err = document.getElementById('pw-error');
+
+    // already unlocked this session? skip the gate
+    if (sessionStorage.getItem(KEY) === "1") {
+      gate.classList.add('unlocked');
+    }
+    function tryUnlock(){
+      const val = input.value.trim();
+      if (val === DECK_PASSWORD) {
+        sessionStorage.setItem(KEY, "1");
+        gate.classList.add('unlocked');
+      } else {
+        // cheeky message for the placeholder-guessers
+        err.textContent = (val === "55555") ? "You wish ;)" : "Incorrect password — try again";
+        err.classList.add('show');
+        input.classList.add('error');   // red border stays until next interaction
+      }
+    }
+    // next click or keypress clears the error state so they can type fresh
+    function clearError(){
+      input.classList.remove('error');
+      err.classList.remove('show');
+    }
+    input.addEventListener('mousedown', () => {
+      if (input.classList.contains('error')) { clearError(); input.value = ""; }
+    });
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { tryUnlock(); return; }
+      // first keystroke after an error: clear old value + red border, keep the new char
+      if (input.classList.contains('error')) { clearError(); input.value = ""; }
+    });
+    document.getElementById('pw-submit').addEventListener('click', tryUnlock);
+  })();
+</script>
+
+<div id="deck">
+
+<!-- left rail: section anchors (width = widest button) -->
+<nav class="rail" id="rail">
+  <button data-go="0"><span class="ri">01</span><span class="rl">About me</span></button>
+  <button data-go="3"><span class="ri">02</span><span class="rl">Case study</span></button>
+  <button data-go="19"><span class="ri">03</span><span class="rl">The design</span></button>
+  <button data-go="23"><span class="ri">04</span><span class="rl">Reflection</span></button>
+</nav>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <div class="slideno" id="slideno">1 / 27</div>
+
+<!-- 1 -->
+<section class="slide divider"><div class="eyebrow">Chapter 01</div><h1>About me</h1></section>
+
+<!-- 2 -->
+<section class="slide">
+  <div class="eyebrow">About me · what I do</div>
+  <div class="two">
+    <div>
+      <h2>Product designer for <em>complex, technical products</em></h2>
+      <p>I led UX at <strong>PointFive</strong>, where I helped build the product from the ground up alongside the founder — turning complex FinOps data into clear interfaces, and shaping how people trust the AI agents that act on their cloud costs.</p>
+      <p style="margin-top:.6em">Before that: data security at <strong>Laminar</strong>, and enterprise AI and cyber at <strong>BeyondMinds</strong> and <strong>Sygnia</strong>.</p>
+    </div>
+    <div>
+      <ul class="clean">
+        <li><b>What I really do:</b> I build the systems underneath the screens — components, tokens and standards that keep a product coherent as it scales.</li>
+        <li><b>Training:</b> BA in Visual Communication, Shenkar College.</li>
+        <li><b>On the side:</b> an active artistic practice — drawing, sculpture, mixed media.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide tl-slide">
+  <div class="eyebrow">My approach · how I work</div>
+  <h2>From problem to <em>system</em></h2>
+  <div class="tl-rows">
+
+    <!-- ROW 1 -->
+    <div class="tl-row tl-row-1">
+      <div class="tl-step">
+        <div class="tl-label">Step 1</div>
+        <div class="tl-dz"><div class="tl-dot"></div></div>
+        <div class="tl-title">Requirement definition</div>
+        <div class="tl-desc">Problem space, opportunity, user pains &amp; story, constraints.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-label">Step 2</div>
+        <div class="tl-dz"><div class="tl-dot"></div></div>
+        <div class="tl-title">Research &amp; user journey</div>
+        <div class="tl-desc">Competitive scan, interviews, FullStory, mapping decisions &amp; pain points. <span class="tl-ai">AI-assisted research synthesis</span></div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-label">Step 3</div>
+        <div class="tl-dz"><div class="tl-dot"></div></div>
+        <div class="tl-title">Design exploration</div>
+        <div class="tl-desc">Concepts &amp; wireframes, interactive HTML prototypes. <span class="tl-ai">AI-supported concept exploration</span></div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-label">Step 4</div>
+        <div class="tl-dz"><div class="tl-dot"></div></div>
+        <div class="tl-title">Design refinement</div>
+        <div class="tl-desc">Choose a direction, polish visuals, prepare for handoff.</div>
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="tl-row tl-row-2">
+      <div class="tl-step">
+        <div class="tl-label">Step 5</div>
+        <div class="tl-dz"><div class="tl-dot"></div></div>
+        <div class="tl-title">Collaboration &amp; iteration</div>
+        <div class="tl-desc">Feedback loops, iterate with product &amp; eng throughout the process.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-label">Step 6</div>
+        <div class="tl-dz"><div class="tl-dot"></div></div>
+        <div class="tl-title">Design systems</div>
+        <div class="tl-desc">Components &amp; tokens, standards that scale. <span class="tl-ai">AI-generated component documentation</span></div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-label">Step 7</div>
+        <div class="tl-dz"><div class="tl-dot"></div></div>
+        <div class="tl-title">Handoff &amp; code</div>
+        <div class="tl-desc">Engineering handoff, VQA on specific components, directly to repo.*</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-label">Step 8</div>
+        <div class="tl-dz"><div class="tl-dot"></div></div>
+        <div class="tl-title">Monitoring</div>
+        <div class="tl-desc">Track behavior (FullStory), gather insight, feed back into the next cycle.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide divider">
+  <div class="eyebrow">Case study 01</div>
+  <h1>Managing<br><em>AI Agents</em></h1>
+  <div class="role">A project I led as Lead Product Designer · PointFive</div>
+  <div class="note"><b>TITLE OPTIONS:</b> "Managing AI Agents" · "Agents you can trust" · "From black box to control room".</div>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <div class="eyebrow">Overview</div>
+  <div class="flex-mid">
+    <h2>PointFive was going <em>AI-native</em></h2>
+    <p class="lede">PointFive helps organizations cut cloud-cost waste. The next step: agents that don't just <mark>surface a problem — they act on it.</mark></p>
+    <div class="values">
+      <div class="val"><div class="w">Efficiency</div><div class="s">cut waste, fast</div></div>
+      <div class="val"><div class="w">Depth</div><div class="s">explain the why</div></div>
+      <div class="val"><div class="w">Creativity</div><div class="s">novel solutions</div></div>
+      <div class="val"><div class="w">Bias to action</div><div class="s">agents that act</div></div>
+      <div class="val"><div class="w">Trust</div><div class="s">earn the autonomy</div></div>
+    </div>
+    <div class="values-cap">PointFive's five brand values — the lens I designed against.</div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div class="eyebrow">The starting point</div>
+  <h2>The old way: <em>agent by agent</em></h2>
+  <div class="two" style="align-items:stretch">
+    <div class="flex-mid"><p>The moment agents could act on their own, something shifted: people started to <mark>fear them, not trust them</mark>, and quietly avoided turning them on. A pending decision lived inside each agent's own page, behind an unlabeled icon — a user running several agents never knew something was waiting.</p></div>
+    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-01</span><div class="tag">Drop frame: "before" screen</div><div class="desc">The original experience — a pending decision buried behind an unlabeled icon inside a single agent's page.</div></div>
+  </div>
+  <div class="note"><b>🎙 SPEAKER NOTE:</b> "Look at the original screen — if you had 50 agents running across different systems, you had to click into 50 separate pages just to see if something was waiting for approval. That's not a workflow. That's a full-time job."</div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="eyebrow">The problem</div>
+  <div class="flex-mid">
+    <h2>This wasn't a technology problem — it was an <em>experience problem</em></h2>
+    <p class="lede">A user deciding whether to let an agent touch their cloud bill is making a <mark>trust decision</mark> — and trust is pure design: control, transparency, and a clear mental model of what the agent will do.</p>
+    <p style="margin-top:.6em">If users don't trust what they can't see, the capability goes unused — and <strong>the AI-native bet fails on adoption, not on the model.</strong></p>
+  </div>
+  <div class="note"><b>🎙 SPEAKER NOTE:</b> "The underlying AI worked perfectly — but user adoption was failing. Users don't trust what they can't see. My challenge wasn't to fix the model, it was to design the interface that makes the model trustworthy. Those are two completely different problems."</div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="eyebrow">The starting point · what broke</div>
+  <h2 style="margin-bottom:.2em">Four things the old experience <em>couldn't do</em></h2>
+  <ul class="clean">
+    <li><b>Pending decisions were buried</b> — inside each agent's page, behind an unlabeled icon. Users running several agents never knew something was waiting.</li>
+    <li><b>No sense of blast radius</b> — how much, and what, an agent was about to affect.</li>
+    <li><b>Approval didn't scale</b> — five decisions meant five separate screens.</li>
+    <li><b>Someone else's agent was opaque</b> — unclear what it was doing, or even whether it was running.</li>
+  </ul>
+</section>
+
+<!-- 8b · CHALLENGES + TRADE-OFFS -->
+<section class="slide">
+  <div class="eyebrow">Constraints · the challenges</div>
+  <h2 style="margin-bottom:.2em">The challenges — and the <em>trade-offs</em> I made</h2>
+  <div class="pitch">
+    <div class="col">
+      <h4>Observable at a glance</h4>
+      <p>Status, task, scope and risk across every agent.</p>
+      <p style="margin-top:.4em;color:var(--accent)"><b>Trade-off:</b> surfaced pending decisions at list level — adds density, but no critical approval sits buried for days.</p>
+    </div>
+    <div class="col">
+      <h4>Trust through transparency</h4>
+      <p>Surface what each agent is doing and the decisions it's waiting on.</p>
+      <p style="margin-top:.4em;color:var(--accent)"><b>Trade-off:</b> described each agent goal-first, not process — less detail up front, far faster to scan a busy fleet.</p>
+    </div>
+    <div class="col">
+      <h4>Real control at scale</h4>
+      <p>Triage and approve across many agents without opening each one.</p>
+      <p style="margin-top:.4em;color:var(--accent)"><b>Trade-off:</b> autonomy as a spectrum (auto / approve-per-step / sandbox), not on-off — more to communicate, but what lets cautious users adopt at all.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <div class="eyebrow">Collaboration · partners</div>
+  <h2 style="margin-bottom:.2em">Who I worked with</h2>
+  <div class="partners">
+    <div class="partner"><h4>Product Manager</h4><p>The fast-sprint partner — business framing, scope, and the agent behaviors we needed to expose.</p></div>
+    <div class="partner"><h4>Engineering / Tech Lead</h4><p>What the agents can actually report — which signals, states and actions are available to show.</p></div>
+    <div class="partner"><h4>Founder</h4><p>The AI-native direction and the bar for what "trust" has to mean in the product.</p></div>
+    <div class="partner"><h4>AI as a research partner</h4><p>Synthesis, 20 interactive prototypes, and pressure-testing — with my judgment as the filter.</p></div>
+  </div>
+  <div class="note"><b>Team:</b> 1 Product Manager · 2 Engineering / Tech Leads · 1 Founder. Add real names if you want to personalize.</div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="eyebrow">Research · market scan</div>
+  <div class="two">
+    <div>
+      <h2>I grounded it, <em>not guessed it</em></h2>
+      <ul class="clean">
+        <li>Scanned <b>10 agentic products</b> for oversight & governance patterns.</li>
+        <li>Studied <b>5 direct FinOps competitors</b> — Vantage, Finout, ProsperOps, nOps, CloudZero.</li>
+        <li>Read <b>10 studies</b> on AI trust + signal from <b>McKinsey · Gartner · SurveyMonkey · NN/g</b>.</li>
+      </ul>
+      <p style="margin-top:.6em"><mark>The gap:</mark> even the most advanced competitor runs oversight through Slack or ticketing — none offered a single in-product pane to see every agent, its scope and its pending decisions.</p>
+    </div>
+    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-02</span><div class="tag">Drop frame: competitive scan</div><div class="desc">Market scan — 10 agentic products plus direct FinOps competitors, studied for how they handle oversight of autonomous actions.</div></div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <div class="eyebrow">Research · user needs</div>
+  <h2 style="margin-bottom:.2em">What operators actually need</h2>
+  <ul class="clean">
+    <li><b>See what's waiting</b> — know instantly when an agent needs them, without opening each one.</li>
+    <li><b>Understand the blast radius</b> — what an action will touch before it happens.</li>
+    <li><b>Act with confidence</b> — approve, pause or undo, and know it's reversible.</li>
+  </ul>
+  <div class="note"><b>Source:</b> feature research grounded in our own product — what agents could report, where decisions got buried, how operators wanted to oversee them.</div>
+</section>
+
+<!-- 12 -->
+<section class="slide">
+  <div class="eyebrow">The market voice · FinOps X 2026</div>
+  <h2 style="margin-bottom:.3em">What the market said</h2>
+  <div class="pain" style="grid-template-columns:1fr 1fr">
+    <div class="pcell cry"><div class="h">From the field</div><div class="cryt">"This NG agent direction is a game changer — how soon can we use it?"</div></div>
+    <div class="pcell"><div class="h">What it confirmed</div><ul><li class="win">The whole industry is reorienting around AI — the conference renamed itself "Tokenomicon" for next year</li><li class="win">Autonomous agents are the most-wanted direction in FinOps</li><li>The demand is there — trust is the unlock</li></ul></div>
+  </div>
+  <div class="note"><b>From FinOps X 2026.</b> Direct reactions from customers & partners to PointFive's agent direction. Framed as market validation of the direction, not measured results.</div>
+</section>
+
+<!-- 13 -->
+<section class="slide">
+  <div class="eyebrow">Research · synthesis</div>
+  <h2 style="margin-bottom:.1em">Five principles for designing <em>trust</em> in agents</h2>
+  <div class="princ">
+    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="2.5"/></svg></div><h4>Intent Preview</h4><p>Show what will happen before it happens.</p><div class="tag">NN/g · #1 trust driver</div></div>
+    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></div><h4>Action Audit + Undo</h4><p>Every action logged, readable, reversible.</p><div class="tag">Cuts perceived risk</div></div>
+    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2.4" fill="currentColor"/><circle cx="15" cy="12" r="2.4" fill="currentColor"/><circle cx="7" cy="18" r="2.4" fill="currentColor"/></svg></div><h4>Variable Autonomy</h4><p>Not on/off — a spectrum: auto · approve-per-step · sandbox.</p><div class="tag">MS · +mental model</div></div>
+    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg></div><h4>Confidence Signals</h4><p>Show how sure it is, and why.</p><div class="tag">NN/g · trust ↑</div></div>
+    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/></svg></div><h4>Single Pane of Glass</h4><p>See and act on every agent from one view.</p><div class="tag">Microsoft</div></div>
+  </div>
+  <div class="note"><b>Backed by:</b> 62% of orgs piloting agents (McKinsey '25) · 40% of agent projects scrapped by '27 for trust & UX, not tech (Gartner) · 79% prefer a human when things get complex (SurveyMonkey '25).</div>
+</section>
+
+<!-- 14 -->
+<section class="slide">
+  <div class="eyebrow">Research · user journey</div>
+  <h2 style="margin-bottom:.2em">The decision path</h2>
+  <p>How an operator moves from "something needs me" → review → act, plus the bulk path for many decisions at once.</p>
+  <div class="shot has-shot-img"><span class="shot-id">IMG-03</span><div class="tag">Drop frame: user-flow diagram(s)</div><div class="desc">Mirror your DSPM journey slides — "Single decision" and "Bulk review" flows.</div><img class="shot-img" src="presentation-images/IMG-03.png" alt="User-flow diagram" onerror="this.remove();this.parentElement.classList.remove('has-shot-img')"></div>
+</section>
+
+<!-- 15 -->
+<section class="slide">
+  <div class="eyebrow">Design exploration</div>
+  <div class="two">
+    <div>
+      <h2>I explored the overview as <em>interactive prototypes</em></h2>
+      <p>Built with Claude as <strong>live HTML, not static mockups</strong> — fast to feel in a browser, not just look at.</p>
+      <p style="margin-top:.5em">The core question: how to surface the decisions waiting for review — keep them quiet, or pull them up as a dedicated call to action? Each concept made a different bet — building toward <strong>the one I chose</strong>.</p>
+    </div>
+    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-04</span><div class="tag">Drop frame: 20-directions contact sheet</div><div class="desc">A grid with Direction 03 highlighted.</div></div>
+  </div>
+  <div class="note"><b>🎙 SPEAKER NOTE:</b> "In high-density B2B tools, static mockups lie. I built these as live HTML — you could resize the browser, filter the list, click the states. That's how I discovered that Concept 01 was dangerously easy to overlook, and Concept 02 was too aggressive. The medium told me things a Figma frame couldn't."</div>
+</section>
+
+<!-- 16 · CONCEPT 01 -->
+<section class="slide concept" data-concept="Concept-01.html">
+  <div class="eyebrow">Design exploration · concept 01</div>
+  <h2>Concept 01</h2>
+  <div class="cframe"><iframe class="cprev" src="Concept-01.html" title="Concept 01" loading="lazy" scrolling="no"></iframe><div class="chint">click to open ↗</div></div>
+  <div class="note"><b>Concept 01:</b> decisions folded quietly into the greeting ("5 decisions waiting for your review"). Clean, but easy to miss the thing that matters most.</div>
+</section>
+
+<!-- 17 · CONCEPT 02 -->
+<section class="slide concept" data-concept="Concept-02.html">
+  <div class="eyebrow">Design exploration · concept 02</div>
+  <h2>Concept 02</h2>
+  <div class="cframe"><iframe class="cprev" src="Concept-02.html" title="Concept 02" loading="lazy" scrolling="no"></iframe><div class="chint">click to open ↗</div></div>
+  <div class="note"><b>Concept 02:</b> a dedicated decisions banner naming the waiting agents, with a clear "Review decisions" action. Impossible to miss — but a heavy block pushing the agent list down.</div>
+</section>
+
+<!-- 18 · CONCEPT 03 -->
+<section class="slide concept" data-concept="Concept-03.html">
+  <div class="eyebrow">Design exploration · concept 03 — chosen</div>
+  <h2>Concept 03 <em>→ Direction 03</em></h2>
+  <div class="cframe"><iframe class="cprev" src="Concept-03.html" title="Concept 03" loading="lazy" scrolling="no"></iframe><div class="chint">click to open ↗</div></div>
+  <div class="note"><b>Concept 03 (selected):</b> "Review decisions" merged into the Decisions Waiting metric itself — the urgency of Concept 02 without the extra banner. Decisions are the first thing you see, but the fleet stays in view.</div>
+  <div class="note"><b>🎙 SPEAKER NOTE:</b> "Concept 03 won because it solved the tension without compromising either side. The 'Decisions Waiting' counter became the entry point — it surfaced urgency at exactly the moment the operator's eye was already there, scanning the overview strip. No extra real estate, no cognitive detour."</div>
+</section>
+
+<!-- 19 -->
+<section class="slide">
+  <div class="eyebrow">Final design · Direction 03</div>
+  <h2 style="margin-bottom:0">The agent-management screen</h2>
+  <div class="mock-wrap">
+  <div class="mock">
+    <div class="topbar"><b>Agents</b>
+      <div class="kpis">
+        <div class="kpi"><div class="n">12</div><div class="k">Running</div></div>
+        <div class="kpi"><div class="n">3</div><div class="k">Pending</div></div>
+        <div class="kpi"><div class="n">$48k</div><div class="k">Saved / mo</div></div>
+      </div>
+    </div>
+    <div class="banner"><b>3 decisions</b> need your review across all agents <span class="btn">Review decisions</span></div>
+    <div class="filters"><span class="chip on">All</span><span class="chip">Pending</span><span class="chip">Running</span><span class="chip">Org</span><span class="chip">Team</span><span class="chip">Personal</span></div>
+    <div class="tbl">
+      <div class="row head"><div>Agent · goal</div><div>Scope</div><div>Status</div><div>Decision</div></div>
+      <div class="row"><div class="ag"><b>Rightsize idle compute</b><span>Cut spend on under-used instances</span></div><div><span class="scope">Org · ~$12k</span></div><div><span class="pill pend">Pending</span></div><div class="dec">Needs approval</div></div>
+      <div class="row"><div class="ag"><b>Delete orphaned volumes</b><span>Reclaim unattached storage</span></div><div><span class="scope">Team · ~$3k</span></div><div><span class="pill run">Running</span></div><div class="dec">Auto</div></div>
+      <div class="row"><div class="ag"><b>Commit savings plan</b><span>Lock in 1-yr discount</span></div><div><span class="scope">Org · ~$20k</span></div><div><span class="pill pend">Pending</span></div><div class="dec">Needs approval</div></div>
+      <div class="row"><div class="ag"><b>Schedule dev shutdowns</b><span>Pause non-prod at night</span></div><div><span class="scope">Personal</span></div><div><span class="pill done">Done</span></div><div class="dec">Approved · undo</div></div>
+    </div>
+    <div class="drawer"><div class="dh">Edit via chat</div><div class="msg">"Only act on instances idle &gt; 7 days."</div><div class="msg" style="background:transparent;border:1px solid #232838;color:#737a8c">Collapsible — supportive, never dominant.</div></div>
+  </div>
+  </div>
+  <div class="note"><b>BUILT FROM YOUR SPEC.</b> Live rebuild of Direction 03. Replace with your real Figma frames, or keep it.</div>
+</section>
+
+<!-- 20 -->
+<section class="slide">
+  <div class="eyebrow">The core of the work</div>
+  <h2 style="margin-bottom:.1em">Pains → ideas → solutions</h2>
+  <div class="pain">
+    <div class="pcell cry"><div class="h">Pain 01</div><div class="cryt">"To approve anything, I have to go agent by agent."</div></div>
+    <div class="pcell"><div class="h">Ideas I weighed</div><ul><li>A badge on the agent's row</li><li>A notification / toast</li><li class="win">Surface decisions at list level</li><li class="win">"Decisions Waiting" as entry point</li></ul></div>
+    <div class="pcell"><div class="h">How I solved it</div><ul><li class="win">"Decisions Waiting" metric doubles as the review entry point — oldest flagged first</li><li class="win">Snooze or hand off to the right person (who gets an email with full context)</li><li class="win">Agents shared across the team — oversight never stuck with one person</li></ul></div>
+  </div>
+  <div class="note"><b>⚠ PAINS 02–04.</b> Only Pain 01 is yours verbatim. The other 3 pains (blast radius, scale, opaque agents) are on slide 8 — pull a real quote for each if you can.</div>
+</section>
+
+<!-- 21 -->
+<section class="slide">
+  <div class="eyebrow">Final design · design system</div>
+  <div class="two">
+    <div>
+      <h2>A system, <em>not just screens</em></h2>
+      <p>I built a <strong>Component Dictionary</strong> — 44 components, auto-generated from the React codebase and bound to PointFive brand tokens — so the agent surface stays coherent as the product scales.</p>
+    </div>
+    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-05</span><div class="tag">Drop frame: component dictionary</div><div class="desc">A shot of the components / tokens.</div></div>
+  </div>
+</section>
+
+<!-- 24 -->
+<section class="slide">
+  <div class="eyebrow">External validation</div>
+  <div class="flex-mid">
+    <h2>The market <em>wants</em> this direction</h2>
+    <p class="lede">At <strong>FinOps X 2026</strong>, customers and partners repeatedly called PointFive's NG agent direction a <mark>"game changer"</mark> and asked how soon they could use it.</p>
+    <p style="margin-top:.6em">The market clearly wants autonomous agents — and the <strong>trust layer I designed was built to turn that demand into something people would actually switch on.</strong></p>
+  </div>
+  <div class="note"><b>HONEST FRAMING.</b> This is validation of the product *direction*, not measured results on the design itself. No invented metrics — that's deliberate.</div>
+</section>
+
+<!-- 25 -->
+<section class="slide">
+  <div class="eyebrow">Reflection</div>
+  <div class="flex-mid">
+    <h2>This is a <em>starting point</em>, not a finish line</h2>
+    <p class="lede">I focused on the place where the tension between human and AI is most visible — the moment a person decides whether to let an agent act. The whole design works to make the user feel they are the one in control, the one in the loop, even as the agents do the work.</p>
+    <ul class="clean" style="margin-top:.7em">
+      <li><b>Used AI as a research partner</b> — clustering the scan into themes, generating 20 prototype directions — with my judgment as the filter.</li>
+      <li><b>Distilled 10 products + 10 studies</b> into 5 evidence-backed trust principles that drove every decision.</li>
+      <li><b>What's next:</b> expand the single-agent page, a deeper edit / delegate / snooze flow, validation with FinOps users, and the edge & empty states.</li>
+    </ul>
+    <p class="emph" style="margin-top:.7em">"In an AI-native world, a designer's value isn't producing screens fastest — it's being the layer of judgment."</p>
+  </div>
+</section>
+
+<!-- 26 -->
+<section class="slide">
+  <div class="eyebrow">What sets me apart</div>
+  <h2 style="margin-bottom:.2em">How I work</h2>
+  <div class="pitch">
+    <div class="col"><h4>I design the system, not just the screen</h4><p>The components, tokens and standards underneath a product — the thing that keeps it coherent as it scales.</p></div>
+    <div class="col"><h4>Complex products are my expertise</h4><p>FinOps, data security, enterprise AI. I make hard things feel inevitable.</p></div>
+    <div class="col"><h4>I'm AI-native — and I build</h4><p>I use code and generative tools inside my process: prototypes, AI-assisted synthesis, internal tools that multiply the team.</p></div>
+  </div>
+  <div class="note"><b>UPDATE DONE.</b> Replaced the 3-yr-old version with your current positioning.</div>
+</section>
+
+<!-- 27 -->
+<section class="slide thanks divider">
+  <h1>Thank you</h1>
+  <div class="c"><div>Sapir Levi · Lead Product Designer</div><div><a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></div></div>
+</section>
+
+</div>
+  <div class="hint"><span class="hint-inner"><b>L</b> labels &nbsp;·&nbsp; <b>N</b> notes &nbsp;·&nbsp; <b>P</b> display &nbsp;·&nbsp; <b>←/→</b> move &nbsp;·&nbsp; <b>F</b> fullscreen</span></div>
+</div><!-- /stage-wrap -->
+</div><!-- /deck -->
+
+<!-- concept fullscreen overlay -->
+<div id="cfs"><button class="x" id="cfsx">✕</button><iframe id="cfsframe" title="Concept fullscreen"></iframe></div>
+
+<div class="toosmall">
+  <div class="ts-icon">🖥</div>
+  <h3>Screen too small</h3>
+  <p>Open this on a desktop or a screen wider than 470px</p>
+</div>
+
+<button class="dmode" id="dmode">⤢ display: framed</button>
+<button class="helpbtn" id="helpbtn" title="shortcuts">?</button>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const railBtns=[...document.querySelectorAll('.rail button')];
+let i=0;
+const stage=document.getElementById('stage');
+const bar=document.getElementById('bar');
+const slideno=document.getElementById('slideno');
+const cfs=document.getElementById('cfs'), cfsframe=document.getElementById('cfsframe');
+
+function fitActiveThumb(){
+  const s=slides[i]; if(!s.classList.contains('concept')) return;
+  const f=s.querySelector('.cframe'), pv=s.querySelector('.cprev');
+  if(!f||!pv) return;
+  const scale=f.clientWidth/1440;
+  pv.style.transform='scale('+scale+')';
+}
+function updateRail(){
+  let active=0;
+  railBtns.forEach(b=>{ if(parseInt(b.dataset.go,10)<=i) active=b; });
+  railBtns.forEach(b=>b.classList.toggle('active', b===active));
+}
+function show(n){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  bar.style.width=((i+1)/slides.length*100)+'%';
+  slideno.textContent=(i+1)+' / '+slides.length;
+  updateRail();
+  requestAnimationFrame(fitActiveThumb);
+}
+function openConcept(src){ if(!src) return; cfsframe.src=src; cfs.classList.add('open'); }
+function closeConcept(){ cfs.classList.remove('open'); cfsframe.src='about:blank'; }
+
+document.addEventListener('keydown',e=>{
+  if(cfs.classList.contains('open')){ if(e.code==='KeyE'||e.key==='Escape') closeConcept(); return; }
+  switch(e.code){
+    case 'ArrowRight': case 'Space': case 'PageDown': show(i+1); e.preventDefault(); break;
+    case 'ArrowLeft': case 'PageUp': show(i-1); break;
+    case 'Home': show(0); break;
+    case 'End': show(slides.length-1); break;
+    case 'KeyL': document.body.classList.toggle('labels'); break;
+    case 'KeyN': document.body.classList.toggle('notes'); break;
+    case 'KeyE': { const s=slides[i]; openConcept(s.getAttribute('data-concept')); break; }
+    case 'KeyP': toggleDisplay(); break;
+    case 'KeyF':
+      if(!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+      break;
+  }
+});
+
+document.querySelectorAll('.cframe').forEach(f=>{
+  f.addEventListener('click',()=>openConcept(f.closest('.concept').getAttribute('data-concept')));
+});
+cfs.addEventListener('click',e=>{ if(e.target===cfs) closeConcept(); });
+document.getElementById('cfsx').addEventListener('click',closeConcept);
+
+stage.addEventListener('click',e=>{
+  if(e.target.closest('.cframe')||e.target.closest('a')) return;
+  const r=stage.getBoundingClientRect();
+  if(e.clientX-r.left > r.width*0.5) show(i+1); else show(i-1);
+});
+
+railBtns.forEach(b=>b.addEventListener('click',()=>show(parseInt(b.dataset.go,10))));
+
+const dmodeBtn=document.getElementById('dmode');
+function toggleDisplay(){
+  document.body.classList.toggle('fs');
+  dmodeBtn.textContent='⤢ display: '+(document.body.classList.contains('fs')?'fullscreen':'framed');
+  requestAnimationFrame(fitActiveThumb);
+}
+dmodeBtn.addEventListener('click',toggleDisplay);
+document.getElementById('helpbtn').addEventListener('click',()=>document.body.classList.toggle('help'));
+
+window.addEventListener('resize',fitActiveThumb);
+show(0);
+</script>
+</body>
+</html>

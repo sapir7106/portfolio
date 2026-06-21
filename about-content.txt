@@ -1,0 +1,55 @@
+═══════════════════════════════════════════════════════════════
+  about-content.txt — מקור אחד לכל עמודי ה-About
+═══════════════════════════════════════════════════════════════
+  שלושה מקומות שואבים מכאן אוטומטית:
+    about.html        = dark  (נפתח מדף הבית)
+    about-light.html  = light (עמוד נפרד)
+    about-panel.html  = הפאנל המוטמע בכל הפרויקטים
+  ערכי כאן → שמרי → העלי ל-Cloudflare → מתעדכן בכל המקומות.
+
+  סימוני הדגשה:
+    ==טקסט==   = highlight (הדגשה ירוקה)
+───────────────────────────────────────────────────────────────
+
+QUOTE
+-----
+Quote: Good design in complex products isn't about 〰〰 making things pretty. It's about making hard things ==feel inevitable==.
+
+BIO
+---
+P1: I currently lead UX at PointFive, where I've helped build the product from the ground up alongside the founder, turning complex FinOps data into clear, actionable interfaces and shaping how people trust the AI agents that act on their cloud costs.
+P2: Before that I spent several years deep in cybersecurity and enterprise AI: at Laminar (data security), and earlier alongside teams like Sygnia (threat detection) and BeyondMinds (enterprise AI). I gravitate toward complex, technical products where good design genuinely changes how people work.
+P3: Across all of it, one thread repeats. I build the systems underneath the screens, establishing design systems from scratch: the components, tokens and standards that keep a whole product coherent as it scales.
+P4: I trained at Shenkar College in Visual Communication, and I still keep an active artistic practice on the side: drawing, sculpture, mixed media. It shapes how I approach product work, trusting intuition early and refining ruthlessly later.
+
+EXPERIENCE
+----------
+Exp 1 company: PointFive
+Exp 1 role: Senior Product Designer
+Exp 1 date: 2023 – Present
+Exp 2 company: Laminar
+Exp 2 role: Senior Product Designer
+Exp 2 date: 2022 – 2023
+Exp 3 company: BeyondMinds
+Exp 3 role: Product Designer · Enterprise AI
+Exp 3 date: 2020 – 2022
+Exp 4 company: Sygnia
+Exp 4 role: Product Designer · Cyber
+Exp 4 date: 2020 – 2022
+Exp 5 company: Freelance
+Exp 5 role: UX/UI & Graphic Design
+Exp 5 date: 2017 – 2021
+
+EDUCATION
+---------
+Edu 1 company: Shenkar College
+Edu 1 role: BA Visual Communication
+Edu 1 date: 2015 – 2019
+
+CONTACT
+-------
+Email: Sapir7106@gmail.com
+Phone: +972-523-665-667
+LinkedIn: https://www.linkedin.com/in/sapirlevi7106/
+WhatsApp: https://wa.me/972523665667
+CV: https://drive.google.com/file/d/1mcmk3iBFR8mbZZvq7LialYeyE4NAfIPC/view?usp=sharing

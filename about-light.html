@@ -1,0 +1,136 @@
+<!-- ════════════════════════════════════════════════════════
+     about-panel.html — המאסטר היחיד של פאנל ה-About
+     ════════════════════════════════════════════════════════
+     זה הקובץ היחיד שעורכים כדי לשנות את ה-About בכל הפרויקטים.
+     כל עמוד פרויקט טוען אותו אוטומטית דרך about-loader.js.
+     ערכו כאן → שמרו → העלו ל-Cloudflare → מתעדכן בכל הדפים.
+     ════════════════════════════════════════════════════════ -->
+
+<style id="about-panel-styles">
+#about-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  z-index:49;opacity:0;pointer-events:none;
+  transition:opacity 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+#about-overlay.open{opacity:1;pointer-events:all}
+
+#about-panel{
+  position:fixed;top:0;left:var(--sw,71px);
+  width:calc((100vw - var(--sw,71px)) * 5 / 6);
+  height:100vh;background:#F9F8F6;
+  z-index:50;overflow-y:auto;overflow-x:hidden;
+  padding:40px clamp(16px,2.5vw,32px) 32px clamp(20px,3vw,48px);
+  transform:translateX(-110%);
+  transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  display:block;
+}
+#about-panel.open{transform:translateX(0)}
+
+.about-close-btn{position:fixed;top:20px;right:20px;background:none;border:none;cursor:pointer;color:#2F2E2E;font-size:20px;line-height:1;padding:4px 8px;transition:color .2s;z-index:200}
+.about-close-btn:hover{color:#8067F2}
+.about-back-btn{background:none;border:none;cursor:pointer;color:#2e2e2c;font-family:var(--sans);font-size:13px;font-weight:300;padding:0;margin-bottom:28px;display:block;transition:color .2s;letter-spacing:.02em}
+.about-back-btn:hover{color:#8067F2}
+
+.about-grid{display:grid;grid-template-columns:minmax(0,600px) minmax(0,200px) minmax(0,170px) minmax(0,1200px);gap:40px 48px;margin:0;align-items:start}
+.about-quote{font-family:var(--serif);font-size:40px;line-height:1.4;color:#2F2E2E;margin-bottom:36px;font-weight:700}
+.about-hi{background:#BADA55;color:#2F2E2E;padding:0 2px;border-radius:2px}
+.about-body{font-size:17px;line-height:1.7;color:#2F2E2E;max-width:600px;font-weight:400}
+.about-body p+p{margin-top:18px}
+
+.about-section-title{font-size:14px;font-weight:300;letter-spacing:.05em;text-transform:uppercase;color:#6b6a5e;margin-bottom:16px}
+
+.about-exp-list{list-style:none}
+.about-exp-list li{margin-bottom:16px;line-height:1.5}
+.about-company{display:block;font-size:15px;color:#2F2E2E;font-weight:500}
+.about-role{display:block;font-size:14px;color:#6b6a5e;font-weight:300;margin-top:2px}
+.about-date{display:block;font-size:14px;color:#6b6a5e;font-weight:300;margin-top:2px}
+.about-exp-section+.about-exp-section{margin-top:32px}
+
+.about-contact-list{list-style:none}
+.about-contact-list li{margin-bottom:8px}
+.about-contact-list a{font-size:15px;color:#2F2E2E;text-decoration:none;font-weight:400;display:inline-block;position:relative;transition:color .2s}
+.about-contact-list a:not(.about-cv):hover{color:#8067F2}
+.about-cv{color:#8067F2!important;font-weight:500}
+.about-cv::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:#8067F2;transition:width .3s ease}
+.about-cv:hover::after{width:100%}
+
+.about-photo{position:sticky;top:0;display:flex;align-items:center;justify-content:center;width:100%}
+.about-photo-inner{width:75%;max-width:900px}
+.about-photo-img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:6px;display:block}
+.about-photo-placeholder{width:100%;aspect-ratio:2/3;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.08em;font-family:monospace;background:rgba(0,0,0,0.03);border:1px dashed rgba(0,0,0,0.1);color:#bbb}
+
+@media(max-width:1200px){
+  .about-grid{grid-template-columns:minmax(0,600px) minmax(0,200px) minmax(0,170px)}
+  .about-photo{display:none}
+}
+@media(max-width:900px){.about-grid{grid-template-columns:minmax(0,1fr) minmax(0,200px)}}
+@media(max-width:700px){
+  .about-grid{grid-template-columns:1fr}
+  #about-panel{width:100%;left:0;padding:40px 20px}
+  .about-photo{display:flex;position:static;order:-1;margin-bottom:24px}
+  .about-photo-inner{width:75%;max-width:340px}
+  .about-photo-img,.about-photo-placeholder{aspect-ratio:4/3}
+}
+@media(max-width:500px){
+  .about-photo-inner{width:100%;max-width:100%}
+  .about-photo-img{aspect-ratio:auto;width:100%;height:auto;object-fit:contain}
+}
+</style>
+
+<div id="about-overlay" onclick="closeAbout()"></div>
+
+<div id="about-panel">
+  <button class="about-close-btn" onclick="closeAbout()">✕</button>
+  <div class="about-grid">
+    <div>
+      <button class="about-back-btn" onclick="closeAbout()">← back</button>
+      <p class="about-quote">
+        Good design in complex products isn't about 〰〰 making things pretty. It's about making hard things <span class="about-hi">feel inevitable</span>.
+      </p>
+      <div class="about-body">
+        <p>I currently lead UX at PointFive, where I've helped build the product from the ground up alongside the founder, turning complex FinOps data into clear, actionable interfaces and shaping how people trust the AI agents that act on their cloud costs.</p>
+        <p>Before that I spent several years deep in cybersecurity and enterprise AI: at Laminar (data security), and earlier alongside teams like Sygnia (threat detection) and BeyondMinds (enterprise AI). I gravitate toward complex, technical products where good design genuinely changes how people work.</p>
+        <p>Across all of it, one thread repeats. I build the systems underneath the screens, establishing design systems from scratch: the components, tokens and standards that keep a whole product coherent as it scales.</p>
+        <p>I trained at Shenkar College in Visual Communication, and I still keep an active artistic practice on the side: drawing, sculpture, mixed media. It shapes how I approach product work, trusting intuition early and refining ruthlessly later.</p>
+      </div>
+    </div>
+    <div>
+      <div class="about-exp-section">
+        <h3 class="about-section-title">Experience</h3>
+        <ul class="about-exp-list">
+          <li><span class="about-company">PointFive</span><span class="about-role">Senior Product Designer</span><span class="about-date">2023 – Present</span></li>
+          <li><span class="about-company">Laminar</span><span class="about-role">Senior Product Designer</span><span class="about-date">2022 – 2023</span></li>
+          <li><span class="about-company">BeyondMinds</span><span class="about-role">Product Designer · Enterprise AI</span><span class="about-date">2020 – 2022</span></li>
+          <li><span class="about-company">Sygnia</span><span class="about-role">Product Designer · Cyber</span><span class="about-date">2020 – 2022</span></li>
+          <li><span class="about-company">Freelance</span><span class="about-role">UX/UI &amp; Graphic Design</span><span class="about-date">2017 – 2021</span></li>
+        </ul>
+      </div>
+      <div class="about-exp-section" style="margin-top:32px">
+        <h3 class="about-section-title">Education</h3>
+        <ul class="about-exp-list">
+          <li><span class="about-company">Shenkar College</span><span class="about-role">BA Visual Communication</span><span class="about-date">2015 – 2019</span></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <h3 class="about-section-title">Contact</h3>
+      <ul class="about-contact-list">
+        <li><a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></li>
+        <li><a href="tel:+972523665667">+972-523-665-667</a></li>
+        <li><a href="https://www.linkedin.com/in/sapirlevi7106/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://wa.me/972523665667" target="_blank" rel="noopener">WhatsApp ↗</a></li>
+        <li><a href="https://drive.google.com/file/d/1mcmk3iBFR8mbZZvq7LialYeyE4NAfIPC/view?usp=sharing" target="_blank" rel="noopener" class="about-cv">Download CV →</a></li>
+      </ul>
+    </div>
+    <div class="about-photo">
+      <div class="about-photo-inner">
+        <img class="about-photo-img" src="portfolio images/ME.png" alt="Sapir Levi"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="about-photo-placeholder" style="display:none">PHOTO</div>
+      </div>
+    </div>
+  </div>
+</div>
