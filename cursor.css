@@ -6,8 +6,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background-color: #ffffff;
   mix-blend-mode: difference;
@@ -23,3 +23,10 @@
 
 #custom-cursor.is-visible { opacity: 1; }
 #custom-cursor.is-hover   { transform: translate(-50%, -50%) scale(2); }
+
+/* על קרטי פרויקט ב-dark mode — לבן ישיר בלי difference */
+#custom-cursor.is-card {
+  mix-blend-mode: normal;
+  background-color: #ffffff;
+  transform: translate(-50%, -50%) scale(2);
+}

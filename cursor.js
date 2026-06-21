@@ -16,12 +16,13 @@
       if (target === lastTarget) return;
       lastTarget = target;
 
-      var clickable = target && target.closest('a, button, [role="button"], [data-cursor]');
-      if (clickable) {
-        cursor.classList.add('is-hover');
-      } else {
-        cursor.classList.remove('is-hover');
-      }
+      var cardEl     = target && target.closest('[data-cursor="card"]');
+      var clickable  = !cardEl && target && target.closest('a, button, [role="button"]');
+
+      cursor.classList.remove('is-hover', 'is-card');
+
+      if (cardEl)    cursor.classList.add('is-card');
+      else if (clickable) cursor.classList.add('is-hover');
     });
   }
 
