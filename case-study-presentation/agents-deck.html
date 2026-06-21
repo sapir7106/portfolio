@@ -280,7 +280,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <a href="../agents.html" id="pw-exit-x" title="Exit">✕</a>
   <div class="pw-box">
     <img class="pw-img" src="presentation-images/Shh.png" alt="" onerror="this.remove()">
-    <div class="pw-title" style="margin-left:16px;margin-right:16px;margin-top:64px;margin-bottom:0px"><strong style="font-weight:700;color:#F2EFE8;font-style:italic">Well, well, well...</strong><br><em style="font-weight:400">looks like you found my secret corner of the internet</em></div>
+    <div class="pw-title" style="margin-left:16px;margin-right:16px;margin-top:64px;margin-bottom:32px"><strong style="font-weight:700;color:#F2EFE8;font-style:italic">Well, well, well...</strong><br><em style="font-weight:400">looks like you found my secret corner of the internet</em></div>
     <p class="pw-mobile-msg">Looks like you found my secret corner of the internet. For the best experience, this screen is available on desktop only&nbsp;✨</p>
     <div class="pw-row">
       <div class="pw-input-col">
@@ -296,7 +296,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   #pw-gate{
     position:fixed;inset:0;z-index:99999;
     background:#15140F;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
     font-family:'Montserrat',sans-serif;
     padding:24px;
     animation:pwGateIn .4s ease forwards;
@@ -316,7 +316,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
     .pw-box>*{animation:none;opacity:1}
   }
   .pw-box{display:flex;flex-direction:column;gap:14px;width:min(520px,90vw);text-align:center;align-items:center}
-  .pw-img{max-width:480px;width:100%;height:auto;margin-bottom:0;display:block}
+  .pw-img{max-width:480px;max-height:min(420px,42vh);width:100%;height:auto;object-fit:contain;margin-bottom:0;display:block}
   .pw-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);line-height:1.2;color:#F2EFE8;font-weight:700}
   .pw-sub{font-size:14px;color:#8C897C;margin-bottom:6px}
   .pw-row{display:flex;gap:10px;justify-content:center;align-items:flex-start}
@@ -341,9 +341,15 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   #pw-error.show{opacity:1}
   #pw-exit-x{position:fixed;top:20px;right:24px;color:#8C897C;text-decoration:none;font-size:20px;line-height:1;padding:6px 8px;transition:color .2s;z-index:100000}
   #pw-exit-x:hover{color:#F2EFE8}
-  #pw-exit-btn{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);color:#BADA55;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:400;letter-spacing:.04em;padding:8px 16px;z-index:100000;white-space:nowrap}
+  #pw-exit-btn{position:static;transform:none;margin-top:8px;color:#BADA55;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:400;letter-spacing:.04em;padding:8px 16px;white-space:nowrap;align-self:center}
   #pw-exit-btn::after{content:'';display:block;width:0;height:1.5px;background:#BADA55;transition:width .3s ease;margin:0 16px}
   #pw-exit-btn:hover::after{width:calc(100% - 32px)}
+  @media(max-height:820px){
+    .pw-title{margin-top:32px!important}
+  }
+  @media(max-height:860px){
+    .pw-title{margin-top:32px!important;margin-bottom:20px!important}
+  }
   .pw-mobile-msg{display:none}
   @media(max-width:767px){
     #pw-gate{overflow:hidden}
