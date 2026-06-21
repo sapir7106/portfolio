@@ -1,31 +1,26 @@
 /*
-  about-loader.js — מזריק את מבנה פאנל ה-About מהמאסטר
-  =====================================================
-  טוען קובץ פאנל-מאסטר ומזריק אותו לעמוד.
-  בוחר איזה מאסטר לפי data-about על <body>:
-    <body data-about="dark">   → טוען about-dark.html   (index)
-    <body data-about="light">  → טוען about-light.html  (פרויקטים)
-  ברירת מחדל אם לא צוין: light.
+  about-loader.js — טוען את about-panel.html (קובץ יחיד) ומגדיר נושא
+  =====================================================================
+  קורא data-about מ-<body> כדי לקבוע את הנושא של הפאנל:
+    <body data-about="dark">   → data-theme="dark"  (דף הבית - מצב כהה)
+    כל ערך אחר / לא מוגדר     → data-theme="light" (דפי פרויקטים)
 
-  אחריו יש לטעון about-content-loader.js שממלא את הטקסט.
+  הפאנל עצמו מגיע מ-about-panel.html (מאסטר יחיד לשני המצבים).
 */
 
 (async function () {
-  /* CONSOLE DIAGNOSTIC */
-  console.log('[about-loader] v2 starting, data-about =', document.body.dataset.about);
-  const which = document.body.dataset.about || 'light';
-  const file = which === 'dark' ? 'about-dark.html' : 'about-light.html';
+  console.log('[about-loader] v3 starting, data-about =', document.body.dataset.about);
 
   try {
-    const res = await fetch(file);
-    if (!res.ok) { console.error('[about-loader] failed to fetch', file, res.status); return; }
+    const res = await fetch('about-panel.html');
+    if (!res.ok) { console.error('[about-loader] failed to fetch about-panel.html', res.status); return; }
     const html = await res.text();
-    console.log('[about-loader] loaded', file, '— length', html.length);
+    console.log('[about-loader] loaded about-panel.html — length', html.length);
 
     const tmp = document.createElement('div');
     tmp.innerHTML = html;
 
-    // העבר <style> ל-head (הסר ישן אם קיים)
+    /* העבר <style> ל-head */
     tmp.querySelectorAll('style').forEach(s => {
       if (s.id) {
         const ex = document.getElementById(s.id);
@@ -34,7 +29,7 @@
       document.head.appendChild(s);
     });
 
-    // הסר פאנל ישן אם קיים
+    /* הסר פאנל ישן אם קיים */
     const oldOv = document.getElementById('about-overlay');
     const oldPn = document.getElementById('about-panel');
     if (oldOv) oldOv.remove();
@@ -44,5 +39,11 @@
       if (node.tagName === 'STYLE') return;
       document.body.appendChild(node);
     });
-  } catch (e) { /* fail silently */ }
+
+    /* קבע נושא: dark לדף הבית, light לכל דף אחר */
+    const theme = document.body.dataset.about === 'dark' ? 'dark' : 'light';
+    const panel = document.getElementById('about-panel');
+    if (panel) panel.dataset.theme = theme;
+
+  } catch (e) { console.error('[about-loader] error', e); }
 })();
