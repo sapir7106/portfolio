@@ -120,10 +120,18 @@ ul.clean li b{color:var(--ink);font-weight:600}
 .step .t{font-weight:600;font-size:1.5cqw;color:var(--ink);margin:.3em 0 .35em;line-height:1.1}
 .step .d{font-size:1.18cqw;line-height:1.4;color:var(--ink-soft)}
 
-.values{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4cqw;margin-top:2cqh}
-.val{background:var(--panel);border:1px solid var(--line);border-left:.5cqh solid var(--accent);border-radius:10px;padding:1.6cqh 1.2cqw}
-.val .w{font-family:var(--serif);font-weight:700;font-size:2.2cqw;color:var(--ink);line-height:1.05}
-.val .s{font-family:var(--mono);font-size:1.05cqw;color:var(--muted);margin-top:.6cqh;letter-spacing:.02em}
+.values{display:grid;grid-template-columns:repeat(5,1fr);margin-top:2cqh;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
+.val{padding:1.8cqh 1.1cqw;border-right:1px solid var(--line);border-left:none;border-top:none;border-bottom:none;border-radius:0;background:transparent;display:flex;flex-direction:column}
+.val:last-child{border-right:none}
+.val-lbl{font-family:var(--mono);font-weight:700;font-size:.95cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.val-brush{margin:1cqh 0 1.2cqh;display:flex;flex-direction:column;gap:.4cqh}
+.val-brush span{height:.45cqh;border-radius:2px;display:block;background:var(--ink)}
+.val-brush span:nth-child(1){width:2.4cqw}
+.val-brush span:nth-child(2){width:1.8cqw;background:var(--accent)}
+.val-brush span:nth-child(3){width:1.1cqw;background:#C9C6BB}
+.val .w{font-family:var(--serif);font-weight:700;font-size:2cqw;color:var(--ink);line-height:1.05;margin-bottom:.4cqh}
+.val .s{font-family:var(--mono);font-size:1cqw;color:var(--accent);letter-spacing:.02em;font-weight:700;margin-bottom:.9cqh}
+.val-desc{font-size:1.05cqw;line-height:1.45;color:var(--ink-soft)}
 .values-cap{margin-top:1.4cqh;font-family:var(--mono);font-size:1.1cqw;color:var(--muted);letter-spacing:.04em}
 
 .partners{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw;margin-top:1cqh}
@@ -248,7 +256,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 /* row 1: extend to right edge */
 .tl-row-1::before{right:calc(-6.2cqw)}
 .tl-step{display:flex;flex-direction:column;position:relative;z-index:1}
-.tl-label{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);height:28px;display:flex;align-items:flex-end;padding-bottom:4px}
+.tl-label{font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);height:28px;display:flex;align-items:flex-end;padding-bottom:28px}
 .tl-dz{height:16px;position:relative;margin-bottom:20px}
 .tl-dot{position:absolute;top:0;left:0;width:16px;height:16px;border-radius:50%;background:var(--accent);z-index:2}
 .tl-title{font-family:var(--sans);font-weight:600;font-size:1.5cqw;color:var(--ink);line-height:1.2;margin-bottom:.45cqh}
@@ -542,11 +550,41 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
     <h2>PointFive was going <em>AI-native</em></h2>
     <p class="lede">PointFive helps organizations cut cloud-cost waste. The next step: agents that don't just <mark>surface a problem — they act on it.</mark></p>
     <div class="values">
-      <div class="val"><div class="w">Efficiency</div><div class="s">cut waste, fast</div></div>
-      <div class="val"><div class="w">Depth</div><div class="s">explain the why</div></div>
-      <div class="val"><div class="w">Creativity</div><div class="s">novel solutions</div></div>
-      <div class="val"><div class="w">Bias to action</div><div class="s">agents that act</div></div>
-      <div class="val"><div class="w">Trust</div><div class="s">earn the autonomy</div></div>
+      <div class="val">
+        <div class="val-lbl">Value / 01</div>
+        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="w">Efficiency</div>
+        <div class="s">cut waste, fast</div>
+        <div class="val-desc">Cut cloud-cost waste fast. If a step doesn't earn its keep, we cut it.</div>
+      </div>
+      <div class="val">
+        <div class="val-lbl">Value / 02</div>
+        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="w">Depth</div>
+        <div class="s">explain the why</div>
+        <div class="val-desc">We don't just flag a cost; we explain the why behind it, down to the resource.</div>
+      </div>
+      <div class="val">
+        <div class="val-lbl">Value / 03</div>
+        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="w">Creativity</div>
+        <div class="s">novel solutions</div>
+        <div class="val-desc">Novel solutions to messy cost problems, not just the obvious rightsizing.</div>
+      </div>
+      <div class="val">
+        <div class="val-lbl">Value / 04</div>
+        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="w">Bias to action</div>
+        <div class="s">agents that act</div>
+        <div class="val-desc">Agents that don't just surface a problem — they act on it.</div>
+      </div>
+      <div class="val">
+        <div class="val-lbl">Value / 05</div>
+        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="w">Trust</div>
+        <div class="s">earn the autonomy</div>
+        <div class="val-desc">Customers let agents touch their cloud bill only if they trust them.</div>
+      </div>
     </div>
     <div class="values-cap">PointFive's five brand values — the lens I designed against.</div>
   </div>
@@ -577,7 +615,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 8 -->
 <section class="slide">
   <div class="eyebrow">The starting point · what broke</div>
-  <h2 style="margin-bottom:.2em">Four things the old experience <em>couldn't do</em></h2>
+  <h2>Four things the old experience <em>couldn't do</em></h2>
   <ul class="clean">
     <li><b>Pending decisions were buried</b> — inside each agent's page, behind an unlabeled icon. Users running several agents never knew something was waiting.</li>
     <li><b>No sense of blast radius</b> — how much, and what, an agent was about to affect.</li>
@@ -589,7 +627,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 8b · CHALLENGES + TRADE-OFFS -->
 <section class="slide">
   <div class="eyebrow">Constraints · the challenges</div>
-  <h2 style="margin-bottom:.2em">The challenges — and the <em>trade-offs</em> I made</h2>
+  <h2>The challenges — and the <em>trade-offs</em> I made</h2>
   <div class="pitch">
     <div class="col">
       <h4>Observable at a glance</h4>
@@ -612,7 +650,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 9 -->
 <section class="slide">
   <div class="eyebrow">Collaboration · partners</div>
-  <h2 style="margin-bottom:.2em">Who I worked with</h2>
+  <h2>Who I worked with</h2>
   <div class="partners">
     <div class="partner"><h4>Product Manager</h4><p>The fast-sprint partner — business framing, scope, and the agent behaviors we needed to expose.</p></div>
     <div class="partner"><h4>Engineering / Tech Lead</h4><p>What the agents can actually report — which signals, states and actions are available to show.</p></div>
@@ -642,7 +680,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 11 -->
 <section class="slide">
   <div class="eyebrow">Research · user needs</div>
-  <h2 style="margin-bottom:.2em">What operators actually need</h2>
+  <h2>What operators actually need</h2>
   <ul class="clean">
     <li><b>See what's waiting</b> — know instantly when an agent needs them, without opening each one.</li>
     <li><b>Understand the blast radius</b> — what an action will touch before it happens.</li>
@@ -654,7 +692,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 12 -->
 <section class="slide">
   <div class="eyebrow">The market voice · FinOps X 2026</div>
-  <h2 style="margin-bottom:.3em">What the market said</h2>
+  <h2>What the market said</h2>
   <div class="pain" style="grid-template-columns:1fr 1fr">
     <div class="pcell cry"><div class="h">From the field</div><div class="cryt">"This NG agent direction is a game changer — how soon can we use it?"</div></div>
     <div class="pcell"><div class="h">What it confirmed</div><ul><li class="win">The whole industry is reorienting around AI — the conference renamed itself "Tokenomicon" for next year</li><li class="win">Autonomous agents are the most-wanted direction in FinOps</li><li>The demand is there — trust is the unlock</li></ul></div>
@@ -665,7 +703,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 13 -->
 <section class="slide">
   <div class="eyebrow">Research · synthesis</div>
-  <h2 style="margin-bottom:.1em">Five principles for designing <em>trust</em> in agents</h2>
+  <h2>Five principles for designing <em>trust</em> in agents</h2>
   <div class="princ">
     <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="2.5"/></svg></div><h4>Intent Preview</h4><p>Show what will happen before it happens.</p><div class="tag">NN/g · #1 trust driver</div></div>
     <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></div><h4>Action Audit + Undo</h4><p>Every action logged, readable, reversible.</p><div class="tag">Cuts perceived risk</div></div>
@@ -679,7 +717,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 14 -->
 <section class="slide">
   <div class="eyebrow">Research · user journey</div>
-  <h2 style="margin-bottom:.2em">The decision path</h2>
+  <h2>The decision path</h2>
   <p>How an operator moves from "something needs me" → review → act, plus the bulk path for many decisions at once.</p>
   <div class="shot has-shot-img"><span class="shot-id">IMG-03</span><div class="tag">Drop frame: user-flow diagram(s)</div><div class="desc">Mirror your DSPM journey slides — "Single decision" and "Bulk review" flows.</div><img class="shot-img" src="presentation-images/IMG-03.png" alt="User-flow diagram" onerror="this.remove();this.parentElement.classList.remove('has-shot-img')"></div>
 </section>
@@ -726,7 +764,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 19 -->
 <section class="slide">
   <div class="eyebrow">Final design · Direction 03</div>
-  <h2 style="margin-bottom:0">The agent-management screen</h2>
+  <h2>The agent-management screen</h2>
   <div class="mock-wrap">
   <div class="mock">
     <div class="topbar"><b>Agents</b>
@@ -754,7 +792,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 20 -->
 <section class="slide">
   <div class="eyebrow">The core of the work</div>
-  <h2 style="margin-bottom:.1em">Pains → ideas → solutions</h2>
+  <h2>Pains → ideas → solutions</h2>
   <div class="pain">
     <div class="pcell cry"><div class="h">Pain 01</div><div class="cryt">"To approve anything, I have to go agent by agent."</div></div>
     <div class="pcell"><div class="h">Ideas I weighed</div><ul><li>A badge on the agent's row</li><li>A notification / toast</li><li class="win">Surface decisions at list level</li><li class="win">"Decisions Waiting" as entry point</li></ul></div>
@@ -804,7 +842,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 26 -->
 <section class="slide">
   <div class="eyebrow">What sets me apart</div>
-  <h2 style="margin-bottom:.2em">How I work</h2>
+  <h2>How I work</h2>
   <div class="pitch">
     <div class="col"><h4>I design the system, not just the screen</h4><p>The components, tokens and standards underneath a product — the thing that keeps it coherent as it scales.</p></div>
     <div class="col"><h4>Complex products are my expertise</h4><p>FinOps, data security, enterprise AI. I make hard things feel inevitable.</p></div>
