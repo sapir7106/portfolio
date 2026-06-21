@@ -16,7 +16,7 @@
       if (target === lastTarget) return;
       lastTarget = target;
 
-      var clickable = target && target.closest('a, button, [role="button"]');
+      var clickable = target && target.closest('a, button, [role="button"], .img-mt figure, .img-row figure, .img-stack figure, .img-mt .ph, .img-row .ph, .img-stack .ph');
       if (clickable) cursor.classList.add('is-hover');
       else           cursor.classList.remove('is-hover');
     });
