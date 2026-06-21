@@ -296,7 +296,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   #pw-gate{
     position:fixed;inset:0;z-index:99999;
     background:#15140F;
-    display:flex;align-items:safe center;justify-content:center;overflow-y:auto;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
     font-family:'Montserrat',sans-serif;
     padding:24px;
     animation:pwGateIn .4s ease forwards;
@@ -316,7 +316,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
     .pw-box>*{animation:none;opacity:1}
   }
   .pw-box{display:flex;flex-direction:column;gap:14px;width:min(520px,90vw);text-align:center;align-items:center}
-  .pw-img{max-width:480px;max-height:min(480px,52vh);width:100%;height:auto;object-fit:contain;margin-bottom:0;display:block}
+  .pw-img{max-width:480px;max-height:min(420px,42vh);width:100%;height:auto;object-fit:contain;margin-bottom:0;display:block}
   .pw-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);line-height:1.2;color:#F2EFE8;font-weight:700}
   .pw-sub{font-size:14px;color:#8C897C;margin-bottom:6px}
   .pw-row{display:flex;gap:10px;justify-content:center;align-items:flex-start}
@@ -346,6 +346,9 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   #pw-exit-btn:hover::after{width:calc(100% - 32px)}
   @media(max-height:820px){
     .pw-title{margin-top:32px!important}
+  }
+  @media(max-height:860px){
+    .pw-title{margin-top:32px!important;margin-bottom:20px!important}
   }
   .pw-mobile-msg{display:none}
   @media(max-width:767px){
