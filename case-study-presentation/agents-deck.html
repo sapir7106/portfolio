@@ -30,6 +30,13 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:#222;ov
 /* ===================== DECK LAYOUT (framed) =====================
    [ left rail (width = widest button) ][ stage-wrap (20px padding) ] */
 #deck{position:fixed;inset:0;display:flex;align-items:stretch}
+#deck-exit{
+  position:fixed;top:18px;right:22px;z-index:9000;
+  color:rgba(255,255,255,.45);text-decoration:none;
+  font-size:24px;line-height:1;padding:4px 8px;
+  transition:color .15s;
+}
+#deck-exit:hover{color:#fff}
 .rail{flex:none;width:max-content;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:20px 16px}
 .rail button{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:none;color:#9a9a9a;cursor:pointer;font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;transition:.15s;text-align:left;white-space:nowrap}
 .rail button .ri{font-weight:700;color:#6f6f6f}
@@ -433,6 +440,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 </script>
 
 <div id="deck">
+<a href="../agents.html" id="deck-exit" title="Exit presentation" aria-label="Exit presentation">✕</a>
 
 <!-- left rail: section anchors (width = widest button) -->
 <nav class="rail" id="rail">
