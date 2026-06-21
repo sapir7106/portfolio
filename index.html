@@ -340,6 +340,7 @@
   /* ── ABOUT PANEL (dark, slide-in) ── */
   /* about panel — injected from about-dark.html via about-loader.js */
 </style>
+<link rel="stylesheet" href="cursor.css">
 </head>
 <body data-about="dark">
 
@@ -369,7 +370,7 @@
   <section class="projects-section">
     <div class="projects-grid" id="projectsGrid">
 
-      <a href="agents.html" class="card" data-name="agents">
+      <a href="agents.html" class="card" data-name="agents" data-ext data-message="View">
         <div class="card-img"></div>
         <div class="card-overlay">
           <span class="card-title">Autonomous agents</span>
@@ -378,7 +379,7 @@
         <span class="card-label">agents</span>
       </a>
 
-      <a href="dspm.html" class="card" data-name="dspm">
+      <a href="dspm.html" class="card" data-name="dspm" data-ext data-message="View">
         <div class="card-img"></div>
         <div class="card-overlay">
           <span class="card-title">Cloud data security</span>
@@ -387,7 +388,7 @@
         <span class="card-label">dspm</span>
       </a>
 
-      <a href="violation-pane.html" class="card" data-name="violation-pane">
+      <a href="violation-pane.html" class="card" data-name="violation-pane" data-ext data-message="View">
         <div class="card-img"></div>
         <div class="card-overlay">
           <span class="card-title">Single violation pane</span>
@@ -396,7 +397,7 @@
         <span class="card-label">violation-pane</span>
       </a>
 
-      <a href="retraining-model.html" class="card" data-name="retraining-model">
+      <a href="retraining-model.html" class="card" data-name="retraining-model" data-ext data-message="View">
         <div class="card-img"></div>
         <div class="card-overlay">
           <span class="card-title">Model retraining</span>
@@ -405,7 +406,7 @@
         <span class="card-label">retraining-model</span>
       </a>
 
-      <a href="security-dashboard.html" class="card" data-name="security-dashboard">
+      <a href="security-dashboard.html" class="card" data-name="security-dashboard" data-ext data-message="View">
         <div class="card-img"></div>
         <div class="card-overlay">
           <span class="card-title">Security dashboard</span>
@@ -414,7 +415,7 @@
         <span class="card-label">security-dashboard</span>
       </a>
 
-      <a href="logos-art-for-fun.html" class="card" data-name="logos-art-for-fun">
+      <a href="logos-art-for-fun.html" class="card" data-name="logos-art-for-fun" data-ext data-message="View">
         <div class="card-img"></div>
         <div class="card-overlay">
           <span class="card-title">Logos &amp; Icons</span>
@@ -506,5 +507,7 @@
 </script>
 <script src="about-loader.js"></script>
 <script src="about-content-loader.js"></script>
+<div id="custom-cursor"><span id="cursor-message"></span></div>
+<script src="cursor.js"></script>
 </body>
 </html>
