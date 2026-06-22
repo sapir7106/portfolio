@@ -928,13 +928,15 @@ function fitConcept(){
   function closeConcept(){ cfs.classList.remove('open'); cfsframe.src='about:blank'; }
   window.addEventListener('resize', fitConcept);
 
+document.addEventListener('keydown',function(e){
+  const imgfs=document.getElementById('imgfs');
+  if(!imgfs.classList.contains('open')) return;
+  if(e.key==='Escape'){ imgfs.classList.remove('open'); }
+  e.stopImmediatePropagation();
+  e.preventDefault();
+},true);
+
 document.addEventListener('keydown',e=>{
-  if(document.getElementById('imgfs').classList.contains('open')){
-    if(e.key==='Escape'){ document.getElementById('imgfs').classList.remove('open'); }
-    e.preventDefault();
-    e.stopPropagation();
-    return;
-  }
   if(cfs.classList.contains('open')){ if(e.code==='KeyE'||e.key==='Escape') closeConcept(); return; }
   switch(e.code){
     case 'ArrowRight': case 'Space': case 'PageDown': show(i+1); e.preventDefault(); break;
@@ -978,6 +980,6 @@ document.getElementById('helpbtn').addEventListener('click',()=>document.body.cl
 window.addEventListener('resize',fitActiveThumb);
 show(0);
 </script>
-<div id="imgfs" onclick="this.classList.remove('open')"><img id="imgfsimg" alt=""></div>
+<div id="imgfs" onclick="this.classList.remove('open')"><img id="imgfsimg" alt="" onclick="event.stopPropagation()"></div>
 </body>
 </html>
