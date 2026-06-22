@@ -30,18 +30,18 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:#222;ov
 /* ===================== DECK LAYOUT (framed) =====================
    [ left rail (width = widest button) ][ stage-wrap (20px padding) ] */
 #deck{position:fixed;inset:0;display:flex;align-items:stretch}
-.rail{flex:none;width:max-content;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:20px 16px}
+.rail{flex:none;width:max-content;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:20px 16px;position:relative}
 .rail button{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:none;color:#9a9a9a;cursor:pointer;font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;transition:.15s;text-align:left;white-space:nowrap}
 .rail button .ri{font-weight:700;color:#6f6f6f}
 .rail button:hover{background:rgba(255,255,255,.06);color:#fff}
 .rail button:hover .ri,.rail button.active .ri{color:var(--accent)}
 .rail button.active{color:#fff}
 .rail-back{
-  display:flex;align-items:center;gap:10px;width:100%;
+  position:absolute;top:20px;left:16px;right:16px;
+  display:flex;align-items:center;gap:10px;width:calc(100% - 32px);
   background:transparent;border:none;color:#9a9a9a;cursor:pointer;
   font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;
   transition:.15s;text-align:left;white-space:nowrap;text-decoration:none;
-  margin-bottom:14px;
 }
 .rail-back .ri{font-weight:700;color:#6f6f6f}
 .rail-back:hover{background:rgba(255,255,255,.06);color:#fff}
