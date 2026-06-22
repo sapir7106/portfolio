@@ -929,7 +929,12 @@ function fitConcept(){
   window.addEventListener('resize', fitConcept);
 
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape') document.getElementById('imgfs').classList.remove('open');
+  if(document.getElementById('imgfs').classList.contains('open')){
+    if(e.key==='Escape'){ document.getElementById('imgfs').classList.remove('open'); }
+    e.preventDefault();
+    e.stopPropagation();
+    return;
+  }
   if(cfs.classList.contains('open')){ if(e.code==='KeyE'||e.key==='Escape') closeConcept(); return; }
   switch(e.code){
     case 'ArrowRight': case 'Space': case 'PageDown': show(i+1); e.preventDefault(); break;
