@@ -959,6 +959,7 @@ cfs.addEventListener('click',e=>{ if(e.target===cfs) closeConcept(); });
 document.getElementById('cfsx').addEventListener('click',closeConcept);
 
 stage.addEventListener('click',e=>{
+  if(document.getElementById('imgfs').classList.contains('open')) return;
   if(e.target.closest('.cframe')||e.target.closest('a')) return;
   const r=stage.getBoundingClientRect();
   if(e.clientX-r.left > r.width*0.5) show(i+1); else show(i-1);
@@ -978,6 +979,6 @@ document.getElementById('helpbtn').addEventListener('click',()=>document.body.cl
 window.addEventListener('resize',fitActiveThumb);
 show(0);
 </script>
-<div id="imgfs" onclick="this.classList.remove('open')"><img id="imgfsimg" alt="" onclick="event.stopPropagation()"></div>
+<div id="imgfs" onclick="this.classList.remove('open');event.stopPropagation()"><img id="imgfsimg" alt="" onclick="event.stopPropagation()"></div>
 </body>
 </html>
