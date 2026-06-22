@@ -928,15 +928,13 @@ function fitConcept(){
   function closeConcept(){ cfs.classList.remove('open'); cfsframe.src='about:blank'; }
   window.addEventListener('resize', fitConcept);
 
-document.addEventListener('keydown',function(e){
-  const imgfs=document.getElementById('imgfs');
-  if(!imgfs.classList.contains('open')) return;
-  if(e.key==='Escape'){ imgfs.classList.remove('open'); }
-  e.stopImmediatePropagation();
-  e.preventDefault();
-},true);
-
 document.addEventListener('keydown',e=>{
+  const imgfs=document.getElementById('imgfs');
+  if(imgfs.classList.contains('open')){
+    if(e.key==='Escape') imgfs.classList.remove('open');
+    e.preventDefault();
+    return;
+  }
   if(cfs.classList.contains('open')){ if(e.code==='KeyE'||e.key==='Escape') closeConcept(); return; }
   switch(e.code){
     case 'ArrowRight': case 'Space': case 'PageDown': show(i+1); e.preventDefault(); break;
