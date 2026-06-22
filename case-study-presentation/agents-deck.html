@@ -242,6 +242,10 @@ body.notes .note{display:block}
 #cfs iframe{width:1440px;height:900px;border:0;border-radius:8px;display:block;background:#fff;transform-origin:center center}
 #cfs .x{position:fixed;top:18px;right:22px;z-index:10000;background:none;border:none;color:rgba(255,255,255,.45);font-size:26px;line-height:1;cursor:pointer;padding:4px;transition:color .15s}
 #cfs .x:hover{color:#fff}
+/* image fullscreen overlay */
+#imgfs{display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,10,8,.92);align-items:center;justify-content:center;padding:40px;cursor:zoom-out}
+#imgfs.open{display:flex}
+#imgfs img{max-width:92vw;max-height:90vh;width:auto;height:auto;border-radius:8px;display:block}
 
 /* chrome */
 .dmode{display:none}   /* hidden — keyboard P / פ only */
@@ -730,7 +734,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">Research · user journey</div>
   <h2>The decision path</h2>
   <p>How an operator moves from "something needs me" → review → act, plus the bulk path for many decisions at once.</p>
-  <div class="shot has-shot-img"><span class="shot-id">IMG-03</span><div class="tag">Drop frame: user-flow diagram(s)</div><div class="desc">Mirror your DSPM journey slides — "Single decision" and "Bulk review" flows.</div><img class="shot-img" src="presentation-images/IMG-03.png" alt="User-flow diagram" onerror="this.remove();this.parentElement.classList.remove('has-shot-img')"></div>
+  <div class="shot has-shot-img"><span class="shot-id">IMG-03</span><div class="tag">Drop frame: user-flow diagram(s)</div><div class="desc">Mirror your DSPM journey slides — "Single decision" and "Bulk review" flows.</div><img class="shot-img" src="presentation-images/IMG-03.png" alt="User-flow diagram" onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
 </section>
 
 <!-- 15 -->
@@ -865,7 +869,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 27 -->
 <section class="slide thanks divider">
   <h1>Thank you</h1>
-  <div class="c"><div>Sapir Levi · Lead Product Designer</div><div><a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></div></div>
+  <div class="c"><div>Sapir Levi · <a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></div></div>
 </section>
 
 </div>
@@ -925,6 +929,7 @@ function fitConcept(){
   window.addEventListener('resize', fitConcept);
 
 document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') document.getElementById('imgfs').classList.remove('open');
   if(cfs.classList.contains('open')){ if(e.code==='KeyE'||e.key==='Escape') closeConcept(); return; }
   switch(e.code){
     case 'ArrowRight': case 'Space': case 'PageDown': show(i+1); e.preventDefault(); break;
@@ -968,5 +973,6 @@ document.getElementById('helpbtn').addEventListener('click',()=>document.body.cl
 window.addEventListener('resize',fitActiveThumb);
 show(0);
 </script>
+<div id="imgfs" onclick="this.classList.remove('open')"><img id="imgfsimg" alt=""></div>
 </body>
 </html>
