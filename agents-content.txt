@@ -12,7 +12,7 @@ HERO
 Eyebrow: PointFive · AI Efficiency OS for FinOps · 2026
 Title: Designing trust into
 Title italic: autonomous agents
-Lede: PointFive is a FinOps platform that helps organizations understand and cut cloud costs — and it was going AI-native, with **agents that don't just surface problems but act on them.** I designed how users oversee a fleet of [[==autonomous agents==|case-study-presentation/agents-deck.html|secret-deck]] acting on their cloud, without losing control.
+Lede: PointFive is a FinOps platform that helps organizations understand and cut cloud costs — and it was going AI-native, with **agents that don't just surface problems but act on them.** I designed the oversight layer for those [[==autonomous agents==|case-study-presentation/agents-deck.html|secret-deck]] — the part that tells you what's happening, what needs your attention, and whether you can step in.
 
 IMPACT
 ------
@@ -28,11 +28,19 @@ IMG-01 caption: The agent oversight screen — every agent, its status, scope an
 SECTION 01 — Context / The problem
 ----------------------------------------
 Paragraph 1: PointFive was adding agent capabilities — AI that doesn't just flag a cloud-cost issue, but fixes it autonomously. The moment agents could act on their own, something shifted: people started to fear them, not trust them, and quietly avoided turning them on.
-Paragraph 2: This wasn't a technology problem — it was an experience problem. A user deciding whether to let an agent touch their cloud bill is making a trust decision, and trust is pure design: control, transparency, and a clear mental model of what the agent will do. If users don't trust what they can't see, the capability goes unused — and the AI-native bet fails on adoption, not on the model.
+
+Paragraph 0: The product already let you create agents, trigger them, see their workflows and activity. What it didn't have was a way to understand what was happening across all of them at once — or to know when one of them needed you.
+
+Paragraph 2: This wasn't a technology problem — it was an experience problem. A user deciding whether to let an agent touch their cloud bill is making a trust decision, and trust becomes a design problem: control, transparency, and a clear mental model of what the agent will do.
+
+Paragraph 2b: If users don't trust what they can't see, the capability goes unused — and the AI-native bet fails on adoption, not on the model.
+
 Bullet 1: Pending decisions were buried inside each agent's page, behind an unlabeled icon — users running several agents never knew something was waiting.
 Bullet 2: There was no sense of an agent's blast radius — how much, and what, it was about to affect.
 Bullet 3: Approving actions one agent at a time didn't scale — five decisions meant five separate screens.
 Bullet 4: For an agent someone else set up, it was unclear what it was doing or even whether it was running.
+
+Paragraph 2c: Autonomous agents only create value when people actually use them and save money — getting operators to trust the system enough to turn it on is a design problem.
 
 SECTION 02 — Constraints / The challenges
 ----------------------------------------
@@ -41,7 +49,11 @@ IMG-02 caption: The original experience — a pending decision buried behind an 
 
 SECTION 03 — Discovery / Research and user needs
 ----------------------------------------
-Paragraph: I grounded the work in two kinds of research. I studied 10 agentic products for oversight and governance patterns, looked closely at direct FinOps competitors (Vantage, Finout, ProsperOps, nOps, CloudZero), read 10 studies on AI trust and human-in-the-loop, and pulled signal from McKinsey, Gartner, SurveyMonkey and NN/g. One gap stood out: even the most advanced competitor runs oversight through Slack or routes it to ticketing tools — none offered a single in-product pane to see every agent, its scope and its pending decisions. From both streams I distilled five principles that move trust: Intent Preview, Action Audit + Undo, Variable Autonomy, Confidence Signals, and a Single Pane of Glass.
+Paragraph A: I grounded the work in two kinds of research. I studied 10 agentic products for oversight and governance patterns, looked closely at direct FinOps competitors (Vantage, Finout, ProsperOps, nOps, CloudZero), read 10 studies on AI trust and human-in-the-loop, and pulled signal from McKinsey, Gartner, SurveyMonkey and NN/g.
+
+Paragraph B: One gap stood out: even the most advanced competitor ran oversight through Slack or ticketing tools — at the time, I didn't find a single product with a dedicated in-product pane to see every agent, its scope and its pending decisions.
+
+Paragraph C: From both streams I distilled five principles that move trust: Intent Preview, Action Audit + Undo, Variable Autonomy, Confidence Signals, and a Single Pane of Glass.
 Stat 1: 62% · Of orgs are already piloting agents (McKinsey, 2025)
 Stat 2: 40% · Of agent projects scrapped by 2027 — for trust & UX, not tech (Gartner)
 Stat 3: 79% · Prefer a human when things get complex (SurveyMonkey, 2025)
@@ -57,8 +69,17 @@ IMG-07 caption: Concept 03 (selected) — "Review decisions" merged into the met
 SECTION 06 — Reflection / Reflection & what's next
 ----------------------------------------
 Paragraph 1: I'm honest about where this stands: it's a starting point, not a finish line. I focused on the place where the tension between human and AI is most visible — the moment a person decides whether to let an agent act. The whole design works to make the user feel they are the one in control, the one in the loop, even as the agents do the work.
-Paragraph 2: What's next: expanding and focusing the single agent page itself; a deeper end-to-end flow (edit / delegate / snooze branches); validation with the FinOps users who live in this screen; and the edge and empty states — no decisions, all snoozed, a failed run with recovery.
+
+Paragraph 2: Where this could go: a deeper single-agent page, edit / delegate / snooze flows, validation with FinOps operators, and the edge states — no decisions, failed runs, recovery.
+
 Bullet 1: Used AI as a research partner — clustering the product scan into themes and generating 20 live prototype directions — with my judgment as the filter.
 Bullet 2: Distilled 10 products and 10 studies into 5 evidence-backed trust principles that drove every design decision.
 Bullet 3: At FinOps X 2026, customers and partners repeatedly called PointFive's NG agent direction a "game changer" and asked how soon they could use it.
-Bullet 4: In an AI-native world, a designer's value isn't producing screens fastest — it's being the layer of judgment: asking the questions no one else asks, understanding the user, finding the holes in a flow before they reach development.
+
+Divider: true
+
+Three signals I'd track:
+Bullet 4: **Agent activation rate** — how many users who have agents actually turn them on. The main signal for whether the trust layer did its job.
+Bullet 5: **Time-to-decision in the review flow** — how long it takes to approve or reject a pending decision. Fast means the context was clear. Slow means something is still confusing.
+Bullet 6: **Snooze rate** — how often operators delay instead of deciding. High snooze doesn't mean they're busy — it means they need more context before they act.
+
