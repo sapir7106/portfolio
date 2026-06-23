@@ -125,6 +125,9 @@ PointFive helps organizations cut cloud-cost waste. The next step:
 agents that don't just [surface a problem — they act on it.]
   (ה-highlight: "surface a problem — they act on it.")
 
+SCOPE STATEMENT (להוסיף אחרי ה-LEDE):
+For this case study, I focused on what happens after the agents start running — the oversight layer that tells you what's happening, what needs your attention, and whether you can step in.
+
 5 BRAND VALUES (שינוי טקסט תחת כל ערך):
 Efficiency   | cut waste, fast
 Depth        | explain the why
@@ -133,6 +136,32 @@ Bias to action | agents that act
 Trust        | earn the autonomy
 
 CAPTION: PointFive's five brand values — the lens I designed against.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[SLIDE 05b] — From agent management to agent oversight (NEW — בין 05 ל-06)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STORY NOTE: השקף שהכי מגן עלייך בראיון. מציג בדיוק מה היה קיים ומה הוספת.
+
+EYEBROW: The starting point · what existed
+
+H2: From agent management to [agent oversight]
+  (ה-italic: "agent oversight")
+
+עמודה שמאל — Existing layer:
+- Create / Run / View activity / Edit workflows
+
+עמודה ימין — What was missing:
+- See pending decisions across all agents at once
+- Understand blast radius before an action runs
+- Review and approve at scale — not agent by agent
+- Know ownership, scope and risk for every agent
+
+שורת סיום (מתחת לשתי העמודות):
+My focus: the trust layer that sits between these two — making autonomous FinOps agents safe enough to actually turn on.
+
+[N] Speaker note (לך בלבד):
+"The production product was a full automation builder — create, run, view, edit. What it didn't have was the layer above it: what happens when agents start acting at scale, and an operator needs to understand risk and stay in control across all of them at once."
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -172,7 +201,7 @@ H2: This wasn't a technology problem — it was an [experience problem]
 
 LEDE:
 A user deciding whether to let an agent touch their cloud bill is making
-a [trust decision] — and trust is pure design: control, transparency,
+a [trust decision] — and trust becomes a [design problem]: control, transparency,
 and a clear mental model of what the agent will do.
   (ה-highlight: "trust decision")
 
@@ -251,7 +280,7 @@ CARD 2: Engineering / Tech Lead
   What the agents can actually report — which signals, states and
   actions are available to show.
 
-CARD 3: Founder
+CARD 3: CPO
   The AI-native direction and the bar for what "trust" has to mean
   in the product.
 
@@ -285,8 +314,8 @@ BULLETS:
 
 HIGHLIGHT PARAGRAPH:
 [The gap:] even the most advanced competitor runs oversight through Slack
-or ticketing — none offered a single in-product pane to see every agent,
-its scope and its pending decisions.
+or ticketing — at the time, I didn't find a single product with a dedicated in-product pane to see every agent,
+its scope and its pending decisions
   (ה-highlight: "The gap:")
 
 IMG-02 TAG: Drop frame: competitive scan
@@ -426,6 +455,9 @@ STORY NOTE: Preview חי של Concept-01.html. לחיצה פותחת fullscreen.
 EYEBROW: Design exploration · concept 01
 H2: Concept 01
 
+CAPTION (גלוי):
+Decisions folded quietly into the greeting — clean, but easy to miss the thing that matters most.
+
 [N] Concept 01: decisions folded quietly into the greeting
   ("5 decisions waiting for your review"). Clean, but easy to miss
   the thing that matters most.
@@ -438,6 +470,9 @@ STORY NOTE: Preview חי של Concept-02.html.
 
 EYEBROW: Design exploration · concept 02
 H2: Concept 02
+
+CAPTION (גלוי):
+A dedicated decisions banner — impossible to miss, but heavy. Pushes the whole agent list down.
 
 [N] Concept 02: a dedicated decisions banner naming the waiting agents,
   with a clear "Review decisions" action. Impossible to miss — but a
@@ -452,6 +487,9 @@ STORY NOTE: Preview חי של Concept-03.html — הכיוון שנבחר.
 EYEBROW: Design exploration · concept 03 — chosen
 H2: Concept 03 [→ Direction 03]
   (ה-italic: "→ Direction 03")
+
+CAPTION (גלוי):
+"Review decisions" merged into the metric itself — the urgency of Concept 02, without the banner taking over the screen.
 
 [N] Concept 03 (selected): "Review decisions" merged into the
   Decisions Waiting metric itself — the urgency of Concept 02 without
@@ -492,6 +530,9 @@ Header: Edit via chat
 Message 1: "Only act on instances idle > 7 days."
 Message 2: Collapsible — supportive, never dominant. [placeholder]
 
+CAPTION (גלוי — מתחת למסך):
+The agent-management screen — fleet overview, pending decisions, blast radius per action, and system health in one view. The "Decisions Waiting" metric is also the entry point to review — one click, oldest flagged first.
+
 [N] BUILT FROM YOUR SPEC. Live rebuild of Direction 03.
   Replace with your real Figma frames, or keep it.
 
@@ -527,9 +568,19 @@ HEADER: How I solved it
 • [✓] Snooze or hand off to the right person (who gets an email with full context)
 • [✓] Agents shared across the team — oversight never stuck with one person
 
-[N] ⚠ PAINS 02–04. Only Pain 01 is yours verbatim. The other 3 pains
-  (blast radius, scale, opaque agents) are on slide 8 — pull a real
-  quote for each if you can.
+ROW 2 — ADDITIONAL PAINS:
+Pain 02: No sense of blast radius
+  How many resources? What's the cost impact? Is it reversible? None of this was visible before acting.
+
+Pain 03: Approval didn't scale
+  Five pending decisions meant five separate screens — one agent at a time.
+
+Pain 04: Status was ambiguous
+  Running? Waiting for a trigger? Failed silently? There was no clear status signal at the list level.
+
+RESEARCH BACKING (footnote):
+Gartner (2025): "Agents acting without user visibility create legal and operational exposure — the UI is the accountability layer."
+NN/g (2026): "Trust is a design problem. Focus: legibility — visibility, intervenability, understanding the why."
 
 [★ COUNCIL] זה השקף הכי חשוב להשלים: צרי ציטוטים אמיתיים
 ל-Pains 02-04 ועדכני כאן. "To approve anything, I have to go
@@ -547,9 +598,9 @@ H2: A system, [not just screens]
   (ה-italic: "not just screens")
 
 PARAGRAPH:
-I built a [Component Dictionary] — 44 components, auto-generated from
-the React codebase and bound to PointFive brand tokens — so the agent
-surface stays coherent as the product scales.
+I built a [Component Dictionary] — auto-generated from the React codebase
+and bound to PointFive brand tokens — a full design system that keeps
+the agent surface coherent as the product scales, and can grow consistently from here.
   (ה-bold: "Component Dictionary")
 
 IMG-05 TAG: Drop frame: component dictionary
@@ -576,8 +627,7 @@ NG agent direction a ["game changer"] and asked how soon they could use it.
   (ה-highlight: "game changer")
 
 PARAGRAPH 2:
-The market clearly wants autonomous agents — and the [trust layer I designed
-was built to turn that demand into something people would actually switch on.]
+The market clearly wants autonomous agents. This is market validation of the direction — not measured results on the design itself. The [trust layer I designed was built to turn that demand into something people would actually switch on.]
   (ה-bold: "trust layer I designed was built to...")
 
 [N] HONEST FRAMING. This is validation of the product *direction*, not
@@ -609,17 +659,42 @@ BULLETS:
   generating 20 prototype directions — with my judgment as the filter.
 • [Distilled 10 products + 10 studies] into 5 evidence-backed trust
   principles that drove every decision.
-• [What's next:] expand the single-agent page, a deeper edit / delegate /
-  snooze flow, validation with FinOps users, and the edge & empty states.
+• [Where this could go:] a deeper single-agent page, edit / delegate / snooze flows,
+  validation with FinOps operators, and the edge states — no decisions, failed runs, recovery.
   (ה-bold: פתיחת כל bullet)
 
-CLOSING QUOTE:
-"In an AI-native world, a designer's value isn't producing screens fastest —
-it's being the layer of judgment."
+CLOSING LINE:
+In an AI-native world, a designer's value isn't producing screens fastest —
+it's being the layer of judgment.
 
 [★ COUNCIL — V1 בלבד] שקף 23 בv1 עדיין אומר "What's next: expand..."
 כאילו את עדיין שם. שקול לשנות ל-"Where it could go:" או להשמיט
 כמו שנעשה ב-v2.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[SLIDE 23b] — Three signals I'd track (NEW — בין 23 ל-24)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STORY NOTE: שקף מטריקות — הופך "אין לך data?" מחולשה לשקיפות.
+
+EYEBROW: What I'd measure
+
+H2: Three signals [I'd track]
+  (ה-italic: "I'd track")
+
+3 CARDS:
+
+Agent activation rate
+How many users who have agents actually turn them on.
+This is the main signal — it measures whether the trust layer did its job.
+
+Time-to-decision
+How long it takes to approve or reject a pending decision.
+Fast means the context was clear. Slow means something is still confusing.
+
+Snooze rate
+How often operators delay instead of deciding.
+High snooze doesn't mean they're busy — it means they need more context before they act.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -642,8 +717,8 @@ DESC:  FinOps, data security, enterprise AI. I make hard things feel inevitable.
 
 COLUMN 3:
 TITLE: I'm AI-native — and I build
-DESC:  I use code and generative tools inside my process: prototypes,
-       AI-assisted synthesis, internal tools that multiply the team.
+DESC:  I use AI inside my process — live HTML prototypes, research synthesis, concept generation.
+       In this project, I built 20 live directions with AI as a collaborator — with my judgment as the filter.
 
 [N] UPDATE DONE. Replaced the 3-yr-old version with your current positioning.
 
