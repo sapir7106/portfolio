@@ -280,7 +280,7 @@ CARD 2: Engineering / Tech Lead
   What the agents can actually report — which signals, states and
   actions are available to show.
 
-CARD 3: Founder
+CARD 3: CPO
   The AI-native direction and the bar for what "trust" has to mean
   in the product.
 
@@ -568,9 +568,19 @@ HEADER: How I solved it
 • [✓] Snooze or hand off to the right person (who gets an email with full context)
 • [✓] Agents shared across the team — oversight never stuck with one person
 
-[N] ⚠ PAINS 02–04. Only Pain 01 is yours verbatim. The other 3 pains
-  (blast radius, scale, opaque agents) are on slide 8 — pull a real
-  quote for each if you can.
+ROW 2 — ADDITIONAL PAINS:
+Pain 02: No sense of blast radius
+  How many resources? What's the cost impact? Is it reversible? None of this was visible before acting.
+
+Pain 03: Approval didn't scale
+  Five pending decisions meant five separate screens — one agent at a time.
+
+Pain 04: Status was ambiguous
+  Running? Waiting for a trigger? Failed silently? There was no clear status signal at the list level.
+
+RESEARCH BACKING (footnote):
+Gartner (2025): "Agents acting without user visibility create legal and operational exposure — the UI is the accountability layer."
+NN/g (2026): "Trust is a design problem. Focus: legibility — visibility, intervenability, understanding the why."
 
 [★ COUNCIL] זה השקף הכי חשוב להשלים: צרי ציטוטים אמיתיים
 ל-Pains 02-04 ועדכני כאן. "To approve anything, I have to go
@@ -588,9 +598,9 @@ H2: A system, [not just screens]
   (ה-italic: "not just screens")
 
 PARAGRAPH:
-I built a [Component Dictionary] — 44 components, auto-generated from
-the React codebase and bound to PointFive brand tokens — so the agent
-surface stays coherent as the product scales.
+I built a [Component Dictionary] — auto-generated from the React codebase
+and bound to PointFive brand tokens — a full design system that keeps
+the agent surface coherent as the product scales, and can grow consistently from here.
   (ה-bold: "Component Dictionary")
 
 IMG-05 TAG: Drop frame: component dictionary
@@ -653,9 +663,9 @@ BULLETS:
   validation with FinOps operators, and the edge states — no decisions, failed runs, recovery.
   (ה-bold: פתיחת כל bullet)
 
-CLOSING QUOTE:
-"In an AI-native world, a designer's value isn't producing screens fastest —
-it's being the layer of judgment."
+CLOSING LINE:
+In an AI-native world, a designer's value isn't producing screens fastest —
+it's being the layer of judgment.
 
 [★ COUNCIL — V1 בלבד] שקף 23 בv1 עדיין אומר "What's next: expand..."
 כאילו את עדיין שם. שקול לשנות ל-"Where it could go:" או להשמיט
