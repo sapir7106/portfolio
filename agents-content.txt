@@ -83,4 +83,3 @@ Bullet 4: **Agent activation rate** — how many users who have agents actually 
 Bullet 5: **Time-to-decision in the review flow** — how long it takes to approve or reject a pending decision. Fast means the context was clear. Slow means something is still confusing.
 Bullet 6: **Snooze rate** — how often operators delay instead of deciding. High snooze doesn't mean they're busy — it means they need more context before they act.
 
-Callout: In an AI-native world, a designer's value isn't producing screens fastest — it's being the layer of judgment: asking the questions no one else asks, understanding the user, finding the holes in a flow before they reach development.
