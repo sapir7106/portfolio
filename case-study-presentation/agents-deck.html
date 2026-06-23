@@ -453,8 +453,8 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <a href="../agents.html" class="rail-back"><span class="ri">←</span><span class="rl">Back</span></a>
   <button data-go="0"><span class="ri">01</span><span class="rl">About me</span></button>
   <button data-go="3"><span class="ri">02</span><span class="rl">Case study</span></button>
-  <button data-go="19"><span class="ri">03</span><span class="rl">The design</span></button>
-  <button data-go="23"><span class="ri">04</span><span class="rl">Reflection</span></button>
+  <button data-go="20"><span class="ri">03</span><span class="rl">The design</span></button>
+  <button data-go="24"><span class="ri">04</span><span class="rl">Reflection</span></button>
 </nav>
 
 <div class="stage-wrap">
@@ -564,6 +564,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="flex-mid">
     <h2>PointFive was going <em>AI-native</em></h2>
     <p class="lede">PointFive helps organizations cut cloud-cost waste. The next step: agents that don't just <mark>surface a problem — they act on it.</mark></p>
+    <p style="margin-top:.6em">For this case study, I focused on what happens after the agents start running — the oversight layer that tells you what's happening, what needs your attention, and whether you can step in.</p>
     <div class="values">
       <div class="val">
         <div class="val-lbl">Value / 01</div>
@@ -605,6 +606,34 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   </div>
 </section>
 
+<!-- 5b NEW — From agent management to agent oversight -->
+<section class="slide">
+  <div class="eyebrow">The starting point · what existed</div>
+  <h2>From agent management to <em>agent oversight</em></h2>
+  <div class="two" style="align-items:start;margin-top:1.4cqh">
+    <div>
+      <p style="font-family:var(--mono);font-size:1cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8cqh">Existing layer</p>
+      <ul class="clean">
+        <li>Create agents</li>
+        <li>Run agents</li>
+        <li>View activity</li>
+        <li>Edit workflows</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-family:var(--mono);font-size:1cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8cqh">What was missing</p>
+      <ul class="clean">
+        <li>See pending decisions across all agents at once</li>
+        <li>Understand blast radius before an action runs</li>
+        <li>Review and approve at scale — not agent by agent</li>
+        <li>Know ownership, scope and risk for every agent</li>
+      </ul>
+    </div>
+  </div>
+  <p class="emph" style="margin-top:1.4cqh">My focus: the trust layer that sits between these two — making autonomous FinOps agents safe enough to actually turn on.</p>
+  <div class="note"><b>🎙 SPEAKER NOTE:</b> "The production product was a full automation builder — create, run, view, edit. What it didn't have was the layer above it: what happens when agents start acting at scale, and an operator needs to understand risk and stay in control across all of them at once."</div>
+</section>
+
 <!-- 6 -->
 <section class="slide">
   <div class="eyebrow">The starting point</div>
@@ -621,7 +650,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">The problem</div>
   <div class="flex-mid">
     <h2>This wasn't a technology problem — it was an <em>experience problem</em></h2>
-    <p class="lede">A user deciding whether to let an agent touch their cloud bill is making a <mark>trust decision</mark> — and trust is pure design: control, transparency, and a clear mental model of what the agent will do.</p>
+    <p class="lede">A user deciding whether to let an agent touch their cloud bill is making a <mark>trust decision</mark> — and trust becomes a design problem: control, transparency, and a clear mental model of what the agent will do.</p>
     <p style="margin-top:.6em">If users don't trust what they can't see, the capability goes unused — and <strong>the AI-native bet fails on adoption, not on the model.</strong></p>
   </div>
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "The underlying AI worked perfectly — but user adoption was failing. Users don't trust what they can't see. My challenge wasn't to fix the model, it was to design the interface that makes the model trustworthy. Those are two completely different problems."</div>
@@ -686,7 +715,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
         <li>Studied <b>5 direct FinOps competitors</b> — Vantage, Finout, ProsperOps, nOps, CloudZero.</li>
         <li>Read <b>10 studies</b> on AI trust + signal from <b>McKinsey · Gartner · SurveyMonkey · NN/g</b>.</li>
       </ul>
-      <p style="margin-top:.6em"><mark>The gap:</mark> even the most advanced competitor runs oversight through Slack or ticketing — none offered a single in-product pane to see every agent, its scope and its pending decisions.</p>
+      <p style="margin-top:.6em"><mark>The gap:</mark> even the most advanced competitor runs oversight through Slack or ticketing — at the time, I didn't find a single product with a dedicated in-product pane to see every agent, its scope and its pending decisions</p>
     </div>
     <div class="shot" style="margin-top:0"><span class="shot-id">IMG-02</span><div class="tag">Drop frame: competitive scan</div><div class="desc">Market scan — 10 agentic products plus direct FinOps competitors, studied for how they handle oversight of autonomous actions.</div></div>
   </div>
@@ -756,6 +785,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">Design exploration · concept 01</div>
   <h2>Concept 01</h2>
   <div class="cframe"><iframe class="cprev" src="Concept-01.html" title="Concept 01" loading="lazy" scrolling="no"></iframe><div class="chint">click to open ↗</div></div>
+  <p style="margin-top:.8cqh;font-size:1.15cqw;color:var(--muted);font-style:italic">Decisions folded quietly into the greeting — clean, but easy to miss the thing that matters most.</p>
   <div class="note"><b>Concept 01:</b> decisions folded quietly into the greeting ("5 decisions waiting for your review"). Clean, but easy to miss the thing that matters most.</div>
 </section>
 
@@ -764,6 +794,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">Design exploration · concept 02</div>
   <h2>Concept 02</h2>
   <div class="cframe"><iframe class="cprev" src="Concept-02.html" title="Concept 02" loading="lazy" scrolling="no"></iframe><div class="chint">click to open ↗</div></div>
+  <p style="margin-top:.8cqh;font-size:1.15cqw;color:var(--muted);font-style:italic">A dedicated decisions banner — impossible to miss, but heavy. Pushes the whole agent list down.</p>
   <div class="note"><b>Concept 02:</b> a dedicated decisions banner naming the waiting agents, with a clear "Review decisions" action. Impossible to miss — but a heavy block pushing the agent list down.</div>
 </section>
 
@@ -772,6 +803,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">Design exploration · concept 03 — chosen</div>
   <h2>Concept 03 <em>→ Direction 03</em></h2>
   <div class="cframe"><iframe class="cprev" src="Concept-03.html" title="Concept 03" loading="lazy" scrolling="no"></iframe><div class="chint">click to open ↗</div></div>
+  <p style="margin-top:.8cqh;font-size:1.15cqw;color:var(--muted);font-style:italic">"Review decisions" merged into the metric itself — the urgency of Concept 02, without the banner taking over the screen.</p>
   <div class="note"><b>Concept 03 (selected):</b> "Review decisions" merged into the Decisions Waiting metric itself — the urgency of Concept 02 without the extra banner. Decisions are the first thing you see, but the fleet stays in view.</div>
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "Concept 03 won because it solved the tension without compromising either side. The 'Decisions Waiting' counter became the entry point — it surfaced urgency at exactly the moment the operator's eye was already there, scanning the overview strip. No extra real estate, no cognitive detour."</div>
 </section>
@@ -801,6 +833,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
     <div class="drawer"><div class="dh">Edit via chat</div><div class="msg">"Only act on instances idle &gt; 7 days."</div><div class="msg" style="background:transparent;border:1px solid #232838;color:#737a8c">Collapsible — supportive, never dominant.</div></div>
   </div>
   </div>
+  <p style="margin-top:.8cqh;font-size:1.1cqw;color:var(--muted)">The agent-management screen — fleet overview, pending decisions, blast radius per action, and system health in one view. The "Decisions Waiting" metric is also the entry point to review — one click, oldest flagged first.</p>
   <div class="note"><b>BUILT FROM YOUR SPEC.</b> Live rebuild of Direction 03. Replace with your real Figma frames, or keep it.</div>
 </section>
 
@@ -834,7 +867,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="flex-mid">
     <h2>The market <em>wants</em> this direction</h2>
     <p class="lede">At <strong>FinOps X 2026</strong>, customers and partners repeatedly called PointFive's NG agent direction a <mark>"game changer"</mark> and asked how soon they could use it.</p>
-    <p style="margin-top:.6em">The market clearly wants autonomous agents — and the <strong>trust layer I designed was built to turn that demand into something people would actually switch on.</strong></p>
+    <p style="margin-top:.6em">The market clearly wants autonomous agents. This is market validation of the direction — not measured results on the design itself. The <strong>trust layer I designed was built to turn that demand into something people would actually switch on.</strong></p>
   </div>
   <div class="note"><b>HONEST FRAMING.</b> This is validation of the product *direction*, not measured results on the design itself. No invented metrics — that's deliberate.</div>
 </section>
@@ -848,9 +881,32 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
     <ul class="clean" style="margin-top:.7em">
       <li><b>Used AI as a research partner</b> — clustering the scan into themes, generating 20 prototype directions — with my judgment as the filter.</li>
       <li><b>Distilled 10 products + 10 studies</b> into 5 evidence-backed trust principles that drove every decision.</li>
-      <li><b>What's next:</b> expand the single-agent page, a deeper edit / delegate / snooze flow, validation with FinOps users, and the edge & empty states.</li>
+      <li><b>Where this could go:</b> a deeper single-agent page, edit / delegate / snooze flows, validation with FinOps operators, and the edge states — no decisions, failed runs, recovery.</li>
     </ul>
     <p class="emph" style="margin-top:.7em">"In an AI-native world, a designer's value isn't producing screens fastest — it's being the layer of judgment."</p>
+  </div>
+</section>
+
+<!-- 25b NEW — Three signals I'd track -->
+<section class="slide">
+  <div class="eyebrow">What I'd measure</div>
+  <h2>Three signals <em>I'd track</em></h2>
+  <div class="pitch" style="margin-top:1.6cqh">
+    <div class="col">
+      <h4>Agent activation rate</h4>
+      <p>How many users who have agents actually turn them on.</p>
+      <p style="margin-top:.5em;color:var(--accent);font-size:1.15cqw">This is the main signal — it measures whether the trust layer did its job.</p>
+    </div>
+    <div class="col">
+      <h4>Time-to-decision</h4>
+      <p>How long it takes to approve or reject a pending decision.</p>
+      <p style="margin-top:.5em;color:var(--accent);font-size:1.15cqw">Fast means the context was clear. Slow means something is still confusing.</p>
+    </div>
+    <div class="col">
+      <h4>Snooze rate</h4>
+      <p>How often operators delay instead of deciding.</p>
+      <p style="margin-top:.5em;color:var(--accent);font-size:1.15cqw">High snooze doesn't mean they're busy — it means they need more context before they act.</p>
+    </div>
   </div>
 </section>
 
@@ -861,7 +917,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="pitch">
     <div class="col"><h4>I design the system, not just the screen</h4><p>The components, tokens and standards underneath a product — the thing that keeps it coherent as it scales.</p></div>
     <div class="col"><h4>Complex products are my expertise</h4><p>FinOps, data security, enterprise AI. I make hard things feel inevitable.</p></div>
-    <div class="col"><h4>I'm AI-native — and I build</h4><p>I use code and generative tools inside my process: prototypes, AI-assisted synthesis, internal tools that multiply the team.</p></div>
+    <div class="col"><h4>I'm AI-native — and I build</h4><p>I use AI inside my process — live HTML prototypes, research synthesis, concept generation. In this project, I built 20 live directions with AI as a collaborator — with my judgment as the filter.</p></div>
   </div>
   <div class="note"><b>UPDATE DONE.</b> Replaced the 3-yr-old version with your current positioning.</div>
 </section>
