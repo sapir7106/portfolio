@@ -49,7 +49,7 @@ mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
 /* hero-shot @500px — see consolidated block below */
 figure{margin:0}
 figcaption{font-size:14px;color:var(--muted);margin-top:16px;font-style:italic;text-align:center}
-.ph{background:var(--line);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;position:relative;min-height:220px;container-type:inline-size}
+.ph{background:var(--line);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;position:relative;min-height:220px;container-type:inline-size}
 .ph-id{display:none;position:absolute;top:10px;left:10px;background:var(--ink);color:var(--hi);font-size:10px;font-weight:600;font-family:monospace;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
 body.show-labels .ph-id{display:block}
 .ph svg{width:24px;height:24px;opacity:.3}
@@ -57,7 +57,7 @@ body.show-labels .ph-id{display:block}
 /* real image inside placeholder — when it loads, it fills the width and
    sets its own natural height, overriding the placeholder's aspect-ratio */
 .ph:has(.ph-img),.ph.has-img{aspect-ratio:auto !important;min-height:0;background:transparent;display:block}
-.ph-img{width:100%;height:auto;display:block;border-radius:clamp(6px,2.3cqw,18px);position:relative;z-index:2;box-shadow:0 1px 1px #0000000a, 0 4px 4px #0000000f, 0 16px 24px #00000014}
+.ph-img{width:100%;height:auto;display:block;border-radius:6px;position:relative;z-index:2;box-shadow:0 1px 1px #0000000a, 0 4px 4px #0000000f, 0 16px 24px #00000014}
 /* hide the placeholder icon/label once a real image is present */
 .ph:has(.ph-img) > svg,
 .ph:has(.ph-img) > span,
@@ -86,7 +86,7 @@ h2 em{font-style:italic;font-weight:400}
 
 /* image blocks */
 .img-mt{margin-top:32px}
-.img-mt .ph,.img-mt img{width:100%;display:block;border-radius:8px;background:var(--line)}
+.img-mt .ph,.img-mt img{width:100%;display:block;border-radius:6px;background:var(--line)}
 .img-row{display:grid;gap:28px;margin-top:32px}
 .img-row.c2{grid-template-columns:1fr 1fr}
 .img-row.c3{
@@ -155,7 +155,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 /* lightbox */
 .lightbox{display:none;position:fixed;inset:0;left:0;background:rgba(23,22,15,.95);z-index:9999;align-items:center;justify-content:center;padding:24px;flex-direction:column;gap:16px}
 .lightbox.open{display:flex}
-.lightbox img{max-width:90vw;max-height:80vh;width:auto;height:auto;border-radius:20px;display:block}
+.lightbox img{max-width:90vw;max-height:80vh;width:auto;height:auto;border-radius:6px;display:block}
 .lb-ph{background:var(--bg2);border:1px solid var(--line);border-radius:8px;width:clamp(280px,90vw,1196px);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;font-family:monospace}
 .lb-caption{font-size:17px;color:rgba(242,239,232,0.75);font-family:var(--sans);font-weight:300;font-style:normal;text-align:center;max-width:70ch;line-height:1.5}
 .lb-close{position:fixed;top:20px;right:24px;background:none;border:none;cursor:pointer;color:#F2EFE8;font-size:28px;line-height:1;padding:4px 8px;transition:color .2s;z-index:10000}
