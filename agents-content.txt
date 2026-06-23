@@ -27,9 +27,9 @@ IMG-01 caption: The agent oversight screen — every agent, its status, scope an
 
 SECTION 01 — Context / The problem
 ----------------------------------------
-Paragraph 0: The product already let you create agents, trigger them, see their workflows and activity. What it didn't have was a way to understand what was happening across all of them at once — or to know when one of them needed you.
-
 Paragraph 1: PointFive was adding agent capabilities — AI that doesn't just flag a cloud-cost issue, but fixes it autonomously. The moment agents could act on their own, something shifted: people started to fear them, not trust them, and quietly avoided turning them on.
+
+Paragraph 0: The product already let you create agents, trigger them, see their workflows and activity. What it didn't have was a way to understand what was happening across all of them at once — or to know when one of them needed you.
 
 Paragraph 2: This wasn't a technology problem — it was an experience problem. A user deciding whether to let an agent touch their cloud bill is making a trust decision, and trust becomes a design problem: control, transparency, and a clear mental model of what the agent will do.
 
@@ -71,11 +71,12 @@ Paragraph 2: Where this could go: a deeper single-agent page, edit / delegate / 
 Bullet 1: Used AI as a research partner — clustering the product scan into themes and generating 20 live prototype directions — with my judgment as the filter.
 Bullet 2: Distilled 10 products and 10 studies into 5 evidence-backed trust principles that drove every design decision.
 Bullet 3: At FinOps X 2026, customers and partners repeatedly called PointFive's NG agent direction a "game changer" and asked how soon they could use it.
-Bullet 4: In an AI-native world, a designer's value isn't producing screens fastest — it's being the layer of judgment: asking the questions no one else asks, understanding the user, finding the holes in a flow before they reach development.
 
 Divider: true
 
 Paragraph 3: If this had shipped, I'd measure three things:
-Bullet 5: **Agent activation rate** — how many users who have agents actually turn them on. The main signal for whether the trust layer did its job.
-Bullet 6: **Time-to-decision in the review flow** — how long it takes to approve or reject a pending decision. Fast means the context was clear. Slow means something is still confusing.
-Bullet 7: **Snooze rate** — how often operators delay instead of deciding. High snooze doesn't mean they're busy — it means they need more context before they act.
+Bullet 4: **Agent activation rate** — how many users who have agents actually turn them on. The main signal for whether the trust layer did its job.
+Bullet 5: **Time-to-decision in the review flow** — how long it takes to approve or reject a pending decision. Fast means the context was clear. Slow means something is still confusing.
+Bullet 6: **Snooze rate** — how often operators delay instead of deciding. High snooze doesn't mean they're busy — it means they need more context before they act.
+
+Callout: In an AI-native world, a designer's value isn't producing screens fastest — it's being the layer of judgment: asking the questions no one else asks, understanding the user, finding the holes in a flow before they reach development.
