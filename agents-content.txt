@@ -12,7 +12,7 @@ HERO
 Eyebrow: PointFive · AI Efficiency OS for FinOps · 2026
 Title: Designing trust into
 Title italic: autonomous agents
-Lede: PointFive is a FinOps platform that helps organizations understand and cut cloud costs — and it was going AI-native, with **agents that don't just surface problems but act on them.** I designed the oversight layer for those agents — the part that tells you what's happening, what needs your attention, and whether you can step in.
+Lede: PointFive is a FinOps platform that helps organizations understand and cut cloud costs — and it was going AI-native, with **agents that don't just surface problems but act on them.** I designed the oversight layer for those [[==autonomous agents==|case-study-presentation/agents-deck.html|secret-deck]] — the part that tells you what's happening, what needs your attention, and whether you can step in.
 
 IMPACT
 ------
