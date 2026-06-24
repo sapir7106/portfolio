@@ -172,14 +172,14 @@ ul.clean li b{color:var(--ink);font-weight:600}
 
 .shot{flex:1;min-height:0;margin-top:1.4cqh;border:1px dashed var(--line);border-radius:10px;background:repeating-linear-gradient(45deg,var(--bg-alt),var(--bg-alt) 12px,#fff 12px,#fff 24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1cqh;text-align:center;padding:2cqh;position:relative}
 /* when a real image is dropped in: fill the frame, hide the placeholder hints */
-.shot.has-shot-img{border-style:solid;border-color:var(--line);background:#fff;padding:0;overflow:hidden}
+.shot.has-shot-img{border-style:solid;border-color:var(--line);background:transparent;padding:0;overflow:hidden;align-items:center;justify-content:center}
 .shot.has-shot-img .tag,.shot.has-shot-img .desc{display:none}
 .shot-img{position:relative;display:block;width:100%;height:auto;max-height:100%;object-fit:contain;z-index:2;border-radius:10px}
-.shot.has-shot-img{align-items:stretch;justify-content:flex-start}
 
-.shot-full{flex:1;min-height:0;width:100%;margin-top:1.4cqh;display:flex;align-items:center;justify-content:center;background:transparent;border:none;border-radius:10px;position:relative;overflow:hidden}
+.shot-full{flex:1;min-height:0;width:100%;margin-top:1.4cqh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:transparent;border:none;border-radius:10px;position:relative;overflow:hidden}
 .shot-full .shot-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;border-radius:10px}
 .shot-full .shot-id{position:absolute;top:10px;left:10px}
+.img-cap{margin-top:.8cqh;font-size:1.05cqw;color:var(--muted);text-align:center;font-family:var(--sans)}
 .shot .tag{font-family:var(--mono);font-weight:700;font-size:1.2cqw;color:var(--accent);letter-spacing:.03em}
 .shot .desc{font-size:1.2cqw;color:var(--muted);max-width:42ch}
 
@@ -459,7 +459,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <button data-go="0"><span class="ri">01</span><span class="rl">About me</span></button>
   <button data-go="3"><span class="ri">02</span><span class="rl">Case study</span></button>
   <button data-go="20"><span class="ri">03</span><span class="rl">The design</span></button>
-  <button data-go="26"><span class="ri">04</span><span class="rl">Reflection</span></button>
+  <button data-go="25"><span class="ri">04</span><span class="rl">Reflection</span></button>
 </nav>
 
 <div class="stage-wrap">
@@ -817,39 +817,14 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <section class="slide">
   <div class="eyebrow">Final design · Direction 03</div>
   <h2>The agent-management screen</h2>
-  <div class="mock-wrap">
-  <div class="mock">
-    <div class="topbar"><b>Agents</b>
-      <div class="kpis">
-        <div class="kpi"><div class="n">12</div><div class="k">Running</div></div>
-        <div class="kpi"><div class="n">3</div><div class="k">Pending</div></div>
-        <div class="kpi"><div class="n">$48k</div><div class="k">Saved / mo</div></div>
-      </div>
-    </div>
-    <div class="banner"><b>3 decisions</b> need your review across all agents <span class="btn">Review decisions</span></div>
-    <div class="filters"><span class="chip on">All</span><span class="chip">Pending</span><span class="chip">Running</span><span class="chip">Org</span><span class="chip">Team</span><span class="chip">Personal</span></div>
-    <div class="tbl">
-      <div class="row head"><div>Agent · goal</div><div>Scope</div><div>Status</div><div>Decision</div></div>
-      <div class="row"><div class="ag"><b>Rightsize idle compute</b><span>Cut spend on under-used instances</span></div><div><span class="scope">Org · ~$12k</span></div><div><span class="pill pend">Pending</span></div><div class="dec">Needs approval</div></div>
-      <div class="row"><div class="ag"><b>Delete orphaned volumes</b><span>Reclaim unattached storage</span></div><div><span class="scope">Team · ~$3k</span></div><div><span class="pill run">Running</span></div><div class="dec">Auto</div></div>
-      <div class="row"><div class="ag"><b>Commit savings plan</b><span>Lock in 1-yr discount</span></div><div><span class="scope">Org · ~$20k</span></div><div><span class="pill pend">Pending</span></div><div class="dec">Needs approval</div></div>
-      <div class="row"><div class="ag"><b>Schedule dev shutdowns</b><span>Pause non-prod at night</span></div><div><span class="scope">Personal</span></div><div><span class="pill done">Done</span></div><div class="dec">Approved · undo</div></div>
-    </div>
-    <div class="drawer"><div class="dh">Edit via chat</div><div class="msg">"Only act on instances idle &gt; 7 days."</div><div class="msg" style="background:transparent;border:1px solid #232838;color:#737a8c">Collapsible — supportive, never dominant.</div></div>
-  </div>
+  <div class="shot-full">
+    <span class="shot-id">IMG-06</span>
+    <img class="shot-img" src="presentation-images/IMG-06.png" alt="The agent-management screen"
+         style="cursor:zoom-in"
+         onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
   </div>
   <p style="margin-top:.8cqh;font-size:1.1cqw;color:var(--muted);text-align:center;max-width:none">The agent-management screen — fleet overview, pending decisions, blast radius per action, and system health in one view. The "Decisions Waiting" metric is also the entry point to review — one click, oldest flagged first.</p>
 
-</section>
-
-<!-- 20 -->
-<section class="slide">
-    <div class="shot-full">
-      <span class="shot-id">IMG-06</span>
-      <img class="shot-img" src="presentation-images/IMG-06.png" alt="Pains, ideas and solutions"
-           style="cursor:zoom-in"
-           onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
-    </div>
 </section>
 
 <!-- 21 -->
@@ -857,20 +832,22 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <section class="slide">
     <div class="shot-full">
       <span class="shot-id">IMG-07</span>
-      <img class="shot-img" src="presentation-images/IMG-07.png" alt="Final design — decisions"
+      <img class="shot-img" src="presentation-images/IMG-07.png" alt="Decisions review"
            style="cursor:zoom-in"
            onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
     </div>
+    <p class="img-cap">Reviewing decisions — oldest flagged first, full context in one place.</p>
 </section>
 
 <!-- new image slide: IMG-08 -->
 <section class="slide">
     <div class="shot-full">
       <span class="shot-id">IMG-08</span>
-      <img class="shot-img" src="presentation-images/IMG-08.png" alt="Final design — snooze"
+      <img class="shot-img" src="presentation-images/IMG-08.png" alt="Snooze a decision"
            style="cursor:zoom-in"
            onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
     </div>
+    <p class="img-cap">Snooze or hand off — oversight never gets stuck on one person.</p>
 </section>
 
 <section class="slide">
