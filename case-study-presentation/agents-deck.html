@@ -172,9 +172,14 @@ ul.clean li b{color:var(--ink);font-weight:600}
 
 .shot{flex:1;min-height:0;margin-top:1.4cqh;border:1px dashed var(--line);border-radius:10px;background:repeating-linear-gradient(45deg,var(--bg-alt),var(--bg-alt) 12px,#fff 12px,#fff 24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1cqh;text-align:center;padding:2cqh;position:relative}
 /* when a real image is dropped in: fill the frame, hide the placeholder hints */
-.shot.has-shot-img{border-style:solid;border-color:var(--line);background:#fff;padding:0;overflow:hidden}
+.shot.has-shot-img{border:none;background:transparent;padding:0;overflow:visible;display:flex;align-items:center;justify-content:center}
 .shot.has-shot-img .tag,.shot.has-shot-img .desc{display:none}
-.shot-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:2;border-radius:10px}
+.shot-img{position:relative;display:block;width:auto;max-width:100%;height:auto;max-height:100%;object-fit:contain;z-index:2;border:1px solid var(--line);border-radius:10px}
+
+.shot-full{flex:1;min-height:0;width:100%;margin-top:1.4cqh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:transparent;border:none;position:relative;overflow:hidden}
+.shot-full .shot-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;border:1px solid var(--line);border-radius:10px}
+.shot-full .shot-id{position:absolute;top:10px;left:10px}
+.img-cap{margin-top:.8cqh;font-size:1.05cqw;color:var(--muted);text-align:center;font-family:var(--sans);white-space:nowrap}
 .shot .tag{font-family:var(--mono);font-weight:700;font-size:1.2cqw;color:var(--accent);letter-spacing:.03em}
 .shot .desc{font-size:1.2cqw;color:var(--muted);max-width:42ch}
 
@@ -454,7 +459,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <button data-go="0"><span class="ri">01</span><span class="rl">About me</span></button>
   <button data-go="3"><span class="ri">02</span><span class="rl">Case study</span></button>
   <button data-go="20"><span class="ri">03</span><span class="rl">The design</span></button>
-  <button data-go="24"><span class="ri">04</span><span class="rl">Reflection</span></button>
+  <button data-go="25"><span class="ri">04</span><span class="rl">Reflection</span></button>
 </nav>
 
 <div class="stage-wrap">
@@ -488,7 +493,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 3 -->
 <section class="slide tl-slide">
   <div class="eyebrow">My approach · how I work</div>
-  <h2>From problem to <em>system</em></h2>
+  <h2 style="margin-bottom:0">From problem to <em>system</em></h2>
   <div class="tl-rows">
 
     <!-- ROW 1 -->
@@ -640,7 +645,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <h2>The old way: <em>agent by agent</em></h2>
   <div class="two" style="align-items:stretch">
     <div class="flex-mid"><p>The moment agents could act on their own, something shifted: people started to <mark>fear them, not trust them</mark>, and quietly avoided turning them on. A pending decision lived inside each agent's own page, behind an unlabeled icon — a user running several agents never knew something was waiting.</p></div>
-    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-01</span><div class="tag">Drop frame: "before" screen</div><div class="desc">The original experience — a pending decision buried behind an unlabeled icon inside a single agent's page.</div></div>
+    <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-01</span><div class="tag">Drop frame: "before" screen</div><div class="desc">The original experience — a pending decision buried behind an unlabeled icon inside a single agent's page.</div><img class="shot-img" src="presentation-images/IMG-01.png" alt="The original experience — a pending decision buried behind an unlabeled icon inside a single agent's page." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
   </div>
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "Look at the original screen — if you had 50 agents running across different systems, you had to click into 50 separate pages just to see if something was waiting for approval. That's not a workflow. That's a full-time job."</div>
 </section>
@@ -649,7 +654,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <section class="slide">
   <div class="eyebrow">The problem</div>
   <div class="flex-mid">
-    <h2>This wasn't a technology problem — it was an <em>experience problem</em></h2>
+    <h2 style="max-width:18ch">This wasn't a technology problem — it was an <em>experience problem</em></h2>
     <p class="lede">A user deciding whether to let an agent touch their cloud bill is making a <mark>trust decision</mark> — and trust becomes a design problem: control, transparency, and a clear mental model of what the agent will do.</p>
     <p style="margin-top:.6em">If users don't trust what they can't see, the capability goes unused — and <strong>the AI-native bet fails on adoption, not on the model.</strong></p>
   </div>
@@ -717,7 +722,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
       </ul>
       <p style="margin-top:.6em"><mark>The gap:</mark> even the most advanced competitor runs oversight through Slack or ticketing — at the time, I didn't find a single product with a dedicated in-product pane to see every agent, its scope and its pending decisions</p>
     </div>
-    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-02</span><div class="tag">Drop frame: competitive scan</div><div class="desc">Market scan — 10 agentic products plus direct FinOps competitors, studied for how they handle oversight of autonomous actions.</div></div>
+    <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-02</span><div class="tag">Drop frame: competitive scan</div><div class="desc">Market scan — 10 agentic products plus direct FinOps competitors, studied for how they handle oversight of autonomous actions.</div><img class="shot-img" src="presentation-images/IMG-02.png" alt="Market scan — 10 agentic products plus direct FinOps competitors, studied for how they handle oversight of autonomous actions." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
   </div>
 </section>
 
@@ -775,7 +780,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
       <p>Built with Claude as <strong>live HTML, not static mockups</strong> — fast to feel in a browser, not just look at.</p>
       <p style="margin-top:.5em">The core question: how to surface the decisions waiting for review — keep them quiet, or pull them up as a dedicated call to action? Each concept made a different bet — building toward <strong>the one I chose</strong>.</p>
     </div>
-    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-04</span><div class="tag">Drop frame: 20-directions contact sheet</div><div class="desc">A grid with Direction 03 highlighted.</div></div>
+    <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-04</span><div class="tag">Drop frame: 20-directions contact sheet</div><div class="desc">A grid with Direction 03 highlighted.</div><img class="shot-img" src="presentation-images/IMG-04.png" alt="A grid with Direction 03 highlighted." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
   </div>
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "In high-density B2B tools, static mockups lie. I built these as live HTML — you could resize the browser, filter the list, click the states. That's how I discovered that Concept 01 was dangerously easy to overlook, and Concept 02 was too aggressive. The medium told me things a Figma frame couldn't."</div>
 </section>
@@ -812,51 +817,43 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <section class="slide">
   <div class="eyebrow">Final design · Direction 03</div>
   <h2>The agent-management screen</h2>
-  <div class="mock-wrap">
-  <div class="mock">
-    <div class="topbar"><b>Agents</b>
-      <div class="kpis">
-        <div class="kpi"><div class="n">12</div><div class="k">Running</div></div>
-        <div class="kpi"><div class="n">3</div><div class="k">Pending</div></div>
-        <div class="kpi"><div class="n">$48k</div><div class="k">Saved / mo</div></div>
-      </div>
-    </div>
-    <div class="banner"><b>3 decisions</b> need your review across all agents <span class="btn">Review decisions</span></div>
-    <div class="filters"><span class="chip on">All</span><span class="chip">Pending</span><span class="chip">Running</span><span class="chip">Org</span><span class="chip">Team</span><span class="chip">Personal</span></div>
-    <div class="tbl">
-      <div class="row head"><div>Agent · goal</div><div>Scope</div><div>Status</div><div>Decision</div></div>
-      <div class="row"><div class="ag"><b>Rightsize idle compute</b><span>Cut spend on under-used instances</span></div><div><span class="scope">Org · ~$12k</span></div><div><span class="pill pend">Pending</span></div><div class="dec">Needs approval</div></div>
-      <div class="row"><div class="ag"><b>Delete orphaned volumes</b><span>Reclaim unattached storage</span></div><div><span class="scope">Team · ~$3k</span></div><div><span class="pill run">Running</span></div><div class="dec">Auto</div></div>
-      <div class="row"><div class="ag"><b>Commit savings plan</b><span>Lock in 1-yr discount</span></div><div><span class="scope">Org · ~$20k</span></div><div><span class="pill pend">Pending</span></div><div class="dec">Needs approval</div></div>
-      <div class="row"><div class="ag"><b>Schedule dev shutdowns</b><span>Pause non-prod at night</span></div><div><span class="scope">Personal</span></div><div><span class="pill done">Done</span></div><div class="dec">Approved · undo</div></div>
-    </div>
-    <div class="drawer"><div class="dh">Edit via chat</div><div class="msg">"Only act on instances idle &gt; 7 days."</div><div class="msg" style="background:transparent;border:1px solid #232838;color:#737a8c">Collapsible — supportive, never dominant.</div></div>
-  </div>
+  <div class="shot-full">
+    <span class="shot-id">IMG-06</span>
+    <img class="shot-img" src="presentation-images/IMG-06.png" alt="The agent-management screen"
+         style="cursor:zoom-in"
+         onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
   </div>
   <p style="margin-top:.8cqh;font-size:1.1cqw;color:var(--muted);text-align:center;max-width:none">The agent-management screen — fleet overview, pending decisions, blast radius per action, and system health in one view. The "Decisions Waiting" metric is also the entry point to review — one click, oldest flagged first.</p>
 
 </section>
 
-<!-- 20 -->
+<!-- 21 -->
+<!-- new image slide: IMG-07 -->
 <section class="slide">
-  <div class="eyebrow">The core of the work</div>
-  <h2>Pains → ideas → solutions</h2>
-  <div class="pain">
-    <div class="pcell cry"><div class="h">Pain 01</div><div class="cryt">"To approve anything, I have to go agent by agent."</div></div>
-    <div class="pcell"><div class="h">Ideas I weighed</div><ul><li>A badge on the agent's row</li><li>A notification / toast</li><li class="win">Surface decisions at list level</li><li class="win">"Decisions Waiting" as entry point</li></ul></div>
-    <div class="pcell"><div class="h">How I solved it</div><ul><li class="win">"Decisions Waiting" metric doubles as the review entry point — oldest flagged first</li><li class="win">Snooze or hand off to the right person (who gets an email with full context)</li><li class="win">Agents shared across the team — oversight never stuck with one person</li></ul></div>
+  <div class="eyebrow">Final design · Direction 03</div>
+  <h2>Reviewing decisions</h2>
+  <div class="shot-full">
+    <span class="shot-id">IMG-07</span>
+    <img class="shot-img" src="presentation-images/IMG-07.png" alt="Reviewing decisions"
+         style="cursor:zoom-in"
+         onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
   </div>
-  <div class="pain" style="margin-top:.7cqh">
-    <div class="pcell"><div class="h">Pain 02</div><div class="cryt" style="border-color:var(--muted)">No sense of blast radius</div><p style="margin-top:.5em;font-size:1.1cqw;color:var(--ink-soft)">How many resources? What's the cost impact? Is it reversible? None of this was visible before acting.</p></div>
-    <div class="pcell"><div class="h">Pain 03</div><div class="cryt" style="border-color:var(--muted)">Approval didn't scale</div><p style="margin-top:.5em;font-size:1.1cqw;color:var(--ink-soft)">Five pending decisions meant five separate screens — one agent at a time.</p></div>
-    <div class="pcell"><div class="h">Pain 04</div><div class="cryt" style="border-color:var(--muted)">Status was ambiguous</div><p style="margin-top:.5em;font-size:1.1cqw;color:var(--ink-soft)">Running? Waiting for a trigger? Failed silently? There was no clear status signal at the list level.</p></div>
-  </div>
-  <div style="margin-top:.7cqh;padding:.7cqh 1cqw;background:var(--bg-alt);border:1px solid var(--line);border-radius:8px;font-family:var(--mono);font-size:.92cqw;color:var(--muted);line-height:1.6">
-    <strong style="color:var(--ink-soft)">Research backing</strong> &nbsp;·&nbsp; Gartner (2025): "Agents acting without user visibility create legal and operational exposure — the UI is the accountability layer." &nbsp;·&nbsp; NN/g (2026): "Trust is a design problem. Focus: legibility — visibility, intervenability, understanding the why."
-  </div>
+  <p class="img-cap">Oldest flagged first — full context for every decision in one place.</p>
 </section>
 
-<!-- 21 -->
+<!-- new image slide: IMG-08 -->
+<section class="slide">
+  <div class="eyebrow">Final design · Direction 03</div>
+  <h2>Snooze &amp; hand off</h2>
+  <div class="shot-full">
+    <span class="shot-id">IMG-08</span>
+    <img class="shot-img" src="presentation-images/IMG-08.png" alt="Snooze and hand off"
+         style="cursor:zoom-in"
+         onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
+  </div>
+  <p class="img-cap">Snooze or reassign — oversight never gets stuck on one person.</p>
+</section>
+
 <section class="slide">
   <div class="eyebrow">Final design · design system</div>
   <div class="two">
@@ -864,7 +861,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
       <h2>A system, <em>not just screens</em></h2>
       <p>I built a <strong>Component Dictionary</strong> — auto-generated from the React codebase and bound to PointFive brand tokens — a full design system that keeps the agent surface coherent as the product scales, and can grow consistently from here.</p>
     </div>
-    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-05</span><div class="tag">Drop frame: component dictionary</div><div class="desc">A shot of the components / tokens.</div></div>
+    <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-05</span><div class="tag">Drop frame: component dictionary</div><div class="desc">A shot of the components / tokens.</div><img class="shot-img" src="presentation-images/IMG-05.png" alt="A shot of the components / tokens." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
   </div>
 </section>
 
