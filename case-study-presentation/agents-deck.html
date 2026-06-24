@@ -172,14 +172,14 @@ ul.clean li b{color:var(--ink);font-weight:600}
 
 .shot{flex:1;min-height:0;margin-top:1.4cqh;border:1px dashed var(--line);border-radius:10px;background:repeating-linear-gradient(45deg,var(--bg-alt),var(--bg-alt) 12px,#fff 12px,#fff 24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1cqh;text-align:center;padding:2cqh;position:relative}
 /* when a real image is dropped in: fill the frame, hide the placeholder hints */
-.shot.has-shot-img{border-style:solid;border-color:var(--line);background:transparent;padding:0;overflow:hidden;align-items:center;justify-content:center}
+.shot.has-shot-img{border:none;background:transparent;padding:0;overflow:visible;display:flex;align-items:center;justify-content:center}
 .shot.has-shot-img .tag,.shot.has-shot-img .desc{display:none}
-.shot-img{position:relative;display:block;width:100%;height:auto;max-height:100%;object-fit:contain;z-index:2;border-radius:10px}
+.shot-img{position:relative;display:block;width:auto;max-width:100%;height:auto;max-height:100%;object-fit:contain;z-index:2;border:1px solid var(--line);border-radius:10px}
 
-.shot-full{flex:1;min-height:0;width:100%;margin-top:1.4cqh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:transparent;border:none;border-radius:10px;position:relative;overflow:hidden}
-.shot-full .shot-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;border-radius:10px}
+.shot-full{flex:1;min-height:0;width:100%;margin-top:1.4cqh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:transparent;border:none;position:relative;overflow:hidden}
+.shot-full .shot-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;border:1px solid var(--line);border-radius:10px}
 .shot-full .shot-id{position:absolute;top:10px;left:10px}
-.img-cap{margin-top:.8cqh;font-size:1.05cqw;color:var(--muted);text-align:center;font-family:var(--sans)}
+.img-cap{margin-top:.8cqh;font-size:1.05cqw;color:var(--muted);text-align:center;font-family:var(--sans);white-space:nowrap}
 .shot .tag{font-family:var(--mono);font-weight:700;font-size:1.2cqw;color:var(--accent);letter-spacing:.03em}
 .shot .desc{font-size:1.2cqw;color:var(--muted);max-width:42ch}
 
@@ -830,24 +830,28 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 21 -->
 <!-- new image slide: IMG-07 -->
 <section class="slide">
-    <div class="shot-full">
-      <span class="shot-id">IMG-07</span>
-      <img class="shot-img" src="presentation-images/IMG-07.png" alt="Decisions review"
-           style="cursor:zoom-in"
-           onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
-    </div>
-    <p class="img-cap">Reviewing decisions — oldest flagged first, full context in one place.</p>
+  <div class="eyebrow">Final design · Direction 03</div>
+  <h2>Reviewing decisions</h2>
+  <div class="shot-full">
+    <span class="shot-id">IMG-07</span>
+    <img class="shot-img" src="presentation-images/IMG-07.png" alt="Reviewing decisions"
+         style="cursor:zoom-in"
+         onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
+  </div>
+  <p class="img-cap">Oldest flagged first — full context for every decision in one place.</p>
 </section>
 
 <!-- new image slide: IMG-08 -->
 <section class="slide">
-    <div class="shot-full">
-      <span class="shot-id">IMG-08</span>
-      <img class="shot-img" src="presentation-images/IMG-08.png" alt="Snooze a decision"
-           style="cursor:zoom-in"
-           onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
-    </div>
-    <p class="img-cap">Snooze or hand off — oversight never gets stuck on one person.</p>
+  <div class="eyebrow">Final design · Direction 03</div>
+  <h2>Snooze &amp; hand off</h2>
+  <div class="shot-full">
+    <span class="shot-id">IMG-08</span>
+    <img class="shot-img" src="presentation-images/IMG-08.png" alt="Snooze and hand off"
+         style="cursor:zoom-in"
+         onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
+  </div>
+  <p class="img-cap">Snooze or reassign — oversight never gets stuck on one person.</p>
 </section>
 
 <section class="slide">
