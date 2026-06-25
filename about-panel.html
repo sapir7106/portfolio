@@ -149,40 +149,20 @@
 }
 
 /* ── Responsive ── */
-
-/* Desktop only: trim columns at narrower viewports */
-@media (min-width:1024px) and (max-width:1200px) {
+@media (max-width:1200px) {
   .about-grid { grid-template-columns: minmax(0,600px) minmax(0,200px) minmax(0,170px); }
   .about-photo { display: none; }
 }
-@media (min-width:1024px) and (max-width:1100px) {
+@media (max-width:900px) {
   .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px); }
 }
-
-/* Tablet + mobile ≤1023: panel slides in from the RIGHT, sits below 44px top nav */
-@media (max-width:1023px) {
-  #about-panel {
-    left: auto;
-    right: 0;
-    top: 44px;
-    height: calc(100vh - 44px);
-    width: min(85vw, 560px);
-    transform: translateX(110%);
-    padding: 32px 24px;
-  }
-  #about-panel.open { transform: translateX(0); }
+@media (max-width:767px) {
   .about-grid { grid-template-columns: 1fr; }
+  #about-panel { width: 100%; left: 0; padding: 40px 20px; }
   .about-photo { display: flex; position: static; order: -1; margin-bottom: 24px; }
-  .about-photo-inner { width: 60%; max-width: 280px; }
+  .about-photo-inner { width: 75%; max-width: 340px; }
   .about-photo-img, .about-photo-placeholder { aspect-ratio: 4/3; }
 }
-
-/* Mobile ≤767: full-width panel */
-@media (max-width:767px) {
-  #about-panel { width: 100%; padding: 28px 20px; }
-  .about-photo-inner { width: 75%; max-width: 300px; }
-}
-
 @media (max-width:500px) {
   .about-photo-inner { width: 100%; max-width: 100%; }
   .about-photo-img { aspect-ratio: auto; width: 100%; height: auto; object-fit: contain; }
