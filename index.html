@@ -171,6 +171,12 @@
     width: 100%;
   }
 
+  @media (max-width: 1023px) {
+    .sidebar { width: 100%; height: 44px; bottom: auto; flex-direction: row; align-items: center; }
+    .sidebar-btn { writing-mode: horizontal-tb; transform: none; font-size: 16px; min-height: 44px; padding: 0 20px; position: static; top: auto; left: auto; line-height: 1; }
+    .page { margin-left: 0; margin-top: 44px; }
+  }
+
   @media (min-width: 768px) {
     .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   }
