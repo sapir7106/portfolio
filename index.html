@@ -85,11 +85,21 @@
 
   .hero {
     min-height: 100vh;
-    padding-left: clamp(24px, 15vw, 240px);
-    padding-right: clamp(24px, 15vw, 240px);
+    padding-left: 24px;
+    padding-right: 24px;
     position: relative;
     overflow: hidden;
     padding-bottom: 60px;
+  }
+
+  @media (min-width: 768px) {
+    .hero { padding-left: clamp(40px, 6vw, 80px); padding-right: clamp(40px, 6vw, 80px); }
+  }
+  @media (min-width: 1024px) {
+    .hero { padding-left: clamp(60px, 10vw, 160px); padding-right: clamp(60px, 10vw, 160px); }
+  }
+  @media (min-width: 1440px) {
+    .hero { padding-left: clamp(80px, 12vw, 240px); padding-right: clamp(80px, 12vw, 240px); }
   }
 
   .hero-title {
