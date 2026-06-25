@@ -38,9 +38,9 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .hero-wrapper{display:flex;flex-direction:column}
 .hero{padding:80px 0 48px;order:1}
 .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:22px}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;max-width:14ch;margin-bottom:28px}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,6vw,76px);line-height:1.04;letter-spacing:-.025em;max-width:14ch;margin-bottom:28px}
 .hero h1 em{font-style:italic;font-weight:400}
-.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch}
+.lede{font-size:clamp(16px,1.4vw,20px);line-height:1.45;color:var(--soft);max-width:58ch}
 .lede strong{color:var(--ink);font-weight:600}
 mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
 
@@ -48,7 +48,7 @@ mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
 
 /* hero-shot @500px — see consolidated block below */
 figure{margin:0}
-figcaption{font-size:14px;color:var(--muted);margin-top:16px;font-style:italic;text-align:center}
+figcaption{font-size:clamp(12px,1vw,14px);color:var(--muted);margin-top:16px;font-style:italic;text-align:center}
 .ph{background:var(--line);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;position:relative;min-height:220px;container-type:inline-size}
 .ph-id{display:none;position:absolute;top:10px;left:10px;background:var(--ink);color:var(--hi);font-size:10px;font-weight:600;font-family:monospace;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
 body.show-labels .ph-id{display:block}
@@ -110,7 +110,7 @@ h2 em{font-style:italic;font-weight:400}
   }
 }
 .img-stack{display:grid;gap:100px;margin-top:32px}
-figcaption{font-size:14px;color:var(--soft);margin-top:16px;font-style:italic;text-align:center}
+figcaption{font-size:clamp(12px,1vw,14px);color:var(--soft);margin-top:16px;font-style:italic;text-align:center}
 
 /* stats */
 .stat-band{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:28px}
@@ -304,6 +304,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .img-row.c3{grid-template-columns:1fr!important;left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
   .col .img-row.c3{left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
 }
+@media(max-width:767px){body{line-height:1.45}.lede{line-height:1.35}.pi p{line-height:1.4}}
 </style>
 </head>
 <body data-about="light" data-content="PROJECT-content.txt">
