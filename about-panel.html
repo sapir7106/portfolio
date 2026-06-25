@@ -163,13 +163,73 @@
   .about-photo-inner { width: 75%; max-width: 340px; }
   .about-photo-img, .about-photo-placeholder { aspect-ratio: 4/3; }
 }
+@media (max-width:680px) {
+  /* Both themes: panel sits below the 44px topbar */
+  #about-panel {
+    top: 44px;
+    height: calc(100vh - 44px);
+  }
+  /* Light theme (case study pages): slide in from the RIGHT */
+  #about-panel[data-theme="light"] {
+    left: auto;
+    right: 0;
+    transform: translateX(110%);
+  }
+  #about-panel[data-theme="light"].open {
+    transform: translateX(0);
+  }
+  /* Dark theme (homepage): keep sliding from left */
+  #about-panel[data-theme="dark"] {
+    left: 0;
+    right: auto;
+  }
+}
+/* Homepage topbar fires at 767px — keep dark panel below it */
+@media (max-width:767px) {
+  #about-panel[data-theme="dark"] {
+    top: 44px;
+    height: calc(100vh - 44px);
+    left: 0;
+    width: 100%;
+  }
+}
 @media (max-width:500px) {
   .about-photo-inner { width: 100%; max-width: 100%; }
   .about-photo-img { aspect-ratio: auto; width: 100%; height: auto; object-fit: contain; }
 }
+
+/* ── Mobile back button (fixed in topbar when About is open at ≤680px) ── */
+#about-mobile-back-btn {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  height: 44px;
+  padding: 0 16px;
+  z-index: 201;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans, 'Avenir','Montserrat',sans-serif);
+  font-size: 15px;
+  font-weight: 400;
+  color: #888;
+  align-items: center;
+  gap: 4px;
+  transition: color .2s;
+  min-width: 44px;
+}
+#about-mobile-back-btn:hover { color: #BADA55; }
+@media (max-width:680px) {
+  body:has(#about-panel.open) #about-mobile-back-btn { display: flex; }
+}
+@media (max-width:767px) {
+  body:has(#about-panel[data-theme="dark"].open) #about-mobile-back-btn { display: flex; }
+}
 </style>
 
 <div id="about-overlay" onclick="closeAbout()"></div>
+
+<button id="about-mobile-back-btn" onclick="closeAbout()">← Back</button>
 
 <div id="about-panel" data-theme="auto">
   <button class="about-close-btn" onclick="closeAbout()">✕</button>
