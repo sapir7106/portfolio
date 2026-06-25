@@ -115,6 +115,8 @@
     line-height: 1.04;
     padding-top: clamp(48px, 8vw, 112px);
   }
+  .hero-title br { display: none; }
+  @media (max-width: 767px) { .hero-title br { display: block; } }
 
   .hero-body {
     margin-top: 20px;
@@ -375,7 +377,7 @@
 <div id="page-home" class="page active">
 
   <section class="hero" id="hero">
-    <h1 class="hero-title">Hey, I'm<br>Sapir Levi.</h1>
+    <h1 class="hero-title">Hey,<br>I'm Sapir Levi.</h1>
 
     <p class="hero-body">
       A Senior Product Designer based in Tel Aviv &nbsp;〰〰&nbsp; Creative and tech-obsessed in equal measure. I love taking messy, complex products (FinOps, security, AI) and <span class="highlight">making them feel simple</span>. I build from the ground up: the design systems underneath the screens, and the AI agents people actually trust.
