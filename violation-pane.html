@@ -190,7 +190,13 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
     grid-template-columns:1fr!important;
   }
 }
-@media(max-width:680px){.page{margin-left:0;margin-top:44px}.sidebar{width:100%;height:44px;bottom:auto;flex-direction:row}.sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;padding:0 20px;font-size:16px}.sb-back{writing-mode:horizontal-tb;transform:none;margin:0 16px 0 auto;font-size:16px}.wrap{padding:0 20px}}
+@media(max-width:1023px){
+  .page{margin-left:0;margin-top:44px}
+  .sidebar{width:100%;height:44px;bottom:auto;flex-direction:row;justify-content:space-between;padding:0;align-items:stretch}
+  .sb-about{writing-mode:horizontal-tb;transform:none;margin:0;padding:0 20px;font-size:16px;order:2;display:flex;align-items:center;min-height:44px}
+  .sb-back{writing-mode:horizontal-tb;transform:none;margin:0;padding:0 20px;font-size:16px;order:1;display:flex;align-items:center;min-height:44px}
+  .wrap{padding:0 20px}
+}
 @media(max-width:480px){
   /* images never overflow */
   .ph,.img-mt .ph,.img-mt img,.img-row .ph,.img-stack .ph,
@@ -471,18 +477,38 @@ function toggleAbout(e){
   const overlay=document.getElementById('about-overlay');
   if(!panel||!overlay) return; /* הפאנל עדיין נטען מהמאסטר */
   if(panel.classList.contains('open')) closeAbout();
-  else { panel.classList.add('open'); overlay.classList.add('open'); }
+  else {
+    panel.classList.add('open'); overlay.classList.add('open');
+    if(window.innerWidth<1024) setBackBtnMode('close');
+  }
 }
 function closeAbout(){
   const panel=document.getElementById('about-panel');
   const overlay=document.getElementById('about-overlay');
   if(panel) panel.classList.remove('open');
   if(overlay) overlay.classList.remove('open');
+  setBackBtnMode('nav');
+}
+// dual-mode back button: close panel on ≤1023, navigate on ≥1024
+function setBackBtnMode(mode){
+  const btn=document.querySelector('.sb-back');
+  if(!btn||window.innerWidth>=1024) return;
+  if(mode==='close'){
+    btn.dataset.savedHref=btn.getAttribute('href')||'index.html';
+    btn.removeAttribute('href');
+    btn.textContent='← Back';
+    btn.onclick=function(ev){ev.preventDefault();closeAbout();};
+  } else {
+    btn.setAttribute('href',btn.dataset.savedHref||'index.html');
+    btn.textContent='Back to my projects';
+    btn.onclick=null;
+  }
 }
 // close on outside click
 document.addEventListener('click',function(e){
   const panel=document.getElementById('about-panel');
-  if(panel.classList.contains('open')&&!panel.contains(e.target)){
+  if(!panel||!panel.classList.contains('open')) return;
+  if(!panel.contains(e.target)){
     const btn=document.querySelector('.sb-about');
     if(!btn||!btn.contains(e.target)) closeAbout();
   }
