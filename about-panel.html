@@ -156,9 +156,12 @@
 @media (max-width:900px) {
   .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px); }
 }
-@media (max-width:700px) {
+@media (max-width:1023px) {
+  #about-panel { left: 0; width: 100%; }
+}
+@media (max-width:767px) {
   .about-grid { grid-template-columns: 1fr; }
-  #about-panel { width: 100%; left: 0; padding: 40px 20px; }
+  #about-panel { padding: 40px 20px; }
   .about-photo { display: flex; position: static; order: -1; margin-bottom: 24px; }
   .about-photo-inner { width: 75%; max-width: 340px; }
   .about-photo-img, .about-photo-placeholder { aspect-ratio: 4/3; }
