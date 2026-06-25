@@ -84,9 +84,9 @@
   }
 
   .hero {
-    min-height: 100vh;
-    padding-left: clamp(24px, 15vw, 240px);
-    padding-right: clamp(24px, 15vw, 240px);
+    padding-top: clamp(64px, 10vw, 140px);
+    padding-left: clamp(24px, 8vw, 120px);
+    padding-right: clamp(24px, 8vw, 120px);
     position: relative;
     overflow: hidden;
     padding-bottom: 60px;
@@ -98,7 +98,6 @@
     font-size: clamp(32px, 4vw, 45px);
     color: var(--text-dark);
     line-height: 1.05;
-    padding-top: 164px;
   }
 
   .hero-body {
@@ -160,25 +159,22 @@
 
   /* ── PROJECT GRID ────────────────────────────── */
   .projects-section {
-    padding: 48px clamp(24px, 15vw, 240px) 24px;
+    padding: 48px clamp(24px, 8vw, 120px) 24px;
   }
 
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: 1fr;
+    gap: 16px;
     margin: 0;
     width: 100%;
   }
 
-  @media (max-width: 1200px) {
-    .projects-grid { margin: 0; }
+  @media (min-width: 768px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   }
-  @media (max-width: 900px) {
-    .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 0; }
-  }
-  @media (max-width: 560px) {
-    .projects-grid { grid-template-columns: 1fr; gap: 16px; margin: 0; }
+  @media (min-width: 1024px) {
+    .projects-grid { grid-template-columns: repeat(3, 1fr); gap: 30px; }
   }
 
   .card {
@@ -339,6 +335,39 @@
 
   /* ── ABOUT PANEL (dark, slide-in) ── */
   /* about panel — injected from about-dark.html via about-loader.js */
+
+  /* ── RESPONSIVE: sidebar → horizontal topbar ──────────── */
+  @media (max-width: 767px) {
+    .sidebar {
+      width: 100%;
+      height: 44px;
+      bottom: auto;
+      flex-direction: row;
+      align-items: center;
+    }
+    .sidebar-btn {
+      writing-mode: horizontal-tb;
+      transform: none;
+      position: static;
+      padding: 0 20px;
+      font-size: 16px;
+      line-height: 44px;
+      top: auto;
+      left: auto;
+    }
+    .page {
+      margin-left: 0;
+      margin-top: 44px;
+    }
+    /* shorten the scroll indicator so it doesn't push content down */
+    .scroll-indicator {
+      min-height: 120px;
+    }
+    /* tighten hero vertical rhythm on small screens */
+    .hero {
+      padding-bottom: 40px;
+    }
+  }
 </style>
 <link rel="stylesheet" href="cursor.css">
 </head>
