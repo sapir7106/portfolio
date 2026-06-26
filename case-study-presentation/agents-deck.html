@@ -31,7 +31,7 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:#222;ov
    [ left rail (width = widest button) ][ stage-wrap (20px padding) ] */
 #deck{position:fixed;inset:0;display:flex;align-items:stretch}
 .rail{flex:none;width:max-content;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:20px 16px;position:relative}
-.rail button{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:none;color:#9a9a9a;cursor:pointer;font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;transition:.15s;text-align:left;white-space:nowrap}
+.rail button{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:none;color:#9a9a9a;cursor:pointer;font-family:var(--mono);font-size:14px;padding:8px 10px;border-radius:8px;transition:.15s;text-align:left;white-space:nowrap}
 .rail button .ri{font-weight:700;color:#6f6f6f}
 .rail button:hover{background:rgba(255,255,255,.06);color:#fff}
 .rail button:hover .ri,.rail button.active .ri{color:var(--accent)}
@@ -40,7 +40,7 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:#222;ov
   position:absolute;top:20px;left:16px;right:16px;
   display:flex;align-items:center;gap:10px;width:calc(100% - 32px);
   background:transparent;border:none;color:#9a9a9a;cursor:pointer;
-  font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;
+  font-family:var(--mono);font-size:14px;padding:8px 10px;border-radius:8px;
   transition:.15s;text-align:left;white-space:nowrap;text-decoration:none;
 }
 .rail-back .ri{font-weight:700;color:#6f6f6f}
@@ -62,7 +62,7 @@ body.help .stage-wrap{padding-bottom:8px}
   position:relative;z-index:1;
 }
 .hint-inner{
-  font-family:var(--mono);font-size:11px;letter-spacing:.03em;
+  font-family:var(--mono);font-size:14px;letter-spacing:.03em;
   color:#ccc;background:rgba(0,0,0,.72);border:1px solid #444;
   border-radius:8px;padding:0 16px;white-space:nowrap;
   max-height:0;overflow:hidden;opacity:0;
@@ -134,11 +134,11 @@ ul.clean li b{color:var(--ink);font-weight:600}
 .step .d{font-size:1.18cqw;line-height:1.4;color:var(--ink-soft)}
 
 .values{display:grid;grid-template-columns:repeat(5,1fr);border:0.5px solid var(--line);border-radius:12px;overflow:hidden;margin-top:2cqh}
-.val{padding:1.8cqh 1.2cqw;border-right:0.5px solid var(--line);background:var(--panel);display:flex;flex-direction:column}
+.val{padding:1.8cqh 1.2cqw;border-right:0.5px solid var(--line);background:#FCFBF9;display:flex;flex-direction:column}
 .val:last-child{border-right:none}
 .val-num{font-family:var(--mono);font-size:.9cqw;letter-spacing:.12em;color:var(--muted);margin-bottom:1cqh}
-.val .w{font-family:var(--serif);font-weight:700;font-size:1.9cqw;color:var(--ink);line-height:1.05;margin-bottom:.4cqh}
-.val .s{font-family:var(--mono);font-size:.95cqw;color:var(--accent);letter-spacing:.02em;font-weight:700;margin-bottom:.8cqh}
+.val .w{font-family:var(--serif);font-weight:700;font-size:clamp(14px,2.8cqw,32px);color:var(--ink);line-height:1.05;margin-bottom:.4cqh}
+.val .s{font-family:var(--sans);font-size:.95cqw;color:var(--accent);letter-spacing:.02em;font-weight:700;margin-bottom:.8cqh}
 .val-desc{font-size:1cqw;line-height:1.5;color:var(--ink-soft)}
 
 .partners{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw;margin-top:1cqh}
@@ -251,11 +251,11 @@ body.notes .note{display:block}
 
 /* chrome */
 .dmode{display:none}   /* hidden — keyboard P / פ only */
-.helpbtn{position:fixed;left:20px;bottom:20px;z-index:60;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.32);border:1px solid #444;color:#aaa;font-family:var(--mono);font-size:13px;line-height:26px;text-align:center;cursor:pointer;transition:.15s}
+.helpbtn{position:fixed;left:20px;bottom:20px;z-index:60;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.32);border:1px solid #444;color:#aaa;font-family:var(--mono);font-size:14px;line-height:26px;text-align:center;cursor:pointer;transition:.15s}
 .helpbtn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 /* hint: in-flow below the stage, not overlay */
 .hint{width:100%;display:flex;justify-content:center;pointer-events:none}
-.hint-inner{font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:#ccc;background:rgba(0,0,0,.72);border:1px solid #444;border-radius:8px;padding:0 16px;white-space:nowrap;max-height:0;overflow:hidden;opacity:0;transition:max-height .28s ease,opacity .22s ease,padding .28s ease,margin-top .28s ease;margin-top:0}
+.hint-inner{font-family:var(--mono);font-size:14px;letter-spacing:.03em;color:#ccc;background:rgba(0,0,0,.72);border:1px solid #444;border-radius:8px;padding:0 16px;white-space:nowrap;max-height:0;overflow:hidden;opacity:0;transition:max-height .28s ease,opacity .22s ease,padding .28s ease,margin-top .28s ease;margin-top:0}
 .hint-inner b{color:#fff}
 body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px}
 
@@ -283,7 +283,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 .toosmall{display:none;position:fixed;inset:0;z-index:9998;background:#111;color:#ccc;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:32px;font-family:'Montserrat',sans-serif}
 .toosmall .ts-icon{font-size:38px;opacity:.45}
 .toosmall h3{font-size:17px;font-weight:600;color:#fff;line-height:1.3}
-.toosmall p{font-size:13px;color:#777;max-width:24ch;line-height:1.6}
+.toosmall p{font-size:14px;color:#777;max-width:24ch;line-height:1.6}
 @media(max-width:470px){
   .toosmall{display:flex}
   #deck,.helpbtn,.hint{display:none!important}
@@ -361,7 +361,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
     transition:opacity .2s;font-family:'Montserrat',sans-serif;white-space:nowrap;
   }
   #pw-submit:hover{opacity:.88}
-  #pw-error{font-size:13px;color:#E0726A;height:16px;opacity:0;transition:opacity .2s;text-align:center}
+  #pw-error{font-size:14px;color:#E0726A;height:16px;opacity:0;transition:opacity .2s;text-align:center}
   #pw-error.show{opacity:1}
   #pw-exit-x{position:fixed;top:20px;right:24px;color:#8C897C;text-decoration:none;font-size:20px;line-height:1;padding:6px 8px;transition:color .2s;z-index:100000}
   #pw-exit-x:hover{color:#F2EFE8}
