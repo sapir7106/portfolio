@@ -30,22 +30,12 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:#222;ov
 /* ===================== DECK LAYOUT (framed) =====================
    [ left rail (width = widest button) ][ stage-wrap (20px padding) ] */
 #deck{position:fixed;inset:0;display:flex;align-items:stretch}
-.rail{flex:none;width:max-content;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:20px 16px;position:relative}
+.rail{flex:none;width:max-content;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:20px 16px}
 .rail button{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:none;color:#9a9a9a;cursor:pointer;font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;transition:.15s;text-align:left;white-space:nowrap}
 .rail button .ri{font-weight:700;color:#6f6f6f}
 .rail button:hover{background:rgba(255,255,255,.06);color:#fff}
 .rail button:hover .ri,.rail button.active .ri{color:var(--accent)}
 .rail button.active{color:#fff}
-.rail-back{
-  position:absolute;top:20px;left:16px;right:16px;
-  display:flex;align-items:center;gap:10px;width:calc(100% - 32px);
-  background:transparent;border:none;color:#9a9a9a;cursor:pointer;
-  font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;
-  transition:.15s;text-align:left;white-space:nowrap;text-decoration:none;
-}
-.rail-back .ri{font-weight:700;color:#6f6f6f}
-.rail-back:hover{background:rgba(255,255,255,.06);color:#fff}
-.rail-back:hover .ri{color:var(--accent)}
 
 .stage-wrap{
   flex:1;min-width:0;
@@ -102,22 +92,22 @@ body.labels .shot-id{display:block}
 /* ===================== TYPE ===================== */
 .eyebrow{font-family:var(--mono);font-weight:700;font-size:1.05cqw;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4cqh}
 h1{font-family:var(--serif);font-weight:700;font-size:6cqw;line-height:.98;letter-spacing:-.02em}
-h2{font-family:var(--serif);font-weight:700;font-size:3.9cqw;line-height:1.04;letter-spacing:-.02em;margin-bottom:24px}
+h2{font-family:var(--serif);font-weight:700;font-size:3.9cqw;line-height:1.04;letter-spacing:-.02em;margin-bottom:.45em}
 h2 em{font-style:italic;font-weight:400}
 h3{font-family:var(--serif);font-weight:600;font-size:2.2cqw;line-height:1.1;letter-spacing:-.01em}
-p{font-size:clamp(17px,1.75cqw,24px);line-height:1.55;color:var(--ink);max-width:46ch;font-weight:400}
-.lede{font-size:clamp(17px,2.15cqw,24px);line-height:1.5;color:var(--ink);max-width:48ch;font-weight:400}
+p{font-size:1.75cqw;line-height:1.55;color:var(--ink-soft);max-width:46ch;font-weight:400}
+.lede{font-size:2.15cqw;line-height:1.5;color:var(--ink-soft);max-width:48ch;font-weight:400}
 strong{color:var(--ink);font-weight:600}
 mark{background:var(--hi);padding:0 .14em;border-radius:3px;color:var(--ink)}
 .num{font-family:var(--serif);font-weight:700;color:var(--accent);font-size:3.6cqw;line-height:1}
 
 ul.clean{list-style:none;display:grid;gap:1.1cqh;margin-top:.6cqh}
-ul.clean li{font-size:clamp(17px,1.72cqw,24px);line-height:1.45;color:var(--ink);padding-left:1.3em;position:relative;max-width:52ch;font-weight:400}
+ul.clean li{font-size:1.72cqw;line-height:1.45;color:var(--ink-soft);padding-left:1.3em;position:relative;max-width:52ch;font-weight:400}
 ul.clean li::before{content:"—";position:absolute;left:0;color:var(--accent)}
 ul.clean li b{color:var(--ink);font-weight:600}
 
 .flex-mid{flex:1;display:flex;flex-direction:column;justify-content:center}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;align-items:start;flex:1}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;align-items:center;flex:1}
 
 .divider{justify-content:center}
 .divider .eyebrow{font-size:1.3cqw}
@@ -130,18 +120,10 @@ ul.clean li b{color:var(--ink);font-weight:600}
 .step .t{font-weight:600;font-size:1.5cqw;color:var(--ink);margin:.3em 0 .35em;line-height:1.1}
 .step .d{font-size:1.18cqw;line-height:1.4;color:var(--ink-soft)}
 
-.values{display:grid;grid-template-columns:repeat(5,1fr);margin-top:2cqh;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
-.val{padding:1.8cqh 1.1cqw;border-right:1px solid var(--line);border-left:none;border-top:none;border-bottom:none;border-radius:0;background:transparent;display:flex;flex-direction:column}
-.val:last-child{border-right:none}
-.val-lbl{font-family:var(--mono);font-weight:700;font-size:.95cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.val-brush{margin:1cqh 0 1.2cqh;display:flex;flex-direction:column;gap:.4cqh}
-.val-brush span{height:.45cqh;border-radius:2px;display:block;background:var(--ink)}
-.val-brush span:nth-child(1){width:2.4cqw}
-.val-brush span:nth-child(2){width:1.8cqw;background:var(--accent)}
-.val-brush span:nth-child(3){width:1.1cqw;background:#C9C6BB}
-.val .w{font-family:var(--serif);font-weight:700;font-size:2cqw;color:var(--ink);line-height:1.05;margin-bottom:.4cqh}
-.val .s{font-family:var(--mono);font-size:1cqw;color:var(--accent);letter-spacing:.02em;font-weight:700;margin-bottom:.9cqh}
-.val-desc{font-size:1.05cqw;line-height:1.45;color:var(--ink-soft)}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4cqw;margin-top:2cqh}
+.val{background:var(--panel);border:1px solid var(--line);border-left:.5cqh solid var(--accent);border-radius:10px;padding:1.6cqh 1.2cqw}
+.val .w{font-family:var(--serif);font-weight:700;font-size:2.2cqw;color:var(--ink);line-height:1.05}
+.val .s{font-family:var(--mono);font-size:1.05cqw;color:var(--muted);margin-top:.6cqh;letter-spacing:.02em}
 .values-cap{margin-top:1.4cqh;font-family:var(--mono);font-size:1.1cqw;color:var(--muted);letter-spacing:.04em}
 
 .partners{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw;margin-top:1cqh}
@@ -161,33 +143,27 @@ ul.clean li b{color:var(--ink);font-weight:600}
 .pcell{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.5cqh 1.3cqw}
 .pcell.cry{background:var(--accent-soft);border-color:transparent}
 .pcell .h{font-family:var(--mono);font-weight:700;font-size:.98cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.7em}
-.pcell .cryt{font-family:var(--sans);font-style:normal;font-weight:500;font-size:clamp(17px,1.6cqw,24px);line-height:1.4;color:var(--ink);border-left:3px solid #BADA55;padding-left:14px;border-radius:0}
+.pcell .cryt{font-family:var(--serif);font-style:italic;font-size:1.6cqw;line-height:1.3;color:var(--ink)}
 .pcell ul{list-style:none;display:grid;gap:.7cqh}
 .pcell li{font-size:1.2cqw;color:var(--ink-soft);padding-left:1.1em;position:relative;line-height:1.35}
 .pcell li::before{content:"›";position:absolute;left:0;color:var(--muted)}
 .pcell li.win{color:var(--ink);font-weight:600}
 .pcell li.win::before{content:"✓";color:var(--accent)}
 
-.emph{font-family:var(--sans);font-style:normal;font-weight:500;font-size:clamp(17px,2cqw,24px);line-height:1.4;color:var(--ink);border-left:3px solid #BADA55;padding-left:14px;border-radius:0}
+.emph{font-family:var(--serif);font-style:italic;font-size:2cqw;color:var(--ink)}
 
 .shot{flex:1;min-height:0;margin-top:1.4cqh;border:1px dashed var(--line);border-radius:10px;background:repeating-linear-gradient(45deg,var(--bg-alt),var(--bg-alt) 12px,#fff 12px,#fff 24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1cqh;text-align:center;padding:2cqh;position:relative}
 /* when a real image is dropped in: fill the frame, hide the placeholder hints */
-.shot.has-shot-img{border:none;background:transparent;padding:0;overflow:visible;display:flex;align-items:center;justify-content:center}
+.shot.has-shot-img{border-style:solid;border-color:var(--line);background:#fff;padding:0;overflow:hidden}
 .shot.has-shot-img .tag,.shot.has-shot-img .desc{display:none}
-.shot-img{position:relative;display:block;width:auto;max-width:100%;height:auto;max-height:100%;object-fit:contain;z-index:2;border:1px solid var(--line);border-radius:10px}
-
-.shot-full{flex:1;min-height:0;width:100%;margin-top:1.4cqh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:transparent;border:none;position:relative;overflow:hidden}
-.shot-full .shot-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;border:1px solid var(--line);border-radius:10px}
-.shot-full .shot-id{position:absolute;top:10px;left:10px}
-.img-cap{margin-top:.8cqh;font-size:1.05cqw;color:var(--muted);text-align:center;font-family:var(--sans);white-space:nowrap}
+.shot-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:2;border-radius:10px}
 .shot .tag{font-family:var(--mono);font-weight:700;font-size:1.2cqw;color:var(--accent);letter-spacing:.03em}
 .shot .desc{font-size:1.2cqw;color:var(--muted);max-width:42ch}
 
-.slide.concept h2{margin-bottom:24px;padding-bottom:12px}
+.slide.concept h2{margin-bottom:0;padding-bottom:12px}
 .cframe{flex:1;min-height:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative;background:#fff;cursor:zoom-in}
 .cprev{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;transform-origin:top left;pointer-events:none}
-.chint{display:none;position:absolute;bottom:1cqh;right:1cqw;font-family:var(--mono);font-weight:700;font-size:1cqw;color:#fff;background:rgba(23,22,15,.78);border-radius:7px;padding:.5cqh 1cqw;letter-spacing:.03em;pointer-events:none}
-body.labels .chint{display:block}
+.chint{position:absolute;bottom:1cqh;right:1cqw;font-family:var(--mono);font-weight:700;font-size:1cqw;color:#fff;background:rgba(23,22,15,.78);border-radius:7px;padding:.5cqh 1cqw;letter-spacing:.03em;pointer-events:none}
 
 /* ============ MOCKUP — Direction 03 ============ */
 .mock-wrap{position:relative;flex:1;min-height:0;display:flex;margin-top:1.2cqh}
@@ -244,13 +220,9 @@ body.notes .note{display:block}
 /* concept overlay */
 #cfs{position:fixed;inset:0;z-index:9999;background:rgba(17,17,17,.92);display:none;align-items:center;justify-content:center}
 #cfs.open{display:flex}
-#cfs iframe{width:1440px;height:900px;border:0;border-radius:8px;display:block;background:#fff;transform-origin:center center}
+#cfs iframe{width:92vw;height:90vh;border:0;border-radius:8px;display:block;background:#fff}
 #cfs .x{position:fixed;top:18px;right:22px;z-index:10000;background:none;border:none;color:rgba(255,255,255,.45);font-size:26px;line-height:1;cursor:pointer;padding:4px;transition:color .15s}
 #cfs .x:hover{color:#fff}
-/* image fullscreen overlay */
-#imgfs{display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,10,8,.92);align-items:center;justify-content:center;padding:40px;cursor:zoom-out}
-#imgfs.open{display:flex}
-#imgfs img{max-width:92vw;max-height:90vh;width:auto;height:auto;border-radius:8px;display:block}
 
 /* chrome */
 .dmode{display:none}   /* hidden — keyboard P / פ only */
@@ -275,7 +247,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 /* row 1: extend to right edge */
 .tl-row-1::before{right:calc(-6.2cqw)}
 .tl-step{display:flex;flex-direction:column;position:relative;z-index:1}
-.tl-label{font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);height:28px;display:flex;align-items:flex-end;padding-bottom:28px}
+.tl-label{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);height:28px;display:flex;align-items:flex-end;padding-bottom:4px}
 .tl-dz{height:16px;position:relative;margin-bottom:20px}
 .tl-dot{position:absolute;top:0;left:0;width:16px;height:16px;border-radius:50%;background:var(--accent);z-index:2}
 .tl-title{font-family:var(--sans);font-weight:600;font-size:1.5cqw;color:var(--ink);line-height:1.2;margin-bottom:.45cqh}
@@ -305,10 +277,10 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
      ══════════════════════════════════════════════════ -->
 <div id="pw-gate">
   <a href="../agents.html" id="pw-exit-x" title="Exit">✕</a>
+  <a href="../agents.html" id="pw-exit-btn">← Exit the rabbit hole</a>
   <div class="pw-box">
     <img class="pw-img" src="presentation-images/Shh.png" alt="" onerror="this.remove()">
-    <div class="pw-title" style="margin-left:16px;margin-right:16px;margin-top:64px;margin-bottom:32px"><strong style="font-weight:700;color:#F2EFE8;font-style:italic">Well, well, well...</strong><br><em style="font-weight:400">looks like you found my secret corner of the internet</em></div>
-    <p class="pw-mobile-msg">Looks like you found my secret corner of the internet. For the best experience, this screen is available on desktop only&nbsp;✨</p>
+    <div class="pw-title" style="margin-left:16px;margin-right:16px;margin-top:64px;margin-bottom:24px"><strong style="font-weight:700;color:#F2EFE8;font-style:italic">Well, well, well...</strong><br><em style="font-weight:400">looks like you found my secret corner of the internet</em></div>
     <div class="pw-row">
       <div class="pw-input-col">
         <input id="pw-input" type="password" inputmode="numeric" autocomplete="off" placeholder="55555" autofocus>
@@ -316,14 +288,13 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
       </div>
       <button id="pw-submit">Enter</button>
     </div>
-    <a href="../agents.html" id="pw-exit-btn">← Exit the rabbit hole</a>
   </div>
 </div>
 <style>
   #pw-gate{
     position:fixed;inset:0;z-index:99999;
     background:#15140F;
-    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
     font-family:'Montserrat',sans-serif;
     padding:24px;
     animation:pwGateIn .4s ease forwards;
@@ -343,7 +314,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
     .pw-box>*{animation:none;opacity:1}
   }
   .pw-box{display:flex;flex-direction:column;gap:14px;width:min(520px,90vw);text-align:center;align-items:center}
-  .pw-img{max-width:480px;max-height:min(420px,42vh);width:100%;height:auto;object-fit:contain;margin-bottom:0;display:block}
+  .pw-img{max-width:480px;width:100%;height:auto;margin-bottom:0;display:block}
   .pw-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);line-height:1.2;color:#F2EFE8;font-weight:700}
   .pw-sub{font-size:14px;color:#8C897C;margin-bottom:6px}
   .pw-row{display:flex;gap:10px;justify-content:center;align-items:flex-start}
@@ -368,47 +339,9 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   #pw-error.show{opacity:1}
   #pw-exit-x{position:fixed;top:20px;right:24px;color:#8C897C;text-decoration:none;font-size:20px;line-height:1;padding:6px 8px;transition:color .2s;z-index:100000}
   #pw-exit-x:hover{color:#F2EFE8}
-  #pw-exit-btn{position:static;transform:none;margin-top:8px;color:#BADA55;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:400;letter-spacing:.04em;padding:8px 16px;white-space:nowrap;align-self:center}
+  #pw-exit-btn{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);color:#BADA55;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:400;letter-spacing:.04em;padding:8px 16px;z-index:100000;white-space:nowrap}
   #pw-exit-btn::after{content:'';display:block;width:0;height:1.5px;background:#BADA55;transition:width .3s ease;margin:0 16px}
   #pw-exit-btn:hover::after{width:calc(100% - 32px)}
-  @media(max-height:820px){
-    .pw-title{margin-top:32px!important}
-  }
-  @media(max-height:860px){
-    .pw-title{margin-top:32px!important;margin-bottom:20px!important}
-  }
-  .pw-mobile-msg{display:none}
-  @media(max-width:767px){
-    #pw-gate{overflow:hidden}
-    .pw-box{justify-content:center}
-    .pw-img{max-width:400px;max-height:30vh;width:auto;height:auto;object-fit:contain}
-    .pw-row{display:none}
-    .pw-title em{display:none}
-    .pw-title{margin-top:40px!important}
-    .pw-mobile-msg{
-      display:block;
-      font-family:'Montserrat',sans-serif;
-      font-size:14px;
-      line-height:1.55;
-      font-weight:400;
-      color:#8C897C;
-      margin:14px 0 0;
-      padding:0 8px;
-      text-align:center;
-    }
-    #pw-exit-btn{
-      position:static;
-      transform:none;
-      left:auto;bottom:auto;
-      margin-top:24px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      white-space:nowrap;
-      align-self:center;
-    }
-  }
 </style>
 <script>
   (function(){
@@ -455,11 +388,10 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 
 <!-- left rail: section anchors (width = widest button) -->
 <nav class="rail" id="rail">
-  <a href="../agents.html" class="rail-back"><span class="ri">←</span><span class="rl">Back</span></a>
   <button data-go="0"><span class="ri">01</span><span class="rl">About me</span></button>
   <button data-go="3"><span class="ri">02</span><span class="rl">Case study</span></button>
-  <button data-go="20"><span class="ri">03</span><span class="rl">The design</span></button>
-  <button data-go="25"><span class="ri">04</span><span class="rl">Reflection</span></button>
+  <button data-go="19"><span class="ri">03</span><span class="rl">The design</span></button>
+  <button data-go="23"><span class="ri">04</span><span class="rl">Reflection</span></button>
 </nav>
 
 <div class="stage-wrap">
@@ -476,7 +408,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">About me · what I do</div>
   <div class="two">
     <div>
-      <h2>Product designer for <em style="white-space:nowrap">complex, technical products</em></h2>
+      <h2>Product designer for <em>complex, technical products</em></h2>
       <p>I led UX at <strong>PointFive</strong>, where I helped build the product from the ground up alongside the founder — turning complex FinOps data into clear interfaces, and shaping how people trust the AI agents that act on their cloud costs.</p>
       <p style="margin-top:.6em">Before that: data security at <strong>Laminar</strong>, and enterprise AI and cyber at <strong>BeyondMinds</strong> and <strong>Sygnia</strong>.</p>
     </div>
@@ -493,7 +425,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 3 -->
 <section class="slide tl-slide">
   <div class="eyebrow">My approach · how I work</div>
-  <h2 style="margin-bottom:0">From problem to <em>system</em></h2>
+  <h2>From problem to <em>system</em></h2>
   <div class="tl-rows">
 
     <!-- ROW 1 -->
@@ -560,7 +492,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">Case study 01</div>
   <h1>Managing<br><em>AI Agents</em></h1>
   <div class="role">A project I led as Lead Product Designer · PointFive</div>
-
+  <div class="note"><b>TITLE OPTIONS:</b> "Managing AI Agents" · "Agents you can trust" · "From black box to control room".</div>
 </section>
 
 <!-- 5 -->
@@ -569,74 +501,15 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="flex-mid">
     <h2>PointFive was going <em>AI-native</em></h2>
     <p class="lede">PointFive helps organizations cut cloud-cost waste. The next step: agents that don't just <mark>surface a problem — they act on it.</mark></p>
-    <p style="margin-top:.6em">For this case study, I focused on what happens after the agents start running — the oversight layer that tells you what's happening, what needs your attention, and whether you can step in.</p>
     <div class="values">
-      <div class="val">
-        <div class="val-lbl">Value / 01</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
-        <div class="w">Efficiency</div>
-        <div class="s">cut waste, fast</div>
-        <div class="val-desc">Cut cloud-cost waste fast. If a step doesn't earn its keep, we cut it.</div>
-      </div>
-      <div class="val">
-        <div class="val-lbl">Value / 02</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
-        <div class="w">Depth</div>
-        <div class="s">explain the why</div>
-        <div class="val-desc">We don't just flag a cost; we explain the why behind it, down to the resource.</div>
-      </div>
-      <div class="val">
-        <div class="val-lbl">Value / 03</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
-        <div class="w">Creativity</div>
-        <div class="s">novel solutions</div>
-        <div class="val-desc">Novel solutions to messy cost problems, not just the obvious rightsizing.</div>
-      </div>
-      <div class="val">
-        <div class="val-lbl">Value / 04</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
-        <div class="w">Bias to action</div>
-        <div class="s">agents that act</div>
-        <div class="val-desc">Agents that don't just surface a problem — they act on it.</div>
-      </div>
-      <div class="val">
-        <div class="val-lbl">Value / 05</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
-        <div class="w">Trust</div>
-        <div class="s">earn the autonomy</div>
-        <div class="val-desc">Customers let agents touch their cloud bill only if they trust them.</div>
-      </div>
+      <div class="val"><div class="w">Efficiency</div><div class="s">cut waste, fast</div></div>
+      <div class="val"><div class="w">Depth</div><div class="s">explain the why</div></div>
+      <div class="val"><div class="w">Creativity</div><div class="s">novel solutions</div></div>
+      <div class="val"><div class="w">Bias to action</div><div class="s">agents that act</div></div>
+      <div class="val"><div class="w">Trust</div><div class="s">earn the autonomy</div></div>
     </div>
     <div class="values-cap">PointFive's five brand values — the lens I designed against.</div>
   </div>
-</section>
-
-<!-- 5b NEW — From agent management to agent oversight -->
-<section class="slide">
-  <div class="eyebrow">The starting point · what existed</div>
-  <h2>From agent management to <em>agent oversight</em></h2>
-  <div class="two" style="align-items:start;margin-top:1.4cqh">
-    <div>
-      <p style="font-family:var(--mono);font-size:1cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8cqh">Existing layer</p>
-      <ul class="clean">
-        <li>Create agents</li>
-        <li>Run agents</li>
-        <li>View activity</li>
-        <li>Edit workflows</li>
-      </ul>
-    </div>
-    <div>
-      <p style="font-family:var(--mono);font-size:1cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8cqh">What was missing</p>
-      <ul class="clean">
-        <li>See pending decisions across all agents at once</li>
-        <li>Understand blast radius before an action runs</li>
-        <li>Review and approve at scale — not agent by agent</li>
-        <li>Know ownership, scope and risk for every agent</li>
-      </ul>
-    </div>
-  </div>
-  <p class="emph" style="margin-top:1.4cqh">My focus: the trust layer that sits between these two — making autonomous FinOps agents safe enough to actually turn on.</p>
-  <div class="note"><b>🎙 SPEAKER NOTE:</b> "The production product was a full automation builder — create, run, view, edit. What it didn't have was the layer above it: what happens when agents start acting at scale, and an operator needs to understand risk and stay in control across all of them at once."</div>
 </section>
 
 <!-- 6 -->
@@ -645,7 +518,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <h2>The old way: <em>agent by agent</em></h2>
   <div class="two" style="align-items:stretch">
     <div class="flex-mid"><p>The moment agents could act on their own, something shifted: people started to <mark>fear them, not trust them</mark>, and quietly avoided turning them on. A pending decision lived inside each agent's own page, behind an unlabeled icon — a user running several agents never knew something was waiting.</p></div>
-    <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-01</span><div class="tag">Drop frame: "before" screen</div><div class="desc">The original experience — a pending decision buried behind an unlabeled icon inside a single agent's page.</div><img class="shot-img" src="presentation-images/IMG-01.png" alt="The original experience — a pending decision buried behind an unlabeled icon inside a single agent's page." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
+    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-01</span><div class="tag">Drop frame: "before" screen</div><div class="desc">The original experience — a pending decision buried behind an unlabeled icon inside a single agent's page.</div></div>
   </div>
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "Look at the original screen — if you had 50 agents running across different systems, you had to click into 50 separate pages just to see if something was waiting for approval. That's not a workflow. That's a full-time job."</div>
 </section>
@@ -654,8 +527,8 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <section class="slide">
   <div class="eyebrow">The problem</div>
   <div class="flex-mid">
-    <h2 style="max-width:18ch">This wasn't a technology problem — it was an <em>experience problem</em></h2>
-    <p class="lede">A user deciding whether to let an agent touch their cloud bill is making a <mark>trust decision</mark> — and trust becomes a design problem: control, transparency, and a clear mental model of what the agent will do.</p>
+    <h2>This wasn't a technology problem — it was an <em>experience problem</em></h2>
+    <p class="lede">A user deciding whether to let an agent touch their cloud bill is making a <mark>trust decision</mark> — and trust is pure design: control, transparency, and a clear mental model of what the agent will do.</p>
     <p style="margin-top:.6em">If users don't trust what they can't see, the capability goes unused — and <strong>the AI-native bet fails on adoption, not on the model.</strong></p>
   </div>
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "The underlying AI worked perfectly — but user adoption was failing. Users don't trust what they can't see. My challenge wasn't to fix the model, it was to design the interface that makes the model trustworthy. Those are two completely different problems."</div>
@@ -664,7 +537,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 8 -->
 <section class="slide">
   <div class="eyebrow">The starting point · what broke</div>
-  <h2>Four things the old experience <em>couldn't do</em></h2>
+  <h2 style="margin-bottom:.2em">Four things the old experience <em>couldn't do</em></h2>
   <ul class="clean">
     <li><b>Pending decisions were buried</b> — inside each agent's page, behind an unlabeled icon. Users running several agents never knew something was waiting.</li>
     <li><b>No sense of blast radius</b> — how much, and what, an agent was about to affect.</li>
@@ -676,7 +549,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 8b · CHALLENGES + TRADE-OFFS -->
 <section class="slide">
   <div class="eyebrow">Constraints · the challenges</div>
-  <h2>The challenges — and the <em>trade-offs</em> I made</h2>
+  <h2 style="margin-bottom:.2em">The challenges — and the <em>trade-offs</em> I made</h2>
   <div class="pitch">
     <div class="col">
       <h4>Observable at a glance</h4>
@@ -699,14 +572,14 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 9 -->
 <section class="slide">
   <div class="eyebrow">Collaboration · partners</div>
-  <h2>Who I worked with</h2>
+  <h2 style="margin-bottom:.2em">Who I worked with</h2>
   <div class="partners">
     <div class="partner"><h4>Product Manager</h4><p>The fast-sprint partner — business framing, scope, and the agent behaviors we needed to expose.</p></div>
     <div class="partner"><h4>Engineering / Tech Lead</h4><p>What the agents can actually report — which signals, states and actions are available to show.</p></div>
-    <div class="partner"><h4>CPO</h4><p>The AI-native direction and the bar for what "trust" has to mean in the product.</p></div>
+    <div class="partner"><h4>Founder</h4><p>The AI-native direction and the bar for what "trust" has to mean in the product.</p></div>
     <div class="partner"><h4>AI as a research partner</h4><p>Synthesis, 20 interactive prototypes, and pressure-testing — with my judgment as the filter.</p></div>
   </div>
-  <div class="note"><b>Team:</b> 1 Product Manager · 2 Engineering / Tech Leads · 1 CPO. Add real names if you want to personalize.</div>
+  <div class="note"><b>Team:</b> 1 Product Manager · 2 Engineering / Tech Leads · 1 Founder. Add real names if you want to personalize.</div>
 </section>
 
 <!-- 10 -->
@@ -720,16 +593,16 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
         <li>Studied <b>5 direct FinOps competitors</b> — Vantage, Finout, ProsperOps, nOps, CloudZero.</li>
         <li>Read <b>10 studies</b> on AI trust + signal from <b>McKinsey · Gartner · SurveyMonkey · NN/g</b>.</li>
       </ul>
-      <p style="margin-top:.6em"><mark>The gap:</mark> even the most advanced competitor runs oversight through Slack or ticketing — at the time, I didn't find a single product with a dedicated in-product pane to see every agent, its scope and its pending decisions</p>
+      <p style="margin-top:.6em"><mark>The gap:</mark> even the most advanced competitor runs oversight through Slack or ticketing — none offered a single in-product pane to see every agent, its scope and its pending decisions.</p>
     </div>
-    <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-02</span><div class="tag">Drop frame: competitive scan</div><div class="desc">Market scan — 10 agentic products plus direct FinOps competitors, studied for how they handle oversight of autonomous actions.</div><img class="shot-img" src="presentation-images/IMG-02.png" alt="Market scan — 10 agentic products plus direct FinOps competitors, studied for how they handle oversight of autonomous actions." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
+    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-02</span><div class="tag">Drop frame: competitive scan</div><div class="desc">Market scan — 10 agentic products plus direct FinOps competitors, studied for how they handle oversight of autonomous actions.</div></div>
   </div>
 </section>
 
 <!-- 11 -->
 <section class="slide">
   <div class="eyebrow">Research · user needs</div>
-  <h2>What operators actually need</h2>
+  <h2 style="margin-bottom:.2em">What operators actually need</h2>
   <ul class="clean">
     <li><b>See what's waiting</b> — know instantly when an agent needs them, without opening each one.</li>
     <li><b>Understand the blast radius</b> — what an action will touch before it happens.</li>
@@ -741,7 +614,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 12 -->
 <section class="slide">
   <div class="eyebrow">The market voice · FinOps X 2026</div>
-  <h2>What the market said</h2>
+  <h2 style="margin-bottom:.3em">What the market said</h2>
   <div class="pain" style="grid-template-columns:1fr 1fr">
     <div class="pcell cry"><div class="h">From the field</div><div class="cryt">"This NG agent direction is a game changer — how soon can we use it?"</div></div>
     <div class="pcell"><div class="h">What it confirmed</div><ul><li class="win">The whole industry is reorienting around AI — the conference renamed itself "Tokenomicon" for next year</li><li class="win">Autonomous agents are the most-wanted direction in FinOps</li><li>The demand is there — trust is the unlock</li></ul></div>
@@ -752,7 +625,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 13 -->
 <section class="slide">
   <div class="eyebrow">Research · synthesis</div>
-  <h2>Five principles for designing <em>trust</em> in agents</h2>
+  <h2 style="margin-bottom:.1em">Five principles for designing <em>trust</em> in agents</h2>
   <div class="princ">
     <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="2.5"/></svg></div><h4>Intent Preview</h4><p>Show what will happen before it happens.</p><div class="tag">NN/g · #1 trust driver</div></div>
     <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></div><h4>Action Audit + Undo</h4><p>Every action logged, readable, reversible.</p><div class="tag">Cuts perceived risk</div></div>
@@ -766,9 +639,9 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 14 -->
 <section class="slide">
   <div class="eyebrow">Research · user journey</div>
-  <h2>The decision path</h2>
+  <h2 style="margin-bottom:.2em">The decision path</h2>
   <p>How an operator moves from "something needs me" → review → act, plus the bulk path for many decisions at once.</p>
-  <div class="shot has-shot-img"><span class="shot-id">IMG-03</span><div class="tag">Drop frame: user-flow diagram(s)</div><div class="desc">Mirror your DSPM journey slides — "Single decision" and "Bulk review" flows.</div><img class="shot-img" src="presentation-images/IMG-03.png" alt="User-flow diagram" onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
+  <div class="shot has-shot-img"><span class="shot-id">IMG-03</span><div class="tag">Drop frame: user-flow diagram(s)</div><div class="desc">Mirror your DSPM journey slides — "Single decision" and "Bulk review" flows.</div><img class="shot-img" src="presentation-images/IMG-03.png" alt="User-flow diagram" onerror="this.remove();this.parentElement.classList.remove('has-shot-img')"></div>
 </section>
 
 <!-- 15 -->
@@ -780,7 +653,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
       <p>Built with Claude as <strong>live HTML, not static mockups</strong> — fast to feel in a browser, not just look at.</p>
       <p style="margin-top:.5em">The core question: how to surface the decisions waiting for review — keep them quiet, or pull them up as a dedicated call to action? Each concept made a different bet — building toward <strong>the one I chose</strong>.</p>
     </div>
-    <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-04</span><div class="tag">Drop frame: 20-directions contact sheet</div><div class="desc">A grid with Direction 03 highlighted.</div><img class="shot-img" src="presentation-images/IMG-04.png" alt="A grid with Direction 03 highlighted." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
+    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-04</span><div class="tag">Drop frame: 20-directions contact sheet</div><div class="desc">A grid with Direction 03 highlighted.</div></div>
   </div>
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "In high-density B2B tools, static mockups lie. I built these as live HTML — you could resize the browser, filter the list, click the states. That's how I discovered that Concept 01 was dangerously easy to overlook, and Concept 02 was too aggressive. The medium told me things a Figma frame couldn't."</div>
 </section>
@@ -790,7 +663,6 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">Design exploration · concept 01</div>
   <h2>Concept 01</h2>
   <div class="cframe"><iframe class="cprev" src="Concept-01.html" title="Concept 01" loading="lazy" scrolling="no"></iframe><div class="chint">click to open ↗</div></div>
-  <p style="margin-top:.8cqh;font-size:1.15cqw;color:var(--muted);text-align:center;max-width:none">Decisions folded quietly into the greeting — clean, but easy to miss the thing that matters most.</p>
   <div class="note"><b>Concept 01:</b> decisions folded quietly into the greeting ("5 decisions waiting for your review"). Clean, but easy to miss the thing that matters most.</div>
 </section>
 
@@ -799,7 +671,6 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">Design exploration · concept 02</div>
   <h2>Concept 02</h2>
   <div class="cframe"><iframe class="cprev" src="Concept-02.html" title="Concept 02" loading="lazy" scrolling="no"></iframe><div class="chint">click to open ↗</div></div>
-  <p style="margin-top:.8cqh;font-size:1.15cqw;color:var(--muted);text-align:center;max-width:none">A dedicated decisions banner — impossible to miss, but heavy. Pushes the whole agent list down.</p>
   <div class="note"><b>Concept 02:</b> a dedicated decisions banner naming the waiting agents, with a clear "Review decisions" action. Impossible to miss — but a heavy block pushing the agent list down.</div>
 </section>
 
@@ -808,7 +679,6 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">Design exploration · concept 03 — chosen</div>
   <h2>Concept 03 <em>→ Direction 03</em></h2>
   <div class="cframe"><iframe class="cprev" src="Concept-03.html" title="Concept 03" loading="lazy" scrolling="no"></iframe><div class="chint">click to open ↗</div></div>
-  <p style="margin-top:.8cqh;font-size:1.15cqw;color:var(--muted);text-align:center;max-width:none">"Review decisions" merged into the metric itself — the urgency of Concept 02, without the banner taking over the screen.</p>
   <div class="note"><b>Concept 03 (selected):</b> "Review decisions" merged into the Decisions Waiting metric itself — the urgency of Concept 02 without the extra banner. Decisions are the first thing you see, but the fleet stays in view.</div>
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "Concept 03 won because it solved the tension without compromising either side. The 'Decisions Waiting' counter became the entry point — it surfaced urgency at exactly the moment the operator's eye was already there, scanning the overview strip. No extra real estate, no cognitive detour."</div>
 </section>
@@ -816,52 +686,52 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 19 -->
 <section class="slide">
   <div class="eyebrow">Final design · Direction 03</div>
-  <h2>The agent-management screen</h2>
-  <div class="shot-full">
-    <span class="shot-id">IMG-06</span>
-    <img class="shot-img" src="presentation-images/IMG-06.png" alt="The agent-management screen"
-         style="cursor:zoom-in"
-         onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
+  <h2 style="margin-bottom:0">The agent-management screen</h2>
+  <div class="mock-wrap">
+  <div class="mock">
+    <div class="topbar"><b>Agents</b>
+      <div class="kpis">
+        <div class="kpi"><div class="n">12</div><div class="k">Running</div></div>
+        <div class="kpi"><div class="n">3</div><div class="k">Pending</div></div>
+        <div class="kpi"><div class="n">$48k</div><div class="k">Saved / mo</div></div>
+      </div>
+    </div>
+    <div class="banner"><b>3 decisions</b> need your review across all agents <span class="btn">Review decisions</span></div>
+    <div class="filters"><span class="chip on">All</span><span class="chip">Pending</span><span class="chip">Running</span><span class="chip">Org</span><span class="chip">Team</span><span class="chip">Personal</span></div>
+    <div class="tbl">
+      <div class="row head"><div>Agent · goal</div><div>Scope</div><div>Status</div><div>Decision</div></div>
+      <div class="row"><div class="ag"><b>Rightsize idle compute</b><span>Cut spend on under-used instances</span></div><div><span class="scope">Org · ~$12k</span></div><div><span class="pill pend">Pending</span></div><div class="dec">Needs approval</div></div>
+      <div class="row"><div class="ag"><b>Delete orphaned volumes</b><span>Reclaim unattached storage</span></div><div><span class="scope">Team · ~$3k</span></div><div><span class="pill run">Running</span></div><div class="dec">Auto</div></div>
+      <div class="row"><div class="ag"><b>Commit savings plan</b><span>Lock in 1-yr discount</span></div><div><span class="scope">Org · ~$20k</span></div><div><span class="pill pend">Pending</span></div><div class="dec">Needs approval</div></div>
+      <div class="row"><div class="ag"><b>Schedule dev shutdowns</b><span>Pause non-prod at night</span></div><div><span class="scope">Personal</span></div><div><span class="pill done">Done</span></div><div class="dec">Approved · undo</div></div>
+    </div>
+    <div class="drawer"><div class="dh">Edit via chat</div><div class="msg">"Only act on instances idle &gt; 7 days."</div><div class="msg" style="background:transparent;border:1px solid #232838;color:#737a8c">Collapsible — supportive, never dominant.</div></div>
   </div>
-  <p style="margin-top:.8cqh;font-size:1.1cqw;color:var(--muted);text-align:center;max-width:none">The agent-management screen — fleet overview, pending decisions, blast radius per action, and system health in one view. The "Decisions Waiting" metric is also the entry point to review — one click, oldest flagged first.</p>
+  </div>
+  <div class="note"><b>BUILT FROM YOUR SPEC.</b> Live rebuild of Direction 03. Replace with your real Figma frames, or keep it.</div>
+</section>
 
+<!-- 20 -->
+<section class="slide">
+  <div class="eyebrow">The core of the work</div>
+  <h2 style="margin-bottom:.1em">Pains → ideas → solutions</h2>
+  <div class="pain">
+    <div class="pcell cry"><div class="h">Pain 01</div><div class="cryt">"To approve anything, I have to go agent by agent."</div></div>
+    <div class="pcell"><div class="h">Ideas I weighed</div><ul><li>A badge on the agent's row</li><li>A notification / toast</li><li class="win">Surface decisions at list level</li><li class="win">"Decisions Waiting" as entry point</li></ul></div>
+    <div class="pcell"><div class="h">How I solved it</div><ul><li class="win">"Decisions Waiting" metric doubles as the review entry point — oldest flagged first</li><li class="win">Snooze or hand off to the right person (who gets an email with full context)</li><li class="win">Agents shared across the team — oversight never stuck with one person</li></ul></div>
+  </div>
+  <div class="note"><b>⚠ PAINS 02–04.</b> Only Pain 01 is yours verbatim. The other 3 pains (blast radius, scale, opaque agents) are on slide 8 — pull a real quote for each if you can.</div>
 </section>
 
 <!-- 21 -->
-<!-- new image slide: IMG-07 -->
-<section class="slide">
-  <div class="eyebrow">Final design · Direction 03</div>
-  <h2>Reviewing decisions</h2>
-  <div class="shot-full">
-    <span class="shot-id">IMG-07</span>
-    <img class="shot-img" src="presentation-images/IMG-07.png" alt="Reviewing decisions"
-         style="cursor:zoom-in"
-         onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
-  </div>
-  <p class="img-cap">Oldest flagged first — full context for every decision in one place.</p>
-</section>
-
-<!-- new image slide: IMG-08 -->
-<section class="slide">
-  <div class="eyebrow">Final design · Direction 03</div>
-  <h2>Snooze &amp; hand off</h2>
-  <div class="shot-full">
-    <span class="shot-id">IMG-08</span>
-    <img class="shot-img" src="presentation-images/IMG-08.png" alt="Snooze and hand off"
-         style="cursor:zoom-in"
-         onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')">
-  </div>
-  <p class="img-cap">Snooze or reassign — oversight never gets stuck on one person.</p>
-</section>
-
 <section class="slide">
   <div class="eyebrow">Final design · design system</div>
   <div class="two">
     <div>
       <h2>A system, <em>not just screens</em></h2>
-      <p>I built a <strong>Component Dictionary</strong> — auto-generated from the React codebase and bound to PointFive brand tokens — a full design system that keeps the agent surface coherent as the product scales, and can grow consistently from here.</p>
+      <p>I built a <strong>Component Dictionary</strong> — 44 components, auto-generated from the React codebase and bound to PointFive brand tokens — so the agent surface stays coherent as the product scales.</p>
     </div>
-    <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-05</span><div class="tag">Drop frame: component dictionary</div><div class="desc">A shot of the components / tokens.</div><img class="shot-img" src="presentation-images/IMG-05.png" alt="A shot of the components / tokens." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
+    <div class="shot" style="margin-top:0"><span class="shot-id">IMG-05</span><div class="tag">Drop frame: component dictionary</div><div class="desc">A shot of the components / tokens.</div></div>
   </div>
 </section>
 
@@ -871,9 +741,9 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="flex-mid">
     <h2>The market <em>wants</em> this direction</h2>
     <p class="lede">At <strong>FinOps X 2026</strong>, customers and partners repeatedly called PointFive's NG agent direction a <mark>"game changer"</mark> and asked how soon they could use it.</p>
-    <p style="margin-top:.6em">The market clearly wants autonomous agents. This is market validation of the direction — not measured results on the design itself. The <strong>trust layer I designed was built to turn that demand into something people would actually switch on.</strong></p>
+    <p style="margin-top:.6em">The market clearly wants autonomous agents — and the <strong>trust layer I designed was built to turn that demand into something people would actually switch on.</strong></p>
   </div>
-
+  <div class="note"><b>HONEST FRAMING.</b> This is validation of the product *direction*, not measured results on the design itself. No invented metrics — that's deliberate.</div>
 </section>
 
 <!-- 25 -->
@@ -881,39 +751,32 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">Reflection</div>
   <div class="flex-mid">
     <h2>This is a <em>starting point</em>, not a finish line</h2>
-    <p class="lede">I focused on the moment where trust is won or lost — the moment a person decides whether to let an AI agent act. The goal wasn't to show more information. It was to create enough clarity, transparency and control for people to feel comfortable taking action.</p>
+    <p class="lede">I focused on the place where the tension between human and AI is most visible — the moment a person decides whether to let an agent act. The whole design works to make the user feel they are the one in control, the one in the loop, even as the agents do the work.</p>
     <ul class="clean" style="margin-top:.7em">
       <li><b>Used AI as a research partner</b> — clustering the scan into themes, generating 20 prototype directions — with my judgment as the filter.</li>
       <li><b>Distilled 10 products + 10 studies</b> into 5 evidence-backed trust principles that drove every decision.</li>
-      <li><b>Reframed an AI problem as a trust problem</b> — focusing on transparency, control and confidence — rather than simply exposing more data.</li>
+      <li><b>What's next:</b> expand the single-agent page, a deeper edit / delegate / snooze flow, validation with FinOps users, and the edge & empty states.</li>
     </ul>
-    <p style="margin-top:.7em;font-size:1.2cqw;font-weight:600;color:var(--ink)">What would tell me this worked?</p>
-    <ul class="clean" style="margin-top:.4em">
-      <li><b>Agent activation</b> — are people actually turning agents on?</li>
-      <li><b>Faster decisions</b> — does the context make approvals easier and more confident?</li>
-      <li><b>Fewer snoozes</b> — are users ready to act, rather than postponing decisions?</li>
-    </ul>
-    <p class="emph" style="margin-top:.7em">In an AI-native world, a designer's value isn't producing screens fastest — it's being the layer of judgment.</p>
+    <p class="emph" style="margin-top:.7em">"In an AI-native world, a designer's value isn't producing screens fastest — it's being the layer of judgment."</p>
   </div>
 </section>
-
 
 <!-- 26 -->
 <section class="slide">
   <div class="eyebrow">What sets me apart</div>
-  <h2>What sets me apart</h2>
+  <h2 style="margin-bottom:.2em">How I work</h2>
   <div class="pitch">
-    <div class="col"><h4>I design systems, not screens</h4><p>Components, tokens, patterns and decision frameworks that keep products coherent as they scale.</p></div>
-    <div class="col"><h4>Complex products are my expertise</h4><p>FinOps, Security and Enterprise AI. I make hard things feel inevitable.</p></div>
-    <div class="col"><h4>I design for trust</h4><p>From security platforms to AI agents, I help people make confident decisions in complex environments.</p></div>
+    <div class="col"><h4>I design the system, not just the screen</h4><p>The components, tokens and standards underneath a product — the thing that keeps it coherent as it scales.</p></div>
+    <div class="col"><h4>Complex products are my expertise</h4><p>FinOps, data security, enterprise AI. I make hard things feel inevitable.</p></div>
+    <div class="col"><h4>I'm AI-native — and I build</h4><p>I use code and generative tools inside my process: prototypes, AI-assisted synthesis, internal tools that multiply the team.</p></div>
   </div>
-
+  <div class="note"><b>UPDATE DONE.</b> Replaced the 3-yr-old version with your current positioning.</div>
 </section>
 
 <!-- 27 -->
 <section class="slide thanks divider">
   <h1>Thank you</h1>
-  <div class="c"><div>Sapir Levi · <a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></div></div>
+  <div class="c"><div>Sapir Levi · Lead Product Designer</div><div><a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></div></div>
 </section>
 
 </div>
@@ -962,23 +825,10 @@ function show(n){
   updateRail();
   requestAnimationFrame(fitActiveThumb);
 }
-function fitConcept(){
-    if(!cfs.classList.contains('open')) return;
-    const availW=window.innerWidth*0.92, availH=window.innerHeight*0.90;
-    const scale=Math.min(availW/1440, availH/900);
-    cfsframe.style.transform='scale('+scale+')';
-  }
-  function openConcept(src){ if(!src) return; cfsframe.src=src; cfs.classList.add('open'); requestAnimationFrame(fitConcept); }
-  function closeConcept(){ cfs.classList.remove('open'); cfsframe.src='about:blank'; }
-  window.addEventListener('resize', fitConcept);
+function openConcept(src){ if(!src) return; cfsframe.src=src; cfs.classList.add('open'); }
+function closeConcept(){ cfs.classList.remove('open'); cfsframe.src='about:blank'; }
 
 document.addEventListener('keydown',e=>{
-  const imgfs=document.getElementById('imgfs');
-  if(imgfs.classList.contains('open')){
-    if(e.key==='Escape') imgfs.classList.remove('open');
-    e.preventDefault();
-    return;
-  }
   if(cfs.classList.contains('open')){ if(e.code==='KeyE'||e.key==='Escape') closeConcept(); return; }
   switch(e.code){
     case 'ArrowRight': case 'Space': case 'PageDown': show(i+1); e.preventDefault(); break;
@@ -1003,9 +853,9 @@ cfs.addEventListener('click',e=>{ if(e.target===cfs) closeConcept(); });
 document.getElementById('cfsx').addEventListener('click',closeConcept);
 
 stage.addEventListener('click',e=>{
-  if(document.getElementById('imgfs').classList.contains('open')) return;
   if(e.target.closest('.cframe')||e.target.closest('a')) return;
-  show(i+1);
+  const r=stage.getBoundingClientRect();
+  if(e.clientX-r.left > r.width*0.5) show(i+1); else show(i-1);
 });
 
 railBtns.forEach(b=>b.addEventListener('click',()=>show(parseInt(b.dataset.go,10))));
@@ -1022,6 +872,5 @@ document.getElementById('helpbtn').addEventListener('click',()=>document.body.cl
 window.addEventListener('resize',fitActiveThumb);
 show(0);
 </script>
-<div id="imgfs" onclick="this.classList.remove('open');event.stopPropagation()"><img id="imgfsimg" alt="" onclick="event.stopPropagation()"></div>
 </body>
 </html>
