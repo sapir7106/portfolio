@@ -133,19 +133,13 @@ ul.clean li b{color:var(--ink);font-weight:600}
 .step .t{font-weight:600;font-size:1.5cqw;color:var(--ink);margin:.3em 0 .35em;line-height:1.1}
 .step .d{font-size:1.18cqw;line-height:1.4;color:var(--ink-soft)}
 
-.values{display:grid;grid-template-columns:repeat(5,1fr);margin-top:2cqh;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
-.val{padding:1.8cqh 1.1cqw;border-right:1px solid var(--line);border-left:none;border-top:none;border-bottom:none;border-radius:0;background:transparent;display:flex;flex-direction:column}
+.values{display:grid;grid-template-columns:repeat(5,1fr);border:0.5px solid var(--line);border-radius:12px;overflow:hidden;margin-top:2cqh}
+.val{padding:1.8cqh 1.2cqw;border-right:0.5px solid var(--line);background:var(--panel);display:flex;flex-direction:column}
 .val:last-child{border-right:none}
-.val-lbl{font-family:var(--mono);font-weight:700;font-size:.95cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.val-brush{margin:1cqh 0 1.2cqh;display:flex;flex-direction:column;gap:.4cqh}
-.val-brush span{height:.45cqh;border-radius:2px;display:block;background:var(--ink)}
-.val-brush span:nth-child(1){width:2.4cqw}
-.val-brush span:nth-child(2){width:1.8cqw;background:var(--accent)}
-.val-brush span:nth-child(3){width:1.1cqw;background:#C9C6BB}
-.val .w{font-family:var(--serif);font-weight:700;font-size:2cqw;color:var(--ink);line-height:1.05;margin-bottom:.4cqh}
-.val .s{font-family:var(--mono);font-size:1cqw;color:var(--accent);letter-spacing:.02em;font-weight:700;margin-bottom:.9cqh}
-.val-desc{font-size:1.05cqw;line-height:1.45;color:var(--ink-soft)}
-.values-cap{margin-top:1.4cqh;font-family:var(--mono);font-size:1.1cqw;color:var(--muted);letter-spacing:.04em}
+.val-num{font-family:var(--mono);font-size:.9cqw;letter-spacing:.12em;color:var(--muted);margin-bottom:1cqh}
+.val .w{font-family:var(--serif);font-weight:700;font-size:1.9cqw;color:var(--ink);line-height:1.05;margin-bottom:.4cqh}
+.val .s{font-family:var(--mono);font-size:.95cqw;color:var(--accent);letter-spacing:.02em;font-weight:700;margin-bottom:.8cqh}
+.val-desc{font-size:1cqw;line-height:1.5;color:var(--ink-soft)}
 
 .partners{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw;margin-top:1cqh}
 .partner{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.5cqh 1.4cqw}
@@ -575,42 +569,36 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
     <p style="margin-top:.6em">For this case study, I focused on what happens after the agents start running — the oversight layer that tells you what's happening, what needs your attention, and whether you can step in.</p>
     <div class="values">
       <div class="val">
-        <div class="val-lbl">Value / 01</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="val-num">01</div>
         <div class="w">Efficiency</div>
         <div class="s">cut waste, fast</div>
         <div class="val-desc">Cut cloud-cost waste fast. If a step doesn't earn its keep, we cut it.</div>
       </div>
       <div class="val">
-        <div class="val-lbl">Value / 02</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="val-num">02</div>
         <div class="w">Depth</div>
         <div class="s">explain the why</div>
         <div class="val-desc">We don't just flag a cost; we explain the why behind it, down to the resource.</div>
       </div>
       <div class="val">
-        <div class="val-lbl">Value / 03</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="val-num">03</div>
         <div class="w">Creativity</div>
         <div class="s">novel solutions</div>
         <div class="val-desc">Novel solutions to messy cost problems, not just the obvious rightsizing.</div>
       </div>
       <div class="val">
-        <div class="val-lbl">Value / 04</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="val-num">04</div>
         <div class="w">Bias to action</div>
         <div class="s">agents that act</div>
         <div class="val-desc">Agents that don't just surface a problem — they act on it.</div>
       </div>
       <div class="val">
-        <div class="val-lbl">Value / 05</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="val-num">05</div>
         <div class="w">Trust</div>
         <div class="s">earn the autonomy</div>
         <div class="val-desc">Customers let agents touch their cloud bill only if they trust them.</div>
       </div>
     </div>
-    <div class="values-cap">PointFive's five brand values — the lens I designed against.</div>
   </div>
 </section>
 
