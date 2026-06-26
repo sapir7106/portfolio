@@ -31,7 +31,7 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:#222;ov
    [ left rail (width = widest button) ][ stage-wrap (20px padding) ] */
 #deck{position:fixed;inset:0;display:flex;align-items:stretch}
 .rail{flex:none;width:max-content;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:20px 16px;position:relative}
-.rail button{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:none;color:#9a9a9a;cursor:pointer;font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;transition:.15s;text-align:left;white-space:nowrap}
+.rail button{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:none;color:#9a9a9a;cursor:pointer;font-family:var(--mono);font-size:14px;padding:8px 10px;border-radius:8px;transition:.15s;text-align:left;white-space:nowrap}
 .rail button .ri{font-weight:700;color:#6f6f6f}
 .rail button:hover{background:rgba(255,255,255,.06);color:#fff}
 .rail button:hover .ri,.rail button.active .ri{color:var(--accent)}
@@ -40,7 +40,7 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:#222;ov
   position:absolute;top:20px;left:16px;right:16px;
   display:flex;align-items:center;gap:10px;width:calc(100% - 32px);
   background:transparent;border:none;color:#9a9a9a;cursor:pointer;
-  font-family:var(--mono);font-size:12px;padding:8px 10px;border-radius:8px;
+  font-family:var(--mono);font-size:14px;padding:8px 10px;border-radius:8px;
   transition:.15s;text-align:left;white-space:nowrap;text-decoration:none;
 }
 .rail-back .ri{font-weight:700;color:#6f6f6f}
@@ -62,7 +62,7 @@ body.help .stage-wrap{padding-bottom:8px}
   position:relative;z-index:1;
 }
 .hint-inner{
-  font-family:var(--mono);font-size:11px;letter-spacing:.03em;
+  font-family:var(--mono);font-size:14px;letter-spacing:.03em;
   color:#ccc;background:rgba(0,0,0,.72);border:1px solid #444;
   border-radius:8px;padding:0 16px;white-space:nowrap;
   max-height:0;overflow:hidden;opacity:0;
@@ -105,8 +105,8 @@ h1{font-family:var(--serif);font-weight:700;font-size:6cqw;line-height:.98;lette
 h2{font-family:var(--serif);font-weight:700;font-size:3.9cqw;line-height:1.04;letter-spacing:-.02em;margin-bottom:24px}
 h2 em{font-style:italic;font-weight:400}
 h3{font-family:var(--serif);font-weight:600;font-size:2.2cqw;line-height:1.1;letter-spacing:-.01em}
-p{font-size:clamp(17px,1.75cqw,24px);line-height:1.55;color:var(--ink);max-width:46ch;font-weight:400}
-.lede{font-size:clamp(17px,2.15cqw,24px);line-height:1.5;color:var(--ink);max-width:48ch;font-weight:400}
+p{font-size:clamp(17px,1.75cqw,22px);line-height:1.55;color:var(--ink);max-width:46ch;font-weight:400}
+.lede{font-size:clamp(17px,1.75cqw,22px);line-height:1.5;color:var(--ink);max-width:48ch;font-weight:400}
 strong{color:var(--ink);font-weight:600}
 mark{background:var(--hi);padding:0 .14em;border-radius:3px;color:var(--ink)}
 .num{font-family:var(--serif);font-weight:700;color:var(--accent);font-size:3.6cqw;line-height:1}
@@ -115,9 +115,16 @@ ul.clean{list-style:none;display:grid;gap:1.1cqh;margin-top:.6cqh}
 ul.clean li{font-size:clamp(17px,1.72cqw,24px);line-height:1.45;color:var(--ink);padding-left:1.3em;position:relative;max-width:52ch;font-weight:400}
 ul.clean li::before{content:"—";position:absolute;left:0;color:var(--accent)}
 ul.clean li b{color:var(--ink);font-weight:600}
+.slide:nth-child(2) p,
+.slide:nth-child(2) ul.clean li{font-size:clamp(17px,1.75cqw,22px);line-height:1.6}
 
 .flex-mid{flex:1;display:flex;flex-direction:column;justify-content:center}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;align-items:center;flex:1}
+.slide:nth-child(2) .two > div:last-child{padding-top:9cqh}
+.two-panels{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw;margin-top:1.4cqh}
+.panel-border{border:2px solid #EDEAE0;border-radius:10px;padding:1.6cqh 1.2cqw}
+.panel-fill{background:#EDEAE0;border-radius:10px;padding:1.6cqh 1.2cqw}
+.panel-label{font-family:var(--mono);font-size:clamp(14px,1cqw,14px);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:.8cqh}
 
 .divider{justify-content:center}
 .divider .eyebrow{font-size:1.3cqw}
@@ -130,19 +137,15 @@ ul.clean li b{color:var(--ink);font-weight:600}
 .step .t{font-weight:600;font-size:1.5cqw;color:var(--ink);margin:.3em 0 .35em;line-height:1.1}
 .step .d{font-size:1.18cqw;line-height:1.4;color:var(--ink-soft)}
 
-.values{display:grid;grid-template-columns:repeat(5,1fr);margin-top:2cqh;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
-.val{padding:1.8cqh 1.1cqw;border-right:1px solid var(--line);border-left:none;border-top:none;border-bottom:none;border-radius:0;background:transparent;display:flex;flex-direction:column}
+.values{display:grid;grid-template-columns:repeat(5,1fr);border:0.5px solid var(--line);border-radius:12px;overflow:hidden;margin-top:52px;max-width:min(100%,90cqw)}
+.val{padding:1.8cqh 1.2cqw;border-right:0.5px solid var(--line);background:#FCFBF9;display:flex;flex-direction:column}
 .val:last-child{border-right:none}
-.val-lbl{font-family:var(--mono);font-weight:700;font-size:.95cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.val-brush{margin:1cqh 0 1.2cqh;display:flex;flex-direction:column;gap:.4cqh}
-.val-brush span{height:.45cqh;border-radius:2px;display:block;background:var(--ink)}
-.val-brush span:nth-child(1){width:2.4cqw}
-.val-brush span:nth-child(2){width:1.8cqw;background:var(--accent)}
-.val-brush span:nth-child(3){width:1.1cqw;background:#C9C6BB}
-.val .w{font-family:var(--serif);font-weight:700;font-size:2cqw;color:var(--ink);line-height:1.05;margin-bottom:.4cqh}
-.val .s{font-family:var(--mono);font-size:1cqw;color:var(--accent);letter-spacing:.02em;font-weight:700;margin-bottom:.9cqh}
-.val-desc{font-size:1.05cqw;line-height:1.45;color:var(--ink-soft)}
-.values-cap{margin-top:1.4cqh;font-family:var(--mono);font-size:1.1cqw;color:var(--muted);letter-spacing:.04em}
+.val-num{font-family:var(--mono);font-size:14px;letter-spacing:.12em;color:var(--muted);margin-bottom:1cqh}
+.val .w{font-family:var(--sans);font-weight:700;font-size:clamp(18px,1.8cqw,20px);color:var(--ink);line-height:1.05;margin-bottom:.4cqh;white-space:nowrap}
+@container stage (min-width:1600px){.val .w{font-size:24px}}
+.val .s{font-family:var(--sans);font-size:clamp(14px,.95cqw,16px);color:var(--accent);letter-spacing:.02em;font-weight:500;margin-bottom:16px}
+.val-desc{font-size:clamp(14px,1cqw,22px);line-height:1.5;color:var(--ink-soft)}
+@media(max-width:1440px){.val .s{margin-bottom:12px}.val-desc{font-size:14px}.tl-desc{font-size:14px}}
 
 .partners{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw;margin-top:1cqh}
 .partner{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.5cqh 1.4cqw}
@@ -254,11 +257,11 @@ body.notes .note{display:block}
 
 /* chrome */
 .dmode{display:none}   /* hidden — keyboard P / פ only */
-.helpbtn{position:fixed;left:20px;bottom:20px;z-index:60;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.32);border:1px solid #444;color:#aaa;font-family:var(--mono);font-size:13px;line-height:26px;text-align:center;cursor:pointer;transition:.15s}
+.helpbtn{position:fixed;left:20px;bottom:20px;z-index:60;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.32);border:1px solid #444;color:#aaa;font-family:var(--mono);font-size:14px;line-height:26px;text-align:center;cursor:pointer;transition:.15s}
 .helpbtn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 /* hint: in-flow below the stage, not overlay */
 .hint{width:100%;display:flex;justify-content:center;pointer-events:none}
-.hint-inner{font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:#ccc;background:rgba(0,0,0,.72);border:1px solid #444;border-radius:8px;padding:0 16px;white-space:nowrap;max-height:0;overflow:hidden;opacity:0;transition:max-height .28s ease,opacity .22s ease,padding .28s ease,margin-top .28s ease;margin-top:0}
+.hint-inner{font-family:var(--mono);font-size:14px;letter-spacing:.03em;color:#ccc;background:rgba(0,0,0,.72);border:1px solid #444;border-radius:8px;padding:0 16px;white-space:nowrap;max-height:0;overflow:hidden;opacity:0;transition:max-height .28s ease,opacity .22s ease,padding .28s ease,margin-top .28s ease;margin-top:0}
 .hint-inner b{color:#fff}
 body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px}
 
@@ -278,15 +281,15 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 .tl-label{font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);height:28px;display:flex;align-items:flex-end;padding-bottom:28px}
 .tl-dz{height:16px;position:relative;margin-bottom:20px}
 .tl-dot{position:absolute;top:0;left:0;width:16px;height:16px;border-radius:50%;background:var(--accent);z-index:2}
-.tl-title{font-family:var(--sans);font-weight:600;font-size:1.5cqw;color:var(--ink);line-height:1.2;margin-bottom:.45cqh}
-.tl-desc{font-family:var(--sans);font-weight:400;font-size:1.18cqw;color:var(--ink-soft);line-height:1.5}
+.tl-title{font-family:var(--sans);font-weight:600;font-size:clamp(15px,1.3cqw,18px);color:var(--ink);line-height:1.2;margin-bottom:8px}
+.tl-desc{font-family:var(--sans);font-weight:400;font-size:clamp(15px,1.3cqw,18px);color:var(--ink-soft);line-height:1.5}
 .tl-ai{color:var(--accent)}
 
 /* toosmall */
 .toosmall{display:none;position:fixed;inset:0;z-index:9998;background:#111;color:#ccc;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:32px;font-family:'Montserrat',sans-serif}
 .toosmall .ts-icon{font-size:38px;opacity:.45}
 .toosmall h3{font-size:17px;font-weight:600;color:#fff;line-height:1.3}
-.toosmall p{font-size:13px;color:#777;max-width:24ch;line-height:1.6}
+.toosmall p{font-size:14px;color:#777;max-width:24ch;line-height:1.6}
 @media(max-width:470px){
   .toosmall{display:flex}
   #deck,.helpbtn,.hint{display:none!important}
@@ -364,7 +367,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
     transition:opacity .2s;font-family:'Montserrat',sans-serif;white-space:nowrap;
   }
   #pw-submit:hover{opacity:.88}
-  #pw-error{font-size:13px;color:#E0726A;height:16px;opacity:0;transition:opacity .2s;text-align:center}
+  #pw-error{font-size:14px;color:#E0726A;height:16px;opacity:0;transition:opacity .2s;text-align:center}
   #pw-error.show{opacity:1}
   #pw-exit-x{position:fixed;top:20px;right:24px;color:#8C897C;text-decoration:none;font-size:20px;line-height:1;padding:6px 8px;transition:color .2s;z-index:100000}
   #pw-exit-x:hover{color:#F2EFE8}
@@ -476,7 +479,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="eyebrow">About me · what I do</div>
   <div class="two">
     <div>
-      <h2>Product designer for <em>complex, technical products</em></h2>
+      <h2>Product designer for <em style="white-space:nowrap">complex, technical products</em></h2>
       <p>I led UX at <strong>PointFive</strong>, where I helped build the product from the ground up alongside the founder — turning complex FinOps data into clear interfaces, and shaping how people trust the AI agents that act on their cloud costs.</p>
       <p style="margin-top:.6em">Before that: data security at <strong>Laminar</strong>, and enterprise AI and cyber at <strong>BeyondMinds</strong> and <strong>Sygnia</strong>.</p>
     </div>
@@ -572,42 +575,36 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
     <p style="margin-top:.6em">For this case study, I focused on what happens after the agents start running — the oversight layer that tells you what's happening, what needs your attention, and whether you can step in.</p>
     <div class="values">
       <div class="val">
-        <div class="val-lbl">Value / 01</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="val-num">01</div>
         <div class="w">Efficiency</div>
         <div class="s">cut waste, fast</div>
         <div class="val-desc">Cut cloud-cost waste fast. If a step doesn't earn its keep, we cut it.</div>
       </div>
       <div class="val">
-        <div class="val-lbl">Value / 02</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="val-num">02</div>
         <div class="w">Depth</div>
         <div class="s">explain the why</div>
         <div class="val-desc">We don't just flag a cost; we explain the why behind it, down to the resource.</div>
       </div>
       <div class="val">
-        <div class="val-lbl">Value / 03</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="val-num">03</div>
         <div class="w">Creativity</div>
         <div class="s">novel solutions</div>
         <div class="val-desc">Novel solutions to messy cost problems, not just the obvious rightsizing.</div>
       </div>
       <div class="val">
-        <div class="val-lbl">Value / 04</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="val-num">04</div>
         <div class="w">Bias to action</div>
         <div class="s">agents that act</div>
         <div class="val-desc">Agents that don't just surface a problem — they act on it.</div>
       </div>
       <div class="val">
-        <div class="val-lbl">Value / 05</div>
-        <div class="val-brush"><span></span><span></span><span></span></div>
+        <div class="val-num">05</div>
         <div class="w">Trust</div>
         <div class="s">earn the autonomy</div>
         <div class="val-desc">Customers let agents touch their cloud bill only if they trust them.</div>
       </div>
     </div>
-    <div class="values-cap">PointFive's five brand values — the lens I designed against.</div>
   </div>
 </section>
 
@@ -615,9 +612,9 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <section class="slide">
   <div class="eyebrow">The starting point · what existed</div>
   <h2>From agent management to <em>agent oversight</em></h2>
-  <div class="two" style="align-items:start;margin-top:1.4cqh">
-    <div>
-      <p style="font-family:var(--mono);font-size:1cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8cqh">Existing layer</p>
+  <div class="two-panels">
+    <div class="panel-border">
+      <p class="panel-label">Existing layer</p>
       <ul class="clean">
         <li>Create agents</li>
         <li>Run agents</li>
@@ -625,8 +622,8 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
         <li>Edit workflows</li>
       </ul>
     </div>
-    <div>
-      <p style="font-family:var(--mono);font-size:1cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8cqh">What was missing</p>
+    <div class="panel-fill">
+      <p class="panel-label">What was missing</p>
       <ul class="clean">
         <li>See pending decisions across all agents at once</li>
         <li>Understand blast radius before an action runs</li>
