@@ -165,7 +165,29 @@ My focus: the trust layer that sits between these two — making autonomous FinO
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 06] — The old way: agent by agent
+[SLIDE 06] — The problem: experience, not technology
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STORY NOTE: ה-thesis המרכזי — trust is a design problem. שקף קצר
+וחד, שתי פסקאות. לא לדחוס עוד מידע.
+
+EYEBROW: The problem
+H2: This wasn't a technology problem — it was an [experience problem]
+  (ה-italic: "experience problem")
+
+LEDE:
+A user deciding whether to let an agent touch their cloud bill is making
+a [trust decision] — and trust becomes a [design problem]: control, transparency,
+and a clear mental model of what the agent will do.
+  (ה-highlight: "trust decision")
+
+PARAGRAPH 2:
+If users don't trust what they can't see, the capability goes unused —
+and [the AI-native bet fails on adoption, not on the model.]
+  (ה-bold: "the AI-native bet fails on adoption, not on the model.")
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[SLIDE 07] — The old way: agent by agent
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: הצגת הבעיה הוויזואלית — מה היה קיים לפני. IMG-01 = מסך
 ה-"before". הצד השמאלי הוא הפסקה, הימני הוא ה-drop frame.
@@ -187,28 +209,6 @@ IMG-01 DESC: The original experience — a pending decision buried behind
 
 [★ COUNCIL] כדאי לשנות את שם IMG-01 בתיאור כשתוסיפי את
 מסך ה-"before" האמיתי מ-Figma.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 07] — The problem: experience, not technology
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: ה-thesis המרכזי — trust is a design problem. שקף קצר
-וחד, שתי פסקאות. לא לדחוס עוד מידע.
-
-EYEBROW: The problem
-H2: This wasn't a technology problem — it was an [experience problem]
-  (ה-italic: "experience problem")
-
-LEDE:
-A user deciding whether to let an agent touch their cloud bill is making
-a [trust decision] — and trust becomes a [design problem]: control, transparency,
-and a clear mental model of what the agent will do.
-  (ה-highlight: "trust decision")
-
-PARAGRAPH 2:
-If users don't trust what they can't see, the capability goes unused —
-and [the AI-native bet fails on adoption, not on the model.]
-  (ה-bold: "the AI-native bet fails on adoption, not on the model.")
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
