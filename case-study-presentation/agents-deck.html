@@ -228,9 +228,12 @@ body.labels .chint{display:block}
 .mock .drawer .dh{color:#737a8c;font-size:.82cqw;text-transform:uppercase;letter-spacing:.1em}
 .mock .drawer .msg{background:#171a24;border-radius:7px;padding:.8cqh .7cqw;color:#aab0c0;font-size:.88cqw;line-height:1.4}
 
-.pitch{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6cqw;margin-top:1.4cqh}
-.pitch .col h4{font-family:var(--serif);font-weight:600;font-size:1.75cqw;color:var(--ink);margin-bottom:.4em;line-height:1.1}
-.pitch .col p{font-size:1.3cqw;color:var(--muted);line-height:1.5}
+.pitch{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4cqw;flex:1;align-content:center;margin-top:1.6cqh}
+.pitch .pcell{display:flex;flex-direction:column;gap:.5cqh;background:none;border:none;border-radius:0;padding:0}
+.pnum{font-family:var(--serif);font-size:clamp(32px,3.2cqw,48px);font-weight:700;color:#EDEAE0;line-height:1;margin-bottom:.4cqh}
+.ptension{font-family:var(--sans);font-size:clamp(17px,1.75cqw,22px);font-weight:700;color:var(--ink);line-height:1.3}
+.pitch .pcell p{font-size:clamp(17px,1.75cqw,22px);color:var(--ink);line-height:1.6;font-weight:400}
+.pitch mark{background:rgba(128,103,242,0.15);color:var(--ink);padding:0 2px;border-radius:2px}
 
 .thanks{justify-content:center}
 .thanks h1{font-size:5cqw}
@@ -678,22 +681,25 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <!-- 8b · CHALLENGES + TRADE-OFFS -->
 <section class="slide">
   <div class="eyebrow">Constraints · the challenges</div>
-  <h2>The challenges — and the <em>trade-offs</em> I made</h2>
+  <h2>Design tensions I had to <em>balance</em></h2>
   <div class="pitch">
-    <div class="col">
-      <h4>Observable at a glance</h4>
-      <p>Status, task, scope and risk across every agent.</p>
-      <p style="margin-top:.4em;color:var(--accent)"><b>Trade-off:</b> surfaced pending decisions at list level — adds density, but no critical approval sits buried for days.</p>
+    <div class="pcell">
+      <div class="pnum">01</div>
+      <div class="ptension">Visibility vs. density</div>
+      <p>I brought pending decisions into the main agents view.</p>
+      <p><mark>More information on screen, but no critical approval stays hidden.</mark></p>
     </div>
-    <div class="col">
-      <h4>Trust through transparency</h4>
-      <p>Surface what each agent is doing and the decisions it's waiting on.</p>
-      <p style="margin-top:.4em;color:var(--accent)"><b>Trade-off:</b> described each agent goal-first, not process — less detail up front, far faster to scan a busy fleet.</p>
+    <div class="pcell">
+      <div class="pnum">02</div>
+      <div class="ptension">Context vs. speed</div>
+      <p>I showed just enough context to understand what needs attention.</p>
+      <p><mark>Less detail up front, but faster triage across the fleet.</mark></p>
     </div>
-    <div class="col">
-      <h4>Real control at scale</h4>
-      <p>Triage and approve across many agents without opening each one.</p>
-      <p style="margin-top:.4em;color:var(--accent)"><b>Trade-off:</b> autonomy as a spectrum (auto / approve-per-step / sandbox), not on-off — more to communicate, but what lets cautious users adopt at all.</p>
+    <div class="pcell">
+      <div class="pnum">03</div>
+      <div class="ptension">Autonomy vs. control</div>
+      <p>I kept clear intervention points: review, snooze, or hand off.</p>
+      <p><mark>One more decision step, but users stay in control.</mark></p>
     </div>
   </div>
 </section>

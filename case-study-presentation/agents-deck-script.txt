@@ -221,32 +221,36 @@ step in.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 8B] — The challenges + trade-offs
+[SLIDE 8B] — Design tensions I had to balance
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: שקף Senior — מציג לא רק מה עשית אלא מה ויתרת ולמה.
-3 אתגרים + trade-off לכל אחד. אחד השקפים החזקים בקייס.
+3 tensions + trade-off לכל אחד. אחד השקפים החזקים בקייס.
 
 EYEBROW: Constraints · the challenges
-H2: The challenges — and the [trade-offs] I made
-  (ה-italic: "trade-offs")
+H2: Design tensions I had to [balance]
+  (ה-italic: "balance")
 
-COLUMN 1:
-TITLE: Observable at a glance
-DESC: Status, task, scope and risk across every agent.
-TRADE-OFF [סגול]: surfaced pending decisions at list level — adds density,
-  but no critical approval sits buried for days.
+COLUMN 1 — 01:
+TENSION: Visibility vs. density
+DESC: I brought pending decisions into the main agents view.
+HIGHLIGHT: More information on screen, but no critical approval stays hidden.
 
-COLUMN 2:
-TITLE: Trust through transparency
-DESC: Surface what each agent is doing and the decisions it's waiting on.
-TRADE-OFF [סגול]: described each agent goal-first, not process — less
-  detail up front, far faster to scan a busy fleet.
+COLUMN 2 — 02:
+TENSION: Context vs. speed
+DESC: I showed just enough context to understand what needs attention.
+HIGHLIGHT: Less detail up front, but faster triage across the fleet.
 
-COLUMN 3:
-TITLE: Real control at scale
-DESC: Triage and approve across many agents without opening each one.
-TRADE-OFF [סגול]: autonomy as a spectrum (auto / approve-per-step / sandbox),
-  not on-off — more to communicate, but what lets cautious users adopt at all.
+COLUMN 3 — 03:
+TENSION: Autonomy vs. control
+DESC: I kept clear intervention points: review, snooze, or hand off.
+HIGHLIGHT: One more decision step, but users stay in control.
+
+[N] Speaker notes (עברית):
+השקף הזה מציג את שיקולי הדיזיין מאחורי הפתרון — לא רק מה שיניתי, אלא מה בחרתי להעדיף ועל מה ויתרתי בדרך.
+Visibility vs. density — בחרתי להביא את ההחלטות שמחכות לאישור לתוך המסך הראשי. המחיר: צפיפות. אבל אישור קריטי לא אמור להישאר חבוי.
+Context vs. speed — בחרתי להציג רק את הקונטקסט הנדרש. המחיר: לא כל הפרטים מיד. אבל זה מאפשר סריקה מהירה של הרבה אג׳נטים.
+Autonomy vs. control — שמרתי על נקודות התערבות ברורות: review, snooze, hand off. המחיר: עוד שלב. אבל זה עוזר למשתמשים להרגיש בטוחים יותר להפעיל אג׳נטים.
+משפט מרכזי: בכל החלטה היה trade-off — צפיפות לטובת נראות, פחות פרטים לטובת סריקה, נקודות התערבות לטובת תחושת שליטה.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
