@@ -139,7 +139,54 @@ CAPTION: PointFive's five brand values — the lens I designed against.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 05b] — From agent management to agent oversight (NEW — בין 05 ל-06)
+[SLIDE 06] — The old way: agent by agent
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STORY NOTE: הצגת הבעיה הוויזואלית — מה היה קיים לפני. IMG-01 = מסך
+ה-"before". הצד השמאלי הוא הפסקה, הימני הוא ה-drop frame.
+
+EYEBROW: The starting point
+H2: The old way: [agent by agent]
+  (ה-italic: "agent by agent")
+
+PARAGRAPH:
+The moment agents could act on their own, something shifted: people started
+to [fear them, not trust them], and quietly avoided turning them on.
+A pending decision lived inside each agent's own page, behind an unlabeled
+icon — a user running several agents never knew something was waiting.
+  (ה-highlight: "fear them, not trust them")
+
+IMG-01 TAG: Drop frame: "before" screen
+IMG-01 DESC: The original experience — a pending decision buried behind
+             an unlabeled icon inside a single agent's page.
+
+[★ COUNCIL] כדאי לשנות את שם IMG-01 בתיאור כשתוסיפי את
+מסך ה-"before" האמיתי מ-Figma.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[SLIDE 07] — The problem: experience, not technology
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STORY NOTE: ה-thesis המרכזי — trust is a design problem. שקף קצר
+וחד, שתי פסקאות. לא לדחוס עוד מידע.
+
+EYEBROW: The problem
+H2: This wasn't a technology problem — it was an [experience problem]
+  (ה-italic: "experience problem")
+
+LEDE:
+A user deciding whether to let an agent touch their cloud bill is making
+a [trust decision] — and trust becomes a [design problem]: control, transparency,
+and a clear mental model of what the agent will do.
+  (ה-highlight: "trust decision")
+
+PARAGRAPH 2:
+If users don't trust what they can't see, the capability goes unused —
+and [the AI-native bet fails on adoption, not on the model.]
+  (ה-bold: "the AI-native bet fails on adoption, not on the model.")
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[SLIDE 07b] — From agent management to agent oversight
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: השקף שהכי מגן עלייך בראיון. מציג בדיוק מה היה קיים ומה הוספת.
 
@@ -162,53 +209,6 @@ My focus: the trust layer that sits between these two — making autonomous FinO
 
 [N] Speaker note (לך בלבד):
 "The production product was a full automation builder — create, run, view, edit. What it didn't have was the layer above it: what happens when agents start acting at scale, and an operator needs to understand risk and stay in control across all of them at once."
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 06] — The problem: experience, not technology
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: ה-thesis המרכזי — trust is a design problem. שקף קצר
-וחד, שתי פסקאות. לא לדחוס עוד מידע.
-
-EYEBROW: The problem
-H2: This wasn't a technology problem — it was an [experience problem]
-  (ה-italic: "experience problem")
-
-LEDE:
-A user deciding whether to let an agent touch their cloud bill is making
-a [trust decision] — and trust becomes a [design problem]: control, transparency,
-and a clear mental model of what the agent will do.
-  (ה-highlight: "trust decision")
-
-PARAGRAPH 2:
-If users don't trust what they can't see, the capability goes unused —
-and [the AI-native bet fails on adoption, not on the model.]
-  (ה-bold: "the AI-native bet fails on adoption, not on the model.")
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 07] — The old way: agent by agent
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: הצגת הבעיה הוויזואלית — מה היה קיים לפני. IMG-01 = מסך
-ה-"before". הצד השמאלי הוא הפסקה, הימני הוא ה-drop frame.
-
-EYEBROW: The starting point
-H2: The old way: [agent by agent]
-  (ה-italic: "agent by agent")
-
-PARAGRAPH:
-The moment agents could act on their own, something shifted: people started
-to [fear them, not trust them], and quietly avoided turning them on.
-A pending decision lived inside each agent's own page, behind an unlabeled
-icon — a user running several agents never knew something was waiting.
-  (ה-highlight: "fear them, not trust them")
-
-IMG-01 TAG: Drop frame: "before" screen
-IMG-01 DESC: The original experience — a pending decision buried behind
-             an unlabeled icon inside a single agent's page.
-
-[★ COUNCIL] כדאי לשנות את שם IMG-01 בתיאור כשתוסיפי את
-מסך ה-"before" האמיתי מ-Figma.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
