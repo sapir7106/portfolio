@@ -164,40 +164,7 @@ IMG-01 DESC: The original experience — a pending decision buried behind
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 07] — From agent management to agent oversight
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: השקף המרכזי של הקייס — מציג את ה-thesis ואת ה-reframing
-בו-זמנית. מה היה קיים ומה היה חסר, ולמה זה trust problem ולא technology problem.
-
-EYEBROW: The starting point · what existed
-
-H2: From agent management to [agent oversight]
-  (ה-italic: "agent oversight")
-
-LEDE:
-This wasn't a technology problem — it was a trust problem. My focus was the
-layer between management and autonomy: helping users see what agents were doing,
-understand what needed attention, and feel safe enough to turn them on.
-
-עמודה שמאל — Existing layer:
-- Create / Run / View activity / Edit workflows
-
-עמודה ימין — What was missing:
-- See pending decisions across all agents at once
-- Understand blast radius before an action runs
-- Review and approve at scale — not agent by agent
-- Know ownership, scope and risk for every agent
-
-[N] Speaker note (לך בלבד):
-This is the core reframing of the case study. The product already had agent
-management — create, run, view activity and edit workflows. What was missing
-was the oversight layer: the layer that helps operators understand what agents
-are doing, what needs attention, what is risky, and whether they can safely
-step in.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 08] — Four things the old experience couldn't do
+[SLIDE 07] — Four things the old experience couldn't do
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: הפירוט של ה-4 כאבים. כל bullet = כאב ספציפי שאפשר
 להוכיח. אם יש ציטוטים אמיתיים — כדאי להוסיף.
@@ -217,7 +184,40 @@ BULLETS:
 
 [★ COUNCIL] אם יש לך ציטוט ישיר על אחד מהכאבים האלה ("I have to
 open every single agent page just to see if anything is waiting") —
-הוסיפי אותו בשקף 08 או 20.
+הוסיפי אותו בשקף 07 או 20.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[SLIDE 08] — From agent management to agent oversight
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STORY NOTE: השקף המרכזי של הקייס — מציג את ה-thesis ואת ה-reframing
+בו-זמנית. מה היה קיים ומה היה חסר, ולמה זה trust problem ולא technology problem.
+
+EYEBROW: The starting point · what existed
+
+H2: From agent management to [agent oversight]
+  (ה-italic: "agent oversight")
+
+LEDE:
+This wasn't a technology problem — it was a trust gap. The product could manage
+agents; what was missing was the oversight layer that made autonomy feel safe
+to turn on.
+
+עמודה שמאל — Existing layer:
+- Create / Run / View activity / Edit workflows
+
+עמודה ימין — What was missing:
+- See pending decisions across all agents at once
+- Understand blast radius before an action runs
+- Review and approve at scale — not agent by agent
+- Know ownership, scope and risk for every agent
+
+[N] Speaker note (לך בלבד):
+This is the core reframing of the case study. The product already had agent
+management — create, run, view activity and edit workflows. What was missing
+was the oversight layer: the layer that helps operators understand what agents
+are doing, what needs attention, what is risky, and whether they can safely
+step in.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
