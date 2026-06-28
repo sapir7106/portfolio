@@ -120,7 +120,7 @@ ul.clean li b{color:var(--ink);font-weight:600}
 .slide:nth-child(6) h2 br{display:block}
 .slide:nth-child(6) .two-panels{margin-top:32px}
 .oversight-thesis{max-width:calc((100% - 1.4cqw) / 2)}
-.panel-border ul.clean li,.panel-fill ul.clean li{font-family:var(--sans);font-size:clamp(17px,1.1cqw,20px)}
+.panel-border ul.clean li,.panel-fill ul.clean li{font-family:var(--sans)}
 .slide:nth-child(17) .shot-img{border:0px solid #F7F6F1}
 
 .flex-mid{flex:1;display:flex;flex-direction:column;justify-content:center}
@@ -301,6 +301,11 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 /* revert tl-slide font-sizes changed on this branch */
 .tl-slide .tl-label{font-size:11px}
 .tl-slide .tl-title{font-size:1.5cqw}
+
+/* MEDIUM body text — default for most slides */
+.text-md{font-size:clamp(17px,1.16cqw,22px);line-height:1.55}
+/* SMALL body text — for dense/compact slides */
+.text-sm{font-size:clamp(15px,1.3cqw,18px);line-height:1.5}
 
 /* toosmall */
 .toosmall{display:none;position:fixed;inset:0;z-index:9998;background:#111;color:#ccc;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:32px;font-family:'Montserrat',sans-serif}
@@ -545,25 +550,25 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
         <div class="tl-label">Step 1</div>
         <div class="tl-dz"><div class="tl-dot"></div></div>
         <div class="tl-title">Requirement definition</div>
-        <div class="tl-desc">Problem space, opportunity, user pains &amp; story, constraints.</div>
+        <div class="tl-desc text-sm">Problem space, opportunity, user pains &amp; story, constraints.</div>
       </div>
       <div class="tl-step">
         <div class="tl-label">Step 2</div>
         <div class="tl-dz"><div class="tl-dot"></div></div>
         <div class="tl-title">Research &amp; user journey</div>
-        <div class="tl-desc">Competitive scan, interviews, FullStory, mapping decisions &amp; pain points. <span class="tl-ai">AI-assisted research synthesis</span></div>
+        <div class="tl-desc text-sm">Competitive scan, interviews, FullStory, mapping decisions &amp; pain points. <span class="tl-ai">AI-assisted research synthesis</span></div>
       </div>
       <div class="tl-step">
         <div class="tl-label">Step 3</div>
         <div class="tl-dz"><div class="tl-dot"></div></div>
         <div class="tl-title">Design exploration</div>
-        <div class="tl-desc">Concepts &amp; wireframes, interactive HTML prototypes. <span class="tl-ai">AI-supported concept exploration</span></div>
+        <div class="tl-desc text-sm">Concepts &amp; wireframes, interactive HTML prototypes. <span class="tl-ai">AI-supported concept exploration</span></div>
       </div>
       <div class="tl-step">
         <div class="tl-label">Step 4</div>
         <div class="tl-dz"><div class="tl-dot"></div></div>
         <div class="tl-title">Design refinement</div>
-        <div class="tl-desc">Choose a direction, polish visuals, prepare for handoff.</div>
+        <div class="tl-desc text-sm">Choose a direction, polish visuals, prepare for handoff.</div>
       </div>
     </div>
 
@@ -573,25 +578,25 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
         <div class="tl-label">Step 5</div>
         <div class="tl-dz"><div class="tl-dot"></div></div>
         <div class="tl-title">Collaboration &amp; iteration</div>
-        <div class="tl-desc">Feedback loops, iterate with product &amp; eng throughout the process.</div>
+        <div class="tl-desc text-sm">Feedback loops, iterate with product &amp; eng throughout the process.</div>
       </div>
       <div class="tl-step">
         <div class="tl-label">Step 6</div>
         <div class="tl-dz"><div class="tl-dot"></div></div>
         <div class="tl-title">Design systems</div>
-        <div class="tl-desc">Components &amp; tokens, standards that scale. <span class="tl-ai">AI-generated component documentation</span></div>
+        <div class="tl-desc text-sm">Components &amp; tokens, standards that scale. <span class="tl-ai">AI-generated component documentation</span></div>
       </div>
       <div class="tl-step">
         <div class="tl-label">Step 7</div>
         <div class="tl-dz"><div class="tl-dot"></div></div>
         <div class="tl-title">Handoff &amp; code</div>
-        <div class="tl-desc">Engineering handoff, VQA on specific components, directly to repo.*</div>
+        <div class="tl-desc text-sm">Engineering handoff, VQA on specific components, directly to repo.*</div>
       </div>
       <div class="tl-step">
         <div class="tl-label">Step 8</div>
         <div class="tl-dz"><div class="tl-dot"></div></div>
         <div class="tl-title">Monitoring</div>
-        <div class="tl-desc">Track behavior (FullStory), gather insight, feed back into the next cycle.</div>
+        <div class="tl-desc text-sm">Track behavior (FullStory), gather insight, feed back into the next cycle.</div>
       </div>
     </div>
 
@@ -618,31 +623,31 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
         <div class="val-num">01</div>
         <div class="w">Efficiency</div>
         <div class="s">cut waste, fast</div>
-        <div class="val-desc">Cut cloud-cost waste fast. If a step doesn't earn its keep, we cut it.</div>
+        <div class="val-desc text-sm">Cut cloud-cost waste fast. If a step doesn't earn its keep, we cut it.</div>
       </div>
       <div class="val">
         <div class="val-num">02</div>
         <div class="w">Depth</div>
         <div class="s">explain the why</div>
-        <div class="val-desc">We don't just flag a cost; we explain the why behind it, down to the resource.</div>
+        <div class="val-desc text-sm">We don't just flag a cost; we explain the why behind it, down to the resource.</div>
       </div>
       <div class="val">
         <div class="val-num">03</div>
         <div class="w">Creativity</div>
         <div class="s">novel solutions</div>
-        <div class="val-desc">Novel solutions to messy cost problems, not just the obvious rightsizing.</div>
+        <div class="val-desc text-sm">Novel solutions to messy cost problems, not just the obvious rightsizing.</div>
       </div>
       <div class="val">
         <div class="val-num">04</div>
         <div class="w">Bias to action</div>
         <div class="s">agents that act</div>
-        <div class="val-desc">Agents that don't just surface a problem — they act on it.</div>
+        <div class="val-desc text-sm">Agents that don't just surface a problem — they act on it.</div>
       </div>
       <div class="val">
         <div class="val-num">05</div>
         <div class="w">Trust</div>
         <div class="s">earn the autonomy</div>
-        <div class="val-desc">Customers let agents touch their cloud bill only if they trust them.</div>
+        <div class="val-desc text-sm">Customers let agents touch their cloud bill only if they trust them.</div>
       </div>
     </div>
   </div>
@@ -689,19 +694,19 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
       <div class="panel-border">
         <p class="panel-label">Existing layer</p>
         <ul class="clean">
-          <li>Create agents</li>
-          <li>Run agents</li>
-          <li>View activity</li>
-          <li>Edit workflows</li>
+          <li class="text-sm">Create agents</li>
+          <li class="text-sm">Run agents</li>
+          <li class="text-sm">View activity</li>
+          <li class="text-sm">Edit workflows</li>
         </ul>
       </div>
       <div class="panel-fill">
         <p class="panel-label">What was missing</p>
         <ul class="clean">
-          <li>See <b>pending decisions</b> across <b>all agents</b> at once</li>
-          <li>Understand <b>blast radius</b> before an action runs</li>
-          <li>Review and approve <b>at scale</b> — not agent by agent</li>
-          <li>Know <b>ownership, scope and risk</b> for every agent</li>
+          <li class="text-sm">See <b>pending decisions</b> across <b>all agents</b> at once</li>
+          <li class="text-sm">Understand <b>blast radius</b> before an action runs</li>
+          <li class="text-sm">Review and approve <b>at scale</b> — not agent by agent</li>
+          <li class="text-sm">Know <b>ownership, scope and risk</b> for every agent</li>
         </ul>
       </div>
     </div>
