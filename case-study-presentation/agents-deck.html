@@ -146,11 +146,10 @@ ul.clean li b{color:var(--ink);font-weight:600}
 .val{padding:1.8cqh 1.2cqw;border-right:0.5px solid var(--line);background:#FCFBF9;display:flex;flex-direction:column}
 .val:last-child{border-right:none}
 .val-num{font-family:var(--mono);font-size:14px;letter-spacing:.12em;color:var(--muted);margin-bottom:1cqh}
-.val .w{font-family:var(--sans);font-weight:700;font-size:clamp(18px,1.8cqw,20px);color:var(--ink);line-height:1.05;margin-bottom:.4cqh;white-space:nowrap}
-@container stage (min-width:1600px){.val .w{font-size:24px}}
-.val .s{font-family:var(--sans);font-size:clamp(14px,.95cqw,16px);color:var(--accent);letter-spacing:.02em;font-weight:500;margin-bottom:16px}
-.val-desc{font-size:clamp(14px,1cqw,22px);line-height:1.5;color:var(--ink-soft)}
-@media(max-width:1440px){.val .s{margin-bottom:12px}.val-desc{font-size:14px}.tl-desc{font-size:14px}}
+.val .w{font-family:var(--sans);font-weight:700;font-size:2.2cqw;color:var(--ink);line-height:1.05;margin-bottom:.4cqh;white-space:nowrap}
+.val .s{font-family:var(--sans);font-size:1.05cqw;color:var(--accent);letter-spacing:.02em;font-weight:500;margin-bottom:16px}
+.val-desc{line-height:1.5;color:var(--ink-soft)}
+@media(max-width:1440px){.val .s{margin-bottom:12px}}
 
 .partners{display:contents}
 .partner{border:none;border-left:4px solid var(--hi);padding:.5cqh 0 .5cqh 1.2cqw;background:none;border-radius:0}
@@ -297,8 +296,11 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 .tl-dz{height:16px;position:relative;margin-bottom:20px}
 .tl-dot{position:absolute;top:0;left:0;width:16px;height:16px;border-radius:50%;background:var(--accent);z-index:2}
 .tl-title{font-family:var(--sans);font-weight:600;font-size:clamp(15px,1.3cqw,18px);color:var(--ink);line-height:1.2;margin-bottom:8px}
-.tl-desc{font-family:var(--sans);font-weight:400;font-size:clamp(15px,1.3cqw,18px);color:var(--ink-soft);line-height:1.5}
+.tl-desc{font-family:var(--sans);font-weight:400;font-size:clamp(17px,1.16cqw,22px);color:var(--ink-soft);line-height:1.5}
 .tl-ai{color:var(--accent)}
+/* revert tl-slide font-sizes changed on this branch */
+.tl-slide .tl-label{font-size:11px}
+.tl-slide .tl-title{font-size:1.5cqw}
 
 /* toosmall */
 .toosmall{display:none;position:fixed;inset:0;z-index:9998;background:#111;color:#ccc;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:32px;font-family:'Montserrat',sans-serif}
