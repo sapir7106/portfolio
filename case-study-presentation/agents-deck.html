@@ -158,13 +158,19 @@ ul.clean li b{color:var(--ink);font-weight:600}
 .partner p{font-size:clamp(15px,1.75cqw,22px);color:var(--ink);line-height:1.6;font-weight:400;max-width:none}
 .layout-a-right{display:flex;flex-direction:column;gap:1.2cqh;justify-content:center}
 
-.princ{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1cqw;margin-top:1.4cqh}
-.pr{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.4cqh 1.1cqw;display:flex;flex-direction:column;gap:.8cqh}
-.pr .ic{width:2.4cqw;height:2.4cqw;color:var(--accent)}
-.pr .ic svg{width:100%;height:100%}
-.pr h4{font-size:1.4cqw;font-weight:600;color:var(--ink);line-height:1.1}
-.pr p{font-size:1.1cqw;color:var(--muted);line-height:1.4}
-.pr .tag{margin-top:auto;font-family:var(--mono);font-weight:700;font-size:.86cqw;color:var(--accent);letter-spacing:.03em}
+.princ{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;width:100%
+}
+.pr{
+  padding:1.6cqh 1.2cqw;border-right:1px solid var(--line);
+  display:flex;flex-direction:column;gap:.8cqh
+}
+.pr:last-child{border-right:none}
+.pr .ic svg{width:22px;height:22px;stroke:var(--accent);stroke-width:1.6}
+.pr h4{font-family:var(--sans);font-weight:600;font-size:clamp(14px,1.2cqw,17px);color:var(--ink);line-height:1.2}
+.pr p{font-size:clamp(13px,1.05cqw,15px);color:var(--ink);line-height:1.55;flex:1}
+.pr .tag{font-family:var(--mono);font-size:clamp(10px,.85cqw,12px);color:var(--accent)}
 
 .pain{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:1.2cqw;margin-top:1.4cqh}
 .pcell{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.5cqh 1.3cqw}
@@ -807,12 +813,29 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 <section class="slide">
   <div class="eyebrow">Research · synthesis</div>
   <h2>Five principles for designing <em>trust</em> in agents</h2>
-  <div class="princ">
-    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="2.5"/></svg></div><h4>Intent Preview</h4><p>Show what will happen before it happens.</p><div class="tag">NN/g · #1 trust driver</div></div>
-    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></div><h4>Action Audit + Undo</h4><p>Every action logged, readable, reversible.</p><div class="tag">Cuts perceived risk</div></div>
-    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2.4" fill="currentColor"/><circle cx="15" cy="12" r="2.4" fill="currentColor"/><circle cx="7" cy="18" r="2.4" fill="currentColor"/></svg></div><h4>Variable Autonomy</h4><p>Not on/off — a spectrum: auto · approve-per-step · sandbox.</p><div class="tag">MS · +mental model</div></div>
-    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg></div><h4>Confidence Signals</h4><p>Show how sure it is, and why.</p><div class="tag">NN/g · trust ↑</div></div>
-    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/></svg></div><h4>Single Pane of Glass</h4><p>See and act on every agent from one view.</p><div class="tag">Microsoft</div></div>
+  <div style="display:flex;flex:1;align-items:center">
+    <div class="princ">
+      <div class="pr">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h4>Intent Preview</h4><p>Show what will happen before it happens.</p><div class="tag">NN/g · #1 trust driver</div>
+      </div>
+      <div class="pr">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg></div>
+        <h4>Action Audit + Undo</h4><p>Every action logged, readable, reversible.</p><div class="tag">Cuts perceived risk</div>
+      </div>
+      <div class="pr">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="4" height="8" rx="1"/><rect x="10" y="6" width="4" height="12" rx="1"/><rect x="17" y="3" width="4" height="15" rx="1"/></svg></div>
+        <h4>Variable Autonomy</h4><p>Not on/off — a spectrum: auto · approve-per-step · sandbox.</p><div class="tag">MS · +mental model</div>
+      </div>
+      <div class="pr">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 7.39 16.74"/><path d="M12 2a10 10 0 0 0-7.39 16.74"/><line x1="12" y1="12" x2="16" y2="8"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        <h4>Confidence Signals</h4><p>Show how sure it is, and why.</p><div class="tag">NN/g · trust ↑</div>
+      </div>
+      <div class="pr">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg></div>
+        <h4>Single Pane of Glass</h4><p>See and act on every agent from one view.</p><div class="tag">Microsoft</div>
+      </div>
+    </div>
   </div>
   <div class="note"><b>Backed by:</b> 62% of orgs piloting agents (McKinsey '25) · 40% of agent projects scrapped by '27 for trust & UX, not tech (Gartner) · 79% prefer a human when things get complex (SurveyMonkey '25).</div>
 </section>
