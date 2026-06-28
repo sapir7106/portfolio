@@ -316,27 +316,7 @@ IMG-02 DESC: Market scan — 10 agentic products plus direct FinOps competitors,
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 11] — What operators actually need
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: מה גילית — 3 צרכים מרכזיים. קצר וממוקד, מגיע
-ישר לאחר המחקר.
-
-EYEBROW: Research · user needs
-H2: What operators actually need
-
-BULLETS:
-• [See what's waiting] — know instantly when an agent needs them,
-  without opening each one.
-• [Understand the blast radius] — what an action will touch before it happens.
-• [Act with confidence] — approve, pause or undo, and know it's reversible.
-  (ה-bold: הביטוי הראשון לפני ה-dash)
-
-[N] Source: feature research grounded in our own product — what agents
-  could report, where decisions got buried, how operators wanted to oversee them.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 12] — What users need to trust agents — and what the market confirmed
+[SLIDE 11] — What users need to trust agents — and what the market confirmed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EYEBROW: Research · user needs + market signal
 H2: What users need to trust agents — and what the market confirmed
@@ -346,6 +326,28 @@ H2: What users need to trust agents — and what the market confirmed
 המחקר הראה שלמשתמשים לא חסר עוד דאטה — הם צריכים להבין מה מחכה להם, מה ההשפעה של פעולה לפני שהיא רצה, ושיש להם דרך להתערב או לעצור.
 בצד של השוק, המסר הוא שהביקוש לאג׳נטים אוטונומיים קיים. אנשים מתלהבים מהכיוון ורוצים להשתמש בו, אבל זה לא מספיק. כדי שהם באמת יפעילו את האג׳נטים, הם צריכים להרגיש שהם מבינים, סומכים ושומרים שליטה.
 משפט מרכזי: השוק רוצה agents, אבל adoption תלוי באמון. לכן הפתרון שלי התמקד בליצור visibility, context ו-control סביב האוטונומיה.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[SLIDE 12] — Five principles for designing trust in agents
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STORY NOTE: ה-synthesis — 5 עקרונות trust שנגזרו מהמחקר. כל אחד
+עם source. שקף חזק מאוד — זה ה-IP האינטלקטואלי שלך.
+
+EYEBROW: Research · synthesis
+H2: Five principles for designing [trust] in agents
+  (ה-italic: "trust")
+
+5 PRINCIPLES (כותרת | תיאור | source):
+1. Intent Preview          | Show what will happen before it happens.           | NN/g · #1 trust driver
+2. Action Audit + Undo     | Every action logged, readable, reversible.          | Cuts perceived risk
+3. Variable Autonomy       | Not on/off — a spectrum: auto · approve-per-step · sandbox. | MS · +mental model
+4. Confidence Signals      | Show how sure it is, and why.                      | NN/g · trust ↑
+5. Single Pane of Glass    | See and act on every agent from one view.           | Microsoft
+
+[N] Backed by: 62% of orgs piloting agents (McKinsey '25) · 40% of agent
+  projects scrapped by '27 for trust & UX, not tech (Gartner) · 79% prefer
+  a human when things get complex (SurveyMonkey '25).
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
