@@ -336,59 +336,20 @@ BULLETS:
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 12] — What the market said (FinOps X 2026)
+[SLIDE 12] — What users need to trust agents — and what the market confirmed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: ולידציה שוקית — FinOps X 2026. ציטוט מהשטח + מסקנות.
-מוצג כ"קול השוק" ולא כתוצאות מדידה.
+EYEBROW: Research · user needs + market signal
+H2: What users need to trust agents — and what the market confirmed
 
-EYEBROW: The market voice · FinOps X 2026
-H2: What the market said
-
-LEFT CELL [הציטוט]:
-HEADER: From the field
-QUOTE: "This NG agent direction is a game changer — how soon can we use it?"
-
-RIGHT CELL [המסקנות]:
-HEADER: What it confirmed
-• [win] The whole industry is reorienting around AI — the conference
-  renamed itself "Tokenomicon" for next year
-• [win] Autonomous agents are the most-wanted direction in FinOps
-• The demand is there — trust is the unlock
-
-[N] From FinOps X 2026. Direct reactions from customers & partners
-  to PointFive's agent direction. Framed as market validation of the
-  direction, not measured results.
-
-[★ COUNCIL] אם יש לך ציטוט מדויק יותר מהכנס (שם מישהו, תפקיד,
-חברה) — הוסיפי אותו. זה יחזק את האמינות מאוד. גם: אם שמעת
-ישירות, כדאי לציין "heard directly at the conference" או דומה —
-תלוי מתי עזבת.
+[SPEAKER NOTES]
+השקף הזה מחבר בין שני דברים: מה המשתמשים צריכים כדי לסמוך על אג׳נטים, ומה השוק אישר לגבי הכיוון הזה.
+המחקר הראה שלמשתמשים לא חסר עוד דאטה — הם צריכים להבין מה מחכה להם, מה ההשפעה של פעולה לפני שהיא רצה, ושיש להם דרך להתערב או לעצור.
+בצד של השוק, המסר הוא שהביקוש לאג׳נטים אוטונומיים קיים. אנשים מתלהבים מהכיוון ורוצים להשתמש בו, אבל זה לא מספיק. כדי שהם באמת יפעילו את האג׳נטים, הם צריכים להרגיש שהם מבינים, סומכים ושומרים שליטה.
+משפט מרכזי: השוק רוצה agents, אבל adoption תלוי באמון. לכן הפתרון שלי התמקד בליצור visibility, context ו-control סביב האוטונומיה.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 13] — Five principles for designing trust
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: ה-synthesis — 5 עקרונות trust שנגזרו מהמחקר. כל אחד
-עם source. שקף חזק מאוד — זה ה-IP האינטלקטואלי שלך.
-
-EYEBROW: Research · synthesis
-H2: Five principles for designing [trust] in agents
-  (ה-italic: "trust")
-
-5 PRINCIPLES (כותרת | תיאור | source):
-1. Intent Preview          | Show what will happen before it happens.           | NN/g · #1 trust driver
-2. Action Audit + Undo     | Every action logged, readable, reversible.          | Cuts perceived risk
-3. Variable Autonomy       | Not on/off — a spectrum: auto · approve-per-step · sandbox. | MS · +mental model
-4. Confidence Signals      | Show how sure it is, and why.                      | NN/g · trust ↑
-5. Single Pane of Glass    | See and act on every agent from one view.           | Microsoft
-
-[N] Backed by: 62% of orgs piloting agents (McKinsey '25) · 40% of agent
-  projects scrapped by '27 for trust & UX, not tech (Gartner) · 79% prefer
-  a human when things get complex (SurveyMonkey '25).
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 14] — The decision path (user flow)
+[SLIDE 13] — The decision path (user flow)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: ה-user flow — איך operator עובר מ"משהו מחכה לי" לאישור.
 IMG-03 = ה-flow diagram. שקף שמקביל לשקפי ה-journey ב-DSPM.
@@ -409,7 +370,7 @@ IMG-03 DESC: Mirror your DSPM journey slides — "Single decision"
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 15] — Design exploration: interactive prototypes
+[SLIDE 14] — Design exploration: interactive prototypes
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: מה עשיתי ב-exploration — live HTML, לא static. השאלה
 המרכזית של ה-exploration. IMG-04 = גריד ה-20 כיוונים.
@@ -436,7 +397,7 @@ IMG-04 DESC: A grid with Direction 03 highlighted.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 16] — Concept 01 (live preview)
+[SLIDE 15] — Concept 01 (live preview)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: Preview חי של Concept-01.html. לחיצה פותחת fullscreen.
 הכותרת היא רק "Concept 01" — הסיפור מסופר בהצגה.
@@ -453,7 +414,7 @@ Decisions folded quietly into the greeting — clean, but easy to miss the thing
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 17] — Concept 02 (live preview)
+[SLIDE 16] — Concept 02 (live preview)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: Preview חי של Concept-02.html.
 
@@ -469,7 +430,7 @@ A dedicated decisions banner — impossible to miss, but heavy. Pushes the whole
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 18] — Concept 03 → Direction 03 (chosen)
+[SLIDE 17] — Concept 03 → Direction 03 (chosen)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: Preview חי של Concept-03.html — הכיוון שנבחר.
 
@@ -487,7 +448,7 @@ CAPTION (גלוי):
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 19] — The agent-management screen (live mock)
+[SLIDE 18] — The agent-management screen (live mock)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: ה-mock החי של Direction 03 — בנוי מהמפרט שלך.
 זה השקף שהכי כדאי להחליף בFrames אמיתיים מ-Figma.
@@ -531,7 +492,7 @@ The agent-management screen — fleet overview, pending decisions, blast radius 
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 20] — Pains → ideas → solutions
+[SLIDE 19] — Pains → ideas → solutions
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: ה-core design thinking שלך — Pain 01 בלבד מופיע כציטוט
 אמיתי. שלושת הכאבים האחרים (שקף 08) יכולים להגיע לכאן אחרי
@@ -577,7 +538,7 @@ agent by agent" מספיק חזק — עוד 2 כמוהו יסגרו את השק
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 21] — A system, not just screens
+[SLIDE 20] — A system, not just screens
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: Design system — ה-Component Dictionary. 44 components.
 IMG-05 = תמונת ה-dictionary.

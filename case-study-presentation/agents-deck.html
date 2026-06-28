@@ -303,6 +303,29 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   .toosmall{display:flex}
   #deck,.helpbtn,.hint{display:none!important}
 }
+.research-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:96px;
+  flex:1;align-content:start;margin-top:52px
+}
+.research-col{ display:flex;flex-direction:column;gap:1.2cqh }
+.col-label{
+  font-family:var(--mono);font-size:clamp(14px,.9cqw,14px);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600
+}
+.research-need{ border-left:3px solid var(--hi);padding-left:1.2cqw }
+.rn-title{ font-family:var(--sans);font-weight:600;font-size:clamp(15px,1.2cqw,18px);color:var(--ink);margin-bottom:.3em }
+.research-need p{ font-size:clamp(14px,1.1cqw,16px);color:var(--ink);line-height:1.55 }
+.research-quote{ border-left:2px solid var(--line);padding-left:1.2cqw }
+.rq-text{
+  font-family:var(--sans);font-style:italic;font-weight:400;
+  font-size:clamp(16px,1.6cqw,22px);color:var(--ink);line-height:1.4
+}
+.rq-src{ font-size:clamp(14px,.85cqw,13px);color:var(--muted);margin-top:.4cqh;letter-spacing:.04em }
+.confirmed-label{
+  font-family:var(--mono);font-size:clamp(14px,.85cqw,11px);font-weight:600;
+  color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4cqh
+}
+.research-col > div > p{ font-size:clamp(14px,1.1cqw,16px);color:var(--ink);line-height:1.6 }
 </style>
 </head>
 <body>
@@ -470,8 +493,8 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <a href="../agents.html" class="rail-back"><span class="ri">←</span><span class="rl">Back</span></a>
   <button data-go="0"><span class="ri">01</span><span class="rl">About me</span></button>
   <button data-go="3"><span class="ri">02</span><span class="rl">Case study</span></button>
-  <button data-go="20"><span class="ri">03</span><span class="rl">The design</span></button>
-  <button data-go="25"><span class="ri">04</span><span class="rl">Reflection</span></button>
+  <button data-go="19"><span class="ri">03</span><span class="rl">The design</span></button>
+  <button data-go="24"><span class="ri">04</span><span class="rl">Reflection</span></button>
 </nav>
 
 <div class="stage-wrap">
@@ -759,30 +782,40 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 
 <!-- 12 -->
 <section class="slide">
-  <div class="eyebrow">The market voice · FinOps X 2026</div>
-  <h2>What the market said</h2>
-  <div class="pain" style="grid-template-columns:1fr 1fr">
-    <div class="pcell cry"><div class="h">From the field</div><div class="cryt">"This NG agent direction is a game changer — how soon can we use it?"</div></div>
-    <div class="pcell"><div class="h">What it confirmed</div><ul><li class="win">The whole industry is reorienting around AI — the conference renamed itself "Tokenomicon" for next year</li><li class="win">Autonomous agents are the most-wanted direction in FinOps</li><li>The demand is there — trust is the unlock</li></ul></div>
-  </div>
-  <div class="note"><b>From FinOps X 2026.</b> Direct reactions from customers & partners to PointFive's agent direction. Framed as market validation of the direction, not measured results.</div>
-</section>
+    <div class="eyebrow">Research · user needs + market signal</div>
+    <h2>What users need to trust agents —<br><em>and what the market confirmed</em></h2>
+    <p class="lede" style="max-width:calc(50% - 48px)">Three trust needs. The market confirmed the direction: teams want autonomous agents, but trust is what makes them usable.</p>
+    <div class="research-grid">
+      <div class="research-col">
+        <div class="col-label">User needs</div>
+        <div class="research-need">
+          <div class="rn-title">See what's waiting</div>
+          <p>Know instantly when an agent needs attention, without opening each one.</p>
+        </div>
+        <div class="research-need">
+          <div class="rn-title">Understand the blast radius</div>
+          <p>See scope, cost, and risk before approving an action.</p>
+        </div>
+        <div class="research-need">
+          <div class="rn-title">Act with confidence</div>
+          <p>Approve, snooze, hand off, or undo — knowing the action is controlled and reversible.</p>
+        </div>
+      </div>
+      <div class="research-col">
+        <div class="col-label">Market signal</div>
+        <div class="research-quote">
+          <p class="rq-text">"This NG agent direction is a game changer — how soon can we use it?"</p>
+          <p class="rq-src">From the field</p>
+        </div>
+        <div>
+          <div class="confirmed-label">What it confirmed</div>
+          <p>Demand for autonomous agents is real. But adoption depends on whether users feel they can understand, trust, and control them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 <!-- 13 -->
-<section class="slide">
-  <div class="eyebrow">Research · synthesis</div>
-  <h2>Five principles for designing <em>trust</em> in agents</h2>
-  <div class="princ">
-    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="2.5"/></svg></div><h4>Intent Preview</h4><p>Show what will happen before it happens.</p><div class="tag">NN/g · #1 trust driver</div></div>
-    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></div><h4>Action Audit + Undo</h4><p>Every action logged, readable, reversible.</p><div class="tag">Cuts perceived risk</div></div>
-    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2.4" fill="currentColor"/><circle cx="15" cy="12" r="2.4" fill="currentColor"/><circle cx="7" cy="18" r="2.4" fill="currentColor"/></svg></div><h4>Variable Autonomy</h4><p>Not on/off — a spectrum: auto · approve-per-step · sandbox.</p><div class="tag">MS · +mental model</div></div>
-    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg></div><h4>Confidence Signals</h4><p>Show how sure it is, and why.</p><div class="tag">NN/g · trust ↑</div></div>
-    <div class="pr"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/></svg></div><h4>Single Pane of Glass</h4><p>See and act on every agent from one view.</p><div class="tag">Microsoft</div></div>
-  </div>
-  <div class="note"><b>Backed by:</b> 62% of orgs piloting agents (McKinsey '25) · 40% of agent projects scrapped by '27 for trust & UX, not tech (Gartner) · 79% prefer a human when things get complex (SurveyMonkey '25).</div>
-</section>
-
-<!-- 14 -->
 <section class="slide">
   <div class="eyebrow">Research · user journey</div>
   <h2>The decision path</h2>
@@ -790,7 +823,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="shot has-shot-img"><span class="shot-id">IMG-03</span><div class="tag">Drop frame: user-flow diagram(s)</div><div class="desc">Mirror your DSPM journey slides — "Single decision" and "Bulk review" flows.</div><img class="shot-img" src="presentation-images/IMG-03.png" alt="User-flow diagram" onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
 </section>
 
-<!-- 15 -->
+<!-- 14 -->
 <section class="slide">
   <div class="eyebrow">Design exploration</div>
   <div class="two">
@@ -804,7 +837,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "In high-density B2B tools, static mockups lie. I built these as live HTML — you could resize the browser, filter the list, click the states. That's how I discovered that Concept 01 was dangerously easy to overlook, and Concept 02 was too aggressive. The medium told me things a Figma frame couldn't."</div>
 </section>
 
-<!-- 16 · CONCEPT 01 -->
+<!-- 15 · CONCEPT 01 -->
 <section class="slide concept" data-concept="Concept-01.html">
   <div class="eyebrow">Design exploration · concept 01</div>
   <h2>Concept 01</h2>
@@ -813,7 +846,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="note"><b>Concept 01:</b> decisions folded quietly into the greeting ("5 decisions waiting for your review"). Clean, but easy to miss the thing that matters most.</div>
 </section>
 
-<!-- 17 · CONCEPT 02 -->
+<!-- 16 · CONCEPT 02 -->
 <section class="slide concept" data-concept="Concept-02.html">
   <div class="eyebrow">Design exploration · concept 02</div>
   <h2>Concept 02</h2>
@@ -822,7 +855,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="note"><b>Concept 02:</b> a dedicated decisions banner naming the waiting agents, with a clear "Review decisions" action. Impossible to miss — but a heavy block pushing the agent list down.</div>
 </section>
 
-<!-- 18 · CONCEPT 03 -->
+<!-- 17 · CONCEPT 03 -->
 <section class="slide concept" data-concept="Concept-03.html">
   <div class="eyebrow">Design exploration · concept 03 — chosen</div>
   <h2>Concept 03 <em>→ Direction 03</em></h2>
@@ -832,7 +865,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "Concept 03 won because it solved the tension without compromising either side. The 'Decisions Waiting' counter became the entry point — it surfaced urgency at exactly the moment the operator's eye was already there, scanning the overview strip. No extra real estate, no cognitive detour."</div>
 </section>
 
-<!-- 19 -->
+<!-- 18 -->
 <section class="slide">
   <div class="eyebrow">Final design · Direction 03</div>
   <h2>The agent-management screen</h2>
@@ -846,7 +879,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 
 </section>
 
-<!-- 21 -->
+<!-- 20 -->
 <!-- new image slide: IMG-07 -->
 <section class="slide">
   <div class="eyebrow">Final design · Direction 03</div>
@@ -884,7 +917,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
   </div>
 </section>
 
-<!-- 24 -->
+<!-- 23 -->
 <section class="slide">
   <div class="eyebrow">External validation</div>
   <div class="flex-mid">
@@ -895,7 +928,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 
 </section>
 
-<!-- 25 -->
+<!-- 24 -->
 <section class="slide">
   <div class="eyebrow">Reflection</div>
   <div class="flex-mid">
@@ -917,7 +950,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 </section>
 
 
-<!-- 26 -->
+<!-- 25 -->
 <section class="slide">
   <div class="eyebrow">What sets me apart</div>
   <h2>What sets me apart</h2>
@@ -929,7 +962,7 @@ body.help .hint-inner{max-height:36px;opacity:1;padding:8px 16px;margin-top:10px
 
 </section>
 
-<!-- 27 -->
+<!-- 26 -->
 <section class="slide thanks divider">
   <h1>Thank you</h1>
   <div class="c"><div>Sapir Levi · <a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></div></div>
