@@ -591,37 +591,32 @@ at FinOps X 2026" כדי שלא יישמע כאילו הצגת שם.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 23] (לשעבר 25) — Reflection
+[SLIDE 24] — Reflection
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: הסיכום — starting point, not finish line. כאן אמירת
-ה-thesis שלך על AI ו-design judgment. עובד טוב כסיום.
+STORY NOTE: הסיכום — starting point, not finish line. Layout: 2-column grid.
+שמאל: What I learned + What I'd validate next. ימין: paragraph מרכזי.
 
 EYEBROW: Reflection
 H2: This is a [starting point], not a finish line
   (ה-italic: "starting point")
 
-LEDE:
-I focused on the place where the tension between human and AI is most
-visible — the moment a person decides whether to let an agent act.
-The whole design works to make the user feel they are the one in control,
-the one in the loop, even as the agents do the work.
-
+COL-LABEL: What I learned
 BULLETS:
-• [Used AI as a research partner] — clustering the scan into themes,
-  generating 20 prototype directions — with my judgment as the filter.
-• [Distilled 10 products + 10 studies] into 5 evidence-backed trust
-  principles that drove every decision.
-• [Where this could go:] a deeper single-agent page, edit / delegate / snooze flows,
-  validation with FinOps operators, and the edge states — no decisions, failed runs, recovery.
-  (ה-bold: פתיחת כל bullet)
+• AI helped me move faster, but [judgment stayed human].
+• Trust is not one feature — it's built through [visibility, reversibility and control].
+• In AI-native products, the interface is the [accountability layer].
 
-CLOSING LINE:
-In an AI-native world, a designer's value isn't producing screens fastest —
-it's being the layer of judgment.
+COL-LABEL: What I'd validate next
+BULLETS:
+• [Agent activation] — are people actually turning agents on?
+• [Faster decisions] — does the context make approvals easier?
+• [Fewer snoozes] — are users ready to act instead of postponing?
 
-[★ COUNCIL — V1 בלבד] שקף 23 בv1 עדיין אומר "What's next: expand..."
-כאילו את עדיין שם. שקול לשנות ל-"Where it could go:" או להשמיט
-כמו שנעשה ב-v2.
+RIGHT COLUMN (bordered):
+I focused on the moment where [trust is won or lost] — when a person decides
+whether to let an AI agent act. The goal wasn't to show more information.
+It was to create enough [clarity, context and control] for people to feel
+safe taking action — and to bring judgment into the system.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
