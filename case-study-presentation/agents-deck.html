@@ -654,7 +654,7 @@ section.slide:nth-of-type(10) .text-md{margin-bottom:0 !important}
   <div class="two" style="align-items:stretch">
     <div style="display:flex;flex-direction:column;justify-content:center">
       <h2>The old way:<br><em>agent by agent</em></h2>
-      <p>The moment agents could act on their own, something shifted: people started to <mark>fear them, not trust them</mark>, and quietly avoided turning them on. A pending decision lived inside each agent's own page, behind an unlabeled icon — a user running several agents never knew something was waiting.</p>
+      <p>Once agents could act on their own, the user's relationship with the system changed. The question was no longer only "what is the issue?" but "can I trust this agent to act on my behalf?" In the old experience, a pending decision lived inside each agent's own page, behind an unlabeled icon — so a user running several agents never knew something was waiting.</p>
     </div>
     <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-01</span><div class="tag">Drop frame: "before" screen</div><div class="desc">The original experience — a pending decision buried behind an unlabeled icon inside a single agent's page.</div><img class="shot-img" src="presentation-images/IMG-01.png" alt="The original experience — a pending decision buried behind an unlabeled icon inside a single agent's page." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
   </div>
@@ -705,6 +705,7 @@ section.slide:nth-of-type(10) .text-md{margin-bottom:0 !important}
         </ul>
       </div>
     </div>
+    <p style="margin-top:1.4cqh">For agents to create value, oversight had to do more than expose activity — it had to give users the confidence and control to activate them.</p>
   </div>
   <div class="note"><b>🎙 SPEAKER NOTE:</b> This is the core reframing of the case study. The product already had agent management — create, run, view activity and edit workflows. What was missing was the oversight layer: the layer that helps operators understand what agents are doing, what needs attention, what is risky, and whether they can safely step in.</div>
   <div class="note" dir="rtl">המוצר כבר ידע לנהל אג׳נטים: ליצור, להריץ, לערוך ולראות פעילות. מה שהיה חסר זו שכבת הפיקוח מעל זה — לראות החלטות שמחכות לאישור בכל האג׳נטים, להבין את ה־blast radius לפני שפעולה רצה, ולאשר החלטות בקנה מידה, במקום לעבור אג׳נט־אג׳נט.</div>
@@ -766,9 +767,9 @@ section.slide:nth-of-type(10) .text-md{margin-bottom:0 !important}
     <div>
       <h2>I grounded it, <em>not guessed it</em></h2>
       <ul class="clean">
-        <li>Scanned <b>10 agentic products</b> for oversight & governance patterns.</li>
-        <li>Studied <b>5 direct FinOps competitors</b> — Vantage, Finout, ProsperOps, nOps, CloudZero.</li>
-        <li>Read <b>10 studies</b> on AI trust + signal from <b>McKinsey · Gartner · SurveyMonkey · NN/g</b>.</li>
+        <li><b>10 agentic products</b> — reviewed for oversight and governance patterns.</li>
+        <li><b>FinOps competitors</b> — looked closely at Vantage, Finout, ProsperOps, nOps and CloudZero.</li>
+        <li><b>AI trust + human-in-the-loop</b> — read studies and pulled signals from McKinsey, Gartner, SurveyMonkey and NN/g.</li>
       </ul>
       <p style="margin-top:.6em"><mark>The gap:</mark> even the most advanced competitor runs oversight through Slack or ticketing — at the time, I didn't find a single product with a dedicated in-product pane to see every agent, its scope and its pending decisions</p>
     </div>
@@ -857,8 +858,9 @@ section.slide:nth-of-type(10) .text-md{margin-bottom:0 !important}
   <div class="two">
     <div>
       <h2>I explored the overview as <em>interactive prototypes</em></h2>
-      <p>Built with Claude as <strong>live HTML, not static mockups</strong> — fast to feel in a browser, not just look at.</p>
-      <p style="margin-top:.5em">The core question: how to surface the decisions waiting for review — keep them quiet, or pull them up as a dedicated call to action? Each concept made a different bet — building toward <strong>the one I chose</strong>.</p>
+      <p>I explored the overview screen as live HTML prototypes, using Claude to move faster from concept to interaction.</p>
+      <p style="margin-top:.5em">That let me test density, hierarchy and decision states in the browser — not only evaluate static Figma frames.</p>
+      <p style="margin-top:.5em">The core question: how hard should the screen push users toward pending approvals — keep them quiet, or pull them up as a dedicated call to action?</p>
     </div>
     <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-04</span><div class="tag">Drop frame: 20-directions contact sheet</div><div class="desc">A grid with Direction 03 highlighted.</div><img class="shot-img" src="presentation-images/IMG-04.png" alt="A grid with Direction 03 highlighted." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in;border:none" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
   </div>
@@ -939,7 +941,7 @@ section.slide:nth-of-type(10) .text-md{margin-bottom:0 !important}
   <div class="two">
     <div>
       <h2>A system, <em>not just screens</em></h2>
-      <p>I built a <strong>Component Dictionary</strong> — auto-generated from the React codebase and bound to PointFive brand tokens — a full design system that keeps the agent surface coherent as the product scales, and can grow consistently from here.</p>
+      <p>The oversight experience was built on <strong>PointFive's design system, which I established from scratch</strong>. As we adapted the system for Claude-assisted prototyping, I used the transition as a <strong>light UI refresh</strong> — tightening density, states and hierarchy so the agent experience felt like a natural evolution of PointFive, not a separate AI layer.</p>
     </div>
     <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-05</span><div class="tag">Drop frame: component dictionary</div><div class="desc">A shot of the components / tokens.</div><img class="shot-img" src="presentation-images/IMG-05.png" alt="A shot of the components / tokens." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
   </div>
@@ -951,7 +953,7 @@ section.slide:nth-of-type(10) .text-md{margin-bottom:0 !important}
   <div class="flex-mid">
     <h2>The market <em>wants</em> this direction</h2>
     <p class="lede">At <strong>FinOps X 2026</strong>, customers and partners repeatedly called PointFive's NG agent direction a <mark>"game changer"</mark> and asked how soon they could use it.</p>
-    <p style="margin-top:.6em">The market clearly wants autonomous agents. This is market validation of the direction — not measured results on the design itself. The <strong>trust layer I designed was built to turn that demand into something people would actually switch on.</strong></p>
+    <p style="margin-top:.6em">The market clearly wants autonomous agents. This is validation of the direction — not measured results on the design itself. The <strong>trust layer I designed was built to turn that demand into something teams would feel confident enough to activate.</strong></p>
   </div>
 
 </section>
@@ -965,7 +967,7 @@ section.slide:nth-of-type(10) .text-md{margin-bottom:0 !important}
         <div>
           <p class="col-label">What I learned</p>
           <ul class="clean">
-            <li>AI helped me move faster, but <b>judgment stayed human</b>.</li>
+            <li>AI helped me move faster through research synthesis and live prototypes, but <b>judgment stayed human</b>.</li>
             <li>Trust is not one feature — it's built through <b>visibility, reversibility and control</b>.</li>
             <li>In AI-native products, the interface is the <b>accountability layer</b>.</li>
           </ul>
