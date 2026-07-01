@@ -252,8 +252,12 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 }
 .impact-quote p{
   font-family:var(--sans);
-  font-size:20px;font-weight:500;font-style:italic;
+  font-size:19px;font-weight:500;font-style:italic;
   line-height:1.55;color:var(--ink);
+}
+@media(min-width:768px) and (max-width:1440px){
+  .lede{font-size:17px}
+  .impact-quote p{font-size:17px}
 }
 /* about panel — injected from about-panel.html via about-loader.js */
 
