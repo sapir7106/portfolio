@@ -40,7 +40,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:22px}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;max-width:14ch;margin-bottom:28px}
 .hero h1 em{font-style:italic;font-weight:400}
-.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch}
+.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:700px;width:100%}
 .lede strong{color:var(--ink);font-weight:600}
 mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
 
@@ -252,8 +252,12 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 }
 .impact-quote p{
   font-family:var(--sans);
-  font-size:20px;font-weight:500;font-style:italic;
+  font-size:19px;font-weight:500;font-style:italic;
   line-height:1.55;color:var(--ink);
+}
+@media(min-width:768px) and (max-width:1440px){
+  .lede{font-size:17px}
+  .impact-quote p{font-size:17px}
 }
 /* about panel — injected from about-panel.html via about-loader.js */
 
@@ -325,7 +329,8 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 <header class="hero col rv">
   <div class="eyebrow">Laminar · Cloud Data Security · 2023</div>
   <h1>Bringing clarity to cloud <em>data security</em></h1>
-  <p class="lede"><mark>DSPM</mark> is a solution for organizations that need <strong>data security and governance across cloud environments.</strong> I redesigned how teams understand the lifecycle and posture of their sensitive assets.</p>
+  <p class="lede">Laminar's DSPM helps security teams govern sensitive data across cloud environments. This case focuses on the main DSPM overview — the dashboard where users assess data-security posture, prioritize violations, and decide what needs action.</p>
+  <p class="lede" style="margin-top:20px">I led the redesign across research, information architecture, dashboard UX, prototyping, iconography, and design-system work. The core problem was signal overload: teams had the data, but struggled to see risk and urgency. The key move was replacing a flat posture view with risk-category grouping, inline filters, and severity-first scanning.</p>
 </header>
 
 </div><!-- /hero-wrapper -->
@@ -360,17 +365,17 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   </div>
 </div> -->
 
-<div class="hero-shot rv" style="max-width:var(--wide)">
+<div class="hero-shot" style="max-width:var(--wide)">
   <figure>
-    <div class="ph" data-img-id="IMG-01" style="aspect-ratio:16/8"><div class="ph-id">IMG-01</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Hero image · IMG-01</span><img src="portfolio%20images/dspm/IMG-01.png" alt="Hero image · IMG-01" class="ph-img" onerror="this.remove()"></div>
+    <div class="ph" data-img-id="IMG-01" style="aspect-ratio:16/8"><div class="ph-id">IMG-01</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Hero image · IMG-01</span><img src="portfolio%20images/dspm/IMG-01.png" alt="Hero image · IMG-01" class="ph-img" loading="eager" fetchpriority="high" onerror="this.remove()"></div>
     <figcaption>The redesigned DSPM dashboard — overview of data security posture.</figcaption>
   </figure>
 </div>
 
 <div class="pinfo col rv">
-  <div class="pi"><div class="pi-label">My role</div><div class="pi-role">Senior Product Designer</div><p>Research, design, wireframing, iconography, prototyping, user flows and design system.</p></div>
-  <div class="pi"><div class="pi-label">Tools</div><p>Figma, Miro, Maze, Photoshop, Illustrator, Jira, Confluence.</p></div>
-  <div class="pi"><div class="pi-label">Team</div><p>1 Product Design Lead<br>1 Product Manager<br>1 Technical UX Writer<br>4 Full Stack Developers</p></div>
+  <div class="pi"><div class="pi-label">My role</div><div class="pi-role">Senior Product Designer</div><p>Owned research, IA, dashboard UX, design system and final UI.</p></div>
+  <div class="pi"><div class="pi-label">Tools</div><p>Figma<br>Miro<br>Maze<br>Adobe Suite<br>Jira &amp; Confluence</p></div>
+  <div class="pi"><div class="pi-label">Team</div><p>Product Design Lead<br>Product Manager<br>Technical UX Writer<br>4 Full-stack Developers</p></div>
 </div>
 
 <section class="col rv">

@@ -40,7 +40,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:22px}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;max-width:14ch;margin-bottom:28px}
 .hero h1 em{font-style:italic;font-weight:400}
-.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch}
+.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:700px;width:100%}
 .lede strong{color:var(--ink);font-weight:600}
 mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
 
@@ -255,8 +255,12 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 }
 .impact-quote p{
   font-family:var(--sans);
-  font-size:20px;font-weight:500;font-style:italic;
+  font-size:19px;font-weight:500;font-style:italic;
   line-height:1.55;color:var(--ink);
+}
+@media(min-width:768px) and (max-width:1440px){
+  .lede{font-size:17px}
+  .impact-quote p{font-size:17px}
 }
 /* about panel — injected from about-panel.html via about-loader.js */
 
@@ -328,7 +332,8 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 <header class="hero col rv">
   <div class="eyebrow">PointFive · AI Efficiency OS for FinOps · 2026</div>
   <h1>Designing trust into <em>autonomous agents</em></h1>
-  <p class="lede">PointFive is a FinOps platform that helps organizations understand and cut cloud costs — and it was going AI-native, with <strong>agents that don't just surface problems but act on them.</strong> I designed the oversight layer for those <a href="case-study-presentation/agents-deck.html" class="secret-deck"><mark>autonomous agents</mark></a> — the part that tells you what's happening, what needs your attention, and whether you can step in.</p>
+  <p class="lede">PointFive is a FinOps platform that helps organizations understand and reduce cloud costs. This case focuses on the AI-native agents layer — the part of the product where agents move from surfacing cost opportunities to acting on them.</p>
+  <p class="lede" style="margin-top:20px">I led the agent oversight experience end to end. The core problem was trust: users needed to understand what each agent was doing, what required approval, and where they could step in. The key move was turning "Decisions Waiting" into the primary entry point for human review.</p>
 </header>
 
 </div><!-- /hero-wrapper -->
@@ -353,9 +358,9 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 </div>
 
 <div class="pinfo col rv">
-  <div class="pi"><div class="pi-label">My role</div><div class="pi-role">Lead Product Designer</div><p>Research, UX strategy, system design, AI-assisted prototyping, design-system adaptation and UI refresh.</p></div>
-  <div class="pi"><div class="pi-label">Tools</div><p>AI tools for research and prototyping, Figma.</p></div>
-  <div class="pi"><div class="pi-label">Team</div><p>1 Product Manager<br>4 Engineers<br>1 CPO</p></div>
+  <div class="pi"><div class="pi-label">My role</div><div class="pi-role">Lead Product Designer</div><p>Owned the oversight UX from concept to final UI.</p></div>
+  <div class="pi"><div class="pi-label">Tools</div><p>Figma<br>AI-assisted research &amp; prototyping</p></div>
+  <div class="pi"><div class="pi-label">Team</div><p>Product Manager<br>4 Engineers<br>CPO</p></div>
 </div>
 
 <section class="col rv">

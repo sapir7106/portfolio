@@ -40,7 +40,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:22px}
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;max-width:14ch;margin-bottom:28px}
 .hero h1 em{font-style:italic;font-weight:400}
-.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch}
+.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:700px;width:100%}
 .lede strong{color:var(--ink);font-weight:600}
 mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
 
@@ -252,8 +252,12 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 }
 .impact-quote p{
   font-family:var(--sans);
-  font-size:20px;font-weight:500;font-style:italic;
+  font-size:19px;font-weight:500;font-style:italic;
   line-height:1.55;color:var(--ink);
+}
+@media(min-width:768px) and (max-width:1440px){
+  .lede{font-size:17px}
+  .impact-quote p{font-size:17px}
 }
 /* about panel — injected from about-panel.html via about-loader.js */
 
@@ -325,7 +329,8 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 <header class="hero col rv">
   <div class="eyebrow">Velocity · Cybersecurity · 2021</div>
   <h1>Turning security noise into <em>a clear next move</em></h1>
-  <p class="lede">Velocity is a comprehensive cybersecurity platform for detecting and responding to threats. I designed a centralized <mark>security dashboard</mark> that turns complex security data into a <strong>practical decision-making tool.</strong></p>
+  <p class="lede">Velocity is a cybersecurity platform for detecting and responding to threats. This case focuses on the main security dashboard — the overview analysts use to understand security health, top alerts, entities at risk, recommendations, and recent activity.</p>
+  <p class="lede" style="margin-top:20px">I led the dashboard design from research synthesis and wireframes to user flows, visual design, dev handoff, and build support. The core problem was noise: teams had many signals but no clear next move. The key move was organizing the dashboard into one prioritized view that helps analysts move from monitoring to action.</p>
 </header>
 
 </div><!-- /hero-wrapper -->
@@ -338,21 +343,21 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 
 <div class="impact-quote col rv">
   <div class="inner">
-    <p>Security teams weren't short on data — they were short on clarity. I designed for the decision, not the dashboard.</p>
+    <p>Security teams weren't short on data — they were short on clarity.</p>
   </div>
 </div>
 
-<div class="hero-shot rv" style="max-width:var(--wide)">
+<div class="hero-shot" style="max-width:var(--wide)">
   <figure>
-    <div class="ph" data-img-id="IMG-01" style="aspect-ratio:16/8"><div class="ph-id">IMG-01</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Hero image · IMG-01</span><img src="portfolio%20images/security-dashboard/IMG-01.png" alt="Hero image · IMG-01" class="ph-img" onerror="this.remove()"></div>
+    <div class="ph" data-img-id="IMG-01" style="aspect-ratio:16/8"><div class="ph-id">IMG-01</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Hero image · IMG-01</span><img src="portfolio%20images/security-dashboard/IMG-01.png" alt="Hero image · IMG-01" class="ph-img" loading="eager" fetchpriority="high" onerror="this.remove()"></div>
     <figcaption>The Velocity security dashboard — security health, top alerts, entities at risk and activity timeline in one view.</figcaption>
   </figure>
 </div>
 
 <div class="pinfo col rv">
-  <div class="pi"><div class="pi-label">My role</div><div class="pi-role">Product Designer</div><p>Sketching, visual design, user journeys, wireframing, dev handoff and support through development.</p></div>
-  <div class="pi"><div class="pi-label">Tools</div><p>Figma, Miro, Notion, Zeplin, pen and paper.</p></div>
-  <div class="pi"><div class="pi-label">Team</div><p>1 Product Design Lead<br>1 Product Manager<br>2 Full-stack Developers</p></div>
+  <div class="pi"><div class="pi-label">My role</div><div class="pi-role">Product Designer</div><p>Owned dashboard UX from research to build support.</p></div>
+  <div class="pi"><div class="pi-label">Tools</div><p>Figma<br>Miro<br>Notion<br>Zeplin<br>Pen &amp; paper</p></div>
+  <div class="pi"><div class="pi-label">Team</div><p>Product Design Lead<br>Product Manager<br>2 Full-stack Developers</p></div>
 </div>
 
 <section class="col rv">
