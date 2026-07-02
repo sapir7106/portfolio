@@ -17,7 +17,7 @@ Lede: PointFive is a FinOps platform that helps organizations understand and cut
 IMPACT
 ------
 Type: QUOTE
-Quote: In an AI-native product, trust is a design problem, not a data problem. Operators didn't need more numbers, they needed to see the agent think, and to feel they could step in at any moment.
+Quote: In an AI-native product, trust is a design problem, not a data problem. Operators didn't need more numbers; they needed to see the agent think and feel they could step in at any moment.
 
 PROJECT INFO
 ------------
@@ -35,7 +35,7 @@ Paragraph 2: This wasn't a technology problem, it was an experience problem. A u
 
 Paragraph 2b: If users don't trust what they can't see, the capability goes unused, and the AI-native bet fails on adoption, not on the model.
 
-Bullet 1: Pending decisions were buried inside each agent's page, behind an unlabeled icon, users running several agents never knew something was waiting.
+Bullet 1: Pending decisions were buried inside each agent's page, behind an unlabeled icon, so users running several agents never knew something was waiting.
 Bullet 2: There was no sense of an agent's blast radius: how much, and what, it was about to affect.
 Bullet 3: Approving actions one agent at a time didn't scale: five decisions meant five separate screens.
 Bullet 4: For an agent someone else set up, it was unclear what it was doing or even whether it was running.
