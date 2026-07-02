@@ -507,21 +507,26 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 }
 
 .work-ph {
-  background: transparent !important;
-  aspect-ratio: unset !important;
-  min-height: 0 !important;
-  display: block !important;
+  position: relative;
 }
-
-.work-ph .ph-label,
-.work-ph span {
-  display: none !important;
+.work-ph .work-img-real,
+.work-ph .ph-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  border-radius: 3px;
 }
-
-.work-img-real, .ph-img {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
+.work-ph:has(.work-img-real),
+.work-ph:has(.ph-img) {
+  background: transparent;
+  aspect-ratio: unset;
+  min-height: 0;
+}
+.work-ph:has(.work-img-real) span,
+.work-ph:has(.ph-img) span {
+  display: none;
 }
 
 </style>
@@ -630,7 +635,6 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
     <div class="footer-content">
       <h2 class="footer-heading">let's work together</h2>
       <div class="footer-img-placeholder">
-        <span>IMG-00</span>
         <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg" alt="IMG-00" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()">
       </div>
       <div class="footer-cta-row">
