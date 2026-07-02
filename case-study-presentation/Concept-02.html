@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Agents — v3</title>
+<title>Agents - v3</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f0f0; color: #111; font-size: 13px; display: flex; height: 100vh; overflow: hidden; }
@@ -393,9 +393,9 @@ td { padding: 9px 10px; vertical-align: middle; }
             <td><div class="agent-cell"><div class="ag-av">CI</div><div><div class="ag-name">Cost Incident Ticket Bot</div><div class="ag-meta">● Event-based</div></div></div></td>
             <td><div style="font-size:11px;color:#666;">Sara L.</div></td>
             <td><div class="desc-cell">Auto-creates tickets for cost incidents</div></td>
-            <td><span class="dec-badge none">—</span></td>
+            <td><span class="dec-badge none">-</span></td>
             <td><span class="scope-badge">👤 Personal</span></td>
-            <td><span class="impact">—</span></td>
+            <td><span class="impact">-</span></td>
             <td><div class="mini-chart"><div class="bar dark" style="height:20px"></div><div class="bar" style="height:12px"></div><div class="bar dark" style="height:22px"></div><div class="bar" style="height:16px"></div><div class="bar dark" style="height:18px"></div><div class="bar" style="height:14px"></div><div class="bar dark" style="height:20px"></div></div></td>
             <td><div style="font-size:10px;color:#888;white-space:nowrap;">Jun 02, 12:19 AM</div></td>
             <td><div class="status-pill running"><div class="s-dot run"></div>Running</div></td>
@@ -443,9 +443,9 @@ td { padding: 9px 10px; vertical-align: middle; }
             <td><div class="agent-cell"><div class="ag-av">PB</div><div><div class="ag-name">Public Bucket Watchdog</div><div class="ag-meta">⟳ Daily at 11:00 AM</div></div></div></td>
             <td><div style="font-size:11px;color:#666;">Ron K.</div></td>
             <td><div class="desc-cell">Detects publicly exposed S3 buckets</div></td>
-            <td><span class="dec-badge none">—</span></td>
+            <td><span class="dec-badge none">-</span></td>
             <td><span class="scope-badge">🏢 Org</span></td>
-            <td><span class="impact">—</span></td>
+            <td><span class="impact">-</span></td>
             <td><div class="mini-chart"><div class="bar" style="height:10px"></div><div class="bar" style="height:8px"></div><div class="bar" style="height:12px"></div><div class="bar" style="height:6px"></div></div></td>
             <td><div style="font-size:10px;color:#888;white-space:nowrap;">Jun 01, 12:00 PM</div></td>
             <td><div class="status-pill idle"><div class="s-dot idle"></div>Paused</div></td>
@@ -493,11 +493,11 @@ td { padding: 9px 10px; vertical-align: middle; }
             <td><div class="agent-cell"><div class="ag-av">PR</div><div><div class="ag-name">PR Cost Impact Reviewer</div><div class="ag-meta">▷ On-demand</div></div></div></td>
             <td><div style="font-size:11px;color:#666;">Tom L.</div></td>
             <td><div class="desc-cell">Reviews PRs for cloud cost regressions</div></td>
-            <td><span class="dec-badge none">—</span></td>
+            <td><span class="dec-badge none">-</span></td>
             <td><span class="scope-badge">👥 Team</span></td>
-            <td><span class="impact">—</span></td>
+            <td><span class="impact">-</span></td>
             <td><div class="mini-chart"><div class="bar" style="height:18px"></div><div class="bar dark" style="height:22px"></div><div class="bar" style="height:14px"></div><div class="bar dark" style="height:20px"></div><div class="bar" style="height:10px"></div><div class="bar dark" style="height:18px"></div><div class="bar" style="height:16px"></div></div></td>
-            <td><div style="font-size:10px;color:#888;white-space:nowrap;">—</div></td>
+            <td><div style="font-size:10px;color:#888;white-space:nowrap;">-</div></td>
             <td><div class="status-pill idle"><div class="s-dot idle"></div>Idle</div></td>
             <td><label class="toggle"><input type="checkbox" checked onchange="toggleAgent(this)"/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></td>
             <td class="menu-td"><button class="menu-btn" onclick="openMenu(event,this)">⋯</button>
@@ -548,7 +548,7 @@ td { padding: 9px 10px; vertical-align: middle; }
 <div class="modal-bd" id="snooze-modal" onclick="closeBd(event,'snooze-modal')">
   <div class="modal">
     <div id="snooze-form">
-      <div class="modal-hdr"><div class="modal-title">Snooze decision</div><div class="modal-sub">No action taken — the agent will wait for your input</div></div>
+      <div class="modal-hdr"><div class="modal-title">Snooze decision</div><div class="modal-sub">No action taken, the agent will wait for your input</div></div>
       <div class="modal-body">
         <div><div class="sec-label">Remind me in</div>
           <div class="snooze-grid">
@@ -584,7 +584,7 @@ td { padding: 9px 10px; vertical-align: middle; }
 <div class="modal-bd" id="digest-modal" onclick="closeBd(event,'digest-modal')">
   <div class="modal">
     <div id="digest-form">
-      <div class="modal-hdr"><div class="modal-title">Send review digest</div><div class="modal-sub">Approve decisions from email or Slack — without opening the app</div></div>
+      <div class="modal-hdr"><div class="modal-title">Send review digest</div><div class="modal-sub">Approve decisions from email or Slack, without opening the app</div></div>
       <div class="modal-body">
         <div><div class="sec-label">Send via</div>
           <div class="channel-row">
@@ -732,7 +732,7 @@ function renderSeq(){
   var badges=d.hasScreenshot?'<span style="font-size:11px;color:#888;">'+d.agent+'</span><span class="seq-badge">'+d.scope+'</span><span class="seq-badge">Waiting '+d.waiting+'</span>':'<span class="seq-badge">'+d.scope+'</span><span class="seq-badge">Waiting '+d.waiting+'</span><span style="font-size:10px;color:#bbb;">· Created by '+d.createdBy+'</span>';
   var cardH='<div style="padding:16px 18px 0;"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><div class="seq-av">'+d.av+'</div><div><div style="font-size:15px;font-weight:700;margin-bottom:5px;">'+(d.hasScreenshot?(d.title||d.agent):d.agent)+'</div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">'+badges+'</div></div></div><div style="font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#aaa;margin-bottom:6px;">WHY THIS DECISION</div><div style="font-size:12px;color:#333;line-height:1.65;margin-bottom:14px;">'+d.desc+'</div><div style="display:flex;gap:10px;margin-bottom:16px;">'+impH+'</div>'+sliderH+'</div>';
   var noteH='<div style="padding:0 18px 14px;"><div style="border-top:1px solid #eee;padding-top:12px;"><div style="font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#aaa;margin-bottom:6px;">NOTE OR DELEGATE</div><div style="position:relative;"><textarea id="seq-note-'+seqIdx+'" rows="2" style="width:100%;border:1px solid #e0e0e0;border-radius:6px;padding:9px 11px;font-size:12px;font-family:inherit;resize:none;outline:none;color:#333;line-height:1.5;" placeholder="Add context... or @mention to delegate (e.g. @Tom)" oninput="seqNoteInput(this,'+seqIdx+')"></textarea><div id="seq-ac-'+seqIdx+'" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #ccc;border-radius:5px;box-shadow:0 4px 14px rgba(0,0,0,.1);z-index:50;overflow:hidden;"><div style="padding:5px 10px 3px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#aaa;border-bottom:1px solid #eee;">Teammates</div>'+buildTM('TL','Tom L.','Team Lead',seqIdx)+buildTM('AM','Anna M.','FinOps Manager',seqIdx)+buildTM('RK','Ron K.','Infra Lead',seqIdx)+'</div></div><div style="font-size:10px;color:#ccc;margin-top:4px;">Type @ to delegate this decision to a teammate</div><div id="seq-delegate-status-'+seqIdx+'" style="display:none;margin-top:5px;font-size:11px;color:#1a4a8a;padding:5px 8px;background:#eef3fb;border-radius:4px;"></div></div></div>';
-  var snoozeDD='<div id="seq-snooze-dd" style="display:none;position:absolute;bottom:42px;right:0;background:#fff;border:1px solid #ccc;border-radius:6px;box-shadow:0 -4px 14px rgba(0,0,0,.1);min-width:170px;z-index:50;overflow:hidden;"><div style="padding:5px 10px 4px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#aaa;border-bottom:1px solid #eee;">Snooze until</div>'+buildSI('Tomorrow','Jun 4')+buildSI('3 days','Jun 6')+buildSI('1 week','Jun 10')+buildSI('1 month','Jul 3')+'<div style="border-top:1px solid #eee;padding:8px 10px;font-size:12px;color:#888;cursor:pointer;" onmouseenter="this.style.background=\'#f5f5f5\'" onmouseleave="this.style.background=\'\'" onclick="seqSnooze(\'none\')">⊘ None — decide now</div></div>';
+  var snoozeDD='<div id="seq-snooze-dd" style="display:none;position:absolute;bottom:42px;right:0;background:#fff;border:1px solid #ccc;border-radius:6px;box-shadow:0 -4px 14px rgba(0,0,0,.1);min-width:170px;z-index:50;overflow:hidden;"><div style="padding:5px 10px 4px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#aaa;border-bottom:1px solid #eee;">Snooze until</div>'+buildSI('Tomorrow','Jun 4')+buildSI('3 days','Jun 6')+buildSI('1 week','Jun 10')+buildSI('1 month','Jul 3')+'<div style="border-top:1px solid #eee;padding:8px 10px;font-size:12px;color:#888;cursor:pointer;" onmouseenter="this.style.background=\'#f5f5f5\'" onmouseleave="this.style.background=\'\'" onclick="seqSnooze(\'none\')">⊘ None: decide now</div></div>';
   var footH='<div class="seq-footer">'+(seqIdx>0?'<button class="seq-back" onclick="seqBack()">← Back</button>':'<div></div>')+'<div class="seq-spacer"></div><div style="position:relative;"><button style="background:#fff;color:#444;border:1px solid #ccc;border-radius:4px;padding:8px 14px;font-size:12px;font-weight:500;cursor:pointer;" onclick="toggleSeqSnooze(event)">Snooze ▾</button>'+snoozeDD+'</div><button class="btn btn-primary" id="seq-confirm-btn" onclick="seqConfirmClick()">'+(seqIdx===decisions.length-1?'Confirm & finish ✓':'Confirm & next →')+'</button></div>';
   document.getElementById('seq-inner').innerHTML=progH+cardH+noteH+footH;
   seqDelegateTarget=null;
@@ -743,7 +743,7 @@ function seqNoteInput(ta,idx){
 }
 function seqDelegate(idx,name,role){
   seqDelegateTarget=name;
-  var ta=document.getElementById('seq-note-'+idx); if(ta) ta.value='@'+name+' — please review this decision';
+  var ta=document.getElementById('seq-note-'+idx); if(ta) ta.value='@'+name+', please review this decision';
   var ac=document.getElementById('seq-ac-'+idx); if(ac) ac.style.display='none';
   var st=document.getElementById('seq-delegate-status-'+idx); if(st){st.style.display='block';st.textContent='↗ Will be sent to '+name+' · decision paused until they respond';}
   var btn=document.getElementById('seq-confirm-btn'); if(btn) btn.textContent='Send to '+name+' & next →';

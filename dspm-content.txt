@@ -28,12 +28,12 @@ PROJECT INFO
 ------------
 Role title: Senior Product Designer
 
-IMG-01 caption: The redesigned DSPM dashboard — overview of data security posture.
+IMG-01 caption: The redesigned DSPM dashboard: overview of data security posture.
 
 SECTION 01 — Context / The problem
 ----------------------------------------
 Paragraph 1: Analyzing sensitive assets in cloud environments requires giving users visibility into the lifecycle and posture of those assets. Across the existing product, that visibility was fragmented and hard to act on.
-Paragraph 2: For a data security product, ==clarity is the product.== If users can't quickly see which assets are exposed and why, the tool fails at its core job — so reducing noise and surfacing priorities was essential to the product's value, not just its look.
+Paragraph 2: For a data security product, ==clarity is the product.== If users can't quickly see which assets are exposed and why, the tool fails at its core job, so reducing noise and surfacing priorities was essential to the product's value, not just its look.
 Bullet 1: Users lacked a clear understanding of why assets were marked as sensitive, and needed more diagnostic context.
 Bullet 2: Finding security incidents or sensitive content required navigating multiple views and was time-consuming.
 Bullet 3: Dashboards were overloaded with data, making it hard to identify priorities and grasp broader insights.
@@ -41,11 +41,11 @@ Bullet 3: Dashboards were overloaded with data, making it hard to identify prior
 SECTION 02 — Constraints / The challenges
 ----------------------------------------
 Paragraph: The core challenge was turning large volumes of complex security data into something clear, fast to scan, and aligned with how security teams actually work.
-IMG-02 caption: The original dashboard — overloaded with data and difficult to prioritize.
+IMG-02 caption: The original dashboard: overloaded with data and difficult to prioritize.
 
 SECTION 03 — Discovery / Research and user needs
 ----------------------------------------
-Paragraph: Research happened in two phases. First, through the Black Hat conference and design partners, I gathered early insights on how security teams use the DSPM overview. Then, through UserTesting, I ran sessions with 10 security engineers to test improvements before release — asking what they understood from the overview, how they read the charts, and whether grouping by policy made sense.
+Paragraph: Research happened in two phases. First, through the Black Hat conference and design partners, I gathered early insights on how security teams use the DSPM overview. Then, through UserTesting, I ran sessions with 10 security engineers to test improvements before release: asking what they understood from the overview, how they read the charts, and whether grouping by policy made sense.
 Stat 1: 2 · Research phases before release
 Stat 2: 10 · Security engineers tested the design
 Stat 3: 3 · Core user goals: save time, feel in control, make informed decisions
@@ -54,14 +54,14 @@ IMG-03 caption: Final information architecture for the redesigned DSPM page.
 SECTION 04 — Exploration / Exploring solutions
 ----------------------------------------
 Paragraph: I explored three directions for the main dashboard, each making a different bet on how to balance information density with speed to action. The key question was: how much should the system decide for the user upfront, versus giving them control to filter and explore?
-IMG-05 caption: Concept 1 — Filters split into three contextual groups with trend line graphs. Showed movement over time, but didn't surface urgency.
-IMG-06 caption: Concept 2 — Severity moved to first column, quick filters exposed for common tasks. More actionable, but most filters still hidden.
-IMG-07 caption: Concept 3 (selected) — Most-used filters inline with "+Add Filter" for flexibility. Severity and violation trend combined. Users see what matters immediately.
+IMG-05 caption: Concept 1: Filters split into three contextual groups with trend line graphs. Showed movement over time, but didn't surface urgency.
+IMG-06 caption: Concept 2: Severity moved to first column, quick filters exposed for common tasks. More actionable, but most filters still hidden.
+IMG-07 caption: Concept 3 (selected): Most-used filters inline with "+Add Filter" for flexibility. Severity and violation trend combined. Users see what matters immediately.
 
 SECTION 06 — Impact / Design system
 ----------------------------------------
 Paragraph 1: I built Laminar's design system on top of Ant Design v4, turning a generic enterprise library into a product language for cloud-security workflows.
 Paragraph 2: The work focused on the patterns security teams touched every day: tables, filters, severity states, policy status, empty states, dashboards, icons and reusable data-visualization components.
-Paragraph 3: The main challenge was balancing speed with ownership. We used Ant Design where it helped engineering move faster, but customized the moments that carried product meaning — severity, exposure, remediation, policy coverage and investigation states.
+Paragraph 3: The main challenge was balancing speed with ownership. We used Ant Design where it helped engineering move faster, but customized the moments that carried product meaning: severity, exposure, remediation, policy coverage and investigation states.
 Paragraph 4: The result was a shared Laminar design language that made the DSPM redesign faster to build, easier to maintain, and more consistent across the product.
-IMG-14 caption: Design system — components and tokens.
+IMG-14 caption: Design system: components and tokens.
