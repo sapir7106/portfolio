@@ -556,7 +556,7 @@ the agent surface coherent as the product scales, and can grow consistently from
   (ה-bold: "Component Dictionary")
 
 IMG-05 TAG: Drop frame: component dictionary
-IMG-05 DESC: A shot of the components / tokens.
+IMG-05 DESC: By bringing status, scope, savings, run activity, and pending decisions into one view, the interface turned autonomous agents into a practical decision-making tool. It directly answered the problem the research surfaced: teams weren't short on data, they were short on clarity.
 
 [★ COUNCIL] עדכני את תיאור IMG-05 לתיאור של מה שתראי שם
 (גריד? Figma library? screenshot?).
