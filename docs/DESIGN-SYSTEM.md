@@ -77,9 +77,11 @@ These crept in across versions. Pick ONE value for each and apply site-wide:
    shades or should be unified.
 3. **Breakpoints** — differ between pages; see `RESPONSIVE.md` for the full list
    and the recommended standard set.
-4. **About page** — there should be **one** `about.html` (dark + light via a
-   `?mode=` parameter). A separate `about-light.html` is redundant and, if it
-   still exists in the folder, should be deleted.
+4. **About page** — the real mechanism is **one** `about-panel.html` (dark + light
+   via the `data-about` attribute on `<body>`, loaded by `about-loader.js`). There
+   is no `about.html` and no `?mode=` parameter — that design is dead. See
+   `docs/ABOUT-PANEL.md` for the full mechanism and which files still describe the
+   old, stale version.
 
 ## Typography scale
 
