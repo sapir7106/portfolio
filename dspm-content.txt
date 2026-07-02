@@ -20,7 +20,7 @@ Type: NUMBERS
 Stat value: +86%
 Stat label: Customer logins to Laminar's DSPM
 Stat value: +16%
-Stat label: Of users had violations remediated
+Stat label: increase in users remediating violations
 Stat value: 10
 Stat label: Security engineers tested the design
 
@@ -45,7 +45,7 @@ IMG-02 caption: The original dashboard — overloaded with data and difficult to
 
 SECTION 03 — Discovery / Research and user needs
 ----------------------------------------
-Paragraph: Research happened in two phases. First, through the Blackhat conference and design partners, I gathered early insights on how security teams use the DSPM overview. Then, through usertesting.com, I ran sessions with 10 security engineers to test improvements before release — asking what they understood from the overview, how they read the charts, and whether grouping by policy made sense.
+Paragraph: Research happened in two phases. First, through the Black Hat conference and design partners, I gathered early insights on how security teams use the DSPM overview. Then, through UserTesting, I ran sessions with 10 security engineers to test improvements before release — asking what they understood from the overview, how they read the charts, and whether grouping by policy made sense.
 Stat 1: 2 · Research phases before release
 Stat 2: 10 · Security engineers tested the design
 Stat 3: 3 · Core user goals: save time, feel in control, make informed decisions
@@ -60,10 +60,8 @@ IMG-07 caption: Concept 3 (selected) — Most-used filters inline with "+Add Fil
 
 SECTION 06 — Impact / Design system
 ----------------------------------------
-Paragraph 1: As a product designer building and designing a design system based on an Ant Design system V4, there could be several challenges with developers that you may encounter, such as:
-Paragraph 2: To address these challenges, it's essential to involve developers early, provide clear documentation and training, and encourage ongoing communication and collaboration between all parties involved.
-Bullet 1: Customization limitations due to Ant Design's pre-defined design principles.
-Bullet 2: Cross-functional collaboration between designers and developers.
-Bullet 3: Integrating the design system into an existing codebase can be complex.
-Bullet 4: Proper documentation and training are crucial to ensure developers understand how to use the design system effectively.
+Paragraph 1: I built Laminar's design system on top of Ant Design v4, turning a generic enterprise library into a product language for cloud-security workflows.
+Paragraph 2: The work focused on the patterns security teams touched every day: tables, filters, severity states, policy status, empty states, dashboards, icons and reusable data-visualization components.
+Paragraph 3: The main challenge was balancing speed with ownership. We used Ant Design where it helped engineering move faster, but customized the moments that carried product meaning — severity, exposure, remediation, policy coverage and investigation states.
+Paragraph 4: The result was a shared Laminar design language that made the DSPM redesign faster to build, easier to maintain, and more consistent across the product.
 IMG-14 caption: Design system — components and tokens.

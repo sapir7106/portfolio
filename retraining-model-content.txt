@@ -10,9 +10,9 @@ PROJECT CONTENT — retraining-model.html
 HERO
 ----
 Eyebrow: BeyondMinds · AutoML AI platform · 2021
-Title: Helping people trust
-Title italic: a model retraining
-Lede: BeyondMinds built automatic machine learning (AutoML) that lets teams create models for fields like production and finance. I designed how non-technical users **decide when and how to retrain a live model, with confidence.**
+Title: Helping non-technical users trust
+Title italic: model retraining
+Lede: BeyondMinds built automated machine learning (AutoML) that lets teams create models for industries such as manufacturing and finance. I designed how non-technical users **decide when and how to retrain a live model, with confidence.**
 
 IMPACT
 ------
@@ -36,8 +36,8 @@ Bullet 4: Managing expectations — set realistic expectations around the time, 
 
 SECTION 02 — Research / Competitive analysis
 ----------------------------------------
-Paragraph: I ran a competitive analysis of existing ML model-retraining platforms, and found a consistent pattern: most suffered from generic design, no user-friendliness, no clear hierarchy, and an overload of data. That gap mattered — industry research shows the vast majority of models silently lose accuracy over time. If the people who need to retrain can't understand the tool, the model decays.
-Stat 1: 91% · Of ML models degrade over time (MIT/Harvard, 2022)
+Paragraph: I ran a competitive analysis of existing ML model-retraining platforms, and found a consistent pattern: most suffered from generic design, poor usability, no clear hierarchy, and an overload of data. That gap mattered — industry research shows the vast majority of models silently lose accuracy over time. If the people who need to retrain can't understand the tool, the model decays.
+Stat 1: 91% · of ML models degrade over time (MIT/Harvard, 2022)
 Stat 2: 35% · Error-rate jump for models left unretrained 6+ months
 Stat 3: 4 · Core user needs the design was built around
 
