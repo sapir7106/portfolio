@@ -13,6 +13,8 @@ description: >
 
 # Writing a new case study — Sapir Levi
 
+> Before starting: read `docs/CASE-STUDY-TEMPLATE.md` — it is the source of truth.
+
 Sapir's portfolio case studies all descend from one master template,
 **`cs-v1.html`**. Every project page reuses its CSS and structure so the whole
 site stays coherent. This skill is about getting the **copy and structure**
@@ -88,4 +90,8 @@ Supporting blocks available in the template: `.callout` (lime-bar pull quote),
 - [ ] Every stat has a real source + link
 - [ ] One sharp closing thesis line
 - [ ] Styling matches `docs/DESIGN-SYSTEM.md`; responsive per `docs/RESPONSIVE.md`
+- [ ] Intro: 2 paragraphs (context → led/problem/move) + optional thesis at same size
+- [ ] Metadata card: no "1" before singular roles
+- [ ] First hero: no `.rv` class, `data-reveal="false"`, `loading="eager"` `fetchpriority="high"`
+- [ ] Verified against `docs/CASE-STUDY-TEMPLATE.md` (not just `cs-v1.html`)
 - [ ] Update the "Current status" section in `CLAUDE.md`, then commit

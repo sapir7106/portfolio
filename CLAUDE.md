@@ -26,6 +26,8 @@ copy so it can be reasoned about in isolation.
 | Breakpoints & responsive behavior (+ known drift) | `docs/RESPONSIVE.md` |
 | The logos/art gallery ("Sapir gallery") — backup | `docs/GALLERY-SAPIR.md` |
 | The hidden interview presentation | `docs/PRESENTATION.md` |
+| Case study structure, typography, hero image, metadata card, scope rules | `docs/CASE-STUDY-TEMPLATE.md` |
+| Real About mechanism, what files are stale, how to edit About | `docs/ABOUT-PANEL.md` |
 
 **Maintaining these files:** when Sapir says "document this" / "remember this" /
 "add to the guide", follow the self-documentation protocol + maintenance map in
@@ -33,18 +35,27 @@ the `site-ops` skill — pick the one right file, add a concise entry, and commi
 
 ## 3. File structure
 
-Pages: `index.html` (home / project cards), `about.html` (single entity —
-dark + light via a `?mode=` parameter; a separate `about-light.html` is redundant
-and should be deleted if present), and six project pages:
-`agents.html` (AI agents, PointFive), `dspm.html` (data security, Laminar),
+Pages: `index.html` (home / project cards), About (see below), and six project
+pages: `agents.html` (AI agents, PointFive), `dspm.html` (data security, Laminar),
 `violation-pane.html`, `retraining-model.html`, `security-dashboard.html`,
 `logos-art-for-fun.html` (gallery).
 
+About is a sliding overlay panel loaded from `about-panel.html` via
+`about-loader.js`. Theme (dark/light) is set by the `data-about` attribute on
+`<body>`. There is no `about.html` and no `?mode=` URL parameter. See
+`docs/ABOUT-PANEL.md`.
+
 Master template: **`cs-v1.html`** — every case-study page descends from it.
+Rules live in `docs/CASE-STUDY-TEMPLATE.md` (source of truth) — `cs-v1.html`
+is currently behind production, see that doc for known drift.
 
 Content (text) files used to populate pages: `main-content.txt`,
 `about-content.txt`, `agents-content.txt`, `dspm-content.txt`,
 `violation-pane-content.txt`, `logos-art-for-fun-content-draft.txt`.
+
+Supporting scripts/pages: `about-panel.html`, `about-loader.js`,
+`about-content-loader.js`, `content-loader.js`, `projects-order.js`,
+`cursor.js`, `cursor.css`.
 
 Folders: `portfolio images/` (a subfolder per project, e.g.
 `portfolio images/logos-art-for-fun/GALLERY-01.png`) and

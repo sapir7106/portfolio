@@ -33,6 +33,11 @@ So the gallery alone has two conflicting systems (`991/767` from the sania build
 vs `900/680/600/500/480` in the current file), and the sidebar-to-topbar switch
 fires at `600px` on the home page but `680px` elsewhere.
 
+> Case study intro typography rules → see `docs/CASE-STUDY-TEMPLATE.md` (source of truth).
+> Summary: 17px at 768–1440px via `@media(min-width:768px) and (max-width:1440px)`.
+> This is a FIFTH breakpoint tier not yet in the "recommended standard set" below —
+> add it when doing the mobile responsiveness cleanup.
+
 ## Recommended standard (apply everywhere)
 
 Pick one set and use it on every page:
