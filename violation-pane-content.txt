@@ -51,7 +51,7 @@ SECTION 04 — Exploration / Exploring solutions
 Paragraph: I explored three ways to organize a dense violation into one pane — each a different answer to the same question: how do you show everything a user needs without recreating the clutter that broke the old panel? The difference between them was how much the user sees at once versus how much is tucked away.
 IMG-05 caption: Concept 1 — collapsible sections, one at a time, actions hidden under a menu. Focused, but hides too much.
 IMG-06 caption: Concept 2 (selected) — four tabs (Data at Risk, Asset Details, Remediation, Notes) with actions always exposed at top. Balanced depth and calm.
-IMG-07 caption: Concept 3 — everything as cards, with asset details pinned. Most complete picture, but heaviest layout.
+IMG-07 caption: Concept 3: complete context, but the heaviest layout.
 
 SECTION 05 — Process / User flow
 ----------------------------------------

@@ -102,6 +102,43 @@ ends on one sharp thesis line. Visible content in English; Hebrew only in code
 comments. Guiding thesis: *"Good design in complex products isn't about making
 things pretty. It's about making hard things feel inevitable."*
 
+### Image caption rules
+
+Captions should follow this structure:
+
+`[Screen / state name]: [main design value].`
+
+Captions should:
+- Be one concise sentence.
+- Explain what the screen/state is and why it matters.
+- Help mobile users skim the case study without reading every detail inside
+  dense screenshots.
+- Focus on the design decision or product value.
+- Avoid em dashes.
+
+Avoid:
+- "Here the user can..."
+- Internal/debug labels such as "Group by none".
+- Stray numbering such as "dashboard 1", "prioritized 2", or "trends 3".
+- Over-explaining every UI detail visible in the screenshot.
+
+Preferred examples:
+- Agent oversight overview: status, scope, pending decisions and impact in one view.
+- Concept 03 selected: the metric became the review entry point.
+- Empty state: no alerts detected.
+
+### Runtime content source of truth
+
+Some case study pages use `content-loader.js` to fetch matching `*-content.txt`
+files and overwrite visible HTML text at runtime.
+
+When updating visible copy or captions:
+- Search both HTML files and matching `*-content.txt` files.
+- Update the `*-content.txt` file when it exists, because it may be the
+  runtime source of truth.
+- Keep HTML and content files aligned when both contain the same visible text.
+- Verify the rendered preview page, not only View Source.
+
 ## 7. Current status
 
 <!-- KEEP THIS UPDATED — it's how a fresh Claude knows where things stand.
@@ -109,7 +146,9 @@ things pretty. It's about making hard things feel inevitable."*
 
 - **Done:** site structure + all page shells; `cs-v1.html` master template;
   Agents case study content; the hidden Agents interview deck; logos/art gallery
-  layout (see version note in `docs/GALLERY-SAPIR.md`).
+  layout (see version note in `docs/GALLERY-SAPIR.md`); image caption cleanup
+  across Agents, DSPM, Violation Pane, Retraining and Security Dashboard pages
+  (colon structure, no em dashes, no debug labels — see §6 Image caption rules).
 - **In progress / to verify:**
   - Reconcile the two gallery versions (20-image simplified vs 42-image sania build).
   - Align responsive breakpoints to the standard set (`docs/RESPONSIVE.md`).
