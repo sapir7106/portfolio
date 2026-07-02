@@ -17,22 +17,22 @@ Lede: Velocity is a comprehensive cybersecurity platform for detecting and respo
 IMPACT
 ------
 Type: QUOTE
-Quote: Security teams weren't short on data — they were short on clarity. I designed for the decision, not the dashboard.
+Quote: Security teams weren't short on data, they were short on clarity. I designed for the decision, not the dashboard.
 
 PROJECT INFO
 ------------
 Role title: Product Designer
 
-IMG-01 caption: The Velocity security dashboard — security health, top alerts, entities at risk and activity timeline in one view.
+IMG-01 caption: The Velocity security dashboard: security health, top alerts, entities at risk and activity timeline in one view.
 
 SECTION 01 — Goals / The challenges
 ----------------------------------------
-Paragraph 1: Security teams face an overwhelming amount of information every day — alerts, incidents, risk indicators and system events, generated constantly and spread across multiple systems. The hard part isn't finding data, it's ==telling critical issues apart from background noise.==
+Paragraph 1: Security teams face an overwhelming amount of information every day: alerts, incidents, risk indicators and system events, generated constantly and spread across multiple systems. The hard part isn't finding data, it's ==telling critical issues apart from background noise.==
 Paragraph 2: Designing a security dashboard meant balancing large volumes of real-time data with the need for clarity, speed, and action. Through research and exploration, I identified four core challenges to solve.
-Bullet 1: Visualizing complex security data — present large amounts of security information in a way that's easy to scan, understand, and act upon.
-Bullet 2: Providing context and prioritization — help users quickly understand severity, impact, and urgency through a clear visual hierarchy.
-Bullet 3: Supporting fast decision-making — surface meaningful insights and recommended actions that let users respond quickly to threats.
-Bullet 4: Reducing alert fatigue — highlight critical information while minimizing noise, helping users stay focused on what matters most.
+Bullet 1: Visualizing complex security data: present large amounts of security information in a way that's easy to scan, understand, and act upon.
+Bullet 2: Providing context and prioritization: help users quickly understand severity, impact, and urgency through a clear visual hierarchy.
+Bullet 3: Supporting fast decision-making: surface meaningful insights and recommended actions that let users respond quickly to threats.
+Bullet 4: Reducing alert fatigue: highlight critical information while minimizing noise, helping users stay focused on what matters most.
 
 SECTION 02 — Design exploration / Research and user needs
 ----------------------------------------
@@ -44,18 +44,18 @@ Stat 3: 67% · Of IT teams ignore lower-priority alerts (State of Network Securi
 SECTION 03 — Design exploration / Wireframes
 ----------------------------------------
 Paragraph: Following research and a competitive market analysis, I designed three distinct wireframe concepts for the dashboard layout and weighting system. The wireframe phase answered hard questions: what belongs above the fold, how risk indicators should be prioritized, which metrics deserve permanent visibility, and how a user moves from overview to investigation without friction.
-IMG-05 caption: Wireframe concept 1 — exploring layout and content hierarchy for the dashboard.
-IMG-06 caption: Wireframe concept 2 — a different weighting of monitoring vs investigation.
-IMG-07 caption: Wireframe concept 3 — balancing high-level overview with detailed drill-down.
+IMG-05 caption: Wireframe concept 1: exploring layout and content hierarchy for the dashboard.
+IMG-06 caption: Wireframe concept 2: a different weighting of monitoring vs investigation.
+IMG-07 caption: Wireframe concept 3: balancing high-level overview with detailed drill-down.
 
 SECTION 04 — Research / User flow
 ----------------------------------------
-Paragraph: Before visual design, I mapped the investigation workflow of a security analyst — from opening the dashboard, to reviewing overall health, identifying critical alerts, investigating affected entities, understanding severity and impact, reviewing recommendations, taking action, and monitoring the outcome. Mapping it end to end surfaced the key decision points and shaped the dashboard's architecture.
-IMG-08 caption: The security analyst's investigation flow — from dashboard overview to action and monitoring.
+Paragraph: Before visual design, I mapped the investigation workflow of a security analyst: from opening the dashboard, to reviewing overall health, identifying critical alerts, investigating affected entities, understanding severity and impact, reviewing recommendations, taking action, and monitoring the outcome. Mapping it end to end surfaced the key decision points and shaped the dashboard's architecture.
+IMG-08 caption: The security analyst's investigation flow: from dashboard overview to action and monitoring.
 
 SECTION 06 — Outcome / Outcome & reflection
 ----------------------------------------
-Paragraph 1: The redesigned dashboard gives security teams a clearer, more actionable view of organizational security. Stronger information hierarchy, better prioritization, and real-time visibility turn complex cybersecurity data into a practical decision-making tool — directly answering the problem the research surfaced: teams weren't short on data, they were short on clarity.
-Paragraph 2: Looking back, the core lesson holds up: in a domain where an analyst faces thousands of alerts a day, the design's job isn't to display everything — it's to make the one thing that matters impossible to miss, and the next action obvious.
+Paragraph 1: The redesigned dashboard gives security teams a clearer, more actionable view of organizational security. Stronger information hierarchy, better prioritization, and real-time visibility turn complex cybersecurity data into a practical decision-making tool, directly answering the problem the research surfaced: teams weren't short on data, they were short on clarity.
+Paragraph 2: Looking back, the core lesson holds up: in a domain where an analyst faces thousands of alerts a day, the design's job isn't to display everything, it's to make the one thing that matters impossible to miss, and the next action obvious.
 Bullet 1: Helps teams identify critical threats faster and reduce investigation time.
 Bullet 2: Keeps analysts focused on high-priority risks while maintaining awareness of overall posture.
