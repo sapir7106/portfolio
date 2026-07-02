@@ -262,6 +262,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   max-width:1984px;
   margin:0 auto;
   padding:0 12px 120px;
+  background:#F7F6F1;
 }
 .work-img,.work-ph{
   width:100%;display:block;
@@ -327,20 +328,25 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 .g16-1{grid-column:span 7;grid-row:span 1;top:-96px;margin-bottom:320px}
 .g16-2{grid-column:4/10;grid-row:2/3;top:0px}
 
-/* RESPONSIVE — tablet */
-@media(max-width:991px){
-  .work-grid{grid-template-columns:repeat(6,1fr);padding:0 12px 64px}
+/* RESPONSIVE — tablet (601–900px): 2-col, stacking effect off */
+@media(min-width:601px) and (max-width:900px){
+  .work-grid{grid-template-columns:1fr 1fr;padding:1rem 12px 2rem}
   .g1-1,.g1-2,.g1-3,.g1-4,.g1-5,.g2-1,.g2-2,.g2-3,.g2-4,.g3-1,.g4-1,.g4-2,.g4-3,.g5-1,.g5-2,.g5-3,.g6-1,.g6-2,.g7-1,.g7-2,.g8-1,.g8-2,.g8-3,.g9-1,.g9-2,.g9-3,.g10-1,.g10-2,.g10-3,.g11-1,.g11-2,.g12-1,.g12-2,.g12-3,.g13-1,.g13-2,.g14-1,.g15-1,.g15-2,.g15-3,.g16-1,.g16-2{
-    grid-column:span 6!important;grid-row:auto!important;
+    grid-column:auto!important;grid-row:auto!important;
     top:0!important;position:relative!important;
     margin-top:0!important;margin-bottom:0!important;
     padding-bottom:0!important;align-self:auto!important;
   }
 }
-/* RESPONSIVE — mobile */
-@media(max-width:767px){
-  .work-grid{grid-template-columns:1fr;gap:8px;padding:0 0 48px}
-  .g1-1,.g1-2,.g1-3,.g1-4,.g1-5,.g2-1,.g2-2,.g2-3,.g2-4,.g3-1,.g4-1,.g4-2,.g4-3,.g5-1,.g5-2,.g5-3,.g6-1,.g6-2,.g7-1,.g7-2,.g8-1,.g8-2,.g8-3,.g9-1,.g9-2,.g9-3,.g10-1,.g10-2,.g10-3,.g11-1,.g11-2,.g12-1,.g12-2,.g12-3,.g13-1,.g13-2,.g14-1,.g15-1,.g15-2,.g15-3,.g16-1,.g16-2{grid-column:1/-1!important}
+/* RESPONSIVE — mobile (≤600px): single column, stacking effect off */
+@media(max-width:600px){
+  .work-grid{grid-template-columns:1fr;gap:8px;padding:0 16px;margin-bottom:12px;position:relative}
+  .g1-1,.g1-2,.g1-3,.g1-4,.g1-5,.g2-1,.g2-2,.g2-3,.g2-4,.g3-1,.g4-1,.g4-2,.g4-3,.g5-1,.g5-2,.g5-3,.g6-1,.g6-2,.g7-1,.g7-2,.g8-1,.g8-2,.g8-3,.g9-1,.g9-2,.g9-3,.g10-1,.g10-2,.g10-3,.g11-1,.g11-2,.g12-1,.g12-2,.g12-3,.g13-1,.g13-2,.g14-1,.g15-1,.g15-2,.g15-3,.g16-1,.g16-2{
+    grid-column:1/-1!important;grid-row:auto!important;
+    top:0!important;position:relative!important;
+    margin:0!important;
+    padding-bottom:0!important;align-self:auto!important;
+  }
 }
 
 /* hero-shot — always centred, never cropped */
