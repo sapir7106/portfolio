@@ -23,7 +23,7 @@ PROJECT INFO
 ------------
 Role title: Lead Product Designer
 
-IMG-01 caption: The agent oversight screen: every agent, its status, scope and pending decisions in one view.
+IMG-01 caption: Agent oversight overview: status, scope, pending decisions and impact in one view.
 
 SECTION 01 — Context / The problem
 ----------------------------------------
@@ -45,7 +45,7 @@ Paragraph 2c: Autonomous agents only create value when people actually use them 
 SECTION 02 — Constraints / The challenges
 ----------------------------------------
 Paragraph: I designed against PointFive's five brand values as a lens: Efficiency, Depth, Creativity, Bias to action, and Trust. The challenge was holding them at once: dense, live agent data had to stay calm and scannable, and powerful controls had to stay safe.
-IMG-02 caption: The original experience: a pending decision buried behind an unlabeled icon inside a single agent's page.
+IMG-02 caption: Old experience: pending decisions were hidden inside each agent page.
 
 SECTION 03 — Discovery / Research and user needs
 ----------------------------------------
@@ -62,9 +62,9 @@ IMG-03 caption: Market scan: Agentic products plus direct FinOps competitors, st
 SECTION 04 — Exploration / Exploring solutions
 ----------------------------------------
 Paragraph: I explored the overview screen as interactive prototypes built with Claude as live HTML, fast to feel in a browser, not just look at. The core question was how to surface the decisions waiting for review: keep them quiet in the dashboard, or pull them up as a dedicated call to action. Each concept made a different bet on how hard the screen should push the user toward pending approvals.
-IMG-05 caption: Concept 01: decisions folded into the greeting. Clean, but easy to miss the thing that matters most.
-IMG-06 caption: Concept 02: a dedicated decisions banner with a clear "Review decisions" action. Explicit but a heavy block pushing the agent list down.
-IMG-07 caption: Concept 03 (selected): "Review decisions" merged into the metric itself. The urgency of Concept 02, without the extra banner taking over the screen.
+IMG-05 caption: Concept 01: clean, but pending decisions were too easy to miss.
+IMG-06 caption: Concept 02: explicit review CTA, but it pushed the fleet down.
+IMG-07 caption: Concept 03 selected: the metric became the review entry point.
 
 SECTION 06 — Reflection / Reflection & what's next
 ----------------------------------------
