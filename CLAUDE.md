@@ -57,6 +57,10 @@ Supporting scripts/pages: `about-panel.html`, `about-loader.js`,
 `about-content-loader.js`, `content-loader.js`, `projects-order.js`,
 `cursor.js`, `cursor.css`.
 
+README.html, template-guide.html, logos-art-for-fun-template-guide.html —
+deleted (described dead about.html/?mode= architecture; superseded by
+docs/ABOUT-PANEL.md)
+
 Folders: `portfolio images/` (a subfolder per project, e.g.
 `portfolio images/logos-art-for-fun/GALLERY-01.png`) and
 `case-study-presentation/` (the hidden deck — see `docs/PRESENTATION.md`).
