@@ -29,6 +29,11 @@ Before any task, read the relevant doc(s): `docs/DESIGN-SYSTEM.md` for visuals,
 `docs/PRESENTATION.md` for the deck, and the `new-case-study` skill for copy.
 
 **Add a new project page**
+
+⚠️ SCOPE RULE: Do NOT connect existing pages to cs-v1.html without explicit instruction.
+cs-v1.html is currently BEHIND production — use agents.html as reference instead.
+Any full migration must be a separate branch + QA pass.
+
 1. Copy `cs-v1.html` → rename it (e.g. `new-project.html`).
 2. Fill the content using the `new-case-study` skill (voice + structure + rules).
 3. Add the new filename to the `PROJECTS` array **in every page's `<script>`**
@@ -39,6 +44,9 @@ Before any task, read the relevant doc(s): `docs/DESIGN-SYSTEM.md` for visuals,
 **Reorder or remove a project** → edit the `PROJECTS` array in every page. Nav is
 keyed to the project **name**, not its position, so moving a card never breaks
 links. Update `CLAUDE.md` if a page is added/removed.
+
+> `projects-order.js` controls home page card order ONLY.
+> Previous/Next nav = edit each page's own inline `PROJECTS` array.
 
 **Swap a real image in** → find the `.ph` placeholder by its ID
 (e.g. `id="GALLERY-01"`), replace the `<div class="work-ph">` with an `<img>`
@@ -86,6 +94,8 @@ time"** — do this:
 | How to do a build task, or this doc-update process itself | `.claude/skills/site-ops/SKILL.md` (this file) |
 | The setup or working steps Sapir follows | `START-HERE.md` |
 | Project state, file list, deploy settings, a decision | `CLAUDE.md` |
+| Case study template rules (when they change) | `docs/CASE-STUDY-TEMPLATE.md` |
+| The About panel (after any redesign) | `docs/ABOUT-PANEL.md` |
 
 > Sapir does NOT need to memorize this map. She just says "document this" and you
 > pick the right file. The map exists so the choice is consistent and explainable.
