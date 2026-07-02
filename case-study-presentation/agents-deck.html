@@ -188,6 +188,11 @@ ul.clean li b{color:var(--ink);font-weight:600}
 .shot .tag{font-family:var(--mono);font-weight:700;font-size:1.2cqw;color:var(--accent);letter-spacing:.03em}
 .shot .desc{font-size:1.2cqw;color:var(--muted);max-width:42ch}
 
+/* slide 21 "A system, not just screens": bleed the design-system shot to the top/right/bottom edges */
+.slide:nth-of-type(21) .two{position:static}
+.slide:nth-of-type(21) .shot.has-shot-img{position:absolute;top:0;right:0;bottom:0;left:51.5cqw;margin:0}
+.slide:nth-of-type(21) .shot-img{width:100%;height:100%;object-fit:cover;border:none;border-radius:0;box-shadow:none}
+
 .slide.concept h2{margin-bottom:24px;padding-bottom:12px}
 .cframe{flex:1;min-height:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative;background:#fff;cursor:zoom-in}
 .cprev{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;transform-origin:top left;pointer-events:none}
@@ -936,7 +941,7 @@ section.slide:nth-of-type(10) .text-md{margin-bottom:0 !important}
       <h2>A system, <em>not just screens</em></h2>
       <p>The oversight experience was built on <strong>PointFive's design system, which I established from scratch</strong>. As we adapted the system for Claude-assisted prototyping, I used the transition as a <strong>light UI refresh</strong> — tightening density, states and hierarchy so the agent experience felt like a natural evolution of PointFive, not a separate AI layer.</p>
     </div>
-    <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-05</span><div class="tag">Drop frame: component dictionary</div><div class="desc">A shot of the components / tokens.</div><img class="shot-img" src="presentation-images/IMG-05.png" alt="A shot of the components / tokens." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
+    <div class="shot has-shot-img" style="margin-top:0"><span class="shot-id">IMG-05</span><div class="tag">Drop frame: component dictionary</div><div class="desc">By bringing status, scope, savings, run activity, and pending decisions into one view, the interface turned autonomous agents into a practical decision-making tool. It directly answered the problem the research surfaced: teams weren't short on data, they were short on clarity.</div><img class="shot-img" src="presentation-images/IMG-05.png" alt="A shot of the components / tokens." onerror="this.remove();this.parentElement.classList.remove('has-shot-img')" style="cursor:zoom-in" onclick="document.getElementById('imgfsimg').src=this.src;document.getElementById('imgfs').classList.add('open')"></div>
   </div>
 </section>
 
