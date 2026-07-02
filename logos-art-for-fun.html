@@ -56,7 +56,8 @@ body.show-labels .ph-id{display:block}
 
 /* real image inside placeholder — when it loads, it fills the width and
    sets its own natural height, overriding the placeholder's aspect-ratio */
-.ph:has(.ph-img),.ph.has-img{aspect-ratio:auto !important;min-height:0;background:transparent;display:block}
+.ph:has(.ph-img), .ph.has-img, .work-ph:has(.ph-img){aspect-ratio:auto !important;min-height:0;background:transparent;display:block}
+.work-ph:has(.ph-img) .ph-label{display:none}
 .ph-img{width:100%;height:auto;display:block;border-radius:6px;position:relative;z-index:2;box-shadow:0 1px 1px #0000000a, 0 4px 4px #0000000f, 0 16px 24px #00000014}
 /* hide the placeholder icon/label once a real image is present */
 .ph:has(.ph-img) > svg,
