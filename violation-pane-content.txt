@@ -12,7 +12,7 @@ HERO
 Eyebrow: Laminar · Cloud Data Security · 2023
 Title: Making a single violation
 Title italic: tell its whole story
-Lede: Laminar is a cloud data security platform that gives organizations visibility and control for security, privacy and governance. I redesigned the single ==violation pane== — the screen that explains **what a violation is, how to fix it, and what it means for your data.**
+Lede: Laminar is a cloud data security platform that gives organizations visibility and control for security, privacy and governance. I redesigned the single ==violation pane==: the screen that explains **what a violation is, how to fix it, and what it means for your data.**
 
 IMPACT
 ------
@@ -23,24 +23,24 @@ PROJECT INFO
 ------------
 Role title: Senior Product Designer
 
-IMG-01 caption: The single violation pane in context — opening from the DSPM main page into the violation itself.
+IMG-01 caption: The single violation pane in context: opening from the DSPM main page into the violation itself.
 
 SECTION 01 — Context / The problem
 ----------------------------------------
-Paragraph 1: Analyzing a violation in an identified cloud asset was harder than it should have been. To act on one, users needed to quickly understand four things — what the violation was, which assets it affected, what the impact was, and how to fix it — but the panel made none of them easy to find.
-Paragraph 2: It wasn't a data problem, it was a navigation problem. Users couldn't easily understand the cause of a violation or move between related information: they had to leave their current context, search across multiple pages, open other tools, and spend real time just gathering the picture. Over time, more categories were bolted onto the panel, making it increasingly cluttered — so finding relevant information only got slower and more frustrating.
+Paragraph 1: Analyzing a violation in an identified cloud asset was harder than it should have been. To act on one, users needed to quickly understand four things: what the violation was, which assets it affected, what the impact was, and how to fix it, but the panel made none of them easy to find.
+Paragraph 2: It wasn't a data problem, it was a navigation problem. Users couldn't easily understand the cause of a violation or move between related information: they had to leave their current context, search across multiple pages, open other tools, and spend real time just gathering the picture. Over time, more categories were bolted onto the panel, making it increasingly cluttered, so finding relevant information only got slower and more frustrating.
 Bullet 1: Investigating a violation meant leaving the current context and searching across multiple pages.
 Bullet 2: Key information lived in different tools, so users had to jump between them to understand one violation.
 Bullet 3: The panel had accumulated categories over time, burying what mattered under clutter.
 
 SECTION 02 — Constraints / The challenges
 ----------------------------------------
-Paragraph: The goal was to turn a cluttered panel into a single place where a user could understand a violation and act on it — without leaving, searching, or switching tools. That meant making cloud-security complexity feel simple without dumbing it down.
-IMG-02 caption: The original violation panel — cluttered, with related information scattered across pages and tools.
+Paragraph: The goal was to turn a cluttered panel into a single place where a user could understand a violation and act on it, without leaving, searching, or switching tools. That meant making cloud-security complexity feel simple without dumbing it down.
+IMG-02 caption: The original violation panel: cluttered, with related information scattered across pages and tools.
 
 SECTION 03 — Discovery / Research and user needs
 ----------------------------------------
-Paragraph: I synthesized user needs from platform data, 11 customer interviews, policy requirements, cloud-security considerations and data-governance workflows. The clearest signal: users didn't struggle to understand a violation once they had the information — they struggled to gather it, constantly switching context. From there I developed new interaction concepts, a revised information architecture, and updated user flows — then tested directly with users before handoff.
+Paragraph: I synthesized user needs from platform data, 11 customer interviews, policy requirements, cloud-security considerations and data-governance workflows. The clearest signal: users didn't struggle to understand a violation once they had the information, they struggled to gather it, constantly switching context. From there I developed new interaction concepts, a revised information architecture, and updated user flows, then tested directly with users before handoff.
 Stat 1: 11 · Customer interviews behind the redesign
 Stat 2: 3 · Deliverables: new interaction concepts, revised IA, updated flows
 Stat 3: 2023 · Tested directly with users before handoff
@@ -48,15 +48,15 @@ IMG-03 caption: Final information architecture for the redesigned violation pane
 
 SECTION 04 — Exploration / Exploring solutions
 ----------------------------------------
-Paragraph: I explored three ways to organize a dense violation into one pane — each a different answer to the same question: how do you show everything a user needs without recreating the clutter that broke the old panel? The difference between them was how much the user sees at once versus how much is tucked away.
-IMG-05 caption: Concept 1 — collapsible sections, one at a time, actions hidden under a menu. Focused, but hides too much.
-IMG-06 caption: Concept 2 (selected) — four tabs (Data at Risk, Asset Details, Remediation, Notes) with actions always exposed at top. Balanced depth and calm.
-IMG-07 caption: Concept 3 — everything as cards, with asset details pinned. Most complete picture, but heaviest layout.
+Paragraph: I explored three ways to organize a dense violation into one pane: each a different answer to the same question: how do you show everything a user needs without recreating the clutter that broke the old panel? The difference between them was how much the user sees at once versus how much is tucked away.
+IMG-05 caption: Concept 1: collapsible sections, one at a time, actions hidden under a menu. Focused, but hides too much.
+IMG-06 caption: Concept 2 (selected): four tabs (Data at Risk, Asset Details, Remediation, Notes) with actions always exposed at top. Balanced depth and calm.
+IMG-07 caption: Concept 3: everything as cards, with asset details pinned. Most complete picture, but heaviest layout.
 
 SECTION 05 — Process / User flow
 ----------------------------------------
-Paragraph: I mapped the full investigation flow — from the DSPM page, through the violations list, into the single violation pane, and out to every action a user might take: reviewing data at risk, checking asset details, creating a Jira ticket, adding notes, or denying access to remediate. Mapping it this way showed exactly where the old panel forced users out of context, and became the backbone of the redesign.
-IMG-08 caption: The violation investigation flow — from identifying a violation to remediating it, with every branch a user can take.
+Paragraph: I mapped the full investigation flow: from the DSPM page, through the violations list, into the single violation pane, and out to every action a user might take: reviewing data at risk, checking asset details, creating a Jira ticket, adding notes, or denying access to remediate. Mapping it this way showed exactly where the old panel forced users out of context, and became the backbone of the redesign.
+IMG-08 caption: The violation investigation flow: from identifying a violation to remediating it, with every branch a user can take.
 
 SECTION 07 — Impact / Design system
 ----------------------------------------
@@ -66,4 +66,4 @@ Bullet 1: Customization limitations due to Ant Design's pre-defined design princ
 Bullet 2: Cross-functional collaboration between designers and developers.
 Bullet 3: Integrating the design system into an existing codebase can be complex.
 Bullet 4: Proper documentation and training are crucial to ensure developers understand how to use the design system effectively.
-IMG-14 caption: Design system — components and tokens.
+IMG-14 caption: Design system: components and tokens.

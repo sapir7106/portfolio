@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Designing trust into autonomous agents — Sapir Levi</title>
+<title>Designing trust into autonomous agents - Sapir Levi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -332,7 +332,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 <header class="hero col rv">
   <div class="eyebrow">PointFive · AI Efficiency OS for FinOps · 2026</div>
   <h1>Designing trust into <em>autonomous agents</em></h1>
-  <p class="lede">PointFive is a FinOps platform that helps organizations understand and reduce cloud costs. This case focuses on the AI-native agents layer — the part of the product where agents move from surfacing cost opportunities to acting on them.</p>
+  <p class="lede">PointFive is a FinOps platform that helps organizations understand and reduce cloud costs. This case focuses on the AI-native agents layer: the part of the product where agents move from surfacing cost opportunities to acting on them.</p>
   <p class="lede" style="margin-top:20px">I led the agent oversight experience end to end. The core problem was trust: users needed to understand what each agent was doing, what required approval, and where they could step in. The key move was turning "Decisions Waiting" into the primary entry point for human review.</p>
 </header>
 
@@ -346,14 +346,14 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 
 <div class="impact-quote col rv">
   <div class="inner">
-    <p>In an AI-native product, trust is a design problem, not a data problem. Operators didn't need more numbers — they needed to see the agent think, and to feel they could step in at any moment.</p>
+    <p>In an AI-native product, trust is a design problem, not a data problem. Operators didn't need more numbers, they needed to see the agent think, and to feel they could step in at any moment.</p>
   </div>
 </div>
 
 <div class="hero-shot rv" style="max-width:var(--wide)">
   <figure>
     <div class="ph" data-img-id="IMG-01" style="aspect-ratio:16/8"><div class="ph-id">IMG-01</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Hero image · IMG-01</span><img src="portfolio%20images/agents/IMG-01.png" alt="Hero image · IMG-01" class="ph-img" onerror="this.remove()"></div>
-    <figcaption>The agent oversight screen — every agent, its status, scope and pending decisions in one view.</figcaption>
+    <figcaption>The agent oversight screen: every agent, its status, scope and pending decisions in one view.</figcaption>
   </figure>
 </div>
 
@@ -368,35 +368,35 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   <div class="sec-head"><span class="num">01</span><h2>The problem</h2></div>
   <div class="body">
     <p>PointFive was shifting from a FinOps platform into an AI-native product: agents would no longer just flag cloud-cost issues, but fix them autonomously. That changed the user's relationship with the system. The question was no longer only "what is the issue?" but "can I trust this agent to act on my behalf?"</p>
-    <p>The product already let users create agents, trigger them, and inspect individual workflows and activity. What it didn't provide was a single way to understand what was happening across the agent fleet — what was running, what was waiting, what was about to affect cost, and where a human decision was needed.</p>
+    <p>The product already let users create agents, trigger them, and inspect individual workflows and activity. What it didn't provide was a single way to understand what was happening across the agent fleet: what was running, what was waiting, what was about to affect cost, and where a human decision was needed.</p>
     <p>Operationally, trust broke down into visibility, control, and risk. Users needed to understand the agent's intent before it acted, see its blast radius, and know they could step in at the right moment. Without that, the AI-native shift risked failing on adoption, not on model capability.</p>
     <ul>
-      <li>Pending decisions were buried inside each agent's page, behind an unlabeled icon — users running several agents never knew something was waiting.</li>
-      <li>There was no sense of an agent's blast radius — how much, and what, it was about to affect.</li>
-      <li>Approving actions one agent at a time didn't scale — five decisions meant five separate screens.</li>
+      <li>Pending decisions were buried inside each agent's page, behind an unlabeled icon, users running several agents never knew something was waiting.</li>
+      <li>There was no sense of an agent's blast radius: how much, and what, it was about to affect.</li>
+      <li>Approving actions one agent at a time didn't scale: five decisions meant five separate screens.</li>
       <li>For an agent someone else set up, it was unclear what it was doing or even whether it was running.</li>
     </ul>
-    <p style="margin-top:28px">For agents to create value, oversight had to do more than expose activity — it had to give users the confidence and control to activate them.</p>
+    <p style="margin-top:28px">For agents to create value, oversight had to do more than expose activity, it had to give users the confidence and control to activate them.</p>
   </div>
 </section>
 
 <section class="col rv">
   <div class="sec-label">Constraints</div>
   <div class="sec-head"><span class="num">02</span><h2>The challenges</h2></div>
-  <div class="body"><p>I designed against PointFive's five brand values as a lens — Efficiency, Depth, Creativity, Bias to action, and Trust. The challenge was holding them at once: dense, live agent data had to stay calm and scannable, and powerful controls had to stay safe.</p></div>
+  <div class="body"><p>I designed against PointFive's five brand values as a lens: Efficiency, Depth, Creativity, Bias to action, and Trust. The challenge was holding them at once: dense, live agent data had to stay calm and scannable, and powerful controls had to stay safe.</p></div>
   <div class="tcols">
     <div class="tc"><h4>The challenges</h4><ul>
-      <li>Making an autonomous fleet observable at a glance — status, task, scope and risk across every agent</li>
-      <li>Building trust through transparency — surfacing what each agent is doing and the decisions it's waiting on, not just an output</li>
-      <li>Giving real control at scale — letting users triage and approve across many agents without opening each one</li>
+      <li>Making an autonomous fleet observable at a glance: status, task, scope and risk across every agent</li>
+      <li>Building trust through transparency: surfacing what each agent is doing and the decisions it's waiting on, not just an output</li>
+      <li>Giving real control at scale: letting users triage and approve across many agents without opening each one</li>
     </ul></div>
     <div class="tc ac"><h4>Trade-offs</h4><ul>
-      <li>Surfaced pending decisions at list level rather than inside each agent — adds density but removes the risk of a critical approval sitting buried for days</li>
-      <li>Described each agent goal-first instead of showing its process — less technical detail, but far faster to scan a busy fleet</li>
-      <li>Autonomy as a spectrum (auto / approve-per-step / sandbox) — more complex to communicate, but it's what lets cautious users adopt at all</li>
+      <li>Surfaced pending decisions at list level rather than inside each agent, adds density but removes the risk of a critical approval sitting buried for days</li>
+      <li>Described each agent goal-first instead of showing its process, less technical detail, but far faster to scan a busy fleet</li>
+      <li>Autonomy as a spectrum (auto / approve-per-step / sandbox), more complex to communicate, but it's what lets cautious users adopt at all</li>
     </ul></div>
   </div>
-  <div class="img-mt rv"><figure><div class="ph" data-img-id="IMG-02" style="aspect-ratio:16/7"><div class="ph-id">IMG-02</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>IMG-02</span><img src="portfolio%20images/agents/IMG-02.png" alt="IMG-02" class="ph-img" onerror="this.remove()"></div><figcaption>The original experience — a pending decision buried behind an unlabeled icon inside a single agent's page.</figcaption></figure></div>
+  <div class="img-mt rv"><figure><div class="ph" data-img-id="IMG-02" style="aspect-ratio:16/7"><div class="ph-id">IMG-02</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>IMG-02</span><img src="portfolio%20images/agents/IMG-02.png" alt="IMG-02" class="ph-img" onerror="this.remove()"></div><figcaption>The original experience: a pending decision buried behind an unlabeled icon inside a single agent's page.</figcaption></figure></div>
 </section>
 
 <section class="col rv">
@@ -404,34 +404,34 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   <div class="sec-head"><span class="num">03</span><h2>Research and user needs</h2></div>
   <div class="body">
     <p>I grounded the work in two places: what the market was doing, and what research says about trust in AI. I reviewed 10 agentic products for oversight and governance patterns, looked closely at FinOps competitors like Vantage, Finout, ProsperOps, nOps and CloudZero, read studies on AI trust and human-in-the-loop, and pulled signals from McKinsey, Gartner, SurveyMonkey and NN/g.</p>
-    <p>One gap stood out: even the most advanced competitor ran oversight through Slack or ticketing tools — at the time, I didn't find a single product with a dedicated in-product pane to see every agent, its scope and its pending decisions.</p>
+    <p>One gap stood out: even the most advanced competitor ran oversight through Slack or ticketing tools. At the time, I didn't find a single product with a dedicated in-product pane to see every agent, its scope and its pending decisions.</p>
     <p>From both streams I distilled five principles that move trust: Intent Preview, Action Audit + Undo, Variable Autonomy, Confidence Signals, and a Single Pane of Glass.</p>
   </div>
-  <div class="stat-band"><div class="sb"><div class="v">62%</div><div class="l">of respondents say their organizations are at least experimenting with AI agents — McKinsey, 2025</div></div><div class="sb"><div class="v">40%+</div><div class="l">of agentic AI projects predicted to be canceled by 2027 because of cost, unclear value or inadequate risk controls — Gartner</div></div><div class="sb"><div class="v">79%</div><div class="l">of Americans strongly prefer a human over an AI agent in customer service — SurveyMonkey, 2025 CX study</div></div></div>
+  <div class="stat-band"><div class="sb"><div class="v">62%</div><div class="l">of respondents say their organizations are at least experimenting with AI agents, McKinsey, 2025</div></div><div class="sb"><div class="v">40%+</div><div class="l">of agentic AI projects predicted to be canceled by 2027 because of cost, unclear value or inadequate risk controls, Gartner</div></div><div class="sb"><div class="v">79%</div><div class="l">of Americans strongly prefer a human over an AI agent in customer service, SurveyMonkey, 2025 CX study</div></div></div>
   <div class="img-mt rv">
-    <figure><div class="ph" data-img-id="IMG-03" style="aspect-ratio:16/9"><div class="ph-id">IMG-03</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>IMG-03</span><img src="portfolio%20images/agents/IMG-03.png" alt="IMG-03" class="ph-img" onerror="this.remove()"></div><figcaption>Market scan — 10 agentic products plus direct FinOps competitors, studied for how they handle oversight of autonomous actions.</figcaption></figure>
+    <figure><div class="ph" data-img-id="IMG-03" style="aspect-ratio:16/9"><div class="ph-id">IMG-03</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>IMG-03</span><img src="portfolio%20images/agents/IMG-03.png" alt="IMG-03" class="ph-img" onerror="this.remove()"></div><figcaption>Market scan: 10 agentic products plus direct FinOps competitors, studied for how they handle oversight of autonomous actions.</figcaption></figure>
   </div>
 </section>
 
 <section class="col rv">
   <div class="sec-label">Exploration</div>
   <div class="sec-head"><span class="num">04</span><h2>Exploring solutions</h2></div>
-  <div class="body"><p>I explored the overview screen as live HTML prototypes, using Claude to move faster from concept to interaction. That let me test density, hierarchy and decision states in the browser — not only evaluate static Figma frames. The core question was how hard the screen should push users toward pending approvals: keep decisions quiet in the dashboard, or pull them up as a dedicated call to action.</p></div>
+  <div class="body"><p>I explored the overview screen as live HTML prototypes, using Claude to move faster from concept to interaction. That let me test density, hierarchy and decision states in the browser, not only evaluate static Figma frames. The core question was how hard the screen should push users toward pending approvals: keep decisions quiet in the dashboard, or pull them up as a dedicated call to action.</p></div>
   <div class="img-row c3 rv">
-    <figure><div class="ph" data-img-id="IMG-05" style="aspect-ratio:4/3"><div class="ph-id">IMG-05</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Concept 01 · IMG-05</span><img src="portfolio%20images/agents/IMG-05.png" alt="Concept 01 · IMG-05" class="ph-img" onerror="this.remove()"></div><figcaption>Concept 01 — decisions folded into the greeting. Clean, but easy to miss the thing that matters most.</figcaption></figure>
-    <figure><div class="ph" data-img-id="IMG-06" style="aspect-ratio:4/3"><div class="ph-id">IMG-06</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Concept 02 · IMG-06</span><img src="portfolio%20images/agents/IMG-06.png" alt="Concept 02 · IMG-06" class="ph-img" onerror="this.remove()"></div><figcaption>Concept 02 — a dedicated decisions banner with a clear "Review decisions" action. Explicit but a heavy block pushing the agent list down.</figcaption></figure>
-    <figure><div class="ph" data-img-id="IMG-07" style="aspect-ratio:4/3"><div class="ph-id">IMG-07</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Concept 03 · IMG-07</span><img src="portfolio%20images/agents/IMG-07.png" alt="Concept 03 · IMG-07" class="ph-img" onerror="this.remove()"></div><figcaption>Concept 03 (selected) — "Review decisions" merged into the metric itself. The urgency of Concept 02, without the extra banner taking over the screen.</figcaption></figure>
+    <figure><div class="ph" data-img-id="IMG-05" style="aspect-ratio:4/3"><div class="ph-id">IMG-05</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Concept 01 · IMG-05</span><img src="portfolio%20images/agents/IMG-05.png" alt="Concept 01 · IMG-05" class="ph-img" onerror="this.remove()"></div><figcaption>Concept 01: decisions folded into the greeting. Clean, but easy to miss the thing that matters most.</figcaption></figure>
+    <figure><div class="ph" data-img-id="IMG-06" style="aspect-ratio:4/3"><div class="ph-id">IMG-06</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Concept 02 · IMG-06</span><img src="portfolio%20images/agents/IMG-06.png" alt="Concept 02 · IMG-06" class="ph-img" onerror="this.remove()"></div><figcaption>Concept 02: a dedicated decisions banner with a clear "Review decisions" action. Explicit but a heavy block pushing the agent list down.</figcaption></figure>
+    <figure><div class="ph" data-img-id="IMG-07" style="aspect-ratio:4/3"><div class="ph-id">IMG-07</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Concept 03 · IMG-07</span><img src="portfolio%20images/agents/IMG-07.png" alt="Concept 03 · IMG-07" class="ph-img" onerror="this.remove()"></div><figcaption>Concept 03 (selected): "Review decisions" merged into the metric itself. The urgency of Concept 02, without the extra banner taking over the screen.</figcaption></figure>
   </div>
 </section>
 
 <!-- Section 05 (User Flow) — hidden for this project -->
 
 <section class="rv" style="max-width:var(--wide);padding:64px 0;border-top:1px solid var(--line)">
-  <div class="col"><div class="sec-label">Solution</div><div class="sec-head"><span class="num">05</span><h2>The final design</h2></div><div class="body"><p>The final design brings the whole fleet under one roof. A "Decisions Waiting" metric doubles as the entry point to review — every pending approval one click away, with the oldest flagged so nothing sits for days. System health and monthly savings sit alongside it, so the first thing a user reads is what their agents did and what needs them.</p><p>Each agent reads goal-first — with a scope badge (Org / Team / Personal), estimated monthly impact, status, and filters to triage a busy, live list. The blast radius column is Intent Preview in practice: you see what the agent intends before it acts. A user can snooze a decision or hand it off to the right person, who receives an email with the full context.</p><p>The oversight experience was built on <strong>PointFive's design system, which I established from scratch</strong>. As we adapted the system for Claude-assisted prototyping, I used the transition as a <strong>light UI refresh</strong> — tightening density, states, spacing and hierarchy so the agent experience felt like a natural evolution of PointFive, not a separate AI layer.</p></div></div>
+  <div class="col"><div class="sec-label">Solution</div><div class="sec-head"><span class="num">05</span><h2>The final design</h2></div><div class="body"><p>The final design brings the whole fleet under one roof. A "Decisions Waiting" metric doubles as the entry point to review: every pending approval one click away, with the oldest flagged so nothing sits for days. System health and monthly savings sit alongside it, so the first thing a user reads is what their agents did and what needs them.</p><p>Each agent reads goal-first: with a scope badge (Org / Team / Personal), estimated monthly impact, status, and filters to triage a busy, live list. The blast radius column is Intent Preview in practice: you see what the agent intends before it acts. A user can snooze a decision or hand it off to the right person, who receives an email with the full context.</p><p>The oversight experience was built on <strong>PointFive's design system, which I established from scratch</strong>. As we adapted the system for Claude-assisted prototyping, I used the transition as a <strong>light UI refresh</strong>: tightening density, states, spacing and hierarchy so the agent experience felt like a natural evolution of PointFive, not a separate AI layer.</p></div></div>
   <div class="img-stack" style="max-width:var(--wide)">
-    <figure class="rv"><div class="ph" data-img-id="IMG-09" style="aspect-ratio:16/9"><div class="ph-id">IMG-09</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Screen 1 · IMG-09</span><img src="portfolio%20images/agents/IMG-09.png" alt="Screen 1 · IMG-09" class="ph-img" onerror="this.remove()"></div><figcaption>The chosen design (Concept 03) — fleet overview with decisions, system health and savings in one scannable header.</figcaption></figure>
-    <figure class="rv"><div class="ph" data-img-id="IMG-10" style="aspect-ratio:16/9"><div class="ph-id">IMG-10</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Screen 2 · IMG-10</span><img src="portfolio%20images/agents/IMG-10.png" alt="Screen 2 · IMG-10" class="ph-img" onerror="this.remove()"></div><figcaption>"Decisions Waiting" doubles as the review entry point — the oldest pending approval surfaced so nothing sits ignored.</figcaption></figure>
-    <figure class="rv"><div class="ph" data-img-id="IMG-11" style="aspect-ratio:16/9"><div class="ph-id">IMG-11</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Screen 3 · IMG-11</span><img src="portfolio%20images/agents/IMG-11.png" alt="Screen 3 · IMG-11" class="ph-img" onerror="this.remove()"></div><figcaption>Goal-first agent rows — scope badge, estimated monthly impact and status to triage at a glance.</figcaption></figure>
+    <figure class="rv"><div class="ph" data-img-id="IMG-09" style="aspect-ratio:16/9"><div class="ph-id">IMG-09</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Screen 1 · IMG-09</span><img src="portfolio%20images/agents/IMG-09.png" alt="Screen 1 · IMG-09" class="ph-img" onerror="this.remove()"></div><figcaption>The chosen design (Concept 03): fleet overview with decisions, system health and savings in one scannable header.</figcaption></figure>
+    <figure class="rv"><div class="ph" data-img-id="IMG-10" style="aspect-ratio:16/9"><div class="ph-id">IMG-10</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Screen 2 · IMG-10</span><img src="portfolio%20images/agents/IMG-10.png" alt="Screen 2 · IMG-10" class="ph-img" onerror="this.remove()"></div><figcaption>"Decisions Waiting" doubles as the review entry point: the oldest pending approval surfaced so nothing sits ignored.</figcaption></figure>
+    <figure class="rv"><div class="ph" data-img-id="IMG-11" style="aspect-ratio:16/9"><div class="ph-id">IMG-11</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Screen 3 · IMG-11</span><img src="portfolio%20images/agents/IMG-11.png" alt="Screen 3 · IMG-11" class="ph-img" onerror="this.remove()"></div><figcaption>Goal-first agent rows: scope badge, estimated monthly impact and status to triage at a glance.</figcaption></figure>
   </div>
 </section>
 
@@ -439,19 +439,19 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   <div class="sec-label">Reflection</div>
   <div class="sec-head"><span class="num">06</span><h2>Reflection &amp; what's next</h2></div>
   <div class="body">
-    <p>I'm honest about where this stands: it's a starting point, not a finish line. I focused on the place where the tension between human and AI is most visible — the moment a person decides whether to let an agent act. The whole design works to make the user feel they are the one in control, the one in the loop, even as the agents do the work.</p>
-    <p>Where this could go: a deeper single-agent page, edit / delegate / snooze flows, validation with FinOps operators, and the edge states — no decisions, failed runs, recovery.</p>
+    <p>I'm honest about where this stands: it's a starting point, not a finish line. I focused on the place where the tension between human and AI is most visible: the moment a person decides whether to let an agent act. The whole design works to make the user feel they are the one in control, the one in the loop, even as the agents do the work.</p>
+    <p>Where this could go: a deeper single-agent page, edit / delegate / snooze flows, validation with FinOps operators, and the edge states: no decisions, failed runs, recovery.</p>
     <ul>
-      <li>Used AI as a research partner — clustering the product scan into themes and generating 20 live prototype directions — with my judgment as the filter.</li>
+      <li>Used AI as a research partner, clustering the product scan into themes and generating 20 live prototype directions, with my judgment as the filter.</li>
       <li>Distilled 10 products and 10 studies into 5 evidence-backed trust principles that drove every design decision.</li>
-      <li>At FinOps X 2026, customers and partners repeatedly called PointFive's NG agent direction a "game changer" and asked how soon they could use it — early validation that the trust layer addressed a real adoption barrier, not just a UI gap.</li>
+      <li>At FinOps X 2026, customers and partners repeatedly called PointFive's NG agent direction a "game changer" and asked how soon they could use it: early validation that the trust layer addressed a real adoption barrier, not just a UI gap.</li>
     </ul>
     <hr style="border:none;border-top:1px solid var(--line);margin:32px 0">
     <p>Three signals I'd track:</p>
     <ul>
-      <li><strong>Agent activation rate</strong> — how many users who have agents actually turn them on. The main signal for whether the trust layer did its job.</li>
-      <li><strong>Time-to-decision in the review flow</strong> — how long it takes to approve or reject a pending decision. Fast means the context was clear. Slow means something is still confusing.</li>
-      <li><strong>Snooze rate</strong> — how often operators delay instead of deciding. High snooze doesn't mean they're busy — it means they need more context before they act.</li>
+      <li><strong>Agent activation rate</strong>: how many users who have agents actually turn them on. The main signal for whether the trust layer did its job.</li>
+      <li><strong>Time-to-decision in the review flow</strong>: how long it takes to approve or reject a pending decision. Fast means the context was clear. Slow means something is still confusing.</li>
+      <li><strong>Snooze rate</strong>: how often operators delay instead of deciding. High snooze doesn't mean they're busy, it means they need more context before they act.</li>
     </ul>
   </div>
 </section>
