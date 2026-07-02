@@ -282,8 +282,9 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 /* real image dropped into a placeholder — fills it, hides the color tile + label */
 .work-ph{position:sticky}
 .work-img-real{position:relative;width:100%;height:auto;object-fit:contain;border-radius:3px;display:block;z-index:2}
-.work-ph:has(.work-img-real) .ph-label{display:none}
-.work-ph:has(.work-img-real){background:transparent!important;min-height:0;aspect-ratio:auto}
+.work-ph:has(.work-img-real) .ph-label,
+.work-ph:has(.work-img-real) > span{display:none}
+.work-ph:has(.work-img-real){background:transparent!important;min-height:0;aspect-ratio:auto !important;display:block !important}
 
 /* per-image positions (1:1 with sania) */
 .g1-1{grid-column:span 5;grid-row:span 2;top:-640px}
