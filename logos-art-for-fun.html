@@ -398,6 +398,88 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .col .img-row.c3{left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
 }
 
+/* ── CONTACT FOOTER ──────────────────────────────────── */
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 52px;
+  padding: 80px;
+  width: 100%;
+  background-color: #F6F5F1;
+  color: #111111;
+  text-decoration: none;
+  transition: background-color 0.45s cubic-bezier(0.25,0.46,0.45,0.94),
+              color 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.footer-contact:hover {
+  background-color: #111111;
+  color: #F6F5F1;
+}
+.footer-heading {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(38px, 5.5vw, 68px);
+  color: inherit;
+  text-align: center;
+}
+.footer-img {
+  width: 270px;
+  height: 195px;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.footer-contact:hover .footer-img {
+  transform: scale(1.03);
+}
+.footer-cta-row {
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #bada55;
+  transition: width 0.35s ease;
+}
+.footer-contact:hover .footer-link {
+  color: #bada55;
+}
+.footer-contact:hover .footer-link::after {
+  width: 100%;
+}
+.footer-copy {
+  color: var(--muted);
+  font-size: clamp(11px,1.5vw,14px);
+  text-align: center;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  width: 100%;
+  max-width: var(--wide);
+  margin: 0 auto;
+}
+
+@media(max-width:680px){
+  .footer-contact { padding: 60px 24px; gap: 36px; }
+  .footer-img { width: 200px; height: 145px; }
+}
+
 </style>
 <link rel="stylesheet" href="cursor.css">
 </head>
@@ -421,24 +503,24 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 <div class="s-work">
 
   <div class="work-grid">
-    <div class="work-ph g1-1" style="background:#E8E4DB" id="GALLERY-01"><span class="ph-label">GALLERY-01</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-01.png" alt="GALLERY-01" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g1-2" style="background:#DDD8CE" id="GALLERY-02"><span class="ph-label">GALLERY-02</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-02.png" alt="GALLERY-02" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g1-3" style="background:#E3E0D6" id="GALLERY-03"><span class="ph-label">GALLERY-03</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-03.png" alt="GALLERY-03" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g1-4" style="background:#D8D3C8" id="GALLERY-04"><span class="ph-label">GALLERY-04</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-04.png" alt="GALLERY-04" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g1-5" style="background:#E6E2D8" id="GALLERY-05"><span class="ph-label">GALLERY-05</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-05.png" alt="GALLERY-05" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g1-1" style="background:#E8E4DB" id="GALLERY-01"><span class="ph-label">GALLERY-01</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-01.png" alt="GALLERY-01" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g1-2" style="background:#DDD8CE" id="GALLERY-02"><span class="ph-label">GALLERY-02</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-02.png" alt="GALLERY-02" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g1-3" style="background:#E3E0D6" id="GALLERY-03"><span class="ph-label">GALLERY-03</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-03.png" alt="GALLERY-03" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g1-4" style="background:#D8D3C8" id="GALLERY-04"><span class="ph-label">GALLERY-04</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-04.png" alt="GALLERY-04" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g1-5" style="background:#E6E2D8" id="GALLERY-05"><span class="ph-label">GALLERY-05</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-05.png" alt="GALLERY-05" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
   </div>
   <div class="work-grid">
-    <div class="work-ph g2-1" style="background:#DEDAD0" id="GALLERY-06"><span class="ph-label">GALLERY-06</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-06.png" alt="GALLERY-06" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g2-2" style="background:#E0DCD2" id="GALLERY-07"><span class="ph-label">GALLERY-07</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-07.png" alt="GALLERY-07" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g2-3" style="background:#D5D0C5" id="GALLERY-08"><span class="ph-label">GALLERY-08</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-08.png" alt="GALLERY-08" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g2-4 hidden-item" style="background:#EAE6DC" id="GALLERY-09"><span class="ph-label">GALLERY-09</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-09.png" alt="GALLERY-09" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g2-1" style="background:#DEDAD0" id="GALLERY-06"><span class="ph-label">GALLERY-06</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-06.jpg" alt="GALLERY-06" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g2-2" style="background:#E0DCD2" id="GALLERY-07"><span class="ph-label">GALLERY-07</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-07.png" alt="GALLERY-07" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g2-3" style="background:#D5D0C5" id="GALLERY-08"><span class="ph-label">GALLERY-08</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-08.png" alt="GALLERY-08" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g2-4 hidden-item" style="background:#EAE6DC" id="GALLERY-09"><span class="ph-label">GALLERY-09</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-09.png" alt="GALLERY-09" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g3-1 hidden-item" style="background:#D9D5CB" id="GALLERY-10"><span class="ph-label">GALLERY-10</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-10.png" alt="GALLERY-10" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g3-1 hidden-item" style="background:#D9D5CB" id="GALLERY-10"><span class="ph-label">GALLERY-10</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-10.png" alt="GALLERY-10" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
   </div>
   <div class="work-grid">
-    <div class="work-ph g4-1 hidden-item" style="background:#E5E1D7" id="GALLERY-11"><span class="ph-label">GALLERY-11</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-11.png" alt="GALLERY-11" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g4-2" style="background:#DAD6CC" id="GALLERY-12"><span class="ph-label">GALLERY-12</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-12.png" alt="GALLERY-12" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g4-1 hidden-item" style="background:#E5E1D7" id="GALLERY-11"><span class="ph-label">GALLERY-11</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-11.png" alt="GALLERY-11" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g4-2" style="background:#DAD6CC" id="GALLERY-12"><span class="ph-label">GALLERY-12</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-12.png" alt="GALLERY-12" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
     <div class="work-ph g4-3" style="background:#E7E3D9" id="GALLERY-13"><span class="ph-label">GALLERY-13</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-13.png" alt="GALLERY-13" class="work-img-real" onerror="this.remove()"></div>
   </div>
   <div class="work-grid">
@@ -499,8 +581,21 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 
 <div style="height:40px"></div>
 
-<footer style="max-width:var(--wide);margin:0 auto">
-  <div class="footer-nav">
+<footer>
+  <div class="footer-contact">
+    <h2 class="footer-heading">let's work together</h2>
+    <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
+         alt="Let's work together"
+         class="footer-img"
+         onerror="this.remove()">
+    <div class="footer-cta-row">
+      GET IN TOUCH VIA
+      <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
+      /
+      <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
+    </div>
+  </div>
+  <div class="footer-nav" style="max-width:var(--wide);margin:0 auto">
     <a href="#" id="prevBtn">← Previous work</a>
     <a href="#" id="nextBtn">Next work →</a>
   </div>
