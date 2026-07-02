@@ -18,6 +18,8 @@
 | `docs/RESPONSIVE.md` | התנהגות במובייל/טאבלט | כששינוי רספונסיבי |
 | `docs/GALLERY-SAPIR.md` | גיבוי מלא של גלריית ה-logos | כשנוגעים בגלריה |
 | `docs/PRESENTATION.md` | המצגת הסמויה לראיון | כשמשנים את המצגת |
+| `docs/CASE-STUDY-TEMPLATE.md` | כללי תבנית case study חדש | כשבונים/בודקים עמוד פרויקט |
+| `docs/ABOUT-PANEL.md` | מנגנון About האמיתי | כשנוגעים בפאנל ה-About |
 
 **את לא צריכה לזכור את הטבלה.** היא בשביל קלוד. את פשוט תגידי "תתעד את זה" — והוא
 יבחר את הקובץ הנכון לבד (זה החלק של ה"תיעוד-עצמי", בהמשך).
@@ -130,6 +132,8 @@ real image at this path. Don't change anything else."*
 | התנהגות במובייל/טאבלט | `docs/RESPONSIVE.md` |
 | הגלריה / 42 התמונות | `docs/GALLERY-SAPIR.md` |
 | המצגת הסמויה | `docs/PRESENTATION.md` |
+| כללי תבנית case study חדש | `docs/CASE-STUDY-TEMPLATE.md` |
+| מנגנון About האמיתי | `docs/ABOUT-PANEL.md` |
 | קול הכתיבה / מבנה קייס סטאדי | סקיל `new-case-study` |
 | איך בונים משהו / תהליך התיעוד | סקיל `site-ops` |
 | מצב הפרויקט / קובץ חדש / החלטה | `CLAUDE.md` |

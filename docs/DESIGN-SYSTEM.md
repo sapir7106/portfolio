@@ -80,3 +80,38 @@ These crept in across versions. Pick ONE value for each and apply site-wide:
 4. **About page** — there should be **one** `about.html` (dark + light via a
    `?mode=` parameter). A separate `about-light.html` is redundant and, if it
    still exists in the folder, should be deleted.
+
+## Typography scale
+
+- **Display / H1:** Playfair Display, 700, used for page titles and hero headings.
+- **Section H2:** Playfair Display, 700, `clamp(28px, 3.6vw, 44px)`.
+- **Body / running text:** Montserrat, 300–400, 17px at ≤1440px.
+- **Labels / eyebrows:** Montserrat, 500–600, 11px, letter-spacing `.2em`, uppercase.
+- **Monospace / tags:** system monospace, 11–13px.
+
+## Custom cursor
+
+- Files: `cursor.js`, `cursor.css`, element `#custom-cursor`.
+- Active on: all case study pages + `index.html`.
+- Disabled below: 1024px viewport width.
+- Hover states on: links, buttons, figures.
+- Do NOT remove without updating all pages simultaneously.
+
+## Content-loader system
+
+- Files: `content-loader.js`, `about-content-loader.js`.
+- Purpose: injects copy from `*-content.txt` files into HTML placeholders.
+- Markup syntax in `.txt` files:
+  - `**text**` → `<strong>`
+  - `==text==` → `<mark>`
+  - `[[label|url|class]]` → `<a>`
+- Used by: case study pages that have a matching `*-content.txt` file.
+- Note: writers editing `*-content.txt` must use this syntax, not raw HTML.
+
+## `projects-order.js` — important clarification
+
+- Controls: home page card **ORDER only**.
+- Does NOT control: Previous/Next nav inside case study pages.
+- Previous/Next nav: each page has its own inline `const PROJECTS = [...]` array.
+- To reorder Previous/Next: edit each case study page's inline array manually.
+- The file's own comment "THE ONLY FILE YOU EDIT" is misleading — flag it.
