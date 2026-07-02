@@ -1,12 +1,12 @@
 ════════════════════════════════════════════════════════════════
-SCRIPT — agents-deck-v1.html
+SCRIPT: agents-deck-v1.html
 קובץ עריכת טקסטים מקושר למצגת
 
 איך לעבוד עם הקובץ הזה:
 • כל שקף מסומן ב: [SLIDE XX] + מספר + מה מופיע לקהל
-• STORY NOTE = הערה לך בלבד (לא מופיע במצגת) — מה התפקיד של השקף בסיפור
+• STORY NOTE = הערה לך בלבד (לא מופיע במצגת): מה התפקיד של השקף בסיפור
 • [N] = הערה שמוסתרת תחת מקש N במצגת (גלויה רק בלחיצה)
-• [★ COUNCIL] = ממוקד שינוי המומלץ על ידי המועצה — עם הסבר למה
+• [★ COUNCIL] = ממוקד שינוי המומלץ על ידי המועצה: עם הסבר למה
 • HTML מקביל: שנה את הטקסט כאן → תחפשי בקובץ ה-HTML → תחליפי
 • כדי לחפש שקף: פתחי agents-deck-v1.html, חפשי <!-- XX -->
 
@@ -14,16 +14,16 @@ SCRIPT — agents-deck-v1.html
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 01] — Chapter divider: "About me"
+[SLIDE 01]: Chapter divider: "About me"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: שקף מעבר — פותח את סקשן "About me". לא דורש עריכה.
+STORY NOTE: שקף מעבר: פותח את סקשן "About me". לא דורש עריכה.
 
 EYEBROW: Chapter 01
 TITLE: About me
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 02] — About me / ביו
+[SLIDE 02]: About me / ביו
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: המקום היחידי שמציג את זהותך המקצועית. צריך להיות past tense (כבר לא בPF).
 
@@ -33,7 +33,7 @@ H2: Product designer for [complex, technical products]
 
 PARAGRAPH 1:
 I led UX at PointFive, where I helped build the product from the ground up
-alongside the founder — turning complex FinOps data into clear interfaces,
+alongside the founder, turning complex FinOps data into clear interfaces,
 and shaping how people trust the AI agents that act on their cloud costs.
 
 PARAGRAPH 2:
@@ -41,20 +41,20 @@ Before that: data security at Laminar, and enterprise AI and cyber
 at BeyondMinds and Sygnia.
 
 BULLETS (עמודה ימין):
-• What I really do: I build the systems underneath the screens —
+• What I really do: I build the systems underneath the screens:
   components, tokens and standards that keep a product coherent as it scales.
 • Training: BA in Visual Communication, Shenkar College.
-• On the side: an active artistic practice — drawing, sculpture, mixed media.
+• On the side: an active artistic practice: drawing, sculpture, mixed media.
 
-[★ COUNCIL] שינוי שכבר נעשה: "I currently lead" → "I led" — חשוב,
+[★ COUNCIL] שינוי שכבר נעשה: "I currently lead" → "I led", חשוב,
 כי את כבר לא בPointFive. וודאי שכל הביו שלך במקום אחר (LinkedIn,
 אתר) מעודכן בהתאם.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 03] — From problem to system (timeline)
+[SLIDE 03]: From problem to system (timeline)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: תהליך העבודה שלך — 8 שלבים, 2 שורות, dots סגולים. השקף
+STORY NOTE: תהליך העבודה שלך: 8 שלבים, 2 שורות, dots סגולים. השקף
 "מרוויח" מהצגה קצרה ("בואו נסתכל על הבסיס שממנו עבדתי...").
 
 EYEBROW: My approach · how I work
@@ -91,13 +91,13 @@ Step 8  |  Monitoring
          Track behavior (FullStory), gather insight, feed back into the next cycle.
 
 [★ COUNCIL] הפונט יושר לשקף 9 (1.5cqw כותרת, 1.18cqw תיאור).
-אם עדיין נראה קטן — תעדכני את .tl-title ו-.tl-desc ב-HTML.
+אם עדיין נראה קטן, תעדכני את .tl-title ו-.tl-desc ב-HTML.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 04] — Case study divider
+[SLIDE 04]: Case study divider
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: מעבר לקייס סטאדי. הכותרת של הפרויקט — אפשר לשנות.
+STORY NOTE: מעבר לקייס סטאדי. הכותרת של הפרויקט, אפשר לשנות.
 
 EYEBROW: Case study 01
 TITLE: Managing [AI Agents]
@@ -106,15 +106,15 @@ ROLE LINE: A project I led as Lead Product Designer · PointFive
 
 [N] TITLE OPTIONS: "Managing AI Agents" · "Agents you can trust" · "From black box to control room"
 
-[★ COUNCIL] שינוי שנעשה: "My role" → "A project I led" — framing
+[★ COUNCIL] שינוי שנעשה: "My role" → "A project I led": framing
 של עבר-עצמאי, לא כותרת נוכחית. שקול לשנות גם את שם הקייס
 לאחד הכותרות בהערה ה-N אם זה מרגיש יותר נכון.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 05] — Overview / PointFive was AI-native
+[SLIDE 05]: Overview / PointFive was AI-native
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: הקשר ראשון — מה PointFive ומה היה הבאזז. 5 ערכי המותג.
+STORY NOTE: הקשר ראשון: מה PointFive ומה היה הבאזז. 5 ערכי המותג.
 
 EYEBROW: Overview
 H2: PointFive was going [AI-native]
@@ -122,11 +122,11 @@ H2: PointFive was going [AI-native]
 
 LEDE:
 PointFive helps organizations cut cloud-cost waste. The next step:
-agents that don't just [surface a problem — they act on it.]
-  (ה-highlight: "surface a problem — they act on it.")
+agents that don't just [surface a problem, they act on it.]
+  (ה-highlight: "surface a problem, they act on it.")
 
 SCOPE STATEMENT (להוסיף אחרי ה-LEDE):
-For this case study, I focused on what happens after the agents start running — the oversight layer that tells you what's happening, what needs your attention, and whether you can step in.
+For this case study, I focused on what happens after the agents start running: the oversight layer that tells you what's happening, what needs your attention, and whether you can step in.
 
 5 BRAND VALUES (שינוי טקסט תחת כל ערך):
 Efficiency   | cut waste, fast
@@ -135,13 +135,13 @@ Creativity   | novel solutions
 Bias to action | agents that act
 Trust        | earn the autonomy
 
-CAPTION: PointFive's five brand values — the lens I designed against.
+CAPTION: PointFive's five brand values: the lens I designed against.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 06] — The old way: agent by agent
+[SLIDE 06]: The old way: agent by agent
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: הצגת הבעיה הוויזואלית — מה היה קיים לפני. IMG-01 = מסך
+STORY NOTE: הצגת הבעיה הוויזואלית: מה היה קיים לפני. IMG-01 = מסך
 ה-"before". הצד השמאלי הוא הפסקה, הימני הוא ה-drop frame.
 
 EYEBROW: The starting point
@@ -152,11 +152,11 @@ PARAGRAPH:
 The moment agents could act on their own, something shifted: people started
 to [fear them, not trust them], and quietly avoided turning them on.
 A pending decision lived inside each agent's own page, behind an unlabeled
-icon — a user running several agents never knew something was waiting.
+icon, a user running several agents never knew something was waiting.
   (ה-highlight: "fear them, not trust them")
 
 IMG-01 TAG: Drop frame: "before" screen
-IMG-01 DESC: The original experience — a pending decision buried behind
+IMG-01 DESC: The original experience: a pending decision buried behind
              an unlabeled icon inside a single agent's page.
 
 [★ COUNCIL] כדאי לשנות את שם IMG-01 בתיאור כשתוסיפי את
@@ -164,33 +164,33 @@ IMG-01 DESC: The original experience — a pending decision buried behind
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 07] — Four things the old experience couldn't do
+[SLIDE 07]: Four things the old experience couldn't do
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: הפירוט של ה-4 כאבים. כל bullet = כאב ספציפי שאפשר
-להוכיח. אם יש ציטוטים אמיתיים — כדאי להוסיף.
+להוכיח. אם יש ציטוטים אמיתיים, כדאי להוסיף.
 
 EYEBROW: The starting point · what broke
 H2: Four things the old experience [couldn't do]
   (ה-italic: "couldn't do")
 
 BULLETS:
-• [Pending decisions were buried] — inside each agent's page, behind an
+• [Pending decisions were buried]: inside each agent's page, behind an
   unlabeled icon. Users running several agents never knew something was waiting.
-• [No sense of blast radius] — how much, and what, an agent was about to affect.
-• [Approval didn't scale] — five decisions meant five separate screens.
-• [Someone else's agent was opaque] — unclear what it was doing,
+• [No sense of blast radius]: how much, and what, an agent was about to affect.
+• [Approval didn't scale]: five decisions meant five separate screens.
+• [Someone else's agent was opaque]: unclear what it was doing,
   or even whether it was running.
   (ה-bold: כל הפתיחה עד ה-dash)
 
 [★ COUNCIL] אם יש לך ציטוט ישיר על אחד מהכאבים האלה ("I have to
-open every single agent page just to see if anything is waiting") —
+open every single agent page just to see if anything is waiting"):
 הוסיפי אותו בשקף 07 או 20.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 08] — From agent management to agent oversight
+[SLIDE 08]: From agent management to agent oversight
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: השקף המרכזי של הקייס — מציג את ה-thesis ואת ה-reframing
+STORY NOTE: השקף המרכזי של הקייס: מציג את ה-thesis ואת ה-reframing
 בו-זמנית. מה היה קיים ומה היה חסר, ולמה זה trust problem ולא technology problem.
 
 EYEBROW: The starting point · what existed
@@ -199,62 +199,62 @@ H2: From agent management to [agent oversight]
   (ה-italic: "agent oversight")
 
 LEDE:
-This wasn't a technology problem — it was a trust gap. The product could manage
+This wasn't a technology problem, it was a trust gap. The product could manage
 agents; what was missing was the oversight layer that made autonomy feel safe
 to turn on.
 
-עמודה שמאל — Existing layer:
+עמודה שמאל: Existing layer:
 - Create / Run / View activity / Edit workflows
 
-עמודה ימין — What was missing:
+עמודה ימין: What was missing:
 - See pending decisions across all agents at once
 - Understand blast radius before an action runs
-- Review and approve at scale — not agent by agent
+- Review and approve at scale, not agent by agent
 - Know ownership, scope and risk for every agent
 
 [N] Speaker note (לך בלבד):
 This is the core reframing of the case study. The product already had agent
-management — create, run, view activity and edit workflows. What was missing
+management: create, run, view activity and edit workflows. What was missing
 was the oversight layer: the layer that helps operators understand what agents
 are doing, what needs attention, what is risky, and whether they can safely
 step in.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 8B] — Design tensions I had to balance
+[SLIDE 8B]: Design tensions I had to balance
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: שקף Senior — מציג לא רק מה עשית אלא מה ויתרת ולמה.
+STORY NOTE: שקף Senior: מציג לא רק מה עשית אלא מה ויתרת ולמה.
 3 tensions + trade-off לכל אחד. אחד השקפים החזקים בקייס.
 
 EYEBROW: Constraints · the challenges
 H2: Design tensions I had to [balance]
   (ה-italic: "balance")
 
-COLUMN 1 — 01:
+COLUMN 1 - 01:
 TENSION: Visibility vs. density
 DESC: I brought pending decisions into the main agents view.
 HIGHLIGHT: More information on screen, but no critical approval stays hidden.
 
-COLUMN 2 — 02:
+COLUMN 2 - 02:
 TENSION: Context vs. speed
 DESC: I showed just enough context to understand what needs attention.
 HIGHLIGHT: Less detail up front, but faster triage across the fleet.
 
-COLUMN 3 — 03:
+COLUMN 3 - 03:
 TENSION: Autonomy vs. control
 DESC: I kept clear intervention points: review, snooze, or hand off.
 HIGHLIGHT: One more decision step, but users stay in control.
 
 [N] Speaker notes (עברית):
-השקף הזה מציג את שיקולי הדיזיין מאחורי הפתרון — לא רק מה שיניתי, אלא מה בחרתי להעדיף ועל מה ויתרתי בדרך.
-Visibility vs. density — בחרתי להביא את ההחלטות שמחכות לאישור לתוך המסך הראשי. המחיר: צפיפות. אבל אישור קריטי לא אמור להישאר חבוי.
-Context vs. speed — בחרתי להציג רק את הקונטקסט הנדרש. המחיר: לא כל הפרטים מיד. אבל זה מאפשר סריקה מהירה של הרבה אג׳נטים.
-Autonomy vs. control — שמרתי על נקודות התערבות ברורות: review, snooze, hand off. המחיר: עוד שלב. אבל זה עוזר למשתמשים להרגיש בטוחים יותר להפעיל אג׳נטים.
-משפט מרכזי: בכל החלטה היה trade-off — צפיפות לטובת נראות, פחות פרטים לטובת סריקה, נקודות התערבות לטובת תחושת שליטה.
+השקף הזה מציג את שיקולי הדיזיין מאחורי הפתרון, לא רק מה שיניתי, אלא מה בחרתי להעדיף ועל מה ויתרתי בדרך.
+Visibility vs. density: בחרתי להביא את ההחלטות שמחכות לאישור לתוך המסך הראשי. המחיר: צפיפות. אבל אישור קריטי לא אמור להישאר חבוי.
+Context vs. speed: בחרתי להציג רק את הקונטקסט הנדרש. המחיר: לא כל הפרטים מיד. אבל זה מאפשר סריקה מהירה של הרבה אג׳נטים.
+Autonomy vs. control: שמרתי על נקודות התערבות ברורות: review, snooze, hand off. המחיר: עוד שלב. אבל זה עוזר למשתמשים להרגיש בטוחים יותר להפעיל אג׳נטים.
+משפט מרכזי: בכל החלטה היה trade-off: צפיפות לטובת נראות, פחות פרטים לטובת סריקה, נקודות התערבות לטובת תחושת שליטה.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 09] — Who I worked with
+[SLIDE 09]: Who I worked with
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: צוות + ה-AI כשותף לעבודה. 2x2 grid.
 
@@ -262,11 +262,11 @@ EYEBROW: Collaboration · partners
 H2: Who I worked with
 
 CARD 1: Product Manager
-  The fast-sprint partner — business framing, scope, and the agent
+  The fast-sprint partner: business framing, scope, and the agent
   behaviors we needed to expose.
 
 CARD 2: Engineering / Tech Lead
-  What the agents can actually report — which signals, states and
+  What the agents can actually report: which signals, states and
   actions are available to show.
 
 CARD 3: CPO
@@ -274,21 +274,21 @@ CARD 3: CPO
   in the product.
 
 CARD 4: AI as a research partner
-  Synthesis, 20 interactive prototypes, and pressure-testing —
+  Synthesis, 20 interactive prototypes, and pressure-testing,
   with my judgment as the filter.
 
 [N] Team: 1 Product Manager · 2 Engineering / Tech Leads · 1 Founder.
   Add real names if you want to personalize.
 
-[★ COUNCIL] אם רוצה לאישית — הוסיפי שמות אמיתיים. גם: שנה
+[★ COUNCIL] אם רוצה לאישית, הוסיפי שמות אמיתיים. גם: שנה
 "Engineering / Tech Lead" ל-"2 Engineering / Tech Leads" (כפי שכתוב
 בהערת ה-N) אם רוצה להציג את גודל הצוות האמיתי.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 10] — I grounded it, not guessed it
+[SLIDE 10]: I grounded it, not guessed it
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: המחקר — 10 מוצרים, 5 מתחרי FinOps, 10 מחקרים. הgap
+STORY NOTE: המחקר: 10 מוצרים, 5 מתחרי FinOps, 10 מחקרים. הgap
 המרכזי שמוצא. IMG-02 = תמונת הסקן.
 
 EYEBROW: Research · market scan
@@ -297,18 +297,18 @@ H2: I grounded it, [not guessed it]
 
 BULLETS:
 • Scanned [10 agentic products] for oversight & governance patterns.
-• Studied [5 direct FinOps competitors] — Vantage, Finout, ProsperOps, nOps, CloudZero.
+• Studied [5 direct FinOps competitors]: Vantage, Finout, ProsperOps, nOps, CloudZero.
 • Read [10 studies] on AI trust + signal from [McKinsey · Gartner · SurveyMonkey · NN/g].
   (ה-bold: המספרים וה-sources)
 
 HIGHLIGHT PARAGRAPH:
 [The gap:] even the most advanced competitor runs oversight through Slack
-or ticketing — at the time, I didn't find a single product with a dedicated in-product pane to see every agent,
+or ticketing. At the time, I didn't find a single product with a dedicated in-product pane to see every agent,
 its scope and its pending decisions
   (ה-highlight: "The gap:")
 
 IMG-02 TAG: Drop frame: competitive scan
-IMG-02 DESC: Market scan — 10 agentic products plus direct FinOps competitors,
+IMG-02 DESC: Market scan: 10 agentic products plus direct FinOps competitors,
              studied for how they handle oversight of autonomous actions.
 
 [★ COUNCIL] כדאי לשנות את תיאור IMG-02 לתיאור של התמונה האמיתית
@@ -316,23 +316,23 @@ IMG-02 DESC: Market scan — 10 agentic products plus direct FinOps competitors,
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 11] — What users need to trust agents — and what the market confirmed
+[SLIDE 11]: What users need to trust agents, and what the market confirmed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EYEBROW: Research · user needs + market signal
-H2: What users need to trust agents — and what the market confirmed
+H2: What users need to trust agents, and what the market confirmed
 
 [SPEAKER NOTES]
 השקף הזה מחבר בין שני דברים: מה המשתמשים צריכים כדי לסמוך על אג׳נטים, ומה השוק אישר לגבי הכיוון הזה.
-המחקר הראה שלמשתמשים לא חסר עוד דאטה — הם צריכים להבין מה מחכה להם, מה ההשפעה של פעולה לפני שהיא רצה, ושיש להם דרך להתערב או לעצור.
+המחקר הראה שלמשתמשים לא חסר עוד דאטה, הם צריכים להבין מה מחכה להם, מה ההשפעה של פעולה לפני שהיא רצה, ושיש להם דרך להתערב או לעצור.
 בצד של השוק, המסר הוא שהביקוש לאג׳נטים אוטונומיים קיים. אנשים מתלהבים מהכיוון ורוצים להשתמש בו, אבל זה לא מספיק. כדי שהם באמת יפעילו את האג׳נטים, הם צריכים להרגיש שהם מבינים, סומכים ושומרים שליטה.
 משפט מרכזי: השוק רוצה agents, אבל adoption תלוי באמון. לכן הפתרון שלי התמקד בליצור visibility, context ו-control סביב האוטונומיה.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 12] — Five principles for designing trust in agents
+[SLIDE 12]: Five principles for designing trust in agents
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: ה-synthesis — 5 עקרונות trust שנגזרו מהמחקר. כל אחד
-עם source. שקף חזק מאוד — זה ה-IP האינטלקטואלי שלך.
+STORY NOTE: ה-synthesis: 5 עקרונות trust שנגזרו מהמחקר. כל אחד
+עם source. שקף חזק מאוד: זה ה-IP האינטלקטואלי שלך.
 
 EYEBROW: Research · synthesis
 H2: Five principles for designing [trust] in agents
@@ -341,7 +341,7 @@ H2: Five principles for designing [trust] in agents
 5 PRINCIPLES (כותרת | תיאור | source):
 1. Intent Preview          | Show what will happen before it happens.           | NN/g · #1 trust driver
 2. Action Audit + Undo     | Every action logged, readable, reversible.          | Cuts perceived risk
-3. Variable Autonomy       | Not on/off — a spectrum: auto · approve-per-step · sandbox. | MS · +mental model
+3. Variable Autonomy       | Not on/off, a spectrum: auto · approve-per-step · sandbox. | MS · +mental model
 4. Confidence Signals      | Show how sure it is, and why.                      | NN/g · trust ↑
 5. Single Pane of Glass    | See and act on every agent from one view.           | Microsoft
 
@@ -351,9 +351,9 @@ H2: Five principles for designing [trust] in agents
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 13] — The decision path (user flow)
+[SLIDE 13]: The decision path (user flow)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: ה-user flow — איך operator עובר מ"משהו מחכה לי" לאישור.
+STORY NOTE: ה-user flow: איך operator עובר מ"משהו מחכה לי" לאישור.
 IMG-03 = ה-flow diagram. שקף שמקביל לשקפי ה-journey ב-DSPM.
 
 EYEBROW: Research · user journey
@@ -364,7 +364,7 @@ How an operator moves from "something needs me" → review → act,
 plus the bulk path for many decisions at once.
 
 IMG-03 TAG: Drop frame: user-flow diagram(s)
-IMG-03 DESC: Mirror your DSPM journey slides — "Single decision"
+IMG-03 DESC: Mirror your DSPM journey slides: "Single decision"
              and "Bulk review" flows.
 
 [★ COUNCIL] זה השקף שהכי קל להוסיף לו: תייצאי את ה-flow diagram
@@ -372,9 +372,9 @@ IMG-03 DESC: Mirror your DSPM journey slides — "Single decision"
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 14] — Design exploration: interactive prototypes
+[SLIDE 14]: Design exploration: interactive prototypes
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: מה עשיתי ב-exploration — live HTML, לא static. השאלה
+STORY NOTE: מה עשיתי ב-exploration: live HTML, לא static. השאלה
 המרכזית של ה-exploration. IMG-04 = גריד ה-20 כיוונים.
 
 EYEBROW: Design exploration
@@ -382,14 +382,14 @@ H2: I explored the overview as [interactive prototypes]
   (ה-italic: "interactive prototypes")
 
 PARAGRAPH 1:
-Built with Claude as [live HTML, not static mockups] — fast to feel
+Built with Claude as [live HTML, not static mockups]: fast to feel
 in a browser, not just look at.
   (ה-bold: "live HTML, not static mockups")
 
 PARAGRAPH 2:
-The core question: how to surface the decisions waiting for review —
+The core question: how to surface the decisions waiting for review,
 keep them quiet, or pull them up as a dedicated call to action?
-Each concept made a different bet — building toward [the one I chose].
+Each concept made a different bet: building toward [the one I chose].
   (ה-bold: "the one I chose")
 
 IMG-04 TAG: Drop frame: 20-directions contact sheet
@@ -399,16 +399,16 @@ IMG-04 DESC: A grid with Direction 03 highlighted.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 15] — Concept 01 (live preview)
+[SLIDE 15]: Concept 01 (live preview)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: Preview חי של Concept-01.html. לחיצה פותחת fullscreen.
-הכותרת היא רק "Concept 01" — הסיפור מסופר בהצגה.
+הכותרת היא רק "Concept 01", הסיפור מסופר בהצגה.
 
 EYEBROW: Design exploration · concept 01
 H2: Concept 01
 
 CAPTION (גלוי):
-Decisions folded quietly into the greeting — clean, but easy to miss the thing that matters most.
+Decisions folded quietly into the greeting: clean, but easy to miss the thing that matters most.
 
 [N] Concept 01: decisions folded quietly into the greeting
   ("5 decisions waiting for your review"). Clean, but easy to miss
@@ -416,7 +416,7 @@ Decisions folded quietly into the greeting — clean, but easy to miss the thing
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 16] — Concept 02 (live preview)
+[SLIDE 16]: Concept 02 (live preview)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: Preview חי של Concept-02.html.
 
@@ -424,66 +424,66 @@ EYEBROW: Design exploration · concept 02
 H2: Concept 02
 
 CAPTION (גלוי):
-A dedicated decisions banner — impossible to miss, but heavy. Pushes the whole agent list down.
+A dedicated decisions banner: impossible to miss, but heavy. Pushes the whole agent list down.
 
 [N] Concept 02: a dedicated decisions banner naming the waiting agents,
-  with a clear "Review decisions" action. Impossible to miss — but a
+  with a clear "Review decisions" action. Impossible to miss, but a
   heavy block pushing the agent list down.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 17] — Concept 03 → Direction 03 (chosen)
+[SLIDE 17]: Concept 03 → Direction 03 (chosen)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: Preview חי של Concept-03.html — הכיוון שנבחר.
+STORY NOTE: Preview חי של Concept-03.html: הכיוון שנבחר.
 
-EYEBROW: Design exploration · concept 03 — chosen
+EYEBROW: Design exploration · concept 03 - chosen
 H2: Concept 03 [→ Direction 03]
   (ה-italic: "→ Direction 03")
 
 CAPTION (גלוי):
-"Review decisions" merged into the metric itself — the urgency of Concept 02, without the banner taking over the screen.
+"Review decisions" merged into the metric itself: the urgency of Concept 02, without the banner taking over the screen.
 
 [N] Concept 03 (selected): "Review decisions" merged into the
-  Decisions Waiting metric itself — the urgency of Concept 02 without
+  Decisions Waiting metric itself: the urgency of Concept 02 without
   the extra banner. Decisions are the first thing you see, but the
   fleet stays in view.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 18] — The agent-management screen (live mock)
+[SLIDE 18]: The agent-management screen (live mock)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: ה-mock החי של Direction 03 — בנוי מהמפרט שלך.
+STORY NOTE: ה-mock החי של Direction 03: בנוי מהמפרט שלך.
 זה השקף שהכי כדאי להחליף בFrames אמיתיים מ-Figma.
 
 EYEBROW: Final design · Direction 03
 H2: The agent-management screen
 
-MOCK — TOPBAR:
+MOCK - TOPBAR:
 Title: Agents
 KPI 1: 12 | Running
 KPI 2: 3  | Pending
 KPI 3: $48k | Saved / mo
 
-MOCK — BANNER:
+MOCK - BANNER:
 [3 decisions] need your review across all agents  [Review decisions]
 
-MOCK — FILTERS:
+MOCK - FILTERS:
 All · Pending · Running · Org · Team · Personal
 
-MOCK — TABLE ROWS:
+MOCK - TABLE ROWS:
 Agent / goal              | Scope        | Status  | Decision
 Rightsize idle compute    | Org · ~$12k  | Pending | Needs approval
 Delete orphaned volumes   | Team · ~$3k  | Running | Auto
 Commit savings plan       | Org · ~$20k  | Pending | Needs approval
 Schedule dev shutdowns    | Personal     | Done    | Approved · undo
 
-MOCK — DRAWER (צד ימין):
+MOCK - DRAWER (צד ימין):
 Header: Edit via chat
 Message 1: "Only act on instances idle > 7 days."
-Message 2: Collapsible — supportive, never dominant. [placeholder]
+Message 2: Collapsible, supportive, never dominant. [placeholder]
 
-CAPTION (גלוי — מתחת למסך):
-The agent-management screen — fleet overview, pending decisions, blast radius per action, and system health in one view. The "Decisions Waiting" metric is also the entry point to review — one click, oldest flagged first.
+CAPTION (גלוי, מתחת למסך):
+The agent-management screen: fleet overview, pending decisions, blast radius per action, and system health in one view. The "Decisions Waiting" metric is also the entry point to review: one click, oldest flagged first.
 
 [N] BUILT FROM YOUR SPEC. Live rebuild of Direction 03.
   Replace with your real Figma frames, or keep it.
@@ -494,9 +494,9 @@ The agent-management screen — fleet overview, pending decisions, blast radius 
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 19] — Pains → ideas → solutions
+[SLIDE 19]: Pains → ideas → solutions
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: ה-core design thinking שלך — Pain 01 בלבד מופיע כציטוט
+STORY NOTE: ה-core design thinking שלך: Pain 01 בלבד מופיע כציטוט
 אמיתי. שלושת הכאבים האחרים (שקף 08) יכולים להגיע לכאן אחרי
 שתמצאי ציטוטים אמיתיים.
 
@@ -516,33 +516,33 @@ HEADER: Ideas I weighed
 
 CELL 3 [פתרון]:
 HEADER: How I solved it
-• [✓] "Decisions Waiting" metric doubles as the review entry point — oldest flagged first
+• [✓] "Decisions Waiting" metric doubles as the review entry point: oldest flagged first
 • [✓] Snooze or hand off to the right person (who gets an email with full context)
-• [✓] Agents shared across the team — oversight never stuck with one person
+• [✓] Agents shared across the team: oversight never stuck with one person
 
-ROW 2 — ADDITIONAL PAINS:
+ROW 2 - ADDITIONAL PAINS:
 Pain 02: No sense of blast radius
   How many resources? What's the cost impact? Is it reversible? None of this was visible before acting.
 
 Pain 03: Approval didn't scale
-  Five pending decisions meant five separate screens — one agent at a time.
+  Five pending decisions meant five separate screens, one agent at a time.
 
 Pain 04: Status was ambiguous
   Running? Waiting for a trigger? Failed silently? There was no clear status signal at the list level.
 
 RESEARCH BACKING (footnote):
-Gartner (2025): "Agents acting without user visibility create legal and operational exposure — the UI is the accountability layer."
-NN/g (2026): "Trust is a design problem. Focus: legibility — visibility, intervenability, understanding the why."
+Gartner (2025): "Agents acting without user visibility create legal and operational exposure: the UI is the accountability layer."
+NN/g (2026): "Trust is a design problem. Focus: legibility: visibility, intervenability, understanding the why."
 
 [★ COUNCIL] זה השקף הכי חשוב להשלים: צרי ציטוטים אמיתיים
 ל-Pains 02-04 ועדכני כאן. "To approve anything, I have to go
-agent by agent" מספיק חזק — עוד 2 כמוהו יסגרו את השקף.
+agent by agent" מספיק חזק, עוד 2 כמוהו יסגרו את השקף.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 20] — A system, not just screens
+[SLIDE 20]: A system, not just screens
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: Design system — ה-Component Dictionary. 44 components.
+STORY NOTE: Design system: ה-Component Dictionary. 44 components.
 IMG-05 = תמונת ה-dictionary.
 
 EYEBROW: Final design · design system
@@ -550,8 +550,8 @@ H2: A system, [not just screens]
   (ה-italic: "not just screens")
 
 PARAGRAPH:
-I built a [Component Dictionary] — auto-generated from the React codebase
-and bound to PointFive brand tokens — a full design system that keeps
+I built a [Component Dictionary]: auto-generated from the React codebase
+and bound to PointFive brand tokens, a full design system that keeps
 the agent surface coherent as the product scales, and can grow consistently from here.
   (ה-bold: "Component Dictionary")
 
@@ -563,9 +563,9 @@ IMG-05 DESC: A shot of the components / tokens.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 22] (לשעבר 24) — External validation / FinOps X
+[SLIDE 22] (לשעבר 24): External validation / FinOps X
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: ולידציה חיצונית — לא מטריקות, אלא קול השוק.
+STORY NOTE: ולידציה חיצונית, לא מטריקות, אלא קול השוק.
 מוצג בזמן עבר (עזבת את PF). ניטרלי לגבי האם היית בכנס.
 
 EYEBROW: External validation
@@ -579,21 +579,21 @@ NG agent direction a ["game changer"] and asked how soon they could use it.
   (ה-highlight: "game changer")
 
 PARAGRAPH 2:
-The market clearly wants autonomous agents. This is market validation of the direction — not measured results on the design itself. The [trust layer I designed was built to turn that demand into something people would actually switch on.]
+The market clearly wants autonomous agents. This is market validation of the direction, not measured results on the design itself. The [trust layer I designed was built to turn that demand into something people would actually switch on.]
   (ה-bold: "trust layer I designed was built to...")
 
 [N] HONEST FRAMING. This is validation of the product *direction*, not
-  measured results on the design itself. No invented metrics — deliberate.
+  measured results on the design itself. No invented metrics, deliberate.
 
-[★ COUNCIL] אם יש לך ציטוט מדויק יותר (שם, חברה) — הוסיפי.
-אם לא היית בכנס — שנה ל"Based on feedback from customers and partners
+[★ COUNCIL] אם יש לך ציטוט מדויק יותר (שם, חברה), הוסיפי.
+אם לא היית בכנס, שנה ל"Based on feedback from customers and partners
 at FinOps X 2026" כדי שלא יישמע כאילו הצגת שם.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 24] — Reflection
+[SLIDE 24]: Reflection
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: הסיכום — starting point, not finish line. Layout: 2-column grid.
+STORY NOTE: הסיכום: starting point, not finish line. Layout: 2-column grid.
 שמאל: What I learned + What I'd validate next. ימין: paragraph מרכזי.
 
 EYEBROW: Reflection
@@ -603,26 +603,26 @@ H2: This is a [starting point], not a finish line
 COL-LABEL: What I learned
 BULLETS:
 • AI helped me move faster, but [judgment stayed human].
-• Trust is not one feature — it's built through [visibility, reversibility and control].
+• Trust is not one feature, it's built through [visibility, reversibility and control].
 • In AI-native products, the interface is the [accountability layer].
 
 COL-LABEL: What I'd validate next
 BULLETS:
-• [Agent activation] — are people actually turning agents on?
-• [Faster decisions] — does the context make approvals easier?
-• [Fewer snoozes] — are users ready to act instead of postponing?
+• [Agent activation]: are people actually turning agents on?
+• [Faster decisions]: does the context make approvals easier?
+• [Fewer snoozes]: are users ready to act instead of postponing?
 
 RIGHT COLUMN (bordered):
-I focused on the moment where [trust is won or lost] — when a person decides
+I focused on the moment where [trust is won or lost]: when a person decides
 whether to let an AI agent act. The goal wasn't to show more information.
 It was to create enough [clarity, context and control] for people to feel
-safe taking action — and to bring judgment into the system.
+safe taking action, and to bring judgment into the system.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 23b] — Three signals I'd track (NEW — בין 23 ל-24)
+[SLIDE 23b]: Three signals I'd track (NEW - בין 23 ל-24)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: שקף מטריקות — הופך "אין לך data?" מחולשה לשקיפות.
+STORY NOTE: שקף מטריקות: הופך "אין לך data?" מחולשה לשקיפות.
 
 EYEBROW: What I'd measure
 
@@ -633,7 +633,7 @@ H2: Three signals [I'd track]
 
 Agent activation rate
 How many users who have agents actually turn them on.
-This is the main signal — it measures whether the trust layer did its job.
+This is the main signal: it measures whether the trust layer did its job.
 
 Time-to-decision
 How long it takes to approve or reject a pending decision.
@@ -641,13 +641,13 @@ Fast means the context was clear. Slow means something is still confusing.
 
 Snooze rate
 How often operators delay instead of deciding.
-High snooze doesn't mean they're busy — it means they need more context before they act.
+High snooze doesn't mean they're busy, it means they need more context before they act.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 24] (לשעבר 26) — How I work / What sets me apart
+[SLIDE 24] (לשעבר 26): How I work / What sets me apart
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STORY NOTE: Positioning שלך כמעצבת — 3 columns. שקף "מה אני
+STORY NOTE: Positioning שלך כמעצבת: 3 columns. שקף "מה אני
 מביאה" שמכין לסיום. לא ספציפי לפרויקט.
 
 EYEBROW: What sets me apart
@@ -655,7 +655,7 @@ H2: How I work
 
 COLUMN 1:
 TITLE: I design the system, not just the screen
-DESC:  The components, tokens and standards underneath a product —
+DESC:  The components, tokens and standards underneath a product:
        the thing that keeps it coherent as it scales.
 
 COLUMN 2:
@@ -663,18 +663,18 @@ TITLE: Complex products are my expertise
 DESC:  FinOps, data security, enterprise AI. I make hard things feel inevitable.
 
 COLUMN 3:
-TITLE: I'm AI-native — and I build
-DESC:  I use AI inside my process — live HTML prototypes, research synthesis, concept generation.
-       In this project, I built 20 live directions with AI as a collaborator — with my judgment as the filter.
+TITLE: I'm AI-native, and I build
+DESC:  I use AI inside my process: live HTML prototypes, research synthesis, concept generation.
+       In this project, I built 20 live directions with AI as a collaborator, with my judgment as the filter.
 
 [N] UPDATE DONE. Replaced the 3-yr-old version with your current positioning.
 
-[★ COUNCIL] אם יש ל-column 2 או 3 ניסוח שתרצי לחדד — זה המקום.
+[★ COUNCIL] אם יש ל-column 2 או 3 ניסוח שתרצי לחדד, זה המקום.
 "I make hard things feel inevitable" הוא הטוב ביותר שיש כאן.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[SLIDE 25] (לשעבר 27) — Thank you
+[SLIDE 25] (לשעבר 27): Thank you
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STORY NOTE: שקף סיום. שם + תואר + email.
 
@@ -687,22 +687,22 @@ NAME LINE: Sapir Levi · Sapir7106@gmail.com
 
 
 ════════════════════════════════════════════════════════════════
-סיכום — מה המועצה המליצה לשנות ומספרי השקפים:
+סיכום, מה המועצה המליצה לשנות ומספרי השקפים:
 
-01. שקף 02 — "I currently lead" → "I led" ✅ (כבר בוצע)
-02. שקף 03 — פונט לא עקבי → יושר ל-1.5/1.18cqw ✅ (כבר בוצע)
-03. שקף 04 — "My role" → "A project I led" ✅ (כבר בוצע)
-04. שקף 04 — כותרת הקייס: שקול לשנות ל-"Agents you can trust" [לשיקולך]
-05. שקף 08 — ציטוטים אמיתיים לכאבים 2-4 [עדיין פתוח]
-06. שקף 09 — הוסיפי שמות אמיתיים [לשיקולך]
-07. שקף 12 — אם יש ציטוט מדויק מהכנס עם שם [עדיין פתוח]
-08. שקף 14 — החלפת IMG-03 ב-flow diagram אמיתי [עדיין פתוח]
-09. שקף 19 — החלפת ה-mock ב-Figma frames אמיתיים [עדיין פתוח]
-10. שקף 20 — ציטוטים אמיתיים ל-Pains 02-04 [עדיין פתוח]
-11. שקף 21 — עדכון תיאור IMG-05 [עדיין פתוח]
-12. שקף 22 — וודאי framing ניטרלי על FinOps X [לשיקולך]
-13. שקף 23 — שקול "Where it could go:" במקום "What's next" (כבר ב-v2)
-14. שקף 25 — תואר "Lead Product Designer" ✅ (כבר בוצע)
+01. שקף 02: "I currently lead" → "I led" ✅ (כבר בוצע)
+02. שקף 03: פונט לא עקבי → יושר ל-1.5/1.18cqw ✅ (כבר בוצע)
+03. שקף 04: "My role" → "A project I led" ✅ (כבר בוצע)
+04. שקף 04: כותרת הקייס: שקול לשנות ל-"Agents you can trust" [לשיקולך]
+05. שקף 08: ציטוטים אמיתיים לכאבים 2-4 [עדיין פתוח]
+06. שקף 09: הוסיפי שמות אמיתיים [לשיקולך]
+07. שקף 12: אם יש ציטוט מדויק מהכנס עם שם [עדיין פתוח]
+08. שקף 14: החלפת IMG-03 ב-flow diagram אמיתי [עדיין פתוח]
+09. שקף 19: החלפת ה-mock ב-Figma frames אמיתיים [עדיין פתוח]
+10. שקף 20: ציטוטים אמיתיים ל-Pains 02-04 [עדיין פתוח]
+11. שקף 21: עדכון תיאור IMG-05 [עדיין פתוח]
+12. שקף 22: וודאי framing ניטרלי על FinOps X [לשיקולך]
+13. שקף 23: שקול "Where it could go:" במקום "What's next" (כבר ב-v2)
+14. שקף 25: תואר "Lead Product Designer" ✅ (כבר בוצע)
 
 IMGs שצריכות להיות מוחלפות (אין עדיין תמונות אמיתיות):
 IMG-01 = מסך ה-"before" מ-Figma
