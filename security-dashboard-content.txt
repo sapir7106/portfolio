@@ -55,7 +55,7 @@ IMG-08 caption: The security analyst's investigation flow: from dashboard overvi
 
 SECTION 06 — Outcome / Outcome & reflection
 ----------------------------------------
-Paragraph 1: The redesigned dashboard gives security teams a clearer, more actionable view of organizational security. Stronger information hierarchy, better prioritization, and real-time visibility turn complex cybersecurity data into a practical decision-making tool: directly answering the problem the research surfaced: teams weren't short on data, they were short on clarity.
+Paragraph 1: The redesigned dashboard gives security teams a clearer, more actionable view of organizational security. Stronger information hierarchy, better prioritization, and real-time visibility turn complex cybersecurity data into a practical decision-making tool. It directly answered the problem the research surfaced: teams weren't short on data, they were short on clarity.
 Paragraph 2: Looking back, the core lesson holds up: in a domain where an analyst faces thousands of alerts a day, the design's job isn't to display everything, it's to make the one thing that matters impossible to miss, and the next action obvious.
 Bullet 1: Helps teams identify critical threats faster and reduce investigation time.
 Bullet 2: Keeps analysts focused on high-priority risks while maintaining awareness of overall posture.
