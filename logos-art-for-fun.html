@@ -400,23 +400,27 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 }
 
 /* ── CONTACT FOOTER ──────────────────────────────────── */
-.footer-contact {
+.footer-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px;
+  width: 100%;
+  background-color: #F6F5F1;
+  color: #111111;
+  transition: background-color 0.45s cubic-bezier(0.25,0.46,0.45,0.94),
+              color 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.footer-outer:hover {
+  background-color: #111111;
+  color: #F6F5F1;
+}
+.footer-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 52px;
-  padding: 80px;
-  width: 100%;
-  background-color: #F6F5F1;
-  color: #111111;
-  text-decoration: none;
-  transition: background-color 0.45s cubic-bezier(0.25,0.46,0.45,0.94),
-              color 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.footer-contact:hover {
-  background-color: #111111;
-  color: #F6F5F1;
 }
 .footer-heading {
   font-family: 'Playfair Display', serif;
@@ -432,7 +436,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   object-fit: cover;
   transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
 }
-.footer-contact:hover .footer-img {
+.footer-outer:hover .footer-img {
   transform: scale(1.03);
 }
 .footer-cta-row {
@@ -444,12 +448,12 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   align-items: center;
   gap: 6px;
 }
-.footer-link {
+.footer-cta-link {
   color: inherit;
   text-decoration: none;
   position: relative;
 }
-.footer-link::after {
+.footer-cta-link::after {
   content: '';
   position: absolute;
   bottom: -2px;
@@ -459,10 +463,10 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   background: #bada55;
   transition: width 0.35s ease;
 }
-.footer-contact:hover .footer-link {
+.footer-outer:hover .footer-cta-link {
   color: #bada55;
 }
-.footer-contact:hover .footer-link::after {
+.footer-outer:hover .footer-cta-link::after {
   width: 100%;
 }
 .footer-copy {
@@ -477,7 +481,8 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 }
 
 @media(max-width:680px){
-  .footer-contact { padding: 60px 24px; gap: 36px; }
+  .footer-outer { padding: 60px 24px; }
+  .footer-content { gap: 36px; }
   .footer-img { width: 200px; height: 145px; }
 }
 
@@ -583,17 +588,20 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 <div style="height:40px"></div>
 
 <footer>
-  <div class="footer-contact">
-    <h2 class="footer-heading">let's work together</h2>
-    <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
-         alt="Let's work together"
-         class="footer-img"
-         onerror="this.remove()">
-    <div class="footer-cta-row">
-      GET IN TOUCH VIA
-      <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
-      /
-      <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
+  <div class="footer-outer">
+    <div class="footer-content">
+      <h2 class="footer-heading">let's work together</h2>
+      <img
+        class="footer-img"
+        src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
+        alt="let's work together"
+        onerror="this.remove()">
+      <div class="footer-cta-row">
+        <span>GET IN TOUCH VIA</span>
+        <a class="footer-cta-link" href="mailto:Sapir7106@gmail.com">EMAIL</a>
+        <span>/</span>
+        <a class="footer-cta-link" href="https://wa.me/972523665667">WHATSAPP</a>
+      </div>
     </div>
   </div>
   <div class="footer-nav" style="max-width:var(--wide);margin:0 auto">
