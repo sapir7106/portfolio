@@ -408,7 +408,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   max-width: 1984px;
   margin: 0 auto;
   padding: 80px 80px 68px;
-  background-color: #F6F5F1;
+  background-color: #ffffff;
   color: #111111;
   display: flex;
   flex-direction: column;
@@ -421,7 +421,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 }
 .footer-content:hover {
   background-color: #111111;
-  color: #F6F5F1;
+  color: #ffffff;
 }
 .footer-heading {
   font-family: 'Playfair Display', Georgia, serif;
@@ -434,15 +434,20 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   color: inherit;
   margin: 0;
 }
-.footer-img {
-  display: block;
+.footer-img-placeholder {
   width: 270px;
   height: 195px;
-  object-fit: cover;
-  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background-color: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.footer-content:hover .footer-img {
-  transform: scale(1.03);
+.footer-img-placeholder span {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaaaaa;
 }
 .footer-cta-row {
   display: flex;
@@ -604,11 +609,9 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   <div class="footer-outer">
     <div class="footer-content">
       <h2 class="footer-heading">let's work together</h2>
-      <img
-        class="footer-img"
-        src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
-        alt="let's work together"
-        onerror="this.remove()">
+      <div class="footer-img-placeholder">
+        <span>IMG-00</span>
+      </div>
       <div class="footer-cta-row">
         <span>GET IN TOUCH VIA</span>
         <a class="footer-cta-link" href="mailto:Sapir7106@gmail.com">EMAIL</a>
