@@ -84,7 +84,7 @@
 /* ── Grid ── */
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0,600px) minmax(0,200px) minmax(0,1200px);
+  grid-template-columns: minmax(0,700px) minmax(0,200px) minmax(0,1200px);
   grid-template-areas: "bio exp photo";
   gap: 40px 48px; margin: 0; align-items: start;
 }
@@ -94,14 +94,14 @@
 
 /* ── Typography ── */
 .about-quote {
-  font-family: var(--serif); font-size: clamp(22px,2.8vw,40px);
+  font-family: var(--serif); font-size: clamp(24px, 4.5vw, 44px);
   line-height: 1.4; font-weight: 700; margin-bottom: 36px;
   color: var(--p-text, #2F2E2E);
 }
 .about-hi { background: #BADA55; color: #2F2E2E; padding: 0 2px; border-radius: 2px; }
 
 .about-body {
-  font-size: 17px; line-height: 1.7; font-weight: 300;
+  font-size: 15px; line-height: 1.7; font-weight: 300;
   color: var(--p-sub, rgba(47,46,46,0.80)); max-width: 600px;
 }
 .about-body p + p { margin-top: 16px; }
@@ -222,6 +222,9 @@
     font-size: clamp(20px, 2vw, 30px);
     margin-bottom: 24px;
   }
+  .about-quote {
+    font-size: 32px;
+  }
   .about-back-btn {
     margin-bottom: 18px;
   }
@@ -244,6 +247,10 @@
 
   .about-contact-list {
     align-items: baseline;
+  }
+
+  .about-photo-inner {
+    width: 88%;
   }
 }
 </style>
