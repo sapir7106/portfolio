@@ -180,6 +180,47 @@
 @media (max-width:500px) {
   .about-photo-inner { width: 100%; max-width: 100%; }
 }
+@media (min-width: 1440px) {
+  /* hide the "Contact" heading */
+  .about-grid > div:nth-child(3) .about-section-title {
+    display: none;
+  }
+
+  /* make the contact list a horizontal row */
+  .about-contact-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 28px;
+  }
+  .about-contact-list li {
+    margin-bottom: 0;
+  }
+
+  #about-panel {
+    overflow: hidden;
+  }
+
+  /* tighten bio slightly so it fits in 100vh */
+  .about-body {
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  .about-body p + p {
+    margin-top: 12px;
+  }
+
+  /* tighten quote bottom margin */
+  .about-quote {
+    margin-bottom: 24px;
+  }
+
+  /* tighten back btn bottom margin */
+  .about-back-btn {
+    margin-bottom: 20px;
+  }
+}
 </style>
 
 <div id="about-overlay" onclick="closeAbout()"></div>
