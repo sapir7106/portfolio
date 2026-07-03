@@ -255,27 +255,33 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
    auto-placement stacks bands into rows/negative-space as they collide —
    there's no hard-coded "N images per row" anywhere. A `zIndex`/margin-top
    nudge on the center-back/center-front pair is what creates the one
-   deliberate layered overlap; everything else just tiles by column.
-   Every scene stays in normal document flow (position:relative, never
-   sticky/absolute/fixed) so a later scene always pushes the previous one
-   up and can never cover or float on top of it — overlap only ever
-   happens between two images inside the SAME scene. */
+   deliberate layered overlap within a scene; everything else just tiles
+   by column.
+   Each `.gallery-scene` is itself sticky (desktop only) with an opaque
+   background and an increasing z-index (`--scene-z`, set per scene by
+   render order) — this is sania's own scroll effect: scene N+1 sticks at
+   the top and visually slides over/covers scene N as you keep scrolling.
+   That covering is intentionally scoped to whole scenes only: z-index on
+   individual items (`--item-z`) only ever competes with siblings *inside*
+   the same scene (each sticky+z-indexed scene establishes its own
+   stacking context), so it can't leak into cross-scene stacking. */
 .gallery-hero{position:relative;z-index:5;background:var(--bg)}
-.s-work{position:relative;width:100%;z-index:1;padding-bottom:64px}
+.s-work{position:relative;width:100%}
 .gallery-scene{
   display:grid;
   grid-template-columns:repeat(12,1fr);
   gap:16px;
   max-width:1984px;
   margin:0 auto;
-  padding:0 12px;
-  position:relative;
+  padding:16px 12px 80px;
+  position:sticky;
+  top:0;
+  background:var(--bg);
+  z-index:var(--scene-z, 1);
 }
-.gallery-scene + .gallery-scene{ margin-top:clamp(56px, 9vw, 160px); } /* breathing room between compositions */
 .work-ph{
   width:100%;display:block;
-  position:relative; /* scoped to its own scene — never sticky/fixed, so a
-                         later scene can never visually cover an earlier one */
+  position:relative; /* overlap here is scoped to --item-z within THIS scene only */
   border-radius:3px;
   grid-column:var(--desktop-col, span 4);
   grid-row:var(--desktop-row, auto);
@@ -295,12 +301,16 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 .work-ph--wide-center, .work-ph--pair-left, .work-ph--pair-right,
 .work-ph--supporting-left, .work-ph--supporting-right {}
 
-/* RESPONSIVE — tablet (≤900px): 8 columns. Desktop's role-based absolute
-   placement (column bands, overlap, z-index) is dropped in favor of simple
-   `layout`-driven spans so nothing awkward/oversized survives a narrower
-   grid — see docs/RESPONSIVE.md for the site's standard breakpoints. */
+/* RESPONSIVE — tablet (≤900px): 8 columns, sticky-cover effect off (a
+   covering stack doesn't read well on a narrower/shorter viewport). Role-
+   based absolute placement (column bands, overlap, z-index) is dropped in
+   favor of simple `layout`-driven spans — see docs/RESPONSIVE.md for the
+   site's standard breakpoints. */
 @media(max-width:900px){
-  .gallery-scene{grid-template-columns:repeat(8,1fr);gap:16px;padding:1rem 12px 2rem}
+  .gallery-scene{
+    position:relative;top:auto;z-index:auto!important;
+    grid-template-columns:repeat(8,1fr);gap:16px;padding:1rem 12px 2rem;
+  }
   .work-ph{
     grid-column:var(--tablet-col, span 4)!important;
     grid-row:auto!important;
@@ -631,9 +641,12 @@ function renderGallery() {
     scenes[sceneIndexByKey.get(item.scene)].push(item);
   });
 
-  scenes.forEach(sceneItems => {
+  scenes.forEach((sceneItems, sceneIdx) => {
     const sceneEl = document.createElement('div');
     sceneEl.className = 'gallery-scene';
+    // later scenes get a higher z-index so each one sticks and slides over
+    // the previous one on scroll (sania's own sticky-cover effect)
+    sceneEl.style.setProperty('--scene-z', sceneIdx + 1);
 
     sceneItems.forEach(item => {
       const role = GALLERY_ROLE_PRESETS[item.role] || GALLERY_ROLE_PRESETS['supporting-left'];

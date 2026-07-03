@@ -8,11 +8,13 @@ documents it.
 
 **Desktop (wide):** left sidebar visible, centered content, full layouts,
 lightbox enabled, scroll-reveal animations, gallery renders its art-directed
-scene compositions (role-based placement — see `docs/GALLERY-SAPIR.md`).
+scene compositions with a sticky-cover scroll effect (role-based placement,
+each scene sticks and the next covers it — see `docs/GALLERY-SAPIR.md`).
 
 **Tablet:** content reflows to fewer columns; multi-column grids
 (`.pinfo`, `.tcols`, `.stat-band`, `.img-row`) collapse toward single column;
-the gallery drops role-based placement for simple per-item spans.
+the gallery drops both role-based placement and the sticky-cover effect for
+simple per-item spans in normal flow.
 
 **Mobile:** sidebar becomes a **horizontal top bar** (~44–50px tall);
 `.page` margin-left → 0 with top padding for the bar; About panel goes full
@@ -57,14 +59,18 @@ rule tied to the same `600px` line everywhere.
 ## Behavior rules worth keeping
 
 - The hero must always sit **above** the gallery (`.gallery-hero` has
-  `z-index:5`).
-- Every gallery scene and item is plain `position:relative` (never `sticky`,
-  `absolute`, or `fixed`) so a later scene always pushes the previous one up
-  in normal document flow and can never cover or float on top of it —
-  overlap only ever happens *inside* one scene (see `docs/GALLERY-SAPIR.md`
-  → Scene flow).
-- On mobile the gallery drops role-based placement and `grid-row`/`margin`
-  offsets (`!important` overrides) so images stack cleanly.
+  `z-index:5`) — it never scrolls under a sticky scene.
+- On desktop, each gallery scene is `position:sticky` with its own
+  increasing `--scene-z`, so scene N+1 deliberately slides over and covers
+  scene N as you scroll (sania's own effect). That covering is strictly
+  scene-vs-scene — never `position:fixed`, never a negative margin, never a
+  manually-authored one-off z-index — and item-level overlap (the one
+  layered pair) only ever competes with siblings *inside* the same scene
+  (see `docs/GALLERY-SAPIR.md` → Scene flow).
+- On tablet/mobile the gallery drops both role-based placement and the
+  sticky-cover effect (`position:relative;z-index:auto`) plus `grid-row`/
+  `margin` offsets (`!important` overrides) so images stack cleanly with no
+  gap and no overlap between scenes.
 - Images use `max-width:100%; overflow:hidden` on small screens so a wide grid
   item never causes horizontal scroll.
 - Real images replace `.ph` placeholders and set their own natural aspect ratio

@@ -99,32 +99,39 @@ An ending scene (like scene 4) can pair a dominant with one supporting image
 in row 1 and drop the last supporting image alone into row 2, so it never
 reads as a flat 3-column grid.
 
-### Scene flow (why one scene can never cover another)
+### Scene flow (the sticky-cover effect, desktop only)
 
-Overlap is only ever a *within-scene* trick (the `center-back`/`center-front`
-pair). Across scenes, the scroll must feel like sania's: one composition
-exits upward, the next enters below it — never stacked on top. That's
-guaranteed structurally, not just by convention:
+On desktop, each `.gallery-scene` is itself `position:sticky;top:0` with an
+opaque background and an increasing `--scene-z` (set per scene, in render
+order, by `renderGallery()`). This is sania's own scroll behavior: as you
+scroll, scene N sticks to the top of the viewport; scene N+1 — sticky too,
+and stacked above it via z-index — catches up and visually slides over/covers
+scene N. One composition exits by being covered, the next enters by covering
+it, matching the reference site's actual feel.
 
-- Every `.gallery-scene` is a normal block-level grid in normal document
-  flow (`position:relative`, no `absolute`/`fixed`). Nothing takes a scene
-  out of flow, so the next scene can't help but start after it.
-- `.work-ph` (every image wrapper) is also plain `position:relative` — never
-  `sticky`. There's no scroll-linked mechanism anywhere that could make an
-  earlier image visually persist over a later scene.
-- `z-index` is only ever set on items *within* the same scene (the layered
-  pair). Nothing sets a cross-scene z-index, so stacking order never needs
-  to be reasoned about between compositions.
-- The `center-front` overlap uses a real `margin-top` (not `position:
-  absolute`/negative margins), which CSS Grid's row-sizing counts as part of
-  the item's box — so `.gallery-scene`'s own height always includes the full
-  visual extent of the overlap. A scene's rendered height already reserves
-  the composition's true "exit point"; the next scene can't start early.
+That covering is intentionally scoped to **whole scenes only**:
 
-This was verified empirically (headless-browser scroll + `getBoundingClientRect`):
-every scene's bottom edge exactly matches its tallest item's bottom edge, and
-each next scene starts strictly after that with a consistent gap — at
-desktop, tablet, and mobile widths.
+- `z-index` on individual items (`--item-z`, used by the `center-back`/
+  `center-front` layered pair) only ever competes with *siblings inside the
+  same scene* — each sticky, z-indexed `.gallery-scene` establishes its own
+  stacking context for its children, so an item's z-index can't leak out and
+  affect cross-scene stacking.
+- Nothing uses `position:fixed`, negative margins, or a manually-authored
+  cross-scene z-index — the only stacking values in play are `--scene-z`
+  (whole scenes, increasing in render order) and `--item-z` (within one
+  scene, for the one deliberate overlap).
+- The `center-front` overlap itself still uses a real `margin-top` (not
+  `position:absolute`), which CSS Grid's row-sizing counts as part of the
+  item's box — so a scene's own height (and therefore how long it stays
+  stuck before the next one covers it) always includes that overlap's full
+  visual extent.
+
+**Tablet/mobile turn the sticky-cover effect off entirely** (`.gallery-scene`
+resets to `position:relative;z-index:auto`) — a covering stack doesn't read
+well on a narrower/shorter viewport, so scenes there just flow normally, one
+after another with no gap and no overlap between them (verified via
+headless-browser scroll + `getBoundingClientRect`: each scene's bottom edge
+exactly meets the next scene's top edge at both tablet and mobile widths).
 
 ### Current composition plan (13 images)
 
@@ -176,13 +183,15 @@ slot — a bad path never renders a broken-image icon or reserves an empty gap.
 
 Aligned to the site's standard breakpoints (see `docs/RESPONSIVE.md`):
 - **> 900px** — 12-column grid per scene, `role`-based composition (column
-  bands, the one deliberate overlap, real negative space).
-- **≤ 900px (tablet)** — 8 columns. Role-based placement is dropped entirely
-  (overlap/z-index/absolute bands would get awkward on a narrower grid);
-  items fall back to a simple `layout`-driven span and the grid auto-flows.
+  bands, the one deliberate overlap, real negative space), and the
+  sticky-cover scroll effect described above.
+- **≤ 900px (tablet)** — 8 columns. Both role-based placement *and* the
+  sticky-cover effect are dropped (overlap/z-index/absolute bands, and a
+  covering stack, would get awkward on a narrower grid); items fall back to
+  a simple `layout`-driven span, scenes flow normally one after another.
 - **≤ 600px (mobile)** — 2 columns; `mobileLayout` decides `full` (both
   columns) vs `half` (one of two, a gentle 2-up). Each scene stacks cleanly,
-  one after another.
+  one after another, same as tablet.
 
 At no width are images cropped or force-stretched — the responsive rules only
 touch grid placement/position, never the image's own sizing.
@@ -203,6 +212,13 @@ Earlier builds have been replaced by the manifest system above:
    Replaced by the `scene`/`role` system above, which models sania's actual
    composition (dominant anchors, a layered pair, an accent, real negative
    space) instead of just its image counts per row.
+5. A brief pass where every scene was plain `position:relative` in normal
+   flow with no cross-scene z-index at all — scenes pushed each other
+   without ever overlapping. That's the right behavior for *tablet/mobile*
+   (kept), but on desktop it didn't match sania's actual sticky-cover scroll
+   feel, so desktop scenes are sticky again (see Scene flow above) — the
+   difference from the very first sticky attempt is that covering is now
+   strictly scene-vs-scene (`--scene-z`), never a manually-placed one-off.
 
 If you ever want to reference sania's *exact* 42-image pixel positions again,
 they're preserved in git history on this file (pre-manifest revision) —
