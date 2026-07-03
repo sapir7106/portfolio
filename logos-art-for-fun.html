@@ -248,14 +248,17 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 .gallery-hero h1 em{font-style:italic;font-weight:400}
 .gallery-lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch;margin:0 auto}
 
-/* ── STICKY EDITORIAL GRID — sania-inspired, rendered from GALLERY_ITEMS ── */
-/* hero sits above the gallery so sticky images with negative top never cover it */
-.gallery-hero{position:relative;z-index:5;background:var(--bg)}
+/* ── ART-DIRECTED EDITORIAL GRID — sania-inspired, rendered from GALLERY_ITEMS ──
+   12 columns desktop / 8 tablet / 2 mobile. Each item's column span (per
+   breakpoint) and desktop start position (per `align`) are set as CSS custom
+   properties at render time (see script) — the grid itself never hard-codes
+   which image goes where. */
+.gallery-hero{position:relative;z-index:5;background:var(--bg)} /* hero stays above sticky images */
 .s-work{position:relative;width:100%;z-index:1}
 .work-grid{
   display:grid;
-  grid-template-columns:repeat(9,1fr);
-  gap:12px;
+  grid-template-columns:repeat(12,1fr);
+  gap:16px;
   max-width:1984px;
   margin:0 auto;
   padding:0 12px 120px;
@@ -266,26 +269,27 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   position:sticky;top:0;
   align-self:start;
   border-radius:3px;
+  grid-column:var(--desktop-col, span 4);
 }
 .work-img-real{position:relative;width:100%;height:auto;border-radius:3px;display:block;z-index:2}
 
-/* per-image position/size comes from GALLERY_ITEMS (see script) — set as
-   inline styles at render time, not fixed classes. This keeps the gallery
-   data-driven: reorder/resize/hide via the manifest, not the CSS. */
-
-/* RESPONSIVE — tablet (≤900px): 2-col, sticky/offset effect off
-   (aligned to the site standard breakpoints — see docs/RESPONSIVE.md) */
+/* RESPONSIVE — tablet (≤900px): 8 columns, sticky/offset effect off, spans
+   only (no explicit align — keeps things from landing off-balance on a
+   narrower grid). Aligned to the site standard breakpoints — see
+   docs/RESPONSIVE.md */
 @media(max-width:900px){
-  .work-grid{grid-template-columns:repeat(2,1fr);gap:16px;padding:1rem 12px 2rem}
+  .work-grid{grid-template-columns:repeat(8,1fr);gap:16px;padding:1rem 12px 2rem}
   .work-ph{
-    grid-column:auto!important;grid-row:auto!important;
+    grid-column:var(--tablet-col, span 4)!important;
     top:0!important;position:relative!important;
     margin:0!important;padding-bottom:0!important;align-self:auto!important;
   }
 }
-/* RESPONSIVE — mobile (≤600px): single column */
+/* RESPONSIVE — mobile (≤600px): 2 columns. Most layouts go full width;
+   small/pair/tiny may keep a gentle 2-up via `mobileLayout` in the manifest. */
 @media(max-width:600px){
-  .work-grid{grid-template-columns:1fr;gap:12px;padding:0 16px 48px}
+  .work-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 16px 48px}
+  .work-ph{grid-column:var(--mobile-col, span 2)!important}
 }
 
 /* hero-shot — always centred, never cropped */
@@ -493,37 +497,66 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 
 <script>
 // ── GALLERY MANIFEST ──────────────────────────────────
-// Single source of truth for the gallery. To change what's on the page:
-//   - reorder   → edit `order` (not the DOM, not filenames)
-//   - hide/show → toggle `visible` (don't delete the file)
-//   - resize    → edit `size` (sm/md/lg/xl — never crop, only span)
-//   - add one   → drop the file in `portfolio images/logos-art-for-fun/`
-//                 and add a row here with its exact filename+extension.
-// Filenames are exact (case-sensitive) — this is the one place extensions
-// live, so a .png becoming a .jpg/.gif is a one-line change, here only.
+// Single source of truth for the gallery. To change what's on the page, edit
+// values here only — never the DOM, never a CSS class, never a filename:
+//   - reorder     → `order` (plain number)
+//   - hide/show   → `visible` (true/false — don't delete the file)
+//   - resize      → `layout` (see GALLERY_LAYOUT_PRESETS below)
+//   - horiz. spot → `align`  ('left' | 'center' | 'right')
+//   - mobile size → `mobileLayout` (optional — 'full' or 'half'; falls back
+//                   to a sensible default derived from `layout` if omitted)
+//   - add one     → drop the file in `portfolio images/logos-art-for-fun/`
+//                   and add a row here with its exact `src` (extension and
+//                   case both matter — jpg/jpeg/png/gif/webp all work, this
+//                   is the one place the extension is written).
 const GALLERY_ITEMS = [
-  { id:'GALLERY-01', file:'GALLERY-01.jpg', alt:'Logo and icon design — 01', visible:true, order:1,  size:'xl' },
-  { id:'GALLERY-02', file:'GALLERY-02.png', alt:'Logo and icon design — 02', visible:true, order:2,  size:'lg' },
-  { id:'GALLERY-03', file:'GALLERY-03.png', alt:'Logo and icon design — 03', visible:true, order:3,  size:'md' },
-  { id:'GALLERY-04', file:'GALLERY-04.png', alt:'Logo and icon design — 04', visible:true, order:4,  size:'md' },
-  { id:'GALLERY-05', file:'GALLERY-05.jpg', alt:'Logo and icon design — 05', visible:true, order:5,  size:'md' },
-  { id:'GALLERY-06', file:'GALLERY-06.jpg', alt:'Logo and icon design — 06', visible:true, order:6,  size:'lg' },
-  { id:'GALLERY-07', file:'GALLERY-07.png', alt:'Logo and icon design — 07', visible:true, order:7,  size:'xl' },
-  { id:'GALLERY-08', file:'GALLERY-08.GIF', alt:'Logo and icon design — 08', visible:true, order:8,  size:'md' },
-  { id:'GALLERY-09', file:'GALLERY-09.jpg', alt:'Logo and icon design — 09', visible:true, order:9,  size:'md' },
-  { id:'GALLERY-10', file:'GALLERY-10.jpg', alt:'Logo and icon design — 10', visible:true, order:10, size:'sm' },
-  { id:'GALLERY-11', file:'GALLERY-11.png', alt:'Logo and icon design — 11', visible:true, order:11, size:'lg' },
-  { id:'GALLERY-12', file:'GALLERY-12.jpg', alt:'Logo and icon design — 12', visible:true, order:12, size:'sm' },
-  { id:'GALLERY-13', file:'GALLERY-13.jpg', alt:'Logo and icon design — 13', visible:true, order:13, size:'md' },
-  // Add GALLERY-14, 15... here as new files land. Nothing else needs editing.
+  { id:'gallery-01', src:'/portfolio images/logos-art-for-fun/GALLERY-01.jpg', alt:'Logo and icon design — 01', visible:true, order:1,  layout:'fullscreen', align:'center', mobileLayout:'full' },
+  { id:'gallery-02', src:'/portfolio images/logos-art-for-fun/GALLERY-02.png', alt:'Logo and icon design — 02', visible:true, order:2,  layout:'medium',     align:'left',   mobileLayout:'full' },
+  { id:'gallery-03', src:'/portfolio images/logos-art-for-fun/GALLERY-03.png', alt:'Logo and icon design — 03', visible:true, order:3,  layout:'small',      align:'right',  mobileLayout:'full' },
+  { id:'gallery-04', src:'/portfolio images/logos-art-for-fun/GALLERY-04.png', alt:'Logo and icon design — 04', visible:true, order:4,  layout:'large',      align:'center', mobileLayout:'full' },
+  { id:'gallery-05', src:'/portfolio images/logos-art-for-fun/GALLERY-05.jpg', alt:'Logo and icon design — 05', visible:true, order:5,  layout:'medium',     align:'left',   mobileLayout:'full' },
+  { id:'gallery-06', src:'/portfolio images/logos-art-for-fun/GALLERY-06.jpg', alt:'Logo and icon design — 06', visible:true, order:6,  layout:'small',      align:'right',  mobileLayout:'full' },
+  { id:'gallery-07', src:'/portfolio images/logos-art-for-fun/GALLERY-07.png', alt:'Logo and icon design — 07', visible:true, order:7,  layout:'wide',       align:'center', mobileLayout:'full' },
+  { id:'gallery-08', src:'/portfolio images/logos-art-for-fun/GALLERY-08.GIF', alt:'Logo and icon design — 08', visible:true, order:8,  layout:'tiny',       align:'left',   mobileLayout:'half' },
+  { id:'gallery-09', src:'/portfolio images/logos-art-for-fun/GALLERY-09.jpg', alt:'Logo and icon design — 09', visible:true, order:9,  layout:'small',      align:'right',  mobileLayout:'half' },
+  { id:'gallery-10', src:'/portfolio images/logos-art-for-fun/GALLERY-10.jpg', alt:'Logo and icon design — 10', visible:true, order:10, layout:'pair',       align:'left',   mobileLayout:'half' },
+  { id:'gallery-11', src:'/portfolio images/logos-art-for-fun/GALLERY-11.png', alt:'Logo and icon design — 11', visible:true, order:11, layout:'pair',       align:'right',  mobileLayout:'half' },
+  { id:'gallery-12', src:'/portfolio images/logos-art-for-fun/GALLERY-12.jpg', alt:'Logo and icon design — 12', visible:true, order:12, layout:'small',      align:'center', mobileLayout:'half' },
+  { id:'gallery-13', src:'/portfolio images/logos-art-for-fun/GALLERY-13.jpg', alt:'Logo and icon design — 13', visible:true, order:13, layout:'featured',   align:'center', mobileLayout:'full' },
+  // Add gallery-14, 15... here as new files land. Nothing else needs editing.
 ];
-const GALLERY_BASE = '/portfolio images/logos-art-for-fun/';
-const GALLERY_SIZE_SPANS = { sm:2, md:3, lg:4, xl:5, full:9 };
-const GALLERY_EXPRESSIVE_COUNT = 7; // first N *visible* images get the editorial/varied-scale treatment
-// vertical rhythm within a row, without ever stretching an image off its
-// natural aspect ratio — align-self only changes where the (unaltered) image
-// sits inside its row, it never resizes it
-const GALLERY_EXPRESSIVE_ALIGN = ['start', 'end', 'start', 'center', 'start', 'end', 'start'];
+
+// ── LAYOUT PRESETS — column span out of {desktop:12, tablet:8, mobile:2} ──
+// "fullscreen"/"wide"/"featured" are the intentional big moments — use them
+// sparingly (2–3 across the whole gallery reads right; more and everything
+// competes for attention). "pair" is meant to be used two-in-a-row (one
+// `align:'left'` + one `align:'right'`) so they interlock into a single row.
+const GALLERY_LAYOUT_PRESETS = {
+  fullscreen: { desktop:12, tablet:8, mobile:2 }, // full-bleed, strongest moment
+  wide:       { desktop:10, tablet:8, mobile:2 }, // wide, not quite fullscreen
+  featured:   { desktop:8,  tablet:6, mobile:2 }, // large editorial moment
+  large:      { desktop:6,  tablet:5, mobile:2 }, // strong, smaller than featured
+  medium:     { desktop:4,  tablet:4, mobile:2 }, // default supporting size
+  small:      { desktop:3,  tablet:3, mobile:1 }, // smaller supporting image
+  pair:       { desktop:6,  tablet:4, mobile:1 }, // sits next to another pair
+  tiny:       { desktop:2,  tablet:2, mobile:1 }, // logos/icons/details
+};
+const GALLERY_MOBILE_SPAN = { full:2, half:1 };
+
+// desktop-only: `align` picks WHERE in the 12-col row an image's span sits
+// (left/center/right) — this is what gives the gallery sania's asymmetric,
+// intentionally-whitespace-heavy rhythm instead of a tight masonry pack.
+// Tablet/mobile skip this (span-only) so nothing lands off-balance on a
+// narrower grid.
+function galleryDesktopColumn(span, align) {
+  const cols = 12;
+  span = Math.min(span, cols);
+  let start;
+  if (align === 'left') start = 1;
+  else if (align === 'right') start = cols - span + 1;
+  else start = Math.floor((cols - span) / 2) + 1; // 'center' and default
+  return `${start} / ${start + span}`;
+}
 
 function renderGallery() {
   const mount = document.querySelector('.s-work');
@@ -536,22 +569,19 @@ function renderGallery() {
   const grid = document.createElement('div');
   grid.className = 'work-grid';
 
-  items.forEach((item, idx) => {
-    const expressive = idx < GALLERY_EXPRESSIVE_COUNT;
-    let span = GALLERY_SIZE_SPANS[item.size] || GALLERY_SIZE_SPANS.md;
-    // past the expressive zone, cap size so nothing goes fullscreen-ish
-    if (!expressive) span = Math.min(span, GALLERY_SIZE_SPANS.lg);
+  items.forEach(item => {
+    const preset = GALLERY_LAYOUT_PRESETS[item.layout] || GALLERY_LAYOUT_PRESETS.medium;
+    const mobileSpan = GALLERY_MOBILE_SPAN[item.mobileLayout] || preset.mobile;
 
     const wrap = document.createElement('div');
     wrap.className = 'work-ph';
     wrap.id = item.id;
-    wrap.style.gridColumn = `span ${span}`;
-    if (expressive) {
-      wrap.style.alignSelf = GALLERY_EXPRESSIVE_ALIGN[idx % GALLERY_EXPRESSIVE_ALIGN.length];
-    }
+    wrap.style.setProperty('--desktop-col', galleryDesktopColumn(preset.desktop, item.align));
+    wrap.style.setProperty('--tablet-col', `span ${preset.tablet}`);
+    wrap.style.setProperty('--mobile-col', `span ${mobileSpan}`);
 
     const img = document.createElement('img');
-    img.src = GALLERY_BASE + item.file;
+    img.src = item.src;
     img.alt = item.alt || item.id;
     img.className = 'work-img-real';
     img.loading = 'lazy';

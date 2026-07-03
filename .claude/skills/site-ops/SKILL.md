@@ -54,10 +54,12 @@ its ID (e.g. `id="IMG-01"`), replace the `<div class="ph">` with an `<img>`
 
 **The logos/art gallery (`logos-art-for-fun.html`) is different** — it's
 manifest-driven, not hand-placed HTML. See `docs/GALLERY-SAPIR.md`. To
-add/reorder/resize/hide/show an image, edit the `GALLERY_ITEMS` array in that
-page's own `<script>` (fields: `file`, `order`, `size`, `visible`) — don't
-touch the DOM or add position classes. "Hide GALLERY-12" = set its `visible`
-to `false` in that array; "show GALLERY-15" = set it back to `true`.
+add/reorder/resize/align/hide/show an image, edit the `GALLERY_ITEMS` array in
+that page's own `<script>` (fields: `src`, `order`, `layout`, `align`,
+`mobileLayout`, `visible`) — don't touch the DOM or add position classes.
+`layout` is one of `fullscreen`/`wide`/`featured`/`large`/`medium`/`small`/
+`pair`/`tiny`; `align` is `left`/`center`/`right`. "Hide GALLERY-12" = set its
+`visible` to `false` in that array; "show GALLERY-15" = set it back to `true`.
 
 **Edit page copy** → make a targeted `str_replace` on the exact text. Don't
 rewrite the whole file. Keep the voice rules from `new-case-study`.
