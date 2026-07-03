@@ -48,13 +48,16 @@ links. Update `CLAUDE.md` if a page is added/removed.
 > `projects-order.js` controls home page card order ONLY.
 > Previous/Next nav = edit each page's own inline `PROJECTS` array.
 
-**Swap a real image in** → find the `.ph` placeholder by its ID
-(e.g. `id="GALLERY-01"`), replace the `<div class="work-ph">` with an `<img>`
-(or add `.ph-img` inside a content `.ph`). Keep the existing position classes.
+**Swap a real image in (case-study pages)** → find the `.ph` placeholder by
+its ID (e.g. `id="IMG-01"`), replace the `<div class="ph">` with an `<img>`
+(or add `.ph-img` inside a content `.ph`).
 
-**Hide / show a gallery image** → see `docs/GALLERY-SAPIR.md` (the
-`hidden-item` / `hidden-grid` mechanism). Just say "hide GALLERY-12" or "show
-GALLERY-15" and handle both the item and its set wrapper.
+**The logos/art gallery (`logos-art-for-fun.html`) is different** — it's
+manifest-driven, not hand-placed HTML. See `docs/GALLERY-SAPIR.md`. To
+add/reorder/resize/hide/show an image, edit the `GALLERY_ITEMS` array in that
+page's own `<script>` (fields: `file`, `order`, `size`, `visible`) — don't
+touch the DOM or add position classes. "Hide GALLERY-12" = set its `visible`
+to `false` in that array; "show GALLERY-15" = set it back to `true`.
 
 **Edit page copy** → make a targeted `str_replace` on the exact text. Don't
 rewrite the whole file. Keep the voice rules from `new-case-study`.

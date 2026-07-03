@@ -22,16 +22,18 @@ sticky/negative-top removed; images constrained so nothing overflows.
 
 Different pages use different breakpoint values for the *same* transitions:
 
-| Transition | `index.html` | case-study pages | `logos-art-for-fun.html` (current) | sania-exact gallery build |
-| --- | --- | --- | --- | --- |
-| multi-col → fewer cols | `900px` | `900px` | `900px` | **`991px`** |
-| sidebar → top bar | `600px` | `680px` | `680px` | — |
-| → single column | `600px` | — | `600px` | **`767px`** |
-| extra mobile fixes | — | — | `500px`, `480px` | — |
+| Transition | `index.html` | case-study pages | `logos-art-for-fun.html` |
+| --- | --- | --- | --- |
+| multi-col → fewer cols | `900px` | `900px` | `900px` |
+| sidebar → top bar | `600px` | `680px` | `680px` |
+| → single column | `600px` | — | `600px` |
+| extra mobile fixes | — | — | `500px`, `480px` |
 
-So the gallery alone has two conflicting systems (`991/767` from the sania build
-vs `900/680/600/500/480` in the current file), and the sidebar-to-topbar switch
-fires at `600px` on the home page but `680px` elsewhere.
+The gallery's sticky grid (`.work-grid`/`.work-ph`) is now aligned to the
+standard `900/600` set (done — see `docs/GALLERY-SAPIR.md`). The remaining
+drift is the sidebar-to-topbar switch firing at `600px` on the home page but
+`680px` elsewhere, and the page's own extra `500px`/`480px` fixes (hero-shot,
+impact numbers, `.img-row.c3`) which aren't part of the gallery grid itself.
 
 > Case study intro typography rules → see `docs/CASE-STUDY-TEMPLATE.md` (source of truth).
 > Summary: 17px at 768–1440px via `@media(min-width:768px) and (max-width:1440px)`.

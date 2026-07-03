@@ -1,108 +1,95 @@
-# Gallery Page Backup — `logos-art-for-fun.html` ("the Sapir gallery")
+# Gallery — `logos-art-for-fun.html` ("the Sapir gallery")
 
-This is the preservation record for the logos / art-for-fun gallery page. The
-scattered, overlapping **sticky** grid (images "slide" over each other as you
-scroll) was originally reverse-engineered **1:1 from the live CSS of
-[sania.io](https://www.sania.io/)** — but it's now **your own layout: the
-"Sapir gallery."** Extracting the exact composition took real effort; this file
-is the backup so it's never lost, and so you can one day grow it back to the full
-42 images without redoing the research.
+The logos / art-for-fun gallery is a scattered, overlapping **sticky** grid
+(images gently overlap as you scroll) inspired by the live layout of
+[sania.io](https://www.sania.io/). It is **manifest-driven**: the gallery is
+built at runtime by JS from a small data array (`GALLERY_ITEMS`), not from
+hand-placed HTML per image. Sania's original 42-image, 16-set composition is
+kept only as a *pattern reference* (documented below) — it is not rendered
+1:1, and the page never requires 42 real images to work.
 
-> **Source of truth = the committed HTML file in the repo.** This doc captures
-> the spec, the rationale, and the mechanics. The exact per-image pixel positions
-> live inside the built `logos-art-for-fun.html`. Keep that file in git and this
-> work is safe.
+> **Source of truth = `GALLERY_ITEMS` inside `logos-art-for-fun.html`**
+> (in the page's own `<script>`, near the top). Everything about what's on
+> the page — which images, in what order, how big, visible or not — lives in
+> that one array.
 
-## ⚠️ Two versions exist — reconcile before working
+## The manifest
 
-There are two different builds of this page. Confirm which one is current before
-editing:
-
-- **A — full build (42 images):** 9-column grid, **16 sets / 42 image slots**,
-  exact pixel positions (e.g. `top:-640px`, `-432px`), with a **hide/show
-  mechanism** (`hidden-item` / `hidden-grid`) so only the first 10 show and 11–42
-  stay reserved. Responsive: `991px` → 6 cols, `767px` → 1 col.
-- **B — simplified build (the file currently in this repo):** 9-column grid but
-  only **8 sets / 20 placeholders** (GALLERY-01…20), `rem`-based positions
-  (`top:-6rem` etc.), **no** hide/show mechanism, no `<img>` tags yet.
-  Responsive: `900/680/600/500/480`.
-
-If you ever want the rich 42-image gallery with reserved slots, build A is the
-one to restore. (See `RESPONSIVE.md` for the breakpoint cleanup either way.)
-
-## The grid spec (exact)
-
-```css
-.s-work{ position:relative; width:100%; z-index:1 }
-.gallery-hero{ position:relative; z-index:5; background:var(--bg) } /* stays above */
-.work-grid{
-  display:grid;
-  grid-template-columns:repeat(9,1fr);
-  gap:12px;
-  max-width:1984px;
-  margin:0 auto;
-  padding:0 12px 120px;
-}
-.work-img,.work-ph{ width:100%; display:block; position:sticky; top:0; border-radius:3px }
-.work-img{ height:auto; object-fit:cover }
-.work-ph{ aspect-ratio:4/3; /* placeholder box, monospace ID label */ }
+```js
+const GALLERY_ITEMS = [
+  { id:'GALLERY-01', file:'GALLERY-01.jpg', alt:'…', visible:true, order:1, size:'xl' },
+  // ...
+];
 ```
 
-Each image gets its own rule with `grid-column`, `grid-row`, a (often negative)
-`top` in px for the sticky offset, and sometimes `margin-top`/`margin-bottom`/
-`align-self`. Some items deliberately **bleed** past the right edge using
-implicit columns (e.g. `grid-column:8/12` on a 9-col grid) — that overflow is
-intentional.
+- **`file`** — the exact filename **including extension**, case-sensitive
+  (Cloudflare Pages serves a case-sensitive filesystem). This is the *only*
+  place an extension is written — swapping `.png` → `.jpg`/`.gif`/`.webp` is a
+  one-line change here, nothing else in the page needs to know.
+- **`visible`** — `true`/`false`. Hide an image by flipping this to `false`;
+  show it by flipping back to `true`. Don't delete the file.
+- **`order`** — plain integer, sets render order. Reorder by editing numbers,
+  never by renaming files or moving HTML.
+- **`size`** — `sm` / `md` / `lg` / `xl` (2/3/4/5 of 9 grid columns). Controls
+  how much horizontal space an image gets — it never crops or stretches the
+  image itself (images always render at `width:100%;height:auto`, natural
+  aspect ratio, no `object-fit:cover`).
 
-**Set sizes (build A), 16 sets totaling 42 images:**
-`[5, 4, 1, 3, 3, 2, 2, 3, 3, 3, 2, 3, 2, 1, 3, 2]`
+**To add a new image:** drop the file into
+`portfolio images/logos-art-for-fun/`, add one row to `GALLERY_ITEMS` with its
+exact filename. Nothing else in the file needs to change. The gallery already
+works with 13 images and is built to grow to ~20 the same way.
 
-Example position rules (format: column, row, top, margin-top, margin-bottom,
-padding-bottom, align-self) — illustrative fragment of the real table:
-```
-set: 1 image  → grid-column 4/8, grid-row 1/2, top 0
-set: 3 images → (span9, span1, top -384px, mb 64px) · (1/5, 3/4) · (3/10, 2/3)
-set: 2 images → (span7, span1, top -96px, mb 320px) · (4/10, 2/3)
-```
-The full table lives in the built file; restore positions from there, not from memory.
+**Missing/renamed file:** the `<img onerror>` handler removes just that one
+slot — a bad filename never renders a broken-image icon or reserves an empty
+gap.
 
-## Hide / show mechanism (build A)
+## Render behavior (`renderGallery()` in the page's script)
 
-- Hide a single image by adding class **`hidden-item`** (CSS:
-  `.work-ph.hidden-item,.work-img.hidden-item{display:none}`).
-- If **every** image in a set is hidden, its wrapping `.work-grid` also gets
-  **`hidden-grid`** so it doesn't leave an empty gap.
-- To **show** a reserved image (e.g. GALLERY-15): remove `hidden-item` from it,
-  and if its set was fully hidden, also remove `hidden-grid` from that set's
-  `.work-grid`. (Just say "show me GALLERY-15" and Claude handles both.)
-- To **hide** a shown image: reverse — add `hidden-item`, plus `hidden-grid` if
-  the whole set becomes hidden.
+- Filters to `visible:true`, sorts by `order`, builds one `.work-grid` (CSS
+  Grid, 9 columns desktop) and appends one `.work-ph > img.work-img-real` per
+  item — no pre-built/reserved slots for images that don't exist.
+- **First 7 visible images ("expressive zone")** get varied `align-self`
+  (start/end/center) for editorial rhythm/whitespace, on top of their `size`
+  span — this is the part of the sania reference that reads best, so it's
+  applied first.
+- **From the 8th visible image on ("calm zone")** — `size` is capped at `lg`
+  (span 4) even if the manifest says `xl`/`full`, so nothing goes
+  fullscreen-ish in the middle of the page the way parts of the 42-image
+  sania reference do. Alignment stays default (`start`), rhythm comes from
+  natural image proportions only.
+- CSS Grid's own auto-placement wraps rows — there's no manual row/set
+  bookkeeping, so the layout doesn't break as the image count changes between
+  13, 15, or 20.
 
-## Images & content
+## Images
 
-- Files live in **`portfolio images/logos-art-for-fun/`**, named
-  `GALLERY-01.png` … `GALLERY-42.png`.
-- Replacing an image = save a new file with the same name (auto-replaces).
-- **Two content layers** per item (from `logos-art-for-fun-content-draft.txt`):
-  1. **SHORT** — a short caption shown in the grid.
-  2. **DETAIL** — a title + paragraph shown in the lightbox on click.
-- Some items group several images (e.g. 2–3 versions of one logo) under one caption.
-- Known items: Shenkar Student Union emblem (eagle/wings), a custom Hebrew
-  logotype, a chocolate-store logo + seal, "La Petite Mort" wordmark, a nuts/seeds
-  line-icon set, plus illustrations (windy day, butterfly, rabbit, Wix). The
-  illustration captions are your real text — keep them; some logo captions were
-  professional best-guesses to verify.
+- Files live in **`portfolio images/logos-art-for-fun/`**. Current real
+  assets: `GALLERY-01.jpg` … `GALLERY-13.jpg` (mixed extensions — `.jpg`,
+  `.png`, `.GIF` — by design; see manifest above). `IMG-00.jpg` is separate,
+  used only in the footer ("let's work together"), not part of the gallery
+  loop.
+- Captions/detail copy: `logos-art-for-fun-content.txt` has placeholder rows
+  per `GALLERY-XX` id — not yet wired into a lightbox for this page (the
+  gallery items don't currently open a lightbox on click; only the case-study
+  `.img-mt`/`.img-row`/`.img-stack` figures do).
 
-## Responsive (build A — exact)
+## Responsive
 
-```css
-@media(max-width:991px){ /* tablet */
-  .work-grid{ grid-template-columns:repeat(6,1fr); padding:0 12px 64px }
-  /* every item: span 6, grid-row auto, top 0, position relative, margins 0, align-self auto !important */
-}
-@media(max-width:767px){ /* mobile */
-  .work-grid{ grid-template-columns:1fr; gap:8px; padding:0 0 48px }
-  /* every item: grid-column 1/-1 !important */
-}
-```
-(Per `RESPONSIVE.md`, consider aligning these to the site standard `900/600`.)
+Aligned to the site's standard breakpoints (see `docs/RESPONSIVE.md`):
+- **> 900px** — 9-column sticky grid, full editorial layout.
+- **≤ 900px** — 2 columns, sticky/offset effect turned off (`.work-ph` resets
+  to `position:relative;top:0`), natural stacking.
+- **≤ 600px** — single column.
+
+At no width are images cropped or force-stretched — the reset rules only
+touch grid placement/position, never the image's own sizing.
+
+## Superseded
+
+The old hand-placed 42-slot HTML (`GALLERY-01`…`GALLERY-42` divs with
+`hidden-item`/`hidden-grid` classes and per-image `.g1-1`…`.g16-2` CSS
+position classes) has been replaced by the manifest system above. If you ever
+want to reference sania's *exact* 42-image pixel positions again, they're
+preserved in git history on this file (pre-manifest revision) and in the
+project's commit log — restore from there, not from memory.

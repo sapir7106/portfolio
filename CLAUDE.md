@@ -146,12 +146,16 @@ When updating visible copy or captions:
 
 - **Done:** site structure + all page shells; `cs-v1.html` master template;
   Agents case study content; the hidden Agents interview deck; logos/art gallery
-  layout (see version note in `docs/GALLERY-SAPIR.md`); image caption cleanup
-  across Agents, DSPM, Violation Pane, Retraining and Security Dashboard pages
-  (colon structure, no em dashes, no debug labels — see §6 Image caption rules).
+  rebuilt on a data-driven manifest (`GALLERY_ITEMS` in `logos-art-for-fun.html`,
+  see `docs/GALLERY-SAPIR.md`) — renders only real, visible images (13 today,
+  grows to ~20), sania-inspired sticky grid tamed for the current image count,
+  gallery breakpoints aligned to the site standard `900/600`; image caption
+  cleanup across Agents, DSPM, Violation Pane, Retraining and Security
+  Dashboard pages (colon structure, no em dashes, no debug labels — see §6
+  Image caption rules).
 - **In progress / to verify:**
-  - Reconcile the two gallery versions (20-image simplified vs 42-image sania build).
-  - Align responsive breakpoints to the standard set (`docs/RESPONSIVE.md`).
+  - Align remaining responsive breakpoints (sidebar-to-topbar switch, stray
+    `500px`/`480px` fixes) to the standard set (`docs/RESPONSIVE.md`).
   - Confirm `about.html` is a single entity and remove any `about-light.html`.
   - Align sidebar width + purple accent across pages (`docs/DESIGN-SYSTEM.md`).
   - Swap remaining image placeholders for real images.
