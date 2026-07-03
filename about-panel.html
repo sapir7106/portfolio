@@ -90,7 +90,7 @@
 }
 .about-bio-col { grid-area: bio; }
 .about-exp-col { grid-area: exp; }
-.about-contact-top { margin-bottom: 28px; width: max-content; }
+.about-contact-top { margin-bottom: 28px; }
 
 /* ── Typography ── */
 .about-quote {
@@ -191,12 +191,11 @@
 
 /* ── Responsive ── */
 @media (max-width:1200px) {
-  .about-grid { grid-template-columns: minmax(0,600px) minmax(0,200px) minmax(0,170px); grid-template-areas: "bio photo contact" "bio exp contact"; }
-  .about-contact-col { margin-top: 0; }
-  .about-photo { display: flex; position: static; margin-bottom: 20px; }
+  .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px); grid-template-areas: "bio exp"; }
+  .about-photo { display: none; }
 }
 @media (max-width:900px) {
-  .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px); grid-template-areas: "bio photo" "bio exp" "contact ."; }
+  .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px); grid-template-areas: "bio exp"; }
 }
 @media (max-width:1023px) {
   #about-panel { left: 0; width: 100%; }
@@ -212,45 +211,10 @@
   .about-photo-inner { width: 100%; max-width: 100%; }
 }
 @media (min-width: 1440px) {
-  /* wider panel */
-  #about-panel {
-    width: calc((100vw - var(--sw, var(--sidebar-w, 71px))) * 11/12);
-  }
-
-  /* smaller quote + tighter spacing */
-  .about-quote {
-    font-size: clamp(20px, 2vw, 30px);
-    margin-bottom: 24px;
-  }
-  .about-quote {
-    font-size: 32px;
-  }
-  .about-back-btn {
-    margin-bottom: 18px;
-  }
-  .about-body {
-    font-size: 15.5px;
-    line-height: 1.62;
-  }
-  .about-body p + p {
-    margin-top: 11px;
-  }
-
-  /* 32px gap between bio and contact row (contact sits in col 1, below the bio) */
-  .about-body + *,
-  .about-contact-row,
-  .about-contact-section,
-  .about-contact-col {
-    margin-top: 32px;
-    padding-top: 0;
-  }
-
-  .about-contact-list {
-    align-items: baseline;
-  }
-
-  .about-photo-inner {
-    width: 88%;
+  .about-quote { font-size: 32px; }
+  .about-photo-inner { width: 88%; }
+  .about-grid {
+    grid-template-columns: minmax(0,700px) minmax(0,200px) minmax(0,1200px);
   }
 }
 </style>

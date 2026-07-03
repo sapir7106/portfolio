@@ -31,10 +31,10 @@ Exp 2 company: Laminar
 Exp 2 role: Senior Product Designer
 Exp 2 date: 2022 – 2023
 Exp 3 company: BeyondMinds
-Exp 3 role: Product Designer · Enterprise AI
+Exp 3 role: Product Designer
 Exp 3 date: 2020 – 2022
 Exp 4 company: Sygnia
-Exp 4 role: Product Designer · Cyber
+Exp 4 role: Product Designer
 Exp 4 date: 2020 – 2022
 Exp 5 company: Freelance
 Exp 5 role: UX/UI & Graphic Design
