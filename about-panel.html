@@ -84,9 +84,13 @@
 /* ── Grid ── */
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0,600px) minmax(0,200px) minmax(0,170px) minmax(0,1200px);
+  grid-template-columns: minmax(0,600px) minmax(0,200px) minmax(0,1200px);
+  grid-template-areas: "bio exp photo" "bio exp contact";
   gap: 40px 48px; margin: 0; align-items: start;
 }
+.about-bio-col { grid-area: bio; }
+.about-exp-col { grid-area: exp; }
+.about-contact-col { grid-area: contact; text-align: center; }
 
 /* ── Typography ── */
 .about-quote {
@@ -134,6 +138,7 @@
 
 /* ── Photo ── */
 .about-photo {
+  grid-area: photo;
   position: sticky; top: 0;
   display: flex; align-items: center; justify-content: center; width: 100%;
 }
@@ -150,17 +155,18 @@
 
 /* ── Responsive ── */
 @media (max-width:1200px) {
-  .about-grid { grid-template-columns: minmax(0,600px) minmax(0,200px) minmax(0,170px); }
+  .about-grid { grid-template-columns: minmax(0,600px) minmax(0,200px) minmax(0,170px); grid-template-areas: "bio exp contact"; }
+  .about-contact-col { text-align: left; }
   .about-photo { display: none; }
 }
 @media (max-width:900px) {
-  .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px); }
+  .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px); grid-template-areas: "bio exp" "contact ."; }
 }
 @media (max-width:1023px) {
   #about-panel { left: 0; width: 100%; }
 }
 @media (max-width:767px) {
-  .about-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; grid-template-areas: "photo" "bio" "exp" "contact"; }
   #about-panel { padding: 40px 20px; }
   .about-photo { display: flex; position: static; order: -1; margin-bottom: 24px; }
   .about-photo-inner { width: 75%; max-width: 340px; }
@@ -176,7 +182,7 @@
 <div id="about-panel" data-theme="auto">
   <button class="about-close-btn" onclick="closeAbout()">✕</button>
   <div class="about-grid">
-    <div>
+    <div class="about-bio-col">
       <button class="about-back-btn" onclick="closeAbout()">← back</button>
       <p class="about-quote">
         Good design in complex products isn't about 〰〰 making things pretty. It's about making hard things <span class="about-hi">feel inevitable</span>.
@@ -188,7 +194,7 @@
         <p>I trained at Shenkar College in Visual Communication, and I still keep an active artistic practice on the side: drawing, sculpture, mixed media. It shapes how I approach product work, trusting intuition early and refining ruthlessly later.</p>
       </div>
     </div>
-    <div>
+    <div class="about-exp-col">
       <div class="about-exp-section">
         <h3 class="about-section-title">Experience</h3>
         <ul class="about-exp-list">
@@ -206,7 +212,7 @@
         </ul>
       </div>
     </div>
-    <div>
+    <div class="about-contact-col">
       <h3 class="about-section-title">Contact</h3>
       <ul class="about-contact-list">
         <li><a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></li>
