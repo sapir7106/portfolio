@@ -124,7 +124,7 @@ figcaption{font-size:14px;color:var(--soft);margin-top:16px;font-style:italic;te
 .tc h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:10px}
 .tc ul{list-style:none;display:grid;gap:8px}
 .tc ul li{font-size:16px;color:var(--soft);padding-left:22px;position:relative}
-.tc ul li::before{content:"→";position:absolute;left:0;font-weight:600;color:var(--ink)}
+.tc ul li::before{content:"";position:absolute;left:2px;top:50%;width:7px;height:7px;border-style:solid;border-width:0 2px 2px 0;border-color:var(--ink);transform:translateY(-60%) rotate(-45deg)}.chevron{display:inline-block;width:.38em;height:.38em;border-style:solid;border-color:currentColor;border-width:0 .14em .14em 0;vertical-align:middle}.chevron-right{transform:rotate(-45deg)}.chevron-left{transform:rotate(135deg)}
 .tc.ac h4{color:var(--ink)}.tc.ac{border-left:2px solid var(--hi)}
 
 /* callout — Quote style C */
@@ -151,7 +151,7 @@ figcaption{font-size:14px;color:var(--soft);margin-top:16px;font-style:italic;te
 footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
 .footer-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0 16px;border-top:none}
 .footer-nav #nextBtn{margin-left:auto}
-footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(15px,1.6vw,20px);transition:color .2s}footer a:hover{color:#8067F2}
+footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(15px,1.6vw,20px);transition:color .2s;font-family:var(--sans)}footer a:hover{color:#8067F2}
 .footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
 
 /* lightbox */
@@ -471,8 +471,8 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 
 <footer style="max-width:var(--wide);margin:0 auto">
   <div class="footer-nav">
-    <a href="#" id="prevBtn">← Previous work</a>
-    <a href="#" id="nextBtn">Next work →</a>
+    <a href="#" id="prevBtn"><span class="chevron chevron-left" aria-hidden="true"></span> Previous work</a>
+    <a href="#" id="nextBtn">Next work <span class="chevron chevron-right" aria-hidden="true"></span></a>
   </div>
   <div class="footer-copy">© 2026 · Designed &amp; built by Sapir Levi</div>
 </footer>
