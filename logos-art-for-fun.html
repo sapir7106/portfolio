@@ -248,56 +248,66 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 .gallery-hero h1 em{font-style:italic;font-weight:400}
 .gallery-lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch;margin:0 auto}
 
-/* ── ART-DIRECTED EDITORIAL GRID — sania-inspired, rendered from GALLERY_ITEMS ──
-   12 columns desktop / 8 tablet / 2 mobile. Each item's column span (per
-   breakpoint) and desktop start position (per `align`) are set as CSS custom
-   properties at render time (see script) — the grid itself never hard-codes
-   which image goes where. */
+/* ── ART-DIRECTED SCENES — sania-inspired compositions, rendered from
+   GALLERY_ITEMS. Each `scene` gets its own 12-column grid ("gallery-scene");
+   within it, each item's `role` picks a column band (desktop only — see
+   GALLERY_ROLE_PRESETS in the script) and the browser's own grid
+   auto-placement stacks bands into rows/negative-space as they collide —
+   there's no hard-coded "N images per row" anywhere. A `zIndex`/margin-top
+   nudge on the center-back/center-front pair is what creates the one
+   deliberate layered overlap; everything else just tiles by column. */
 .gallery-hero{position:relative;z-index:5;background:var(--bg)} /* hero stays above sticky images */
-.s-work{position:relative;width:100%;z-index:1}
-.work-grid{
+.s-work{position:relative;width:100%;z-index:1;padding-bottom:64px}
+.gallery-scene{
   display:grid;
   grid-template-columns:repeat(12,1fr);
   gap:16px;
   max-width:1984px;
   margin:0 auto;
-  padding:0 12px 120px;
-  background:#F7F6F1;
+  padding:0 12px;
+  position:relative;
 }
+.gallery-scene + .gallery-scene{ margin-top:clamp(56px, 9vw, 160px); } /* breathing room between compositions */
 .work-ph{
   width:100%;display:block;
   position:sticky;top:0;
-  align-self:start;
   border-radius:3px;
   grid-column:var(--desktop-col, span 4);
+  grid-row:var(--desktop-row, auto);
+  z-index:var(--item-z, 1);
+  margin-top:var(--item-mt, 0);
+  align-self:var(--item-align, start);
 }
 .work-img-real{position:relative;width:100%;height:auto;border-radius:3px;display:block;z-index:2}
 
-/* Group-based layout hooks (sania grouping pattern) — one class per row
-   shape from GALLERY_GROUP_PRESETS in the script. The actual column math is
-   still per-item (position within the group differs), set via the
-   --desktop-col/--tablet-col/--mobile-col custom properties above; these
-   classes exist as stable selectors for the row shape itself (semantics,
-   future styling hooks), not as a second place spans are hard-coded. */
-.work-ph--group-5, .work-ph--group-4, .work-ph--group-3, .work-ph--group-2, .work-ph--single-wide {}
+/* Role hooks (sania scene composition) — one class per role from
+   GALLERY_ROLE_PRESETS in the script. Placement itself is per-item (set via
+   the --desktop-col/--desktop-row/--item-z/--item-mt custom properties
+   above); these classes are stable selectors for the role (semantics,
+   future styling hooks), not a second place positions are hard-coded. */
+.work-ph--dominant-left, .work-ph--dominant-right, .work-ph--center-back,
+.work-ph--center-front, .work-ph--accent-top, .work-ph--accent-small,
+.work-ph--wide-center, .work-ph--pair-left, .work-ph--pair-right,
+.work-ph--supporting-left, .work-ph--supporting-right {}
 
-/* RESPONSIVE — tablet (≤900px): 8 columns, sticky/offset effect off, spans
-   only (no explicit align — keeps things from landing off-balance on a
-   narrower grid; only `single-wide` stays full-width, per group presets).
-   Aligned to the site standard breakpoints — see docs/RESPONSIVE.md */
+/* RESPONSIVE — tablet (≤900px): 8 columns. Desktop's role-based absolute
+   placement (column bands, overlap, z-index) is dropped in favor of simple
+   `layout`-driven spans so nothing awkward/oversized survives a narrower
+   grid — see docs/RESPONSIVE.md for the site's standard breakpoints. */
 @media(max-width:900px){
-  .work-grid{grid-template-columns:repeat(8,1fr);gap:16px;padding:1rem 12px 2rem}
+  .gallery-scene{grid-template-columns:repeat(8,1fr);gap:16px;padding:1rem 12px 2rem}
   .work-ph{
     grid-column:var(--tablet-col, span 4)!important;
+    grid-row:auto!important;
     top:0!important;position:relative!important;
-    margin:0!important;padding-bottom:0!important;align-self:auto!important;
+    margin:0!important;padding-bottom:0!important;
+    align-self:auto!important;z-index:1!important;
   }
 }
-/* RESPONSIVE — mobile (≤600px): 2 columns. Grouped rows (group-2/3/4/5) use
-   `mobileLayout` per item to go full-width or a gentle 2-up; single-wide is
-   always full width. */
+/* RESPONSIVE — mobile (≤600px): 2 columns. Each scene stacks cleanly;
+   `mobileLayout` per item decides full-width vs a gentle 2-up. */
 @media(max-width:600px){
-  .work-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 16px 48px}
+  .gallery-scene{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 16px}
   .work-ph{grid-column:var(--mobile-col, span 2)!important}
 }
 
@@ -475,8 +485,9 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   <p class="gallery-lede">A selection of logos, icons, logotypes, and illustrations I have created over the years.</p>
 </div>
 
-<!-- GALLERY — rendered from GALLERY_ITEMS (see script). Sania's 42-image
-     grid is kept only as a pattern reference for the render logic below;
+<!-- GALLERY — rendered from GALLERY_ITEMS (see script). Each `scene` becomes
+     its own art-directed composition (not a flat row); sania's own
+     compositions are the pattern reference, not literally rendered content —
      only real, visible manifest entries are ever drawn into the DOM. -->
 <div class="s-work"></div><!-- /s-work -->
 
@@ -506,75 +517,96 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 
 <script>
 // ── GALLERY MANIFEST ──────────────────────────────────
-// Single source of truth for the gallery, structured on sania's real
-// grouping rhythm (5 / 4 / 1-wide / 3 / 3 / 2 / 2 / ...) used as a pattern
-// bank — not literally rendered at 42 images, just the row shapes. To change
-// what's on the page, edit values here only — never the DOM, never a CSS
-// class, never a filename:
-//   - reorder     → `order` (plain number, also used to cluster into groups —
-//                   keep a group's items contiguous in `order`)
+// Single source of truth for the gallery: sania's opening screenshot isn't a
+// flat row of thumbnails, it's an art-directed composition (1-2 dominant
+// images, one layered/overlapping pair, a small accent, real whitespace).
+// This manifest models that directly — a `scene` is one composition, a
+// `role` is where an image sits inside it. To change what's on the page,
+// edit values here only — never the DOM, never a CSS class, never a filename:
+//   - reorder     → `order` (plain number, also used to cluster into scenes —
+//                   keep a scene's items contiguous in `order`)
 //   - hide/show   → `visible` (true/false — don't delete the file)
-//   - grouping    → `group` (which row/section this image belongs to) +
-//                   `groupPosition` (1-based slot within that row)
-//   - row shape   → `layout` (see GALLERY_GROUP_PRESETS below — group-5,
-//                   group-4, group-3, group-2, single-wide)
-//   - horiz. spot → `align` ('left' | 'center-left' | 'center' |
-//                   'center-right' | 'right') — for a `single-wide` (lone
-//                   item in its group) this places it in the leftover
-//                   columns; for a multi-item group it's descriptive of the
-//                   tiled slot (position is set by `groupPosition`/`order`)
-//   - mobile size → `mobileLayout` (optional — 'full' or 'half'; falls back
-//                   to a sensible per-preset default if omitted)
+//   - composition → `scene` (which composition this image belongs to) +
+//                   `role` (its part in that composition — see
+//                   GALLERY_ROLE_PRESETS below for the desktop placement of
+//                   each role: dominant-left/right, center-back/front
+//                   (the layered pair), accent-top/small, wide-center,
+//                   pair-left/right, supporting-left/right)
+//   - mobile/tablet
+//     sizing      → `layout` ('large'/'medium'/'small'/'tiny'/'wide' — used
+//                   only on tablet/mobile, where desktop's absolute role
+//                   placement is dropped for simple stacking) + optional
+//                   `mobileLayout` ('full' or 'half')
+//   - stack order → `zIndex` (optional — only matters for the deliberately
+//                   overlapping center-back/center-front pair)
+//   - horiz. spot → `align` — kept for readability/authoring intent (matches
+//                   the role's natural side); desktop placement itself comes
+//                   from `role`, not from `align` directly.
 //   - add one     → drop the file in `portfolio images/logos-art-for-fun/`
 //                   and add a row here with its exact `src` (extension and
 //                   case both matter — jpg/jpeg/png/gif/webp all work, this
 //                   is the one place the extension is written).
 const GALLERY_ITEMS = [
-  // Group 1 — compact 5-image opening row
-  { id:'gallery-01', src:'/portfolio images/logos-art-for-fun/GALLERY-01.jpg', alt:'Logo and icon design — 01', visible:true, order:1, group:1, groupPosition:1, layout:'group-5', align:'left',         mobileLayout:'half' },
-  { id:'gallery-02', src:'/portfolio images/logos-art-for-fun/GALLERY-02.png', alt:'Logo and icon design — 02', visible:true, order:2, group:1, groupPosition:2, layout:'group-5', align:'center-left',  mobileLayout:'half' },
-  { id:'gallery-03', src:'/portfolio images/logos-art-for-fun/GALLERY-03.png', alt:'Logo and icon design — 03', visible:true, order:3, group:1, groupPosition:3, layout:'group-5', align:'center',       mobileLayout:'half' },
-  { id:'gallery-04', src:'/portfolio images/logos-art-for-fun/GALLERY-04.png', alt:'Logo and icon design — 04', visible:true, order:4, group:1, groupPosition:4, layout:'group-5', align:'center-right', mobileLayout:'half' },
-  { id:'gallery-05', src:'/portfolio images/logos-art-for-fun/GALLERY-05.jpg', alt:'Logo and icon design — 05', visible:true, order:5, group:1, groupPosition:5, layout:'group-5', align:'right',        mobileLayout:'half' },
-  // Group 2 — compact 4-image row
-  { id:'gallery-06', src:'/portfolio images/logos-art-for-fun/GALLERY-06.jpg', alt:'Logo and icon design — 06', visible:true, order:6, group:2, groupPosition:1, layout:'group-4', align:'left',         mobileLayout:'half' },
-  { id:'gallery-07', src:'/portfolio images/logos-art-for-fun/GALLERY-07.png', alt:'Logo and icon design — 07', visible:true, order:7, group:2, groupPosition:2, layout:'group-4', align:'center-left',  mobileLayout:'half' },
-  { id:'gallery-08', src:'/portfolio images/logos-art-for-fun/GALLERY-08.GIF', alt:'Logo and icon design — 08', visible:true, order:8, group:2, groupPosition:3, layout:'group-4', align:'center-right', mobileLayout:'half' },
-  { id:'gallery-09', src:'/portfolio images/logos-art-for-fun/GALLERY-09.jpg', alt:'Logo and icon design — 09', visible:true, order:9, group:2, groupPosition:4, layout:'group-4', align:'right',        mobileLayout:'half' },
-  // Group 3 — the first large visual break (single wide moment)
-  { id:'gallery-10', src:'/portfolio images/logos-art-for-fun/GALLERY-10.jpg', alt:'Logo and icon design — 10', visible:true, order:10, group:3, groupPosition:1, layout:'single-wide', align:'center', mobileLayout:'full' },
-  // Group 4 — back to a grouped 3-image row
-  { id:'gallery-11', src:'/portfolio images/logos-art-for-fun/GALLERY-11.png', alt:'Logo and icon design — 11', visible:true, order:11, group:4, groupPosition:1, layout:'group-3', align:'left',   mobileLayout:'full' },
-  { id:'gallery-12', src:'/portfolio images/logos-art-for-fun/GALLERY-12.jpg', alt:'Logo and icon design — 12', visible:true, order:12, group:4, groupPosition:2, layout:'group-3', align:'center', mobileLayout:'full' },
-  { id:'gallery-13', src:'/portfolio images/logos-art-for-fun/GALLERY-13.jpg', alt:'Logo and icon design — 13', visible:true, order:13, group:4, groupPosition:3, layout:'group-3', align:'right',  mobileLayout:'full' },
-  // Future growth (uncomment as real files land — same sania pattern bank):
-  // Group 5 — 3-image row
-  // { id:'gallery-14', src:'/portfolio images/logos-art-for-fun/GALLERY-14.jpg', alt:'…', visible:true, order:14, group:5, groupPosition:1, layout:'group-3', align:'left',   mobileLayout:'full' },
-  // { id:'gallery-15', src:'/portfolio images/logos-art-for-fun/GALLERY-15.jpg', alt:'…', visible:true, order:15, group:5, groupPosition:2, layout:'group-3', align:'center', mobileLayout:'full' },
-  // { id:'gallery-16', src:'/portfolio images/logos-art-for-fun/GALLERY-16.jpg', alt:'…', visible:true, order:16, group:5, groupPosition:3, layout:'group-3', align:'right',  mobileLayout:'full' },
-  // Group 6 — 2-image row
-  // { id:'gallery-17', src:'/portfolio images/logos-art-for-fun/GALLERY-17.jpg', alt:'…', visible:true, order:17, group:6, groupPosition:1, layout:'group-2', align:'left',  mobileLayout:'full' },
-  // { id:'gallery-18', src:'/portfolio images/logos-art-for-fun/GALLERY-18.jpg', alt:'…', visible:true, order:18, group:6, groupPosition:2, layout:'group-2', align:'right', mobileLayout:'full' },
-  // Group 7 — 2-image row
-  // { id:'gallery-19', src:'/portfolio images/logos-art-for-fun/GALLERY-19.jpg', alt:'…', visible:true, order:19, group:7, groupPosition:1, layout:'group-2', align:'left',  mobileLayout:'full' },
-  // { id:'gallery-20', src:'/portfolio images/logos-art-for-fun/GALLERY-20.jpg', alt:'…', visible:true, order:20, group:7, groupPosition:2, layout:'group-2', align:'right', mobileLayout:'full' },
+  // Scene 1 — sania's opening composition: two dominant anchors framing a
+  // layered pair + a small accent, not five equal thumbnails in a row.
+  { id:'gallery-01', src:'/portfolio images/logos-art-for-fun/GALLERY-01.jpg', alt:'Logo and icon design — 01', visible:true, order:1, scene:1, role:'dominant-left',   layout:'large',  align:'left',   mobileLayout:'full' },
+  { id:'gallery-02', src:'/portfolio images/logos-art-for-fun/GALLERY-02.png', alt:'Logo and icon design — 02', visible:true, order:2, scene:1, role:'center-back',     layout:'medium', align:'center', mobileLayout:'half' },
+  { id:'gallery-03', src:'/portfolio images/logos-art-for-fun/GALLERY-03.png', alt:'Logo and icon design — 03', visible:true, order:3, scene:1, role:'center-front',    layout:'small',  align:'center', mobileLayout:'half', zIndex:2 },
+  { id:'gallery-04', src:'/portfolio images/logos-art-for-fun/GALLERY-04.png', alt:'Logo and icon design — 04', visible:true, order:4, scene:1, role:'accent-top',      layout:'tiny',   align:'right',  mobileLayout:'half' },
+  { id:'gallery-05', src:'/portfolio images/logos-art-for-fun/GALLERY-05.jpg', alt:'Logo and icon design — 05', visible:true, order:5, scene:1, role:'dominant-right',  layout:'large',  align:'right',  mobileLayout:'full' },
+  // Scene 2 — calmer: one dominant image, two supporting, one small accent.
+  { id:'gallery-06', src:'/portfolio images/logos-art-for-fun/GALLERY-06.jpg', alt:'Logo and icon design — 06', visible:true, order:6, scene:2, role:'dominant-left',    layout:'large',  align:'left',   mobileLayout:'full' },
+  { id:'gallery-07', src:'/portfolio images/logos-art-for-fun/GALLERY-07.png', alt:'Logo and icon design — 07', visible:true, order:7, scene:2, role:'accent-top',       layout:'tiny',   align:'right',  mobileLayout:'half' },
+  { id:'gallery-08', src:'/portfolio images/logos-art-for-fun/GALLERY-08.GIF', alt:'Logo and icon design — 08', visible:true, order:8, scene:2, role:'supporting-left',  layout:'medium', align:'left',   mobileLayout:'half' },
+  { id:'gallery-09', src:'/portfolio images/logos-art-for-fun/GALLERY-09.jpg', alt:'Logo and icon design — 09', visible:true, order:9, scene:2, role:'supporting-right', layout:'medium', align:'right',  mobileLayout:'half' },
+  // Scene 3 — the first strong pause: a single wide visual break.
+  { id:'gallery-10', src:'/portfolio images/logos-art-for-fun/GALLERY-10.jpg', alt:'Logo and icon design — 10', visible:true, order:10, scene:3, role:'wide-center', layout:'wide', align:'center', mobileLayout:'full' },
+  // Scene 4 — ending composition: one larger image + two supporting, not a
+  // flat 3-column grid (large+support share a row, third sits below alone).
+  { id:'gallery-11', src:'/portfolio images/logos-art-for-fun/GALLERY-11.png', alt:'Logo and icon design — 11', visible:true, order:11, scene:4, role:'dominant-left',    layout:'large',  align:'left',  mobileLayout:'full' },
+  { id:'gallery-12', src:'/portfolio images/logos-art-for-fun/GALLERY-12.jpg', alt:'Logo and icon design — 12', visible:true, order:12, scene:4, role:'supporting-right', layout:'medium', align:'right', mobileLayout:'half' },
+  { id:'gallery-13', src:'/portfolio images/logos-art-for-fun/GALLERY-13.jpg', alt:'Logo and icon design — 13', visible:true, order:13, scene:4, role:'supporting-left',  layout:'medium', align:'left',  mobileLayout:'full' },
+  // Future growth (uncomment as real files land) — same idea: one focal
+  // role per scene, 1-2 supporting, never a flat equal-width row.
+  // Scene 5 — 3 images, one focal + two supporting:
+  // { id:'gallery-14', src:'/portfolio images/logos-art-for-fun/GALLERY-14.jpg', alt:'…', visible:true, order:14, scene:5, role:'dominant-left',    layout:'large',  align:'left',  mobileLayout:'full' },
+  // { id:'gallery-15', src:'/portfolio images/logos-art-for-fun/GALLERY-15.jpg', alt:'…', visible:true, order:15, scene:5, role:'supporting-right', layout:'medium', align:'right', mobileLayout:'half' },
+  // { id:'gallery-16', src:'/portfolio images/logos-art-for-fun/GALLERY-16.jpg', alt:'…', visible:true, order:16, scene:5, role:'accent-small',     layout:'tiny',   align:'left',  mobileLayout:'half' },
+  // Scene 6 — 2 images, a pair:
+  // { id:'gallery-17', src:'/portfolio images/logos-art-for-fun/GALLERY-17.jpg', alt:'…', visible:true, order:17, scene:6, role:'pair-left',  layout:'large', align:'left',  mobileLayout:'full' },
+  // { id:'gallery-18', src:'/portfolio images/logos-art-for-fun/GALLERY-18.jpg', alt:'…', visible:true, order:18, scene:6, role:'pair-right', layout:'large', align:'right', mobileLayout:'full' },
+  // Scene 7 — 2 images, a pair:
+  // { id:'gallery-19', src:'/portfolio images/logos-art-for-fun/GALLERY-19.jpg', alt:'…', visible:true, order:19, scene:7, role:'pair-left',  layout:'large', align:'left',  mobileLayout:'full' },
+  // { id:'gallery-20', src:'/portfolio images/logos-art-for-fun/GALLERY-20.jpg', alt:'…', visible:true, order:20, scene:7, role:'pair-right', layout:'large', align:'right', mobileLayout:'full' },
 ];
 
-// ── GROUP LAYOUT PRESETS — sania's real grouping pattern, used as a row
-// shape bank. `desktopSpans` tiles a group's items left-to-right across the
-// 12-column desktop grid (sums to 12 = a compact, non-masonry row); tablet/
-// mobile give every item in the group the same span and let the grid wrap.
-const GALLERY_GROUP_PRESETS = {
-  'group-5':     { desktopSpans:[3, 2, 2, 2, 3], tabletSpan:4, mobileSpan:1 }, // compact 5-across row
-  'group-4':     { desktopSpans:[3, 3, 3, 3],    tabletSpan:4, mobileSpan:1 }, // compact 4-across row
-  'group-3':     { desktopSpans:[4, 4, 4],       tabletSpan:4, mobileSpan:2 }, // grouped 3-across row
-  'group-2':     { desktopSpans:[6, 6],          tabletSpan:4, mobileSpan:1 }, // grouped 2-across row
-  'single-wide': { desktopSpans:[10],            tabletSpan:8, mobileSpan:2 }, // the big visual break
+// ── ROLE PRESETS (desktop only) — each role is just a column band on its
+// scene's 12-column grid. There's no manual row bookkeeping: the browser's
+// own grid auto-placement stacks a role into the next row once its column
+// band collides with something already placed — that's what turns "5 roles"
+// into "a rich top cluster + one item alone below with real whitespace"
+// instead of a forced single row. The one exception is the deliberately
+// overlapping pair: center-back/center-front both pin to row 1 on purpose
+// (auto-placement never lets two items share a column range on its own) and
+// center-front gets a margin-top nudge + higher z-index to peek out.
+const GALLERY_ROLE_PRESETS = {
+  'dominant-left':    { col:'1 / 6'  },
+  'dominant-right':   { col:'7 / 13' },
+  'center-back':      { col:'6 / 10', row:'1' },
+  'center-front':     { col:'7 / 10', row:'1', z:2, marginTop:'30%' },
+  'accent-top':       { col:'10 / 12' },
+  'accent-small':     { col:'10 / 12' },
+  'wide-center':      { col:'2 / 12' },
+  'pair-left':        { col:'1 / 7'  },
+  'pair-right':       { col:'7 / 13' },
+  'supporting-left':  { col:'1 / 7'  },
+  'supporting-right': { col:'7 / 13' },
 };
+// tablet/mobile abandon role-based placement entirely (see CSS) — `layout`
+// drives a simple span instead, so nothing awkward/oversized survives a
+// narrower grid.
+const GALLERY_LAYOUT_TABLET_SPAN = { large:6, wide:8, medium:4, small:3, tiny:2 };
 const GALLERY_MOBILE_SPAN = { full:2, half:1 };
-// fallback only — lets `groupPosition` be omitted for a lone single-wide
-// item and still resolve to a sane leftover-space placement
-const GALLERY_ALIGN_FRACTION = { left:0, 'center-left':0.25, center:0.5, 'center-right':0.75, right:1 };
 
 function renderGallery() {
   const mount = document.querySelector('.s-work');
@@ -582,60 +614,38 @@ function renderGallery() {
 
   const visible = GALLERY_ITEMS.filter(item => item.visible).sort((a, b) => a.order - b.order);
 
-  // bucket into groups, preserving each group's first appearance in `order`
-  // (a group's items must stay contiguous in `order` — that's what makes it
-  // read as one row instead of an interleaved one)
-  const groups = [];
-  const groupIndexByKey = new Map();
+  // bucket into scenes, preserving each scene's first appearance in `order`
+  // (a scene's items must stay contiguous in `order` — that's what makes it
+  // read as one composition instead of an interleaved one)
+  const scenes = [];
+  const sceneIndexByKey = new Map();
   visible.forEach(item => {
-    if (!groupIndexByKey.has(item.group)) {
-      groupIndexByKey.set(item.group, groups.length);
-      groups.push([]);
+    if (!sceneIndexByKey.has(item.scene)) {
+      sceneIndexByKey.set(item.scene, scenes.length);
+      scenes.push([]);
     }
-    groups[groupIndexByKey.get(item.group)].push(item);
+    scenes[sceneIndexByKey.get(item.scene)].push(item);
   });
 
-  const grid = document.createElement('div');
-  grid.className = 'work-grid';
+  scenes.forEach(sceneItems => {
+    const sceneEl = document.createElement('div');
+    sceneEl.className = 'gallery-scene';
 
-  groups.forEach(groupItems => {
-    const ordered = [...groupItems].sort((a, b) => (a.groupPosition || 0) - (b.groupPosition || 0) || a.order - b.order);
-    const layoutName = ordered[0].layout;
-    const preset = GALLERY_GROUP_PRESETS[layoutName] || GALLERY_GROUP_PRESETS['group-3'];
-    const n = ordered.length;
-    // use the preset's designed split when the group's item count matches it;
-    // otherwise divide 12 columns evenly across however many are actually
-    // visible, so hiding one image in a group doesn't break the row
-    const desktopSpans = preset.desktopSpans.length === n
-      ? preset.desktopSpans
-      : Array.from({ length: n }, (_, i) => Math.floor(12 / n) + (i < 12 % n ? 1 : 0));
-
-    let cursor = 0; // 0-indexed column cursor for left-to-right tiling
-    ordered.forEach((item, i) => {
-      const span = desktopSpans[i];
-      let desktopCol;
-      if (n === 1) {
-        // a lone item in its group has real leftover space — `align` places it
-        const leftover = 12 - span;
-        const frac = GALLERY_ALIGN_FRACTION[item.align] ?? 0.5;
-        const start0 = Math.round(leftover * frac);
-        desktopCol = `${start0 + 1} / ${start0 + 1 + span}`;
-      } else {
-        // multi-item groups tile edge-to-edge — a real row/section, not
-        // independent masonry. `groupPosition` decides the slot; `align` is
-        // the human-readable label for that same slot.
-        desktopCol = `${cursor + 1} / ${cursor + 1 + span}`;
-      }
-      cursor += span;
-
-      const mobileSpan = GALLERY_MOBILE_SPAN[item.mobileLayout] || preset.mobileSpan;
+    sceneItems.forEach(item => {
+      const role = GALLERY_ROLE_PRESETS[item.role] || GALLERY_ROLE_PRESETS['supporting-left'];
+      const tabletSpan = GALLERY_LAYOUT_TABLET_SPAN[item.layout] || 4;
+      const mobileSpan = GALLERY_MOBILE_SPAN[item.mobileLayout] || 2;
 
       const wrap = document.createElement('div');
-      wrap.className = `work-ph work-ph--${layoutName}`;
+      wrap.className = `work-ph work-ph--${item.role}`;
       wrap.id = item.id;
-      wrap.style.setProperty('--desktop-col', desktopCol);
-      wrap.style.setProperty('--tablet-col', `span ${preset.tabletSpan}`);
+      wrap.style.setProperty('--desktop-col', role.col);
+      wrap.style.setProperty('--desktop-row', role.row || 'auto');
+      wrap.style.setProperty('--tablet-col', `span ${tabletSpan}`);
       wrap.style.setProperty('--mobile-col', `span ${mobileSpan}`);
+      wrap.style.setProperty('--item-z', item.zIndex || role.z || 1);
+      wrap.style.setProperty('--item-mt', role.marginTop || '0');
+      wrap.style.setProperty('--item-align', role.alignSelf || 'start');
 
       const img = document.createElement('img');
       img.src = item.src;
@@ -647,11 +657,11 @@ function renderGallery() {
       img.onerror = () => wrap.remove();
 
       wrap.appendChild(img);
-      grid.appendChild(wrap);
+      sceneEl.appendChild(wrap);
     });
-  });
 
-  mount.appendChild(grid);
+    mount.appendChild(sceneEl);
+  });
 }
 renderGallery();
 
