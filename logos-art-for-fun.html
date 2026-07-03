@@ -3,832 +3,647 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Logos & Icons - Sapir Levi</title>
+<title>Logos & Icons — Sapir Levi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ── V1: WARM PAPER — editorial, generous whitespace, serif-led ── */
+/* ── BASE ──────────────────────────────────────────────────── */
 :root{
   --bg:#F7F6F1;--bg2:#FBFAF7;--ink:#17160F;--soft:#3A382E;
   --muted:#8C897C;--line:#E3E0D6;--hi:#BADA55;
-  --sidebar:#242323;--sw:71px;
+  --sw:71px;
   --serif:'Playfair Display',Georgia,serif;
   --sans:'Avenir','Montserrat',sans-serif;
-  --col:720px;--wide:1080px;
+  --wide:1080px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.72;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.018'/%3E%3C/svg%3E")}
+body{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.72;
+     background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.018'/%3E%3C/svg%3E")}
 
-/* sidebar */
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:#ffffff;z-index:100;display:flex;flex-direction:column;align-items:center}
-.sb-about{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;letter-spacing:.01em;text-transform:none;padding:0;margin-top:48px;transition:color .2s;text-decoration:none;}
+/* ── SIDEBAR ───────────────────────────────────────────────── */
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:#fff;
+  z-index:100;display:flex;flex-direction:column;align-items:center}
+.sb-about{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;
+  cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;
+  padding:0;margin-top:48px;transition:color .2s;text-decoration:none}
 .sb-about:hover{color:#8067F2}
-.sb-back{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;letter-spacing:.01em;text-transform:none;padding:0;margin-top:auto;margin-bottom:40px;transition:color .2s;text-decoration:none;}
+.sb-back{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;
+  cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;
+  padding:0;margin-top:auto;margin-bottom:40px;transition:color .2s;text-decoration:none}
 .sb-back:hover{color:#8067F2}
 
-/* wrap — centered */
+/* ── PAGE ──────────────────────────────────────────────────── */
 .page{position:relative;z-index:1;margin-left:var(--sw)}
-.wrap{max-width:var(--wide);margin:0 auto;padding:0 48px}
-.col{max-width:var(--col);margin:0 auto}
 
-/* hero */
-.hero-wrapper{display:flex;flex-direction:column}
-.hero{padding:80px 0 48px;order:1}
-.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:22px}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;max-width:14ch;margin-bottom:28px}
-.hero h1 em{font-style:italic;font-weight:400}
-.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch}
-.lede strong{color:var(--ink);font-weight:600}
-mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
-
-.hero-shot{margin-top:52px;order:2}
-
-/* hero-shot @500px — see consolidated block below */
-figure{margin:0}
-figcaption{font-size:14px;color:var(--muted);margin-top:16px;font-style:italic;text-align:center}
-.ph{background:var(--line);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;position:relative;min-height:220px;container-type:inline-size}
-.ph-id{display:none;position:absolute;top:10px;left:10px;background:var(--ink);color:var(--hi);font-size:10px;font-weight:600;font-family:monospace;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
-body.show-labels .ph-id{display:block}
-.ph svg{width:24px;height:24px;opacity:.3}
-
-/* real image inside placeholder — when it loads, it fills the width and
-   sets its own natural height, overriding the placeholder's aspect-ratio */
-.ph:has(.ph-img), .ph.has-img, .work-ph:has(.ph-img){aspect-ratio:auto !important;min-height:0;background:transparent;display:block}
-.work-ph:has(.ph-img) .ph-label{display:none}
-.ph-img{width:100%;height:auto;display:block;border-radius:6px;position:relative;z-index:2;box-shadow:0 1px 1px #0000000a, 0 4px 4px #0000000f, 0 16px 24px #00000014}
-/* hide the placeholder icon/label once a real image is present */
-.ph:has(.ph-img) > svg,
-.ph:has(.ph-img) > span,
-.ph.has-img > svg,
-.ph.has-img > span{display:none}
-
-/* project info */
-.pinfo{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:52px}
-.pi{background:var(--bg2);padding:22px 24px}
-.pi-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
-.pi-role{font-size:16px;font-weight:600;color:#8067F2;margin-bottom:5px}
-.pi p{font-size:16px;color:var(--soft);line-height:1.55}
-
-/* sections */
-section{padding:64px 0}
-.sec-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
-.sec-head{display:flex;align-items:center;gap:18px;margin-bottom:28px}
-.num{font-family:var(--serif);font-size:clamp(40px,5.5vw,55px);color:var(--hi);font-weight:700;flex:none;letter-spacing:-.02em;line-height:1;padding-bottom:.12em;position:relative;top:-2px}
-h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,3.6vw,44px);line-height:1.02;letter-spacing:-.02em}
-h2 em{font-style:italic;font-weight:400}
-.body p{max-width:700px;color:var(--soft);font-size:17px}.body p+p{margin-top:16px}
-.body strong{color:var(--ink);font-weight:600}
-.body ul{margin-top:16px;list-style:none;display:grid;gap:9px}
-.body ul li{font-size:17px;color:var(--soft);padding-left:28px;position:relative}
-.body ul li::before{content:"—";position:absolute;left:0;color:var(--hi);font-weight:800;font-size:19px;top:0.15em;line-height:1}
-
-/* image blocks */
-.img-mt{margin-top:32px}
-.img-mt .ph,.img-mt img{width:100%;display:block;border-radius:6px;background:var(--line)}
-.img-row{display:grid;gap:28px;margin-top:32px}
-.img-row.c2{grid-template-columns:1fr 1fr}
-.img-row.c3{
-  grid-template-columns:1fr 1fr 1fr;
-  max-width:var(--wide);
-  margin-left:auto;
-  margin-right:auto;
-  width:100%;
-  position:relative;
-}
-/* c3 inside a .col — break out to full wrap width */
-.col .img-row.c3{
-  left:50%;
-  right:50%;
-  margin-left:calc(var(--wide) / -2);
-  margin-right:calc(var(--wide) / -2);
-  width:var(--wide);
-  max-width:none;
-  position:relative;
-}
-.img-stack{display:grid;gap:100px;margin-top:32px}
-figcaption{font-size:14px;color:var(--soft);margin-top:16px;font-style:italic;text-align:center}
-
-/* stats */
-.stat-band{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:28px}
-.sb{background:var(--bg2);padding:20px 18px}
-.sb .v{font-family:var(--serif);font-size:38px;font-weight:700;line-height:1;letter-spacing:-.02em}
-.sb .l{font-size:16px;color:var(--soft);margin-top:7px;line-height:1.4}
-
-/* 2-col */
-.tcols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:24px}
-.tc{background:var(--bg2);padding:20px 22px}
-.tc h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:10px}
-.tc ul{list-style:none;display:grid;gap:8px}
-.tc ul li{font-size:16px;color:var(--soft);padding-left:22px;position:relative}
-.tc ul li::before{content:"→";position:absolute;left:0;font-weight:600;color:var(--ink)}
-.tc.ac h4{color:var(--ink)}.tc.ac{border-left:2px solid var(--hi)}
-
-/* callout — Quote style C */
-.callout{
-  border-left:2px solid var(--hi);
-  background:rgba(186,218,85,0.07);
-  border-radius:0 6px 6px 0;
-  padding:14px 18px;
-  margin-top:36px;
-  max-width:var(--col);
-  margin-left:auto;
-  margin-right:auto;
-}
-.callout p{
-  font-family:var(--sans);
-  font-size:20px;
-  font-weight:500;
-  font-style:italic;
-  line-height:1.55;
-  color:var(--ink);
-}
-
-/* footer */
-footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
-.footer-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0 16px;border-top:none}
-.footer-nav #nextBtn{margin-left:auto}
-footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(15px,1.6vw,20px);transition:color .2s}footer a:hover{color:#8067F2}
-.footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
-
-/* lightbox */
-.lightbox{display:none;position:fixed;inset:0;left:0;background:rgba(23,22,15,.95);z-index:9999;align-items:center;justify-content:center;padding:24px;flex-direction:column;gap:16px}
-.lightbox.open{display:flex}
-.lightbox img{max-width:90vw;max-height:80vh;width:auto;height:auto;border-radius:6px;display:block}
-.lb-ph{background:var(--bg2);border:1px solid var(--line);border-radius:8px;width:clamp(280px,90vw,1196px);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;font-family:monospace}
-.lb-caption{font-size:17px;color:rgba(242,239,232,0.75);font-family:var(--sans);font-weight:300;font-style:normal;text-align:center;max-width:70ch;line-height:1.5}
-.lb-close{position:fixed;top:20px;right:24px;background:none;border:none;cursor:pointer;color:#F2EFE8;font-size:28px;line-height:1;padding:4px 8px;transition:color .2s;z-index:10000}
-.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);cursor:pointer;color:#F2EFE8;font-size:24px;line-height:1;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;z-index:10000}
-.lb-nav:hover{background:rgba(255,255,255,0.18)}
-.lb-prev{left:24px}
-.lb-next{right:24px}
-.lb-nav[hidden]{display:none}
-.lb-close:hover{color:#BADA55}
-
-@media(min-width:601px){
-  .img-mt figure,.img-row figure,.img-stack figure{cursor:zoom-in}
-  .img-mt .ph,.img-row .ph,.img-stack .ph{cursor:zoom-in}
-}
-
-.rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.7,.2,1),transform .65s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
-
-@media(max-width:900px){.pinfo,.tcols,.stat-band{grid-template-columns:1fr}.img-row.c2,.img-row.c3{grid-template-columns:1fr}}
-@media(max-width:1023px){.page{margin-left:0;margin-top:44px}.sidebar{width:100%;height:auto;min-height:44px;bottom:auto;flex-direction:row;gap:8px;flex-wrap:wrap}.sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;padding:12px 16px;font-size:19px;min-height:44px;min-width:unset;display:flex;align-items:center;justify-content:center}.sb-back{writing-mode:horizontal-tb;transform:none;margin:0 0 0 auto;padding:12px 16px;font-size:19px;min-height:44px;min-width:unset;display:flex;align-items:center;justify-content:center}.wrap{padding:0 20px}}
-@media(max-width:767px){.sidebar{gap:8px;flex-wrap:wrap;min-height:52px}.sb-about,.sb-back{font-size:18px;min-height:44px;min-width:unset;padding:12px 16px}.sb-back{margin:0 0 0 auto}}
-@media(max-width:480px){
-  /* images never overflow */
-  .ph,.img-mt .ph,.img-mt img,.img-row .ph,.img-stack .ph,
-  .img-row img,.img-stack img{max-width:100%;width:100%;overflow:hidden}
-  figure{overflow:hidden;max-width:100%}
-  /* footer: buttons on top, copyright below with divider */
-  footer{flex-direction:column;align-items:stretch;gap:0;padding:0 0 40px}
-  .footer-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:none}
-  footer a{font-size:clamp(15px,4vw,18px)}
-  .footer-copy{text-align:center;padding-top:16px;border-top:1px solid var(--line);font-size:13px}
-}
-/* ── IMPACT BLOCK ────────────────────────────────
-   שני מופעים — רק אחד יופיע בכל עמוד.
-   מופע 1 (.impact-numbers): מספרים כמותיים
-   מופע 2 (.impact-quote): ציטוט טקסטואלי
-   ─────────────────────────────────────────────── */
-.impact-numbers{
-  border-top:0.5px solid var(--line);
-  border-bottom:0.5px solid var(--line);
-  padding:16px 0;
-  display:grid;
-  grid-template-columns:auto 1fr 1fr 1fr;
-  gap:0 24px;
-  align-items:start;
-  max-width:var(--col);
-  margin:0 auto;
-}
-.impact-label{
-  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  font-weight:500;color:var(--muted);font-family:var(--sans);
-  padding-top:4px;white-space:nowrap;
-}
-.impact-stat{padding-right:20px;border-right:0.5px solid var(--line)}
-.impact-stat.mid{border-right:0.5px solid var(--line);padding:0 20px}
-.impact-stat.last{padding-left:20px;border-right:none}
-.impact-stat .val{
-  font-family:var(--serif);font-size:40px;font-weight:700;
-  line-height:1;letter-spacing:-.025em;color:var(--ink);
-  font-variant-numeric:oldstyle-nums;
-}
-.impact-stat .lbl{
-  font-size:14px;font-weight:400;color:var(--muted);
-  font-family:var(--sans);margin-top:7px;line-height:1.4;
-}
-/* text fallback — same grid, text instead of numbers */
-.impact-stat .txt{
-  font-size:15px;font-weight:500;color:var(--ink);
-  font-family:var(--sans);line-height:1.45;
-}
-
-.impact-quote{
-  max-width:var(--col);
-  margin:0 auto;
-}
-.impact-quote .inner{
-  border-left:2px solid var(--hi);
-  padding:2px 0 2px 18px;
-}
-.impact-quote p{
-  font-family:var(--sans);
-  font-size:20px;font-weight:500;font-style:italic;
-  line-height:1.55;color:var(--ink);
-}
-/* about panel — injected from about-panel.html via about-loader.js */
-
-/* ── GALLERY PAGE — sania.io exact layout ── */
-.gallery-hero{padding:80px 12px 60px;text-align:center}
-.gallery-hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,6vw,76px);line-height:1.04;letter-spacing:-.025em;margin:0 auto 28px;max-width:18ch}
+/* ── GALLERY HERO ──────────────────────────────────────────── */
+.gallery-wrap{padding:0 0.75rem;max-width:calc(var(--wide) + var(--sw));margin:0 auto}
+.gallery-hero{padding:80px 0.75rem 60px}
+.gallery-hero h1{font-family:var(--serif);font-weight:700;
+  font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;
+  max-width:14ch;margin-bottom:28px}
 .gallery-hero h1 em{font-style:italic;font-weight:400}
-.gallery-lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch;margin:0 auto}
+.gallery-lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch}
 
-/* ── ART-DIRECTED SCENES — sania-inspired compositions, rendered from
-   GALLERY_ITEMS. Each `scene` gets its own 12-column grid ("gallery-scene");
-   within it, each item's `role` picks a column band (desktop only — see
-   GALLERY_ROLE_PRESETS in the script) and the browser's own grid
-   auto-placement stacks bands into rows/negative-space as they collide —
-   there's no hard-coded "N images per row" anywhere. A `zIndex`/margin-top
-   nudge on the center-back/center-front pair is what creates the one
-   deliberate layered overlap within a scene; everything else just tiles
-   by column.
-   Each `.gallery-scene` is itself sticky (desktop only) with an opaque
-   background and an increasing z-index (`--scene-z`, set per scene by
-   render order) — this is sania's own scroll effect: scene N+1 sticks at
-   the top and visually slides over/covers scene N as you keep scrolling.
-   That covering is intentionally scoped to whole scenes only: z-index on
-   individual items (`--item-z`) only ever competes with siblings *inside*
-   the same scene (each sticky+z-indexed scene establishes its own
-   stacking context), so it can't leak into cross-scene stacking. */
-.gallery-hero{position:relative;z-index:5;background:var(--bg)}
+/* ══════════════════════════════════════════════════════════════
+   GALLERY — Sania sticky stacking
+   Each .work-grid section is sticky at top:0.
+   Later sections slide up and visually cover earlier ones.
+   Images inside keep their natural proportions — never cropped.
+   ══════════════════════════════════════════════════════════════ */
 .s-work{position:relative;width:100%}
-.gallery-scene{
+
+.work-grid{
   display:grid;
   grid-template-columns:repeat(12,1fr);
-  gap:16px;
-  max-width:1984px;
-  margin:0 auto;
-  padding:16px 12px 80px;
+  gap:10px;
+  padding:20px 12px 100px;   /* bottom padding = scroll distance per section */
   position:sticky;
   top:0;
-  background:var(--bg);
-  z-index:var(--scene-z, 1);
+  background:#F7F6F1;        /* covers the section below as this one enters */
+  align-items:end;
 }
-.work-ph{
-  width:100%;display:block;
-  position:relative; /* overlap here is scoped to --item-z within THIS scene only */
+
+/* ── PLACEHOLDER while image loads ─────────────────────────── */
+.gi-wrap{
+  position:relative;
+  width:100%;
+  background:#E3E0D6;
   border-radius:3px;
-  grid-column:var(--desktop-col, span 4);
-  grid-row:var(--desktop-row, auto);
-  z-index:var(--item-z, 1);
-  margin-top:var(--item-mt, 0);
-  align-self:var(--item-align, start);
+  overflow:hidden;
 }
-.work-img-real{position:relative;width:100%;height:auto;border-radius:3px;display:block;z-index:2}
+/* default placeholder ratio — overridden per size in JS */
+.gi-wrap::before{
+  content:'';
+  display:block;
+  padding-top:75%; /* 4:3 default */
+}
+.gi-label{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:monospace;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  color:rgba(0,0,0,0.25);
+  text-transform:uppercase;
+  pointer-events:none;
+}
+.gi-wrap img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:3px;
+  opacity:0;
+  transition:opacity .3s ease;
+  cursor:zoom-in;
+}
+.gi-wrap img.loaded{
+  opacity:1;
+  position:relative; /* back to flow once loaded */
+  inset:auto;
+  height:auto;
+}
+.gi-wrap:has(img.loaded)::before{ padding-top:0 }
+.gi-wrap:has(img.loaded) .gi-label{ display:none }
+.gi-wrap:has(img.loaded) img{ object-fit:unset }
 
-/* Role hooks (sania scene composition) — one class per role from
-   GALLERY_ROLE_PRESETS in the script. Placement itself is per-item (set via
-   the --desktop-col/--desktop-row/--item-z/--item-mt custom properties
-   above); these classes are stable selectors for the role (semantics,
-   future styling hooks), not a second place positions are hard-coded. */
-.work-ph--dominant-left, .work-ph--dominant-right, .work-ph--center-back,
-.work-ph--center-front, .work-ph--accent-top, .work-ph--accent-small,
-.work-ph--wide-center, .work-ph--pair-left, .work-ph--pair-right,
-.work-ph--supporting-left, .work-ph--supporting-right {}
+/* Placeholder colors — cycles through warm neutrals */
+.gi-wrap:nth-child(1){background:#E0DBD0}
+.gi-wrap:nth-child(2){background:#D8D4C8}
+.gi-wrap:nth-child(3){background:#E5E1D5}
+.gi-wrap:nth-child(4){background:#CCCAB8}
+.gi-wrap:nth-child(5){background:#D5D1C5}
+.gi-wrap:nth-child(6){background:#E2DED2}
 
-/* RESPONSIVE — tablet (≤900px): 8 columns, sticky-cover effect off (a
-   covering stack doesn't read well on a narrower/shorter viewport). Role-
-   based absolute placement (column bands, overlap, z-index) is dropped in
-   favor of simple `layout`-driven spans — see docs/RESPONSIVE.md for the
-   site's standard breakpoints. */
+
+/* ── SIZE classes ──────────────────────────────────────────────
+   Change the class on a .gi to resize the image in the layout.
+   The image itself is never cropped — only its column width changes.
+   gi-full   = full width (solo moments)
+   gi-large  = ~58% width  (hero images, strong pieces)
+   gi-medium = ~50% width  (default for most images)
+   gi-small  = ~33% width  (logos, smaller graphics)
+   gi-xs     = ~25% width  (accent items, tiny logos)
+   ─────────────────────────────────────────────────────────────── */
+.gi-full  {grid-column:span 12}
+.gi-large {grid-column:span 7}
+.gi-medium{grid-column:span 6}
+.gi-small {grid-column:span 4}
+.gi-xs    {grid-column:span 3}
+
+/* ── OFFSET classes ────────────────────────────────────────────
+   Vertical push — creates the scattered editorial feeling.
+   Add to a .gi to shift it downward within the section.
+   ─────────────────────────────────────────────────────────────── */
+.mt-0 {margin-top:0}
+.mt-sm{margin-top:3rem}
+.mt-md{margin-top:6rem}
+.mt-lg{margin-top:10rem}
+
+/* ── ALIGN classes ─────────────────────────────────────────── */
+.ai-end  {align-self:end}
+.ai-start{align-self:start}
+
+/* ── CENTERING helper for solo images ──────────────────────── */
+.gi-solo{grid-column:3/span 7}   /* centered in 12-col grid */
+
+/* ── SPACER below gallery ──────────────────────────────────── */
+.gallery-end{
+  height:60px;
+  position:relative;
+  z-index:999;      /* sits above all sticky sections */
+  background:#F7F6F1;
+}
+
+/* ── RESPONSIVE: tablet 601–900px ──────────────────────────── */
 @media(max-width:900px){
-  .gallery-scene{
-    position:relative;top:auto;z-index:auto!important;
-    grid-template-columns:repeat(8,1fr);gap:16px;padding:1rem 12px 2rem;
+  .work-grid{
+    position:relative;          /* no sticky stacking on tablet */
+    grid-template-columns:1fr 1fr;
+    padding:12px 16px 24px;
+    gap:12px;
   }
-  .work-ph{
-    grid-column:var(--tablet-col, span 4)!important;
-    grid-row:auto!important;
-    margin:0!important;padding-bottom:0!important;
-    align-self:auto!important;z-index:1!important;
+  /* all sizes become equal columns */
+  .gi-full,.gi-large,.gi-medium,.gi-small,.gi-xs,.gi-solo{
+    grid-column:span 1 !important;
   }
+  /* remove vertical offsets */
+  .mt-sm,.mt-md,.mt-lg{margin-top:0}
 }
-/* RESPONSIVE — mobile (≤600px): 2 columns. Each scene stacks cleanly;
-   `mobileLayout` per item decides full-width vs a gentle 2-up. */
+
+/* ── RESPONSIVE: mobile ≤600px ─────────────────────────────── */
 @media(max-width:600px){
-  .gallery-scene{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 16px}
-  .work-ph{grid-column:var(--mobile-col, span 2)!important}
-}
-
-/* hero-shot — always centred, never cropped */
-.hero-shot{margin-top:52px;order:2;display:flex;justify-content:center}
-.hero-shot figure{width:100%;max-width:var(--wide)}
-
-@media(max-width:500px){
-  .hero-wrapper{display:flex;flex-direction:column}
-  .hero-shot{
-    order:-1;
-    margin-top:32px;
-    margin-bottom:24px;
-    margin-left:0;
-    margin-right:0;
-    width:100%;
-    overflow:visible;
-    justify-content:center;
-  }
-  .hero-shot figure{overflow:visible;width:100%}
-  .hero-shot .ph{
-    border-radius:8px;
-    aspect-ratio:4/3;
-    width:100%;
-  }
-  .hero-shot img{
-    border-radius:8px;
-    width:100%;
-    height:auto;
-    aspect-ratio:auto;
-    object-fit:contain;
-    display:block;
-  }
-  .hero-shot figcaption{display:none}
-  .hero{padding:24px 0 32px}
-}
-@media(max-width:500px){
-  .impact-numbers{
+  .work-grid{
     grid-template-columns:1fr;
-    gap:16px 0;
-    padding:16px 0;
+    padding:8px 16px 16px;
+    gap:10px;
   }
-  .impact-label{white-space:normal;padding-top:0;margin-bottom:8px}
-  .impact-stat{padding-right:0;border-right:none;border-bottom:0.5px solid var(--line);padding-bottom:16px}
-  .impact-stat.mid{padding:0 0 16px;border-right:none;border-bottom:0.5px solid var(--line)}
-  .impact-stat.last{padding-left:0;border-bottom:none;padding-bottom:0}
-}
-@media(max-width:500px){
-  .img-row.c3{grid-template-columns:1fr!important;left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
-  .col .img-row.c3{left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
+  .gi-full,.gi-large,.gi-medium,.gi-small,.gi-xs,.gi-solo{
+    grid-column:1/-1 !important;
+  }
 }
 
-/* ── CONTACT FOOTER ──────────────────────────────────── */
-.footer-outer {
-  margin-top: 0px;
-  margin-bottom: 120px;
-  padding: 0;
-}
-.footer-content {
-  max-width: 1984px;
-  margin: 0 auto;
-  padding: 80px 80px 68px;
-  background-color: #ffffff;
-  color: #111111;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 52px;
-  cursor: pointer;
-  transition:
-    background-color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    color            0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.footer-content:hover {
-  background-color: #111111;
-  color: #ffffff;
-}
-.footer-heading {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-  font-weight: 900;
-  font-size: clamp(48px, 6vw, 80px);
-  line-height: 1.1;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: inherit;
-  margin: 0;
-}
-.footer-img-placeholder {
-  width: 540px;
-  height: 390px;
-  background-color: #e8e8e8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.footer-img-placeholder span {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #aaaaaa;
-}
-.footer-cta-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: inherit;
-}
-.footer-cta-link {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  color: inherit;
-  text-decoration: none;
-  position: relative;
-}
-.footer-cta-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: #bada55;
-  transition: width 0.35s ease;
-}
-.footer-cta-link:hover {
-  color: #bada55;
-}
-.footer-cta-link:hover::after {
-  width: 100%;
-}
-.footer-copy {
-  color: var(--muted);
-  font-size: clamp(11px,1.5vw,14px);
-  text-align: center;
-  padding: 16px 0;
-  border-top: 1px solid var(--line);
-  width: 100%;
-  max-width: var(--wide);
-  margin: 0 auto;
+/* ── LIGHTBOX ──────────────────────────────────────────────── */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(23,22,15,.95);
+  z-index:9999;align-items:center;justify-content:center;padding:24px;
+  flex-direction:column;gap:16px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:80vh;width:auto;height:auto;
+  border-radius:16px;display:block}
+.lb-caption{font-size:15px;color:rgba(242,239,232,0.7);text-align:center;max-width:60ch}
+.lb-close{position:fixed;top:20px;right:24px;background:none;border:none;
+  cursor:pointer;color:#F2EFE8;font-size:28px;padding:4px 8px;z-index:10000;
+  transition:color .2s}
+.lb-close:hover{color:#BADA55}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);
+  cursor:pointer;color:#F2EFE8;font-size:24px;width:48px;height:48px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;z-index:10000}
+.lb-nav:hover{background:rgba(255,255,255,0.18)}
+.lb-prev{left:24px}.lb-next{right:24px}
+.lb-nav[hidden]{display:none}
+
+/* ── ABOUT PANEL ───────────────────────────────────────────── */
+#about-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:49;
+  opacity:0;pointer-events:none;transition:opacity 0.5s cubic-bezier(0.4,0,0.2,1)}
+#about-overlay.open{opacity:1;pointer-events:all}
+#about-panel{position:fixed;top:0;left:var(--sw);
+  width:calc((100vw - var(--sw)) * 5 / 6);height:100vh;background:#F9F8F6;
+  z-index:50;overflow-y:auto;overflow-x:hidden;
+  padding:40px clamp(16px,2.5vw,32px) 32px clamp(20px,3vw,48px);
+  transform:translateX(-110%);transition:transform 0.5s cubic-bezier(0.4,0,0.2,1)}
+#about-panel.open{transform:translateX(0)}
+.about-close-btn{position:fixed;top:20px;right:20px;background:none;border:none;
+  cursor:pointer;color:#2F2E2E;font-size:20px;padding:4px 8px;
+  transition:color .2s;z-index:200}
+.about-close-btn:hover{color:#8067F2}
+.about-back-btn{background:none;border:none;cursor:pointer;color:#888;
+  font-family:var(--sans);font-size:14px;padding:0;margin-bottom:24px;display:block;
+  transition:color .2s}
+.about-back-btn:hover{color:#8067F2}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,200px) minmax(0,200px);
+  gap:40px 48px;max-width:1100px;margin:0 auto}
+.about-quote{font-family:var(--serif);font-size:clamp(22px,2.8vw,36px);line-height:1.4;
+  color:#2F2E2E;margin-bottom:40px;font-weight:700}
+.about-hi{background:#BADA55;color:#2F2E2E;padding:0 2px}
+.about-body{font-size:15px;line-height:1.7;color:#2F2E2E;max-width:595px;font-weight:400}
+.about-body p+p{margin-top:18px}
+.about-section-title{font-size:15px;font-weight:500;letter-spacing:.05em;
+  color:#2F2E2E;margin-bottom:16px}
+.about-exp-list{list-style:none}
+.about-exp-list li{margin-bottom:16px;line-height:1.5}
+.about-company{display:block;font-size:15px;color:#2F2E2E;font-weight:500}
+.about-role{display:block;font-size:15px;color:#888;font-weight:300;margin-top:1px}
+.about-date{display:block;font-size:15px;color:#888;font-weight:300;margin-top:1px}
+.about-contact-list{list-style:none}
+.about-contact-list li{margin-bottom:12px}
+.about-contact-list a{font-size:15px;color:#2F2E2E;text-decoration:none;
+  font-weight:400;display:inline-block;position:relative;transition:color .2s}
+.about-contact-list a:not(.about-cv):hover{color:#8067F2}
+.about-cv{color:#8067F2!important;font-weight:500}
+.about-cv::after{content:'';position:absolute;bottom:-2px;left:0;width:0;
+  height:1.5px;background:#8067F2;transition:width .3s ease}
+.about-cv:hover::after{width:100%}
+@media(max-width:1000px){.about-grid{grid-template-columns:1fr}}
+@media(max-width:700px){
+  .about-grid{grid-template-columns:1fr}
+  #about-panel{width:100%;left:0;padding:40px 20px}
 }
 
+/* ── MOBILE SIDEBAR ────────────────────────────────────────── */
 @media(max-width:680px){
-  .footer-content { padding: 60px 24px 48px; gap: 36px; }
-  .footer-img { width: 200px; height: 145px; }
+  .page{margin-left:0;margin-top:44px}
+  .sidebar{width:100%;height:44px;bottom:auto;flex-direction:row}
+  .sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;
+    padding:0 20px;font-size:16px}
+  .sb-back{writing-mode:horizontal-tb;transform:none;
+    margin:0 16px 0 auto;font-size:16px}
 }
 
+/* ── CONTACT FOOTER ────────────────────────────────────────── */
+.footer-contact{display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:52px;padding:80px;width:100%;
+  background-color:#F6F5F1;color:#111111;text-decoration:none;
+  transition:background-color 0.45s cubic-bezier(0.25,0.46,0.45,0.94),
+             color 0.45s cubic-bezier(0.25,0.46,0.45,0.94)}
+.footer-contact:hover{background-color:#111111;color:#F6F5F1}
+.footer-heading{font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(38px,5.5vw,68px);color:inherit;text-align:center}
+.footer-img{width:540px;height:390px;object-fit:cover;
+  transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);max-width:100%}
+.footer-contact:hover .footer-img{transform:scale(1.03)}
+.footer-cta-row{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;
+  color:inherit;display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  justify-content:center}
+.footer-link{color:inherit;text-decoration:none;position:relative}
+.footer-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;
+  height:1px;background:#bada55;transition:width 0.35s ease}
+.footer-contact:hover .footer-link{color:#bada55}
+.footer-contact:hover .footer-link::after{width:100%}
+.footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;
+  padding:16px 0;border-top:1px solid var(--line);width:100%;
+  max-width:var(--wide);margin:0 auto}
+.footer-nav{display:flex;justify-content:space-between;align-items:center;
+  padding:32px 24px 16px;max-width:var(--wide);margin:0 auto}
+footer a{color:var(--ink);text-decoration:none;font-weight:400;
+  font-size:clamp(13px,1.6vw,16px);transition:color .2s}
+footer a:hover{color:#8067F2}
+@media(max-width:680px){
+  .footer-contact{padding:60px 24px;gap:36px}
+  .footer-img{width:240px;height:174px}
+}
 </style>
-<link rel="stylesheet" href="cursor.css">
 </head>
-<body data-content="logos-art-for-fun-content.txt" data-about="light">
+<body>
 
 <aside class="sidebar">
   <button class="sb-about" onclick="toggleAbout(event)">About</button>
   <a class="sb-back" href="index.html">Back to my projects</a>
 </aside>
 
-<!-- ABOUT OVERLAY -->
-<div class="page">
-
-<!-- HERO (centered) -->
-<div class="gallery-hero">
-  <h1>Logos, icons &amp; art for fun</h1>
-  <p class="gallery-lede">A selection of logos, icons, logotypes, and illustrations I have created over the years.</p>
-</div>
-
-<!-- GALLERY — rendered from GALLERY_ITEMS (see script). Each `scene` becomes
-     its own art-directed composition (not a flat row); sania's own
-     compositions are the pattern reference, not literally rendered content —
-     only real, visible manifest entries are ever drawn into the DOM. -->
-<div class="s-work"></div><!-- /s-work -->
-
-<div style="height:40px"></div>
-
-<footer>
-  <div class="footer-outer">
-    <div class="footer-content">
-      <h2 class="footer-heading">let's work together</h2>
-      <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg" alt="IMG-00" class="work-img-real" style="width: 540px; height: 390px" loading="lazy" decoding="async" onerror="this.remove()">
-      <div class="footer-cta-row">
-        <span>GET IN TOUCH VIA</span>
-        <a class="footer-cta-link" href="mailto:Sapir7106@gmail.com">EMAIL</a>
-        <span>/</span>
-        <a class="footer-cta-link" href="https://wa.me/972523665667">WHATSAPP</a>
+<!-- ABOUT OVERLAY + PANEL -->
+<div id="about-overlay" onclick="closeAbout()"></div>
+<div id="about-panel">
+  <button class="about-close-btn" onclick="closeAbout()">✕</button>
+  <div class="about-grid">
+    <div>
+      <button class="about-back-btn" onclick="closeAbout()">← back</button>
+      <p class="about-quote">Good design in complex products isn't about 〰〰 making things pretty. It's about making hard things <span class="about-hi">feel inevitable</span>.</p>
+      <div class="about-body">
+        <p>I currently lead UX at PointFive, where I've helped build the product from the ground up alongside the founder, turning complex FinOps data into clear, actionable interfaces and shaping how people trust the AI agents that act on their cloud costs.</p>
+        <p>Before that I spent several years deep in cybersecurity and enterprise AI: at Laminar (data security), and earlier alongside teams like Sygnia (threat detection) and BeyondMinds (enterprise AI). I gravitate toward complex, technical products where good design genuinely changes how people work.</p>
+        <p>Across all of it, one thread repeats. I build the systems underneath the screens, establishing design systems from scratch: the components, tokens and standards that keep a whole product coherent as it scales.</p>
+        <p>I trained at Shenkar College in Visual Communication, and I still keep an active artistic practice on the side: drawing, sculpture, mixed media. It shapes how I approach product work, trusting intuition early and refining ruthlessly later.</p>
       </div>
     </div>
+    <div>
+      <h3 class="about-section-title">EXPERIENCE</h3>
+      <ul class="about-exp-list">
+        <li><span class="about-company">PointFive</span><span class="about-role">Senior Product Designer</span><span class="about-date">2023 – Present</span></li>
+        <li><span class="about-company">Laminar</span><span class="about-role">Senior Product Designer</span><span class="about-date">2022 – 2023</span></li>
+        <li><span class="about-company">BeyondMinds</span><span class="about-role">Product Designer · Enterprise AI</span><span class="about-date">2020 – 2022</span></li>
+        <li><span class="about-company">Sygnia</span><span class="about-role">Product Designer · Cyber</span><span class="about-date">2020 – 2022</span></li>
+        <li><span class="about-company">Freelance</span><span class="about-role">UX/UI &amp; Graphic Design</span><span class="about-date">2017 – 2021</span></li>
+      </ul>
+      <h3 class="about-section-title" style="margin-top:32px">EDUCATION</h3>
+      <ul class="about-exp-list">
+        <li><span class="about-company">Shenkar College</span><span class="about-role">BA Visual Communication</span><span class="about-date">2015 – 2019</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="about-section-title">CONTACT</h3>
+      <ul class="about-contact-list">
+        <li><a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></li>
+        <li><a href="tel:+972523665667">+972-523-665-667</a></li>
+        <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://wa.me/972523665667" target="_blank" rel="noopener">WhatsApp ↗</a></li>
+        <li><a href="#" class="about-cv">Download CV →</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-nav" style="max-width:var(--wide);margin:0 auto">
-    <a href="#" id="prevBtn">← Previous work</a>
-    <a href="#" id="nextBtn">Next work →</a>
+</div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="gallery-wrap">
+    <div class="gallery-hero">
+      <h1>Logos and icons<br><em>and art for fun</em></h1>
+      <p class="gallery-lede">A selection of logos, icons, logotypes, and illustrations I have created over the years.</p>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 · Designed &amp; built by Sapir Levi</div>
-</footer>
+
+  <!-- GALLERY — built by JS below -->
+  <div class="s-work" id="gallery-root"></div>
+
+  <!-- spacer to clear sticky sections -->
+  <div class="gallery-end"></div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+    <div id="lbContent"></div>
+    <p class="lb-caption" id="lbCaption"></p>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-contact" href="mailto:Sapir7106@gmail.com">
+      <h2 class="footer-heading">let's work together</h2>
+      <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
+           alt="Let's work together" class="footer-img">
+      <div class="footer-cta-row">
+        GET IN TOUCH VIA
+        <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
+        /
+        <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
+      </div>
+    </a>
+    <div class="footer-nav">
+      <a href="#" id="prevBtn">← Previous work</a>
+      <a href="#" id="nextBtn">Next work →</a>
+    </div>
+    <div class="footer-copy">© 2026 · Designed &amp; built by Sapir Levi</div>
+  </footer>
 
 </div><!-- /page -->
 
 <script>
-// ── GALLERY MANIFEST ──────────────────────────────────
-// Single source of truth for the gallery: sania's opening screenshot isn't a
-// flat row of thumbnails, it's an art-directed composition (1-2 dominant
-// images, one layered/overlapping pair, a small accent, real whitespace).
-// This manifest models that directly — a `scene` is one composition, a
-// `role` is where an image sits inside it. To change what's on the page,
-// edit values here only — never the DOM, never a CSS class, never a filename:
-//   - reorder     → `order` (plain number, also used to cluster into scenes —
-//                   keep a scene's items contiguous in `order`)
-//   - hide/show   → `visible` (true/false — don't delete the file)
-//   - composition → `scene` (which composition this image belongs to) +
-//                   `role` (its part in that composition — see
-//                   GALLERY_ROLE_PRESETS below for the desktop placement of
-//                   each role: dominant-left/right, center-back/front
-//                   (the layered pair), accent-top/small, wide-center,
-//                   pair-left/right, supporting-left/right)
-//   - mobile/tablet
-//     sizing      → `layout` ('large'/'medium'/'small'/'tiny'/'wide' — used
-//                   only on tablet/mobile, where desktop's absolute role
-//                   placement is dropped for simple stacking) + optional
-//                   `mobileLayout` ('full' or 'half')
-//   - stack order → `zIndex` (optional — only matters for the deliberately
-//                   overlapping center-back/center-front pair)
-//   - horiz. spot → `align` — kept for readability/authoring intent (matches
-//                   the role's natural side); desktop placement itself comes
-//                   from `role`, not from `align` directly.
-//   - add one     → drop the file in `portfolio images/logos-art-for-fun/`
-//                   and add a row here with its exact `src` (extension and
-//                   case both matter — jpg/jpeg/png/gif/webp all work, this
-//                   is the one place the extension is written).
-const GALLERY_ITEMS = [
-  // Scene 1 — sania's opening composition: two dominant anchors framing a
-  // layered pair + a small accent, not five equal thumbnails in a row.
-  { id:'gallery-01', src:'/portfolio images/logos-art-for-fun/GALLERY-01.jpg', alt:'Logo and icon design — 01', visible:true, order:1, scene:1, role:'dominant-left',   layout:'large',  align:'left',   mobileLayout:'full' },
-  { id:'gallery-02', src:'/portfolio images/logos-art-for-fun/GALLERY-02.png', alt:'Logo and icon design — 02', visible:true, order:2, scene:1, role:'center-back',     layout:'medium', align:'center', mobileLayout:'half' },
-  { id:'gallery-03', src:'/portfolio images/logos-art-for-fun/GALLERY-03.png', alt:'Logo and icon design — 03', visible:true, order:3, scene:1, role:'center-front',    layout:'small',  align:'center', mobileLayout:'half', zIndex:2 },
-  { id:'gallery-04', src:'/portfolio images/logos-art-for-fun/GALLERY-04.png', alt:'Logo and icon design — 04', visible:true, order:4, scene:1, role:'accent-top',      layout:'tiny',   align:'right',  mobileLayout:'half' },
-  { id:'gallery-05', src:'/portfolio images/logos-art-for-fun/GALLERY-05.jpg', alt:'Logo and icon design — 05', visible:true, order:5, scene:1, role:'dominant-right',  layout:'large',  align:'right',  mobileLayout:'full' },
-  // Scene 2 — calmer: one dominant image, two supporting, one small accent.
-  { id:'gallery-06', src:'/portfolio images/logos-art-for-fun/GALLERY-06.jpg', alt:'Logo and icon design — 06', visible:true, order:6, scene:2, role:'dominant-left',    layout:'large',  align:'left',   mobileLayout:'full' },
-  { id:'gallery-07', src:'/portfolio images/logos-art-for-fun/GALLERY-07.png', alt:'Logo and icon design — 07', visible:true, order:7, scene:2, role:'accent-top',       layout:'tiny',   align:'right',  mobileLayout:'half' },
-  { id:'gallery-08', src:'/portfolio images/logos-art-for-fun/GALLERY-08.GIF', alt:'Logo and icon design — 08', visible:true, order:8, scene:2, role:'supporting-left',  layout:'medium', align:'left',   mobileLayout:'half' },
-  { id:'gallery-09', src:'/portfolio images/logos-art-for-fun/GALLERY-09.jpg', alt:'Logo and icon design — 09', visible:true, order:9, scene:2, role:'supporting-right', layout:'medium', align:'right',  mobileLayout:'half' },
-  // Scene 3 — the first strong pause: a single wide visual break.
-  { id:'gallery-10', src:'/portfolio images/logos-art-for-fun/GALLERY-10.jpg', alt:'Logo and icon design — 10', visible:true, order:10, scene:3, role:'wide-center', layout:'wide', align:'center', mobileLayout:'full' },
-  // Scene 4 — ending composition: one larger image + two supporting, not a
-  // flat 3-column grid (large+support share a row, third sits below alone).
-  { id:'gallery-11', src:'/portfolio images/logos-art-for-fun/GALLERY-11.png', alt:'Logo and icon design — 11', visible:true, order:11, scene:4, role:'dominant-left',    layout:'large',  align:'left',  mobileLayout:'full' },
-  { id:'gallery-12', src:'/portfolio images/logos-art-for-fun/GALLERY-12.jpg', alt:'Logo and icon design — 12', visible:true, order:12, scene:4, role:'supporting-right', layout:'medium', align:'right', mobileLayout:'half' },
-  { id:'gallery-13', src:'/portfolio images/logos-art-for-fun/GALLERY-13.jpg', alt:'Logo and icon design — 13', visible:true, order:13, scene:4, role:'supporting-left',  layout:'medium', align:'left',  mobileLayout:'full' },
-  // Future growth (uncomment as real files land) — same idea: one focal
-  // role per scene, 1-2 supporting, never a flat equal-width row.
-  // Scene 5 — 3 images, one focal + two supporting:
-  // { id:'gallery-14', src:'/portfolio images/logos-art-for-fun/GALLERY-14.jpg', alt:'…', visible:true, order:14, scene:5, role:'dominant-left',    layout:'large',  align:'left',  mobileLayout:'full' },
-  // { id:'gallery-15', src:'/portfolio images/logos-art-for-fun/GALLERY-15.jpg', alt:'…', visible:true, order:15, scene:5, role:'supporting-right', layout:'medium', align:'right', mobileLayout:'half' },
-  // { id:'gallery-16', src:'/portfolio images/logos-art-for-fun/GALLERY-16.jpg', alt:'…', visible:true, order:16, scene:5, role:'accent-small',     layout:'tiny',   align:'left',  mobileLayout:'half' },
-  // Scene 6 — 2 images, a pair:
-  // { id:'gallery-17', src:'/portfolio images/logos-art-for-fun/GALLERY-17.jpg', alt:'…', visible:true, order:17, scene:6, role:'pair-left',  layout:'large', align:'left',  mobileLayout:'full' },
-  // { id:'gallery-18', src:'/portfolio images/logos-art-for-fun/GALLERY-18.jpg', alt:'…', visible:true, order:18, scene:6, role:'pair-right', layout:'large', align:'right', mobileLayout:'full' },
-  // Scene 7 — 2 images, a pair:
-  // { id:'gallery-19', src:'/portfolio images/logos-art-for-fun/GALLERY-19.jpg', alt:'…', visible:true, order:19, scene:7, role:'pair-left',  layout:'large', align:'left',  mobileLayout:'full' },
-  // { id:'gallery-20', src:'/portfolio images/logos-art-for-fun/GALLERY-20.jpg', alt:'…', visible:true, order:20, scene:7, role:'pair-right', layout:'large', align:'right', mobileLayout:'full' },
+// ══════════════════════════════════════════════════════════════════
+// GALLERY MANIFEST
+// ══════════════════════════════════════════════════════════════════
+//
+// Each row: [ number, size, offset, solo ]
+//
+// SIZE — controls column width (never crops, just scales):
+//   'gi-large'  = ~58% wide   best for illustrations, hero images
+//   'gi-medium' = ~50% wide   default for most images
+//   'gi-small'  = ~33% wide   logos, compact graphics
+//   'gi-xs'     = ~25% wide   tiny logos, accent items
+//
+// OFFSET — vertical shift within the section (editorial feel):
+//   'mt-0'   no offset
+//   'mt-sm'  shift down ~3rem
+//   'mt-md'  shift down ~6rem
+//   'mt-lg'  shift down ~10rem
+//
+// SOLO — true = image gets its own section, centered
+//   false = paired with the next image
+//
+// HOW TO ADD IMAGE 15:
+//   Add:  [15, 'gi-medium', 'mt-0', false],
+//   Upload GALLERY-15 in any extension — auto-detected.
+//
+// HOW TO CHANGE SIZE:
+//   Change 'gi-medium' to 'gi-large' on that row.
+//
+// ══════════════════════════════════════════════════════════════════
+
+const GALLERY = [
+  //  num    size         offset    solo
+  [  1,  'gi-large',  'mt-0',   false ],  // butterfly-alis-illustration
+  [  2,  'gi-medium', 'mt-md',  false ],  // collage-me
+  [  3,  'gi-small',  'mt-sm',  false ],  // logotype-abarbanel
+  [  4,  'gi-medium', 'mt-0',   false ],  // luna-colorful-illustration
+  [  5,  'gi-medium', 'mt-0',   false ],  // left-hand-drawing
+  [  6,  'gi-medium', 'mt-sm',  false ],  // chocolate-goddess
+  [  7,  'gi-large',  'mt-0',   true  ],  // me-frame-by-frame (GIF, solo)
+  [  8,  'gi-medium', 'mt-sm',  false ],  // bombing-area-illustration
+  [  9,  'gi-large',  'mt-0',   false ],  // red-hair-girl-illustration
+  [ 10,  'gi-xs',     'mt-0',   false ],  // me-illustration
+  [ 11,  'gi-large',  'mt-sm',  false ],  // dont-stop-me-know
+  [ 12,  'gi-medium', 'mt-0',   false ],  // luna-ai-photo
+  [ 13,  'gi-medium', 'mt-sm',  false ],  // (new image)
+  [ 14,  'gi-medium', 'mt-0',   false ],  // (new image)
+  // [ 15,  'gi-medium', 'mt-0',   false ],  // add when ready
 ];
 
-// ── ROLE PRESETS (desktop only) — each role is just a column band on its
-// scene's 12-column grid. There's no manual row bookkeeping: the browser's
-// own grid auto-placement stacks a role into the next row once its column
-// band collides with something already placed — that's what turns "5 roles"
-// into "a rich top cluster + one item alone below with real whitespace"
-// instead of a forced single row. The one exception is the deliberately
-// overlapping pair: center-back/center-front both pin to row 1 on purpose
-// (auto-placement never lets two items share a column range on its own) and
-// center-front gets a margin-top nudge + higher z-index to peek out.
-const GALLERY_ROLE_PRESETS = {
-  'dominant-left':    { col:'1 / 6'  },
-  'dominant-right':   { col:'7 / 13' },
-  'center-back':      { col:'6 / 10', row:'1' },
-  'center-front':     { col:'7 / 10', row:'1', z:2, marginTop:'30%' },
-  'accent-top':       { col:'10 / 12' },
-  'accent-small':     { col:'10 / 12' },
-  'wide-center':      { col:'2 / 12' },
-  'pair-left':        { col:'1 / 7'  },
-  'pair-right':       { col:'7 / 13' },
-  'supporting-left':  { col:'1 / 7'  },
-  'supporting-right': { col:'7 / 13' },
-};
-// tablet/mobile abandon role-based placement entirely (see CSS) — `layout`
-// drives a simple span instead, so nothing awkward/oversized survives a
-// narrower grid.
-const GALLERY_LAYOUT_TABLET_SPAN = { large:6, wide:8, medium:4, small:3, tiny:2 };
-const GALLERY_MOBILE_SPAN = { full:2, half:1 };
+// ── Extension auto-detection ──────────────────────────────────────
+// Tries each extension in order. First one that loads wins.
+// Supported: jpg, JPG, jpeg, png, PNG, gif, GIF, webp
+const EXTS = ['jpg','JPG','jpeg','png','PNG','gif','GIF','webp'];
+const IMG_BASE = '/portfolio images/logos-art-for-fun/';
 
-function renderGallery() {
-  const mount = document.querySelector('.s-work');
-  if (!mount) return;
+function resolveImage(img, name) {
+  let i = 0;
+  (function next() {
+    if (i >= EXTS.length) return;
+    const probe = new Image();
+    probe.onload  = () => { img.src = probe.src; };
+    probe.onerror = next;
+    probe.src = IMG_BASE + name + '.' + EXTS[i++];
+  })();
+}
 
-  const visible = GALLERY_ITEMS.filter(item => item.visible).sort((a, b) => a.order - b.order);
+// ── Gallery builder ───────────────────────────────────────────────
+// Groups GALLERY entries into sections (max 2 per section).
+// Solo items always get their own section.
+function buildGallery() {
+  const root = document.getElementById('gallery-root');
+  if (!root) return;
 
-  // bucket into scenes, preserving each scene's first appearance in `order`
-  // (a scene's items must stay contiguous in `order` — that's what makes it
-  // read as one composition instead of an interleaved one)
-  const scenes = [];
-  const sceneIndexByKey = new Map();
-  visible.forEach(item => {
-    if (!sceneIndexByKey.has(item.scene)) {
-      sceneIndexByKey.set(item.scene, scenes.length);
-      scenes.push([]);
+  // Build sections from manifest
+  const sections = [];
+  let i = 0;
+  while (i < GALLERY.length) {
+    const item = GALLERY[i];
+    if (item[3]) {                          // solo
+      sections.push([item]);
+      i++;
+    } else {
+      const next = GALLERY[i + 1];
+      if (next && !next[3]) {               // pair
+        sections.push([item, next]);
+        i += 2;
+      } else {                              // last item, solo
+        sections.push([item]);
+        i++;
+      }
     }
-    scenes[sceneIndexByKey.get(item.scene)].push(item);
-  });
+  }
 
-  scenes.forEach((sceneItems, sceneIdx) => {
-    const sceneEl = document.createElement('div');
-    sceneEl.className = 'gallery-scene';
-    // later scenes get a higher z-index so each one sticks and slides over
-    // the previous one on scroll (sania's own sticky-cover effect)
-    sceneEl.style.setProperty('--scene-z', sceneIdx + 1);
+  const allImgs = []; // for lightbox
 
-    sceneItems.forEach(item => {
-      const role = GALLERY_ROLE_PRESETS[item.role] || GALLERY_ROLE_PRESETS['supporting-left'];
-      const tabletSpan = GALLERY_LAYOUT_TABLET_SPAN[item.layout] || 4;
-      const mobileSpan = GALLERY_MOBILE_SPAN[item.mobileLayout] || 2;
+  sections.forEach((section, idx) => {
+    const grid = document.createElement('div');
+    grid.className = 'work-grid';
+    grid.style.zIndex = String(idx + 1);
 
+    section.forEach(([num, sizeClass, offsetClass, solo]) => {
+      const name = 'GALLERY-' + String(num).padStart(2, '0');
+
+      const slot = document.createElement('div');
+      if (solo || section.length === 1) {
+        slot.className = 'gi gi-solo';
+      } else {
+        slot.className = `gi ${sizeClass} ${offsetClass}`;
+      }
+
+      // Placeholder wrap — shows colored box + label until image loads
       const wrap = document.createElement('div');
-      wrap.className = `work-ph work-ph--${item.role}`;
-      wrap.id = item.id;
-      wrap.style.setProperty('--desktop-col', role.col);
-      wrap.style.setProperty('--desktop-row', role.row || 'auto');
-      wrap.style.setProperty('--tablet-col', `span ${tabletSpan}`);
-      wrap.style.setProperty('--mobile-col', `span ${mobileSpan}`);
-      wrap.style.setProperty('--item-z', item.zIndex || role.z || 1);
-      wrap.style.setProperty('--item-mt', role.marginTop || '0');
-      wrap.style.setProperty('--item-align', role.alignSelf || 'start');
+      wrap.className = 'gi-wrap';
+
+      const label = document.createElement('span');
+      label.className = 'gi-label';
+      label.textContent = name;
+      wrap.appendChild(label);
 
       const img = document.createElement('img');
-      img.src = item.src;
-      img.alt = item.alt || item.id;
-      img.className = 'work-img-real';
-      img.loading = 'lazy';
+      img.alt      = name.toLowerCase().replace(/-/g, ' ');
+      img.src      = '';
+      img.loading  = num <= 2 ? 'eager' : 'lazy';
       img.decoding = 'async';
-      // a missing/renamed file skips the slot instead of showing a broken image
-      img.onerror = () => wrap.remove();
+      img.addEventListener('load', () => img.classList.add('loaded'));
+      img.addEventListener('click', () => { if (img.src) openLB(img.src, img.alt); });
 
       wrap.appendChild(img);
-      sceneEl.appendChild(wrap);
+      slot.appendChild(wrap);
+      grid.appendChild(slot);
+      resolveImage(img, name);
+      allImgs.push(img);
     });
 
-    mount.appendChild(sceneEl);
+    root.appendChild(grid);
   });
-}
-renderGallery();
 
-document.addEventListener('keydown',e=>{
-  if(e.key==='l'||e.key==='L') document.body.classList.toggle('show-labels');
-  if(e.key==='Escape') closeAbout();
-});
-
-function toggleAbout(e){
-  if(e) e.stopPropagation();
-  const panel=document.getElementById('about-panel');
-  const overlay=document.getElementById('about-overlay');
-  if(!panel||!overlay) return; /* הפאנל עדיין נטען מהמאסטר */
-  if(panel.classList.contains('open')) closeAbout();
-  else { panel.classList.add('open'); overlay.classList.add('open'); }
+  window._galleryImgs = allImgs; // expose for lightbox
 }
-function closeAbout(){
-  const panel=document.getElementById('about-panel');
-  const overlay=document.getElementById('about-overlay');
-  if(panel) panel.classList.remove('open');
-  if(overlay) overlay.classList.remove('open');
-}
-// close on outside click
-document.addEventListener('click',function(e){
-  const panel=document.getElementById('about-panel');
-  if(!panel||!panel.classList.contains('open')) return;
-  if(!panel.contains(e.target)){
-    const btn=document.querySelector('.sb-about');
-    if(!btn||!btn.contains(e.target)) closeAbout();
-  }
-});
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -4% 0px'});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-// ── LIGHTBOX ──────────────────────────────────
-const lb      = document.getElementById('lightbox');
-const lbClose = document.getElementById('lbClose');
+buildGallery();
+
+// ══════════════════════════════════════════════════════════════════
+// LIGHTBOX
+// ══════════════════════════════════════════════════════════════════
+const lb        = document.getElementById('lightbox');
 const lbContent = document.getElementById('lbContent');
+const lbCaption = document.getElementById('lbCaption');
+let lbSrcs = [], lbIdx = 0;
 
-let lbGallery = [];   // array of {src, alt, caption} for current section
-let lbIndex = 0;
-
-function renderLightbox() {
-  const item = lbGallery[lbIndex];
-  if (!item) return;
-  lbContent.innerHTML = item.src
-    ? `<img src="${item.src}" alt="${item.alt||''}">`
-    : `<div class="lb-ph">${item.alt||'Image preview'}</div>`;
-  document.getElementById('lbCaption').textContent = item.caption || '';
-  // show/hide nav based on gallery size
-  const multi = lbGallery.length > 1;
-  document.getElementById('lbPrev').hidden = !multi;
-  document.getElementById('lbNext').hidden = !multi;
-}
-
-function openLightbox(gallery, index) {
-  if (window.innerWidth <= 600) return;
-  lbGallery = gallery;
-  lbIndex = index;
-  renderLightbox();
+function openLB(src, alt) {
+  if (window.innerWidth <= 500) return;
+  lbSrcs = (window._galleryImgs || [])
+    .filter(img => img.src && img.naturalWidth > 0)
+    .map(img => ({ src: img.src, alt: img.alt }));
+  lbIdx  = lbSrcs.findIndex(i => i.src === src);
+  if (lbIdx < 0) lbIdx = 0;
+  renderLB();
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-function lbStep(dir) {
-  if (lbGallery.length < 2) return;
-  lbIndex = (lbIndex + dir + lbGallery.length) % lbGallery.length;
-  renderLightbox();
+function renderLB() {
+  const item = lbSrcs[lbIdx] || {};
+  lbContent.innerHTML = item.src
+    ? `<img src="${item.src}" alt="${item.alt || ''}">`
+    : '';
+  lbCaption.textContent = item.alt || '';
+  document.getElementById('lbPrev').hidden = lbSrcs.length < 2;
+  document.getElementById('lbNext').hidden = lbSrcs.length < 2;
 }
 
-function closeLightbox() {
+function closeLB() {
   lb.classList.remove('open');
   document.body.style.overflow = '';
 }
 
-lbClose.addEventListener('click', closeLightbox);
+function lbStep(d) {
+  lbIdx = (lbIdx + d + lbSrcs.length) % lbSrcs.length;
+  renderLB();
+}
+
+document.getElementById('lbClose').addEventListener('click', closeLB);
 document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); lbStep(-1); });
 document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); lbStep(1); });
-lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
 document.addEventListener('keydown', e => {
   if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') lbStep(-1);
+  if (e.key === 'Escape')     closeLB();
+  if (e.key === 'ArrowLeft')  lbStep(-1);
   if (e.key === 'ArrowRight') lbStep(1);
 });
 
-// build a gallery per section-container, attach click to each figure
-document.querySelectorAll('section, .img-row, .img-stack').forEach(container => {
-  const figs = [...container.querySelectorAll('.img-mt figure, .img-row figure, .img-stack figure')];
-  if (!figs.length) return;
-  // de-dup: only handle figures whose closest gallery container is THIS one
-  figs.forEach((fig) => {
-    if (fig.dataset.lbBound) return;
-    fig.dataset.lbBound = '1';
-    fig.addEventListener('click', () => {
-      if (window.innerWidth <= 600) return;
-      // gather all sibling figures within the same logical group
-      const group = fig.closest('.img-row, .img-stack') || fig.closest('section');
-      const groupFigs = [...group.querySelectorAll('figure')];
-      const gallery = groupFigs.map(f => {
-        const img = f.querySelector('img');
-        const ph  = f.querySelector('.ph');
-        const cap = f.querySelector('figcaption');
-        const captionText = cap ? cap.textContent : '';
-        const alt = img ? img.alt : (ph ? ph.querySelector('span')?.textContent : captionText);
-        return { src: img ? img.src : null, alt, caption: captionText };
-      });
-      const idx = groupFigs.indexOf(fig);
-      openLightbox(gallery, idx);
-    });
-  });
+// ══════════════════════════════════════════════════════════════════
+// ABOUT PANEL
+// ══════════════════════════════════════════════════════════════════
+function toggleAbout(e) {
+  if (e) e.stopPropagation();
+  const panel   = document.getElementById('about-panel');
+  const overlay = document.getElementById('about-overlay');
+  panel.classList.contains('open') ? closeAbout()
+    : (panel.classList.add('open'), overlay.classList.add('open'));
+}
+function closeAbout() {
+  document.getElementById('about-panel').classList.remove('open');
+  document.getElementById('about-overlay').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  const panel = document.getElementById('about-panel');
+  if (!panel.classList.contains('open')) return;
+  if (!panel.contains(e.target)) {
+    const btn = document.querySelector('.sb-about');
+    if (!btn || !btn.contains(e.target)) closeAbout();
+  }
 });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAbout(); });
 
-// ── PROJECT NAVIGATION ────────────────────────
-// לשינוי סדר: ערכי רק את הרשימה הזאת (ואת projects-order.js)
+// ══════════════════════════════════════════════════════════════════
+// PROJECT NAVIGATION
+// ══════════════════════════════════════════════════════════════════
 const PROJECTS = [
-  'agents.html',             // Card 1 — ללא Previous work
-  'dspm.html',               // Card 2
-  'violation-pane.html',     // Card 3
-  'retraining-model.html',   // Card 4
-  'security-dashboard.html', // Card 5
-  'logos-art-for-fun.html'   // Card 6
+  'agents.html',
+  'dspm.html',
+  'violation-pane.html',
+  'retraining-model.html',
+  'security-dashboard.html',
+  'logos-art-for-fun.html',
 ];
-
-const raw = window.location.pathname.split('/').pop();
+const raw         = window.location.pathname.split('/').pop();
 const currentFile = raw.endsWith('.html') ? raw : raw + '.html';
 const currentIdx  = PROJECTS.indexOf(currentFile);
 
-function getNav(direction) {
+function getNav(dir) {
   if (currentIdx === -1) return 'index.html';
-  const total = PROJECTS.length;
-  const idx = (currentIdx + direction + total) % total;
-  return PROJECTS[idx];
+  return PROJECTS[(currentIdx + dir + PROJECTS.length) % PROJECTS.length];
 }
 
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-
-// Card 1 (first in PROJECTS) never shows "Previous work"
-if (currentIdx === 0) {
-  if (prevBtn) prevBtn.style.display = 'none';
-} else {
-  if (prevBtn) prevBtn.href = getNav(-1);
-}
+if (currentIdx === 0 && prevBtn) prevBtn.style.display = 'none';
+else if (prevBtn) prevBtn.href = getNav(-1);
 if (nextBtn) nextBtn.href = getNav(+1);
 </script>
-<script src="about-loader.js"></script>
-<script src="about-content-loader.js"></script>
-<script src="content-loader.js"></script>
-<div id="custom-cursor"><span id="cursor-message"></span></div>
-<script src="cursor.js"></script>
 </body>
 </html>
