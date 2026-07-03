@@ -20,15 +20,15 @@
 
 `.about-grid` uses `grid-template-areas` (not just column tracks), and
 this is what controls where Contact (`.about-contact-col`, area
-`contact`) renders at each breakpoint:
+`contact`) and the photo (`.about-photo`, area `photo`) render at each
+breakpoint:
 
 - **Desktop (>1200px):** Contact shares the bio column with `.about-bio-col`
   (area `bio` on top, `contact` below), rendering directly under the last
-  bio paragraph as a horizontal row (`.about-contact-list` is `flex` there).
-  The photo (`.about-photo`, area `photo`) occupies its own column alone.
-- **Tablet (≤1200px, ≤900px):** Contact reverts to its own narrow column
-  (vertical list, `display:block` override), unrelated to the photo (which
-  is already hidden by then).
+  bio paragraph. The photo occupies its own column alone.
+- **Tablet (≤1200px, ≤900px):** the photo sits above `.about-exp-col`
+  (Experience/Education), `position:static` (no sticky). Contact keeps its
+  own narrow/wrapped column, independent of the photo.
 - **Mobile (≤767px):** order is photo, bio, experience/education, contact
   — Contact stays last regardless of where it sits in the DOM, because
   named-area placement ignores source order.
@@ -38,6 +38,28 @@ breakpoint's `grid-template-areas` needs a matching update — leaving a
 child's `grid-area` pointing at a name that no longer exists in the
 active `grid-template-areas` collapses it into cell (1,1), overlapping
 other items (a real Chromium behavior, not just a spec footnote).
+
+## Contact row: no partial wrap
+
+`.about-contact-list` must never break into two uneven lines (e.g. 4
+items + 1 orphan). It defaults to a vertical column
+(`flex-direction:column`) and only switches to a single-line horizontal
+row via a **container query** on `.about-contact-col`
+(`container-type: inline-size`):
+
+```css
+@container (min-width: 680px) { .about-contact-list { flex-direction: row; flex-wrap: nowrap; } }
+```
+
+Because the switch is a single binary condition (column vs. one
+`nowrap` row) rather than `flex-wrap:wrap`, there is no state where it
+partially wraps — confirmed empirically across the desktop bio column's
+full width range. The 680px threshold is tuned to the current five
+contact items' natural (no-wrap) width (~658px); if the copy changes
+(a longer phone number, a renamed link), re-measure and adjust. The
+bio column's grid track max was bumped from 600px to 720px so the row
+state is reachable at all — `.about-body` keeps its own independent
+`max-width:600px`, so bio's reading width is unaffected.
 
 ## Arrow glyphs
 
