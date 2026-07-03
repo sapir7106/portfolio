@@ -48,27 +48,13 @@ links. Update `CLAUDE.md` if a page is added/removed.
 > `projects-order.js` controls home page card order ONLY.
 > Previous/Next nav = edit each page's own inline `PROJECTS` array.
 
-**Swap a real image in (case-study pages)** → find the `.ph` placeholder by
-its ID (e.g. `id="IMG-01"`), replace the `<div class="ph">` with an `<img>`
-(or add `.ph-img` inside a content `.ph`).
+**Swap a real image in** → find the `.ph` placeholder by its ID
+(e.g. `id="GALLERY-01"`), replace the `<div class="work-ph">` with an `<img>`
+(or add `.ph-img` inside a content `.ph`). Keep the existing position classes.
 
-**The logos/art gallery (`logos-art-for-fun.html`) is different** — it's
-manifest-driven, not hand-placed HTML, and built as art-directed
-*compositions* (1-2 dominant images, one layered/overlapping pair, an
-accent, real whitespace) rather than equal-width rows. See
-`docs/GALLERY-SAPIR.md`. To add/reorder/hide/show/re-art-direct an image,
-edit the `GALLERY_ITEMS` array in that page's own `<script>` (fields: `src`,
-`order`, `scene`, `role`, `layout`, `align`, `mobileLayout`, `zIndex`,
-`visible`) — don't touch the DOM or add position classes. `scene` clusters
-images into one composition (keep a scene's `order` values contiguous);
-`role` is where an image sits in that composition on desktop —
-`dominant-left`/`dominant-right` (strong anchors), `center-back`/
-`center-front` (the one deliberately layered pair), `accent-top`/
-`accent-small`, `wide-center` (a lone big moment), `pair-left`/`pair-right`,
-`supporting-left`/`supporting-right`. `layout` only matters on tablet/mobile
-(simple stacking there, role-based placement is desktop-only). "Hide
-GALLERY-12" = set its `visible` to `false` in that array; "show GALLERY-15" =
-set it back to `true`.
+**Hide / show a gallery image** → see `docs/GALLERY-SAPIR.md` (the
+`hidden-item` / `hidden-grid` mechanism). Just say "hide GALLERY-12" or "show
+GALLERY-15" and handle both the item and its set wrapper.
 
 **Edit page copy** → make a targeted `str_replace` on the exact text. Don't
 rewrite the whole file. Keep the voice rules from `new-case-study`.
