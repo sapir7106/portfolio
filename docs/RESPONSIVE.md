@@ -7,16 +7,18 @@ documents it.
 ## Intended behavior
 
 **Desktop (wide):** left sidebar visible, centered content, full layouts,
-lightbox enabled, scroll-reveal animations, sticky gallery effects active.
+lightbox enabled, scroll-reveal animations, gallery renders its art-directed
+scene compositions (role-based placement — see `docs/GALLERY-SAPIR.md`).
 
 **Tablet:** content reflows to fewer columns; multi-column grids
 (`.pinfo`, `.tcols`, `.stat-band`, `.img-row`) collapse toward single column;
-gallery sticky positioning is neutralized.
+the gallery drops role-based placement for simple per-item spans.
 
 **Mobile:** sidebar becomes a **horizontal top bar** (~44–50px tall);
 `.page` margin-left → 0 with top padding for the bar; About panel goes full
-width; lightbox **disabled** (≤600px); gallery becomes a single column with
-sticky/negative-top removed; images constrained so nothing overflows.
+width; lightbox **disabled** (≤600px); the gallery's scenes stack one after
+another (2-column or full-width per item via `mobileLayout`); images
+constrained so nothing overflows.
 
 ## ⚠️ The inconsistency (this is the real issue)
 
@@ -29,7 +31,7 @@ Different pages use different breakpoint values for the *same* transitions:
 | → single column | `600px` | — | `600px` |
 | extra mobile fixes | — | — | `500px`, `480px` |
 
-The gallery's sticky grid (`.work-grid`/`.work-ph`) is now aligned to the
+The gallery's scene grids (`.gallery-scene`/`.work-ph`) are aligned to the
 standard `900/600` set (done — see `docs/GALLERY-SAPIR.md`). The remaining
 drift is the sidebar-to-topbar switch firing at `600px` on the home page but
 `680px` elsewhere, and the page's own extra `500px`/`480px` fixes (hero-shot,
@@ -44,7 +46,7 @@ impact numbers, `.img-row.c3`) which aren't part of the gallery grid itself.
 
 Pick one set and use it on every page:
 
-- **`900px`** — desktop → tablet (grids collapse, gallery sticky off)
+- **`900px`** — desktop → tablet (grids collapse, gallery role-placement off)
 - **`680px`** — sidebar → horizontal top bar
 - **`600px`** — → single column; **disable lightbox** below this
 
@@ -55,9 +57,14 @@ rule tied to the same `600px` line everywhere.
 ## Behavior rules worth keeping
 
 - The hero must always sit **above** the gallery (`.gallery-hero` has
-  `z-index:5`) so sticky images with negative `top` never cover it.
-- On mobile the gallery drops `position:sticky`, negative `top`, and all
-  `margin-top`/`grid-row` offsets (`!important` overrides) so images stack cleanly.
+  `z-index:5`).
+- Every gallery scene and item is plain `position:relative` (never `sticky`,
+  `absolute`, or `fixed`) so a later scene always pushes the previous one up
+  in normal document flow and can never cover or float on top of it —
+  overlap only ever happens *inside* one scene (see `docs/GALLERY-SAPIR.md`
+  → Scene flow).
+- On mobile the gallery drops role-based placement and `grid-row`/`margin`
+  offsets (`!important` overrides) so images stack cleanly.
 - Images use `max-width:100%; overflow:hidden` on small screens so a wide grid
   item never causes horizontal scroll.
 - Real images replace `.ph` placeholders and set their own natural aspect ratio

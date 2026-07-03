@@ -99,6 +99,33 @@ An ending scene (like scene 4) can pair a dominant with one supporting image
 in row 1 and drop the last supporting image alone into row 2, so it never
 reads as a flat 3-column grid.
 
+### Scene flow (why one scene can never cover another)
+
+Overlap is only ever a *within-scene* trick (the `center-back`/`center-front`
+pair). Across scenes, the scroll must feel like sania's: one composition
+exits upward, the next enters below it — never stacked on top. That's
+guaranteed structurally, not just by convention:
+
+- Every `.gallery-scene` is a normal block-level grid in normal document
+  flow (`position:relative`, no `absolute`/`fixed`). Nothing takes a scene
+  out of flow, so the next scene can't help but start after it.
+- `.work-ph` (every image wrapper) is also plain `position:relative` — never
+  `sticky`. There's no scroll-linked mechanism anywhere that could make an
+  earlier image visually persist over a later scene.
+- `z-index` is only ever set on items *within* the same scene (the layered
+  pair). Nothing sets a cross-scene z-index, so stacking order never needs
+  to be reasoned about between compositions.
+- The `center-front` overlap uses a real `margin-top` (not `position:
+  absolute`/negative margins), which CSS Grid's row-sizing counts as part of
+  the item's box — so `.gallery-scene`'s own height always includes the full
+  visual extent of the overlap. A scene's rendered height already reserves
+  the composition's true "exit point"; the next scene can't start early.
+
+This was verified empirically (headless-browser scroll + `getBoundingClientRect`):
+every scene's bottom edge exactly matches its tallest item's bottom edge, and
+each next scene starts strictly after that with a consistent gap — at
+desktop, tablet, and mobile widths.
+
 ### Current composition plan (13 images)
 
 - **Scene 1** (orders 1–5) — sania's opening feel: `dominant-left` +

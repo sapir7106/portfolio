@@ -255,8 +255,12 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
    auto-placement stacks bands into rows/negative-space as they collide —
    there's no hard-coded "N images per row" anywhere. A `zIndex`/margin-top
    nudge on the center-back/center-front pair is what creates the one
-   deliberate layered overlap; everything else just tiles by column. */
-.gallery-hero{position:relative;z-index:5;background:var(--bg)} /* hero stays above sticky images */
+   deliberate layered overlap; everything else just tiles by column.
+   Every scene stays in normal document flow (position:relative, never
+   sticky/absolute/fixed) so a later scene always pushes the previous one
+   up and can never cover or float on top of it — overlap only ever
+   happens between two images inside the SAME scene. */
+.gallery-hero{position:relative;z-index:5;background:var(--bg)}
 .s-work{position:relative;width:100%;z-index:1;padding-bottom:64px}
 .gallery-scene{
   display:grid;
@@ -270,7 +274,8 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 .gallery-scene + .gallery-scene{ margin-top:clamp(56px, 9vw, 160px); } /* breathing room between compositions */
 .work-ph{
   width:100%;display:block;
-  position:sticky;top:0;
+  position:relative; /* scoped to its own scene — never sticky/fixed, so a
+                         later scene can never visually cover an earlier one */
   border-radius:3px;
   grid-column:var(--desktop-col, span 4);
   grid-row:var(--desktop-row, auto);
@@ -299,7 +304,6 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .work-ph{
     grid-column:var(--tablet-col, span 4)!important;
     grid-row:auto!important;
-    top:0!important;position:relative!important;
     margin:0!important;padding-bottom:0!important;
     align-self:auto!important;z-index:1!important;
   }
