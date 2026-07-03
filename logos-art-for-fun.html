@@ -533,6 +533,21 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 <link rel="stylesheet" href="cursor.css">
 </head>
 <body data-content="logos-art-for-fun-content.txt" data-about="light">
+<script>
+function resolveGalleryImg(img) {
+  const base = img.src.replace(/\.[^.]+$/, '');
+  const exts = ['jpg','JPG','jpeg','png','PNG','gif','GIF','webp'];
+  let i = 0;
+  function next() {
+    if (i >= exts.length) { img.remove(); return; }
+    const probe = new Image();
+    probe.onload = () => { img.src = probe.src; };
+    probe.onerror = next;
+    probe.src = base + '.' + exts[i++];
+  }
+  next();
+}
+</script>
 
 <aside class="sidebar">
   <button class="sb-about" onclick="toggleAbout(event)">About</button>
@@ -552,78 +567,78 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 <div class="s-work">
 
   <div class="work-grid">
-    <div class="work-ph g1-1" style="background:#E8E4DB" id="GALLERY-01"><span class="ph-label">GALLERY-01</span><img data-gallery="GALLERY-01" src="" alt="GALLERY-01" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g1-2" style="background:#DDD8CE" id="GALLERY-02"><span class="ph-label">GALLERY-02</span><img data-gallery="GALLERY-02" src="" alt="GALLERY-02" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g1-3" style="background:#E3E0D6;grid-column:span 4;margin-top:1rem" id="GALLERY-03"><span class="ph-label">GALLERY-03</span><img data-gallery="GALLERY-03" src="" alt="GALLERY-03" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g1-4" style="background:#D8D3C8;grid-column:span 3;margin-top:1rem" id="GALLERY-04"><span class="ph-label">GALLERY-04</span><img data-gallery="GALLERY-04" src="" alt="GALLERY-04" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g1-5" style="background:#E6E2D8" id="GALLERY-05"><span class="ph-label">GALLERY-05</span><img data-gallery="GALLERY-05" src="" alt="GALLERY-05" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g1-1" style="background:#E8E4DB" id="GALLERY-01"><span class="ph-label">GALLERY-01</span><img src="/portfolio images/logos-art-for-fun/GALLERY-01" alt="GALLERY-01" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g1-2" style="background:#DDD8CE" id="GALLERY-02"><span class="ph-label">GALLERY-02</span><img src="/portfolio images/logos-art-for-fun/GALLERY-02" alt="GALLERY-02" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g1-3" style="background:#E3E0D6;grid-column:span 4;margin-top:1rem" id="GALLERY-03"><span class="ph-label">GALLERY-03</span><img src="/portfolio images/logos-art-for-fun/GALLERY-03" alt="GALLERY-03" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g1-4" style="background:#D8D3C8;grid-column:span 3;margin-top:1rem" id="GALLERY-04"><span class="ph-label">GALLERY-04</span><img src="/portfolio images/logos-art-for-fun/GALLERY-04" alt="GALLERY-04" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g1-5" style="background:#E6E2D8" id="GALLERY-05"><span class="ph-label">GALLERY-05</span><img src="/portfolio images/logos-art-for-fun/GALLERY-05" alt="GALLERY-05" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid">
-    <div class="work-ph g2-1" style="background:#DEDAD0" id="GALLERY-06"><span class="ph-label">GALLERY-06</span><img data-gallery="GALLERY-06" src="" alt="GALLERY-06" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g2-2" style="background:#E0DCD2" id="GALLERY-07"><span class="ph-label">GALLERY-07</span><img data-gallery="GALLERY-07" src="" alt="GALLERY-07" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g2-3" style="background:#D5D0C5" id="GALLERY-08"><span class="ph-label">GALLERY-08</span><img data-gallery="GALLERY-08" src="" alt="GALLERY-08" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g2-4" style="background:#EAE6DC" id="GALLERY-09"><span class="ph-label">GALLERY-09</span><img data-gallery="GALLERY-09" src="" alt="GALLERY-09" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g2-1" style="background:#DEDAD0" id="GALLERY-06"><span class="ph-label">GALLERY-06</span><img src="/portfolio images/logos-art-for-fun/GALLERY-06" alt="GALLERY-06" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g2-2" style="background:#E0DCD2" id="GALLERY-07"><span class="ph-label">GALLERY-07</span><img src="/portfolio images/logos-art-for-fun/GALLERY-07" alt="GALLERY-07" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g2-3" style="background:#D5D0C5" id="GALLERY-08"><span class="ph-label">GALLERY-08</span><img src="/portfolio images/logos-art-for-fun/GALLERY-08" alt="GALLERY-08" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g2-4" style="background:#EAE6DC" id="GALLERY-09"><span class="ph-label">GALLERY-09</span><img src="/portfolio images/logos-art-for-fun/GALLERY-09" alt="GALLERY-09" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid">
-    <div class="work-ph g3-1" style="background:#D9D5CB" id="GALLERY-10"><span class="ph-label">GALLERY-10</span><img data-gallery="GALLERY-10" src="" alt="GALLERY-10" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
+    <div class="work-ph g3-1" style="background:#D9D5CB" id="GALLERY-10"><span class="ph-label">GALLERY-10</span><img src="/portfolio images/logos-art-for-fun/GALLERY-10" alt="GALLERY-10" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid">
-    <div class="work-ph g4-1" style="background:#E5E1D7" id="GALLERY-11"><span class="ph-label">GALLERY-11</span><img data-gallery="GALLERY-11" src="" alt="GALLERY-11" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g4-2" style="background:#DAD6CC" id="GALLERY-12"><span class="ph-label">GALLERY-12</span><img data-gallery="GALLERY-12" src="" alt="GALLERY-12" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g4-3" style="background:#E7E3D9" id="GALLERY-13"><span class="ph-label">GALLERY-13</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-13.jpg" alt="GALLERY-13" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g4-1" style="background:#E5E1D7" id="GALLERY-11"><span class="ph-label">GALLERY-11</span><img src="/portfolio images/logos-art-for-fun/GALLERY-11" alt="GALLERY-11" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g4-2" style="background:#DAD6CC" id="GALLERY-12"><span class="ph-label">GALLERY-12</span><img src="/portfolio images/logos-art-for-fun/GALLERY-12" alt="GALLERY-12" class="work-img-real" loading="lazy" decoding="async" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g4-3" style="background:#E7E3D9" id="GALLERY-13"><span class="ph-label">GALLERY-13</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-13" alt="GALLERY-13" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid">
-    <div class="work-ph g5-1" style="background:#DCDBCF" id="GALLERY-14"><span class="ph-label">GALLERY-14</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-14.jpg" alt="GALLERY-14" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g5-2" style="background:#E2DED4" id="GALLERY-15"><span class="ph-label">GALLERY-15</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-15.jpg" alt="GALLERY-15" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g5-3 hidden-item" style="background:#D7D3C9" id="GALLERY-16"><span class="ph-label">GALLERY-16</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-16.png" alt="GALLERY-16" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g5-1" style="background:#DCDBCF" id="GALLERY-14"><span class="ph-label">GALLERY-14</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-14" alt="GALLERY-14" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g5-2" style="background:#E2DED4" id="GALLERY-15"><span class="ph-label">GALLERY-15</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-15" alt="GALLERY-15" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g5-3 hidden-item" style="background:#D7D3C9" id="GALLERY-16"><span class="ph-label">GALLERY-16</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-16" alt="GALLERY-16" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g6-1 hidden-item" style="background:#E9E5DB" id="GALLERY-17"><span class="ph-label">GALLERY-17</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-17.png" alt="GALLERY-17" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g6-2 hidden-item" style="background:#DCD8CE" id="GALLERY-18"><span class="ph-label">GALLERY-18</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-18.png" alt="GALLERY-18" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g6-1 hidden-item" style="background:#E9E5DB" id="GALLERY-17"><span class="ph-label">GALLERY-17</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-17" alt="GALLERY-17" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g6-2 hidden-item" style="background:#DCD8CE" id="GALLERY-18"><span class="ph-label">GALLERY-18</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-18" alt="GALLERY-18" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g7-1 hidden-item" style="background:#E4E0D6" id="GALLERY-19"><span class="ph-label">GALLERY-19</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-19.png" alt="GALLERY-19" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g7-2 hidden-item" style="background:#D6D2C8" id="GALLERY-20"><span class="ph-label">GALLERY-20</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-20.png" alt="GALLERY-20" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g7-1 hidden-item" style="background:#E4E0D6" id="GALLERY-19"><span class="ph-label">GALLERY-19</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-19" alt="GALLERY-19" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g7-2 hidden-item" style="background:#D6D2C8" id="GALLERY-20"><span class="ph-label">GALLERY-20</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-20" alt="GALLERY-20" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g8-1 hidden-item" style="background:#E8E4DB" id="GALLERY-21"><span class="ph-label">GALLERY-21</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-21.png" alt="GALLERY-21" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g8-2 hidden-item" style="background:#DDD8CE" id="GALLERY-22"><span class="ph-label">GALLERY-22</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-22.png" alt="GALLERY-22" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g8-3 hidden-item" style="background:#E3E0D6" id="GALLERY-23"><span class="ph-label">GALLERY-23</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-23.png" alt="GALLERY-23" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g8-1 hidden-item" style="background:#E8E4DB" id="GALLERY-21"><span class="ph-label">GALLERY-21</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-21" alt="GALLERY-21" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g8-2 hidden-item" style="background:#DDD8CE" id="GALLERY-22"><span class="ph-label">GALLERY-22</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-22" alt="GALLERY-22" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g8-3 hidden-item" style="background:#E3E0D6" id="GALLERY-23"><span class="ph-label">GALLERY-23</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-23" alt="GALLERY-23" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g9-1 hidden-item" style="background:#D8D3C8" id="GALLERY-24"><span class="ph-label">GALLERY-24</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-24.png" alt="GALLERY-24" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g9-2 hidden-item" style="background:#E6E2D8" id="GALLERY-25"><span class="ph-label">GALLERY-25</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-25.png" alt="GALLERY-25" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g9-3 hidden-item" style="background:#DEDAD0" id="GALLERY-26"><span class="ph-label">GALLERY-26</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-26.png" alt="GALLERY-26" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g9-1 hidden-item" style="background:#D8D3C8" id="GALLERY-24"><span class="ph-label">GALLERY-24</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-24" alt="GALLERY-24" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g9-2 hidden-item" style="background:#E6E2D8" id="GALLERY-25"><span class="ph-label">GALLERY-25</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-25" alt="GALLERY-25" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g9-3 hidden-item" style="background:#DEDAD0" id="GALLERY-26"><span class="ph-label">GALLERY-26</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-26" alt="GALLERY-26" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g10-1 hidden-item" style="background:#E0DCD2" id="GALLERY-27"><span class="ph-label">GALLERY-27</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-27.png" alt="GALLERY-27" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g10-2 hidden-item" style="background:#D5D0C5" id="GALLERY-28"><span class="ph-label">GALLERY-28</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-28.png" alt="GALLERY-28" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g10-3 hidden-item" style="background:#EAE6DC" id="GALLERY-29"><span class="ph-label">GALLERY-29</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-29.png" alt="GALLERY-29" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g10-1 hidden-item" style="background:#E0DCD2" id="GALLERY-27"><span class="ph-label">GALLERY-27</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-27" alt="GALLERY-27" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g10-2 hidden-item" style="background:#D5D0C5" id="GALLERY-28"><span class="ph-label">GALLERY-28</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-28" alt="GALLERY-28" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g10-3 hidden-item" style="background:#EAE6DC" id="GALLERY-29"><span class="ph-label">GALLERY-29</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-29" alt="GALLERY-29" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g11-1 hidden-item" style="background:#D9D5CB" id="GALLERY-30"><span class="ph-label">GALLERY-30</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-30.png" alt="GALLERY-30" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g11-2 hidden-item" style="background:#E5E1D7" id="GALLERY-31"><span class="ph-label">GALLERY-31</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-31.png" alt="GALLERY-31" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g11-1 hidden-item" style="background:#D9D5CB" id="GALLERY-30"><span class="ph-label">GALLERY-30</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-30" alt="GALLERY-30" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g11-2 hidden-item" style="background:#E5E1D7" id="GALLERY-31"><span class="ph-label">GALLERY-31</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-31" alt="GALLERY-31" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g12-1 hidden-item" style="background:#DAD6CC" id="GALLERY-32"><span class="ph-label">GALLERY-32</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-32.png" alt="GALLERY-32" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g12-2 hidden-item" style="background:#E7E3D9" id="GALLERY-33"><span class="ph-label">GALLERY-33</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-33.png" alt="GALLERY-33" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g12-3 hidden-item" style="background:#DCDBCF" id="GALLERY-34"><span class="ph-label">GALLERY-34</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-34.png" alt="GALLERY-34" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g12-1 hidden-item" style="background:#DAD6CC" id="GALLERY-32"><span class="ph-label">GALLERY-32</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-32" alt="GALLERY-32" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g12-2 hidden-item" style="background:#E7E3D9" id="GALLERY-33"><span class="ph-label">GALLERY-33</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-33" alt="GALLERY-33" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g12-3 hidden-item" style="background:#DCDBCF" id="GALLERY-34"><span class="ph-label">GALLERY-34</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-34" alt="GALLERY-34" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g13-1 hidden-item" style="background:#E2DED4" id="GALLERY-35"><span class="ph-label">GALLERY-35</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-35.png" alt="GALLERY-35" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g13-2 hidden-item" style="background:#D7D3C9" id="GALLERY-36"><span class="ph-label">GALLERY-36</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-36.png" alt="GALLERY-36" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g13-1 hidden-item" style="background:#E2DED4" id="GALLERY-35"><span class="ph-label">GALLERY-35</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-35" alt="GALLERY-35" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g13-2 hidden-item" style="background:#D7D3C9" id="GALLERY-36"><span class="ph-label">GALLERY-36</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-36" alt="GALLERY-36" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g14-1 hidden-item" style="background:#E9E5DB" id="GALLERY-37"><span class="ph-label">GALLERY-37</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-37.png" alt="GALLERY-37" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g14-1 hidden-item" style="background:#E9E5DB" id="GALLERY-37"><span class="ph-label">GALLERY-37</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-37" alt="GALLERY-37" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g15-1 hidden-item" style="background:#DCD8CE" id="GALLERY-38"><span class="ph-label">GALLERY-38</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-38.png" alt="GALLERY-38" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g15-2 hidden-item" style="background:#E4E0D6" id="GALLERY-39"><span class="ph-label">GALLERY-39</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-39.png" alt="GALLERY-39" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g15-3 hidden-item" style="background:#D6D2C8" id="GALLERY-40"><span class="ph-label">GALLERY-40</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-40.png" alt="GALLERY-40" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g15-1 hidden-item" style="background:#DCD8CE" id="GALLERY-38"><span class="ph-label">GALLERY-38</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-38" alt="GALLERY-38" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g15-2 hidden-item" style="background:#E4E0D6" id="GALLERY-39"><span class="ph-label">GALLERY-39</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-39" alt="GALLERY-39" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g15-3 hidden-item" style="background:#D6D2C8" id="GALLERY-40"><span class="ph-label">GALLERY-40</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-40" alt="GALLERY-40" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
   <div class="work-grid hidden-grid">
-    <div class="work-ph g16-1 hidden-item" style="background:#E8E4DB" id="GALLERY-41"><span class="ph-label">GALLERY-41</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-41.png" alt="GALLERY-41" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g16-2 hidden-item" style="background:#DDD8CE" id="GALLERY-42"><span class="ph-label">GALLERY-42</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-42.png" alt="GALLERY-42" class="work-img-real" onerror="this.remove()"></div>
+    <div class="work-ph g16-1 hidden-item" style="background:#E8E4DB" id="GALLERY-41"><span class="ph-label">GALLERY-41</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-41" alt="GALLERY-41" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
+    <div class="work-ph g16-2 hidden-item" style="background:#DDD8CE" id="GALLERY-42"><span class="ph-label">GALLERY-42</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-42" alt="GALLERY-42" class="work-img-real" onerror="resolveGalleryImg(this)"></div>
   </div>
 
 </div><!-- /s-work -->
@@ -653,20 +668,6 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 </div><!-- /page -->
 
 <script>
-function resolveGalleryImage(baseName, el) {
-  const extensions = ['jpg', 'JPG', 'jpeg', 'png', 'PNG', 'gif', 'GIF', 'webp'];
-  const base = '/portfolio images/logos-art-for-fun/' + baseName;
-
-  function tryNext(i) {
-    if (i >= extensions.length) return;
-    const img = new Image();
-    img.onload = () => { el.src = img.src; };
-    img.onerror = () => tryNext(i + 1);
-    img.src = base + '.' + extensions[i];
-  }
-  tryNext(0);
-}
-
 document.addEventListener('keydown',e=>{
   if(e.key==='l'||e.key==='L') document.body.classList.toggle('show-labels');
   if(e.key==='Escape') closeAbout();
@@ -809,10 +810,6 @@ if (currentIdx === 0) {
   if (prevBtn) prevBtn.href = getNav(-1);
 }
 if (nextBtn) nextBtn.href = getNav(+1);
-
-document.querySelectorAll('img[data-gallery]').forEach(el => {
-  resolveGalleryImage(el.dataset.gallery, el);
-});
 </script>
 <script src="about-loader.js"></script>
 <script src="about-content-loader.js"></script>
