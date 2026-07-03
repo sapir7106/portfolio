@@ -99,6 +99,7 @@
 .about-section-title {
   font-size: 14px; font-weight: 300; letter-spacing: .05em;
   text-transform: uppercase; margin-bottom: 16px; margin-top: 0;
+  line-height: normal;
   color: var(--p-muted, #6b6a5e);
 }
 .about-exp-list { list-style: none; }
@@ -145,11 +146,12 @@
 /* ── Contact ── */
 /* Vertical column by default; a full single-line row only once the
    container is wide enough to fit every item — never a partial wrap. */
-.about-contact-list { list-style: none; display: block; }
-.about-contact-list li { display: block; margin-bottom: 8px; }
+.about-contact-list { list-style: none; display: block; line-height: normal; }
+.about-contact-list li { display: block; margin-bottom: 8px; line-height: normal; }
 .about-contact-list a {
   font-size: 15px; color: var(--p-link, #2F2E2E);
   text-decoration: none; font-weight: 400;
+  line-height: normal;
   display: block; position: relative; transition: color .2s;
 }
 .about-contact-list a:not(.about-cv):hover { color: #BADA55; }

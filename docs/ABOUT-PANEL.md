@@ -79,6 +79,27 @@ items + 1 orphan) at in-between widths. Don't reintroduce flex/inline
 display on these three selectors without re-verifying no partial wrap
 is possible.
 
+## Explicit `line-height: normal` on Contact/section-title text
+
+`.about-section-title`, `.about-contact-list`, its `li`, and its `a`
+all set `line-height: normal` explicitly. This isn't decorative — it's
+there because `about-panel.html` is injected into every page, and
+different host pages set very different `body` line-heights (e.g.
+case-study pages like `agents.html` use `body{line-height:1.72}`,
+while `index.html`'s `body` rule doesn't set `line-height` at all). Any
+about-panel element that doesn't pin its own `line-height` inherits
+whatever the *host page* happens to use, which showed up as light-mode
+Contact links rendering visibly taller than the identical dark-mode
+ones (measured: ~25.8px vs ~17px per link at the same 15px font-size)
+and contributed a few px of otherwise-unexplained scroll on light/
+case-study pages specifically. `line-height: normal` breaks that
+inheritance and makes the rendered size depend only on the element's
+own font, not on which page injected it — the same reasoning already
+applied to `.about-body`, `.about-quote`, and `.about-exp-list li`,
+which all set their own explicit line-height for the same reason. If
+you add a new text element to `about-panel.html`, give it an explicit
+`line-height` rather than leaving it to inherit.
+
 ## Desktop-only spacing (≥1201px), fits 100vh without forcing it
 
 `@media (min-width: 1201px)` (everything above the ≤1200px tablet
