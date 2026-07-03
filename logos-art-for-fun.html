@@ -248,26 +248,44 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 .gallery-hero h1 em{font-style:italic;font-weight:400}
 .gallery-lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch;margin:0 auto}
 
-/* ── GALLERY FLOW — normal document flow, rows wrap and push each other,
-   no sticky/absolute positioning, no cropping. Occasional full-width rows
-   for rhythm. Per-image size is tuned only via --scale (see manifest). ── */
+/* ── GALLERY FLOW — grouped scroll composition, normal document flow.
+   Groups (4–5 images) stack vertically and push each other on scroll.
+   Each group is split into rows of 1–2 images (never a flat wide row).
+   No sticky/absolute positioning, no overlap, no cropping. Per-image size
+   is tuned only via --scale (real flex-basis/max-width, not transform). ── */
 .gallery-hero{position:relative;z-index:5;background:var(--bg)}
 .s-work{position:relative;width:100%;z-index:1}
 .gallery-flow{
   display:flex;
-  flex-wrap:wrap;
-  align-items:flex-start;
-  gap:32px;
+  flex-direction:column;
+  gap:56px;
   max-width:1984px;
   margin:0 auto;
   padding:0 40px 120px;
+}
+.gallery-group{
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+}
+.gallery-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  gap:32px;
 }
 .gallery-item{
   flex-grow:var(--scale,1);
   flex-shrink:1;
   flex-basis:360px;
+  max-width:min(100%,720px);
+  align-self:var(--align,center);
   display:block;
 }
+/* a row with a single image (no --full) — contained, centered, not edge-to-edge */
+.gallery-row > .gallery-item:only-child{margin:0 auto}
+/* explicit wide/full visual break (layout:'full' in the manifest) */
+.gallery-row--full{justify-content:center}
 .gallery-item--full{
   flex-basis:100%;
   max-width:min(100%,calc(1100px * var(--scale,1)));
@@ -281,13 +299,20 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 }
 
 @media(max-width:900px){
-  .gallery-flow{gap:20px;padding:0 20px 64px}
-  .gallery-item{flex-basis:280px}
-  .gallery-item--full{flex-basis:100%}
+  .gallery-flow{gap:40px;padding:0 20px 64px}
+  .gallery-group{gap:24px}
+  .gallery-row{gap:20px}
+  .gallery-item{flex-basis:260px;max-width:min(100%,560px)}
+  .gallery-item--full{flex-basis:100%;max-width:min(100%,calc(900px * var(--scale,1)))}
 }
+/* mobile — Sania rhythm: full/solo images stack at 100%, paired rows keep
+   a clean 2-column split (never forced to 1-col, never cropped/tiny) */
 @media(max-width:600px){
-  .gallery-flow{gap:14px;padding:0 16px 48px}
-  .gallery-item,.gallery-item--full{flex-basis:100%;max-width:100%}
+  .gallery-flow{gap:28px;padding:0 16px 48px}
+  .gallery-group{gap:16px}
+  .gallery-row{gap:12px}
+  .gallery-item{flex-grow:var(--scale,1);flex-shrink:1;flex-basis:0;max-width:none}
+  .gallery-item--full{flex-basis:100%;max-width:100%}
 }
 
 /* hero-shot — always centred, never cropped */
@@ -495,50 +520,104 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 
 <script>
 // ── GALLERY MANIFEST ──────────────────────────────────────
-// One entry per image, in display order. This is the only place to edit:
-//   order   → reorder items in this array
+// One entry per image. This is the only place to edit the composition:
+//   order   → sort key; change the number to reorder without moving lines
 //   visible → set to false to hide an item without deleting it
-//   scale   → 1 = default size, 0.8 = smaller, 1.2 = larger (relative to
-//             its row-mates; a full-width row scales its max-width instead)
+//   group   → which vertical group this image belongs to (groups stack in
+//             ascending order, each one pushes the next on scroll)
+//   row     → which row *within its group* this image belongs to (rows
+//             stack top-to-bottom inside a group). Keep each row to 1–2
+//             images — that's the whole "Sania rhythm": groups of 4–5
+//             images split into small rows, never one flat wide row.
+//   layout  → 'row' (default) sizes the image within its row/group like
+//             normal. 'full' makes it a deliberate wide/full-width visual
+//             break (used sparingly — one per "single-image" group).
+//   align   → 'start' | 'center' | 'end' — vertical alignment of this
+//             image against its row-mates (rows can mix different aspect
+//             ratios; this controls whether they line up top/middle/bottom).
+//   scale   → 1 = default size, 0.8 = smaller, 1.2 = larger. Changes real
+//             layout width (flex-basis/max-width), never transform:scale().
 // `file` must be the exact filename (with extension) in
 // "portfolio images/logos-art-for-fun/". Only list files that actually exist —
 // unlisted/missing files are never rendered (no placeholders).
 const GALLERY_ITEMS = [
-  { file: 'GALLERY-01.jpg', visible: true, scale: 1 },
-  { file: 'GALLERY-02.png', visible: true, scale: 1 },
-  { file: 'GALLERY-03.png', visible: true, scale: 1 },
-  { file: 'GALLERY-04.png', visible: true, scale: 1 },
-  { file: 'GALLERY-05.jpg', visible: true, scale: 1 },
-  { file: 'GALLERY-06.jpg', visible: true, scale: 1 },
-  { file: 'GALLERY-07.png', visible: true, scale: 1 },
-  { file: 'GALLERY-08.GIF', visible: true, scale: 1 },
-  { file: 'GALLERY-09.jpg', visible: true, scale: 1 },
-  { file: 'GALLERY-10.jpg', visible: true, scale: 1 },
-  { file: 'GALLERY-11.jpg', visible: true, scale: 1 },
-  { file: 'GALLERY-12.jpg', visible: true, scale: 1 },
-  { file: 'GALLERY-13.jpg', visible: true, scale: 1 },
-  { file: 'GALLERY-14.jpg', visible: true, scale: 1 },
-  { file: 'GALLERY-15.jpg', visible: true, scale: 1 },
+  // Group 1 (5 images) — rhythm: 1 / 2 / 2
+  { file: 'GALLERY-01.jpg', order: 10,  visible: true, group: 1, row: 1, layout: 'row', align: 'center', scale: 1.15 },
+  { file: 'GALLERY-02.png', order: 20,  visible: true, group: 1, row: 2, layout: 'row', align: 'center', scale: 1 },
+  { file: 'GALLERY-03.png', order: 30,  visible: true, group: 1, row: 2, layout: 'row', align: 'center', scale: 1 },
+  { file: 'GALLERY-04.png', order: 40,  visible: true, group: 1, row: 3, layout: 'row', align: 'center', scale: 1 },
+  { file: 'GALLERY-05.jpg', order: 50,  visible: true, group: 1, row: 3, layout: 'row', align: 'center', scale: 1 },
+  // Group 2 (4 images) — rhythm: 2 / 2
+  { file: 'GALLERY-06.jpg', order: 60,  visible: true, group: 2, row: 1, layout: 'row', align: 'center', scale: 1 },
+  { file: 'GALLERY-07.png', order: 70,  visible: true, group: 2, row: 1, layout: 'row', align: 'center', scale: 1 },
+  { file: 'GALLERY-08.GIF', order: 80,  visible: true, group: 2, row: 2, layout: 'row', align: 'center', scale: 1 },
+  { file: 'GALLERY-09.jpg', order: 90,  visible: true, group: 2, row: 2, layout: 'row', align: 'center', scale: 1 },
+  // Group 3 (1 image) — the wide/full visual break
+  { file: 'GALLERY-10.jpg', order: 100, visible: true, group: 3, row: 1, layout: 'full', align: 'center', scale: 1 },
+  // Group 4 (3 images) — rhythm: 1 / 2
+  { file: 'GALLERY-11.jpg', order: 110, visible: true, group: 4, row: 1, layout: 'row', align: 'center', scale: 1.1 },
+  { file: 'GALLERY-12.jpg', order: 120, visible: true, group: 4, row: 2, layout: 'row', align: 'center', scale: 1 },
+  { file: 'GALLERY-13.jpg', order: 130, visible: true, group: 4, row: 2, layout: 'row', align: 'center', scale: 1 },
+  // Group 5 (2 images) — continuing the rhythm for the two extra uploaded files
+  { file: 'GALLERY-14.jpg', order: 140, visible: true, group: 5, row: 1, layout: 'row', align: 'center', scale: 1 },
+  { file: 'GALLERY-15.jpg', order: 150, visible: true, group: 5, row: 1, layout: 'row', align: 'center', scale: 1 },
 ];
 const GALLERY_BASE = '/portfolio images/logos-art-for-fun/';
-const GALLERY_FULL_WIDTH_EVERY = 5; // every Nth visible item becomes an occasional full-width row
 
 (function renderGallery() {
   const root = document.getElementById('galleryFlow');
   if (!root) return;
-  const visible = GALLERY_ITEMS.filter(item => item.visible !== false);
-  visible.forEach((item, i) => {
-    const cell = document.createElement('div');
-    cell.className = 'gallery-item';
-    if ((i + 1) % GALLERY_FULL_WIDTH_EVERY === 0) cell.classList.add('gallery-item--full');
-    cell.style.setProperty('--scale', item.scale ?? 1);
-    const img = document.createElement('img');
-    img.src = GALLERY_BASE + item.file;
-    img.alt = item.file.replace(/\.[^.]+$/, '');
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    cell.appendChild(img);
-    root.appendChild(cell);
+
+  const visible = GALLERY_ITEMS
+    .filter(item => item.visible !== false)
+    .slice()
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+
+  // bucket into group → row → [items], preserving manifest order within each row
+  const groups = new Map();
+  visible.forEach(item => {
+    const g = item.group ?? 0;
+    const r = item.row ?? 1;
+    if (!groups.has(g)) groups.set(g, new Map());
+    const rows = groups.get(g);
+    if (!rows.has(r)) rows.set(r, []);
+    rows.get(r).push(item);
+  });
+
+  const alignMap = { start: 'flex-start', center: 'center', end: 'flex-end' };
+
+  [...groups.keys()].sort((a, b) => a - b).forEach(groupKey => {
+    const groupEl = document.createElement('div');
+    groupEl.className = 'gallery-group';
+    const rows = groups.get(groupKey);
+
+    [...rows.keys()].sort((a, b) => a - b).forEach(rowKey => {
+      const rowItems = rows.get(rowKey);
+      const rowEl = document.createElement('div');
+      rowEl.className = 'gallery-row';
+      if (rowItems.some(it => it.layout === 'full')) rowEl.classList.add('gallery-row--full');
+
+      rowItems.forEach(item => {
+        const cell = document.createElement('div');
+        cell.className = 'gallery-item';
+        if (item.layout === 'full') cell.classList.add('gallery-item--full');
+        cell.style.setProperty('--scale', item.scale ?? 1);
+        cell.style.setProperty('--align', alignMap[item.align] || 'center');
+
+        const img = document.createElement('img');
+        img.src = GALLERY_BASE + item.file;
+        img.alt = item.file.replace(/\.[^.]+$/, '');
+        img.loading = 'lazy';
+        img.decoding = 'async';
+
+        cell.appendChild(img);
+        rowEl.appendChild(cell);
+      });
+
+      groupEl.appendChild(rowEl);
+    });
+
+    root.appendChild(groupEl);
   });
 })();
 
