@@ -215,7 +215,7 @@
      vertical spacing so the panel fits 100vh without scroll at
      common desktop sizes; overflow-y:auto (set on #about-panel)
      still allows scrolling if content genuinely doesn't fit. */
-  #about-panel { padding-top: 28px; padding-bottom: 20px; }
+  #about-panel { padding-top: 28px; padding-bottom: 16px; }
   .about-quote { font-size: 32px; line-height: 1.2; margin-bottom: 16px; }
   .about-body p + p { margin-top: 10px; }
   .about-contact-top { margin-bottom: 20px; }
@@ -224,9 +224,17 @@
 @media (min-width: 1440px) {
   .about-quote { font-size: 42px; }
   .about-photo-inner { width: 88%; }
+  .about-body { font-size: 17px; line-height: 1.55; }
   .about-grid {
-    grid-template-columns: 480px minmax(0,200px) minmax(0,1200px);
+    grid-template-columns: 530px minmax(0,200px) minmax(0,1200px);
   }
+  #about-panel {
+    width: calc((100vw - var(--sw, var(--sidebar-w, 71px))) * 5 / 6 + 100px);
+  }
+  /* Pull the photo column halfway into the grid's 48px column-gap,
+     so only the exp<->photo gap is reduced (24px) without touching
+     the bio<->exp gap, which still uses the grid's normal 48px. */
+  .about-photo { margin-left: -24px; }
 }
 </style>
 

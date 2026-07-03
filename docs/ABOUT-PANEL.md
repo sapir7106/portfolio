@@ -49,7 +49,7 @@ assigned to it (leftover from before Contact moved into `.about-exp-col`)
 cell, but don't assign a real element `grid-area: contact` without
 adding it back everywhere the name is expected.
 
-## Fixed vs flexible tracks (why 480px isn't `minmax(0,480px)`)
+## Fixed vs flexible tracks (why it's `480px`/`530px`, not `minmax(0,...)`)
 
 CSS Grid distributes leftover space **equally** among tracks that
 haven't hit their own cap yet, not proportionally to each track's max.
@@ -58,10 +58,15 @@ column's generous 1200px cap meant it kept pulling space away from bio
 at ordinary desktop widths (e.g. bio only reached ~420-450px at a
 1440px viewport, well under its intended 480px) — taller wrapped text
 than expected, contributing to unwanted scroll. Switching bio to a
-**plain `480px`** (no `minmax`) makes it a fixed-size track that always
-gets exactly that width regardless of how the other columns compete for
-space. Keep this in mind before "fixing" it back to `minmax(0,480px)`
-for a future width value.
+**plain pixel value** (no `minmax`) makes it a fixed-size track that
+always gets exactly that width regardless of how the other columns
+compete for space. Keep this in mind before "fixing" it back to a
+`minmax(0,...)` form for a future width value.
+
+The bio column is `480px` for the `1201–1439px` desktop tier and
+`530px` at `≥1440px` (its own override inside that media query) — two
+different fixed values, not one shared variable, so if the width needs
+to change, check both.
 
 ## Contact list: always one item per line
 
@@ -80,14 +85,31 @@ is possible.
 breakpoint) tightens quote/body/contact spacing and shrinks `#about-panel`'s
 top/bottom padding specifically so the panel's content fits within
 `100vh` at common desktop sizes (1280×800 up to 1920×1080, verified
-empirically) without a scrollbar. `@media (min-width: 1440px)` layers a
-larger quote (42px vs 32px) and a bigger photo on top of that. Neither
-rule touches `overflow` on `#about-panel` — it stays `overflow-y: auto`
-(set in the base rule) at every breakpoint, so a genuinely short
-viewport (e.g. a non-maximized ~700px-tall window) still scrolls instead
-of clipping content. Don't reach for `overflow: hidden` here — it was
-tried before and explicitly rejected because it blocks legitimate
-scrolling on short windows.
+empirically) without a scrollbar.
+
+`@media (min-width: 1440px)` layers more on top of that tier:
+- quote 42px (vs 32px in the 1201–1439px tier)
+- body text 17px, with `line-height: 1.55` (tightened from the base
+  1.7 specifically to offset the larger font-size and keep the
+  no-scroll fit — the 15px/1.7 base combo is otherwise untouched)
+- bio column 530px (see "Fixed vs flexible tracks")
+- `#about-panel` width formula gets a flat `+ 100px` on top of the
+  usual `(100vw - sidebar) * 5/6`
+- photo column pulled 24px left (`.about-photo { margin-left: -24px }`)
+  to visually halve just the exp↔photo gap (24px instead of the
+  grid's normal 48px `column-gap`) without touching the bio↔exp gap.
+  This is a deliberate hack: CSS Grid's `column-gap` is a single value
+  applied to every column boundary, so there's no native way to give
+  one boundary a different gap. A negative margin on the item after
+  the gap is the standard workaround — it eats into empty gutter
+  space, not into either column's actual content box.
+
+Neither media query touches `overflow` on `#about-panel` — it stays
+`overflow-y: auto` (set in the base rule) at every breakpoint, so a
+genuinely short viewport (e.g. a non-maximized ~800px-tall window at
+1440px wide) still scrolls a few px instead of clipping content. Don't
+reach for `overflow: hidden` here — it was tried before and explicitly
+rejected because it blocks legitimate scrolling on short windows.
 
 ## Arrow glyphs
 
