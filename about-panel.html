@@ -84,13 +84,13 @@
 /* ── Grid ── */
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0,720px) minmax(0,200px) minmax(0,1200px);
-  grid-template-areas: "bio exp photo" "contact exp photo";
+  grid-template-columns: minmax(0,600px) minmax(0,200px) minmax(0,1200px);
+  grid-template-areas: "bio exp photo";
   gap: 40px 48px; margin: 0; align-items: start;
 }
 .about-bio-col { grid-area: bio; }
 .about-exp-col { grid-area: exp; }
-.about-contact-col { grid-area: contact; margin-top: -16px; container-type: inline-size; }
+.about-contact-top { margin-bottom: 28px; }
 
 /* ── Typography ── */
 .about-quote {
@@ -182,7 +182,7 @@
   display: flex; align-items: center; justify-content: center; width: 100%;
 }
 .about-photo-inner { width: 75%; max-width: 900px; }
-.about-photo-img { width: 100%; height: auto; object-fit: contain; border-radius: 6px; display: block; }
+.about-photo-img { width: 100%; height: auto; object-fit: contain; object-position: center top; border-radius: 12px; display: block; }
 .about-photo-placeholder {
   width: 100%; aspect-ratio: 2/3; border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
@@ -223,22 +223,17 @@
   /* smaller quote + tighter spacing */
   .about-quote {
     font-size: clamp(20px, 2vw, 30px);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
   .about-back-btn {
     margin-bottom: 18px;
   }
   .about-body {
     font-size: 15.5px;
-    line-height: 1.65;
+    line-height: 1.62;
   }
   .about-body p + p {
     margin-top: 11px;
-  }
-
-  /* hide the "Contact" heading */
-  .about-contact-title {
-    display: none;
   }
 
   /* 32px gap between bio and contact row (contact sits in col 1, below the bio) */
@@ -281,24 +276,24 @@
         <p>I trained at Shenkar College in Visual Communication, and I still keep an active artistic practice on the side: drawing, sculpture, mixed media. It shapes how I approach product work, trusting intuition early and refining ruthlessly later.</p>
       </div>
     </div>
-    <div class="about-contact-col">
-      <h3 class="about-section-title about-contact-title">Contact</h3>
-      <ul class="about-contact-list">
-        <li><a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></li>
-        <li><a href="tel:+972523665667">+972-523-665-667</a></li>
-        <li><a href="https://www.linkedin.com/in/sapirlevi7106/" target="_blank" rel="noopener">LinkedIn &#8599;&#xFE0E;</a></li>
-        <li><a href="https://wa.me/972523665667" target="_blank" rel="noopener">WhatsApp &#8599;&#xFE0E;</a></li>
-        <li><a href="https://drive.google.com/file/d/1mcmk3iBFR8mbZZvq7LialYeyE4NAfIPC/view?usp=sharing" target="_blank" rel="noopener" class="about-cv">Download CV &#8594;&#xFE0E;</a></li>
-      </ul>
-    </div>
     <div class="about-exp-col">
+      <div class="about-contact-top">
+        <h3 class="about-section-title">Contact</h3>
+        <ul class="about-contact-list">
+          <li><a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></li>
+          <li><a href="tel:+972523665667">+972-523-665-667</a></li>
+          <li><a href="https://www.linkedin.com/in/sapirlevi7106/" target="_blank" rel="noopener">LinkedIn &#8599;&#xFE0E;</a></li>
+          <li><a href="https://wa.me/972523665667" target="_blank" rel="noopener">WhatsApp &#8599;&#xFE0E;</a></li>
+          <li><a href="https://drive.google.com/file/d/1mcmk3iBFR8mbZZvq7LialYeyE4NAfIPC/view?usp=sharing" target="_blank" rel="noopener" class="about-cv">Download CV &#8594;&#xFE0E;</a></li>
+        </ul>
+      </div>
       <div class="about-exp-section">
         <h3 class="about-section-title">Experience</h3>
         <ul class="about-exp-list about-tl">
           <li><span class="about-company">PointFive</span><span class="about-role">Senior Product Designer</span><span class="about-date">2023 – Present</span></li>
           <li><span class="about-company">Laminar</span><span class="about-role">Senior Product Designer</span><span class="about-date">2022 – 2023</span></li>
-          <li><span class="about-company">BeyondMinds</span><span class="about-role">Product Designer · Enterprise AI</span><span class="about-date">2020 – 2022</span></li>
-          <li><span class="about-company">Sygnia</span><span class="about-role">Product Designer · Cyber</span><span class="about-date">2020 – 2022</span></li>
+          <li><span class="about-company">BeyondMinds</span><span class="about-role">Product Designer</span><span class="about-date">2020 – 2022</span></li>
+          <li><span class="about-company">Sygnia</span><span class="about-role">Product Designer</span><span class="about-date">2020 – 2022</span></li>
           <li><span class="about-company">Freelance</span><span class="about-role">UX/UI &amp; Graphic Design</span><span class="about-date">2017 – 2021</span></li>
           <li class="edu">
             <span class="about-company">Shenkar College</span>
