@@ -138,7 +138,7 @@
   display: flex; align-items: center; justify-content: center; width: 100%;
 }
 .about-photo-inner { width: 75%; max-width: 900px; }
-.about-photo-img { width: 100%; height: auto; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; display: block; }
+.about-photo-img { width: 100%; height: auto; object-fit: contain; border-radius: 6px; display: block; }
 .about-photo-placeholder {
   width: 100%; aspect-ratio: 2/3; border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
@@ -164,11 +164,10 @@
   #about-panel { padding: 40px 20px; }
   .about-photo { display: flex; position: static; order: -1; margin-bottom: 24px; }
   .about-photo-inner { width: 75%; max-width: 340px; }
-  .about-photo-img, .about-photo-placeholder { aspect-ratio: 4/3; }
+  .about-photo-placeholder { aspect-ratio: 4/3; }
 }
 @media (max-width:500px) {
   .about-photo-inner { width: 100%; max-width: 100%; }
-  .about-photo-img { aspect-ratio: auto; width: 100%; height: auto; object-fit: contain; }
 }
 </style>
 
