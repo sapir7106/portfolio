@@ -14,7 +14,6 @@
   --p-sub:     rgba(242,239,232,0.82);
   --p-muted:   #888;
   --p-close:   #F2EFE8;
-  --p-back:    #888;
   --p-link:    #F2EFE8;
   --p-cv:      #BADA55;
   --p-ph-bg:   rgba(255,255,255,0.05);
@@ -28,7 +27,6 @@
   --p-sub:     rgba(47,46,46,0.80);
   --p-muted:   #6b6a5e;
   --p-close:   #2F2E2E;
-  --p-back:    #2e2e2c;
   --p-link:    #2F2E2E;
   --p-cv:      #8067F2;
   --p-ph-bg:   rgba(0,0,0,0.03);
@@ -71,15 +69,6 @@
   transition: color .2s; z-index: 200;
 }
 .about-close-btn:hover { color: #BADA55; }
-
-.about-back-btn {
-  background: none; border: none; cursor: pointer;
-  color: var(--p-back, #888);
-  font-family: var(--sans); font-size: 13px; font-weight: 300;
-  padding: 0; margin-bottom: 28px; display: block;
-  transition: color .2s; letter-spacing: .02em;
-}
-.about-back-btn:hover { color: #BADA55; }
 
 /* ── Grid ── */
 .about-grid {
@@ -244,7 +233,6 @@
   <button class="about-close-btn" onclick="closeAbout()">✕</button>
   <div class="about-grid">
     <div class="about-bio-col">
-      <button class="about-back-btn" onclick="closeAbout()">← back</button>
       <p class="about-quote">
         Good design in complex products isn't about 〰〰 making things pretty. It's about making hard things <span class="about-hi">feel inevitable</span>.
       </p>
