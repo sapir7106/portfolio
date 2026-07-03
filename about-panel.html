@@ -181,9 +181,39 @@
   .about-photo-inner { width: 100%; max-width: 100%; }
 }
 @media (min-width: 1440px) {
+  /* wider panel */
+  #about-panel {
+    width: calc((100vw - var(--sw, var(--sidebar-w, 71px))) * 11/12);
+  }
+
+  /* smaller quote + tighter spacing */
+  .about-quote {
+    font-size: clamp(20px, 2vw, 30px);
+    margin-bottom: 20px;
+  }
+  .about-back-btn {
+    margin-bottom: 18px;
+  }
+  .about-body {
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  .about-body p + p {
+    margin-top: 11px;
+  }
+
   /* hide the "Contact" heading */
-  .about-grid > div:nth-child(3) .about-section-title {
+  .about-contact-title {
     display: none;
+  }
+
+  /* 32px gap between bio and contact row (contact sits in col 1, below the bio) */
+  .about-body + *,
+  .about-contact-row,
+  .about-contact-section,
+  .about-contact-col {
+    margin-top: 32px;
+    padding-top: 0;
   }
 
   /* make the contact list a horizontal row */
@@ -196,29 +226,6 @@
   }
   .about-contact-list li {
     margin-bottom: 0;
-  }
-
-  #about-panel {
-    overflow: hidden;
-  }
-
-  /* tighten bio slightly so it fits in 100vh */
-  .about-body {
-    font-size: 15.5px;
-    line-height: 1.65;
-  }
-  .about-body p + p {
-    margin-top: 12px;
-  }
-
-  /* tighten quote bottom margin */
-  .about-quote {
-    margin-bottom: 24px;
-  }
-
-  /* tighten back btn bottom margin */
-  .about-back-btn {
-    margin-bottom: 20px;
   }
 }
 </style>
@@ -241,7 +248,7 @@
       </div>
     </div>
     <div class="about-contact-col">
-      <h3 class="about-section-title">Contact</h3>
+      <h3 class="about-section-title about-contact-title">Contact</h3>
       <ul class="about-contact-list">
         <li><a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></li>
         <li><a href="tel:+972523665667">+972-523-665-667</a></li>
