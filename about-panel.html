@@ -84,7 +84,7 @@
 /* ── Grid ── */
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0,700px) minmax(0,200px) minmax(0,1200px);
+  grid-template-columns: 480px minmax(0,200px) minmax(0,1200px);
   grid-template-areas: "bio exp photo";
   gap: 40px 48px; margin: 0; align-items: start;
 }
@@ -210,11 +210,22 @@
 @media (max-width:500px) {
   .about-photo-inner { width: 100%; max-width: 100%; }
 }
+@media (min-width: 1201px) {
+  /* Desktop only (excludes the <=1200px tablet layout). Tightened
+     vertical spacing so the panel fits 100vh without scroll at
+     common desktop sizes; overflow-y:auto (set on #about-panel)
+     still allows scrolling if content genuinely doesn't fit. */
+  #about-panel { padding-top: 28px; padding-bottom: 20px; }
+  .about-quote { font-size: 32px; line-height: 1.2; margin-bottom: 16px; }
+  .about-body p + p { margin-top: 10px; }
+  .about-contact-top { margin-bottom: 20px; }
+  .about-contact-list li { margin-bottom: 6px; }
+}
 @media (min-width: 1440px) {
-  .about-quote { font-size: 32px; }
+  .about-quote { font-size: 42px; }
   .about-photo-inner { width: 88%; }
   .about-grid {
-    grid-template-columns: minmax(0,700px) minmax(0,200px) minmax(0,1200px);
+    grid-template-columns: 480px minmax(0,200px) minmax(0,1200px);
   }
 }
 </style>
