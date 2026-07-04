@@ -323,11 +323,14 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .footer-img {
     width: 100vw;
     max-width: none;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    height: auto;
+    margin-left: calc(-50vw + 50%);
+    margin-right: 0;
     margin-top: 0;
     margin-bottom: 0;
+    position: static;
+    left: auto;
+    transform: none;
   }
 }
 
@@ -340,10 +343,13 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .footer-img {
     width: 100vw;
     max-width: none;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    height: auto;
+    margin-left: calc(-50vw + 50%);
+    margin-right: 0;
     margin-bottom: 2rem;
+    position: static;
+    left: auto;
+    transform: none;
   }
 }
 </style>
