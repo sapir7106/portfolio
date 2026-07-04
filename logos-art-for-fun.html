@@ -145,6 +145,12 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
     margin-top:0 !important;
     background:var(--bg);
   }
+  .g-item[data-file="01-butterfly-alis-illustration"] {
+    order: 2;
+  }
+  .g-item[data-file="02-collage-me"] {
+    order: 1;
+  }
 }
 
 /* ── LIGHTBOX ──────────────────────────────────────────────── */
@@ -624,6 +630,7 @@ function buildGallery(){
       el.className = 'g-item';
       el.dataset.size     = item.size || 'medium';
       el.dataset.col      = item.col  || 'left';
+      el.dataset.file     = item.file;
       el.style.gridColumn = `${colStart} / span ${span}`;
       el.style.top        = topOffset + 'px';
       el.style.marginTop  = marginTop + 'rem';
