@@ -223,9 +223,9 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 }
 @media(max-width:1023px){.footer-outer{padding:0 20px}}
 .footer-content {
-  max-width: 1984px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 80px 80px 68px;
+  padding: 80px 0.9rem 68px;
   background-color: #ffffff;
   color: #111111;
   display: flex;
@@ -301,18 +301,14 @@ footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
 footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(15px,1.6vw,20px);transition:color .2s}footer a:hover{color:#8067F2}
 .footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
 
-@media (min-width: 768px) {
-  .footer-content { max-width: 1600px; margin-left: auto; margin-right: auto; padding-left: 0.9rem; padding-right: 0.9rem; }
-}
-
 /* Responsive — Sania breakpoints, only for footer-content
    and footer-img. Do NOT change footer-nav responsiveness. */
 @media (max-width: 767px) {
-  .footer-content { gap: 3rem; padding: 4rem 1rem 5rem; }
+  .footer-content { gap: 3rem; padding: 4rem 20px 5rem; }
   .footer-img { width: 90vw; max-width: none; }
 }
 @media (max-width: 479px) {
-  .footer-content { padding-left: 2rem; padding-right: 2rem; }
+  .footer-content { padding-left: 0; padding-right: 0; }
   .footer-img { width: 100vw; max-width: none; margin-bottom: 2rem; }
 }
 </style>
