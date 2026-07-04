@@ -233,9 +233,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   width:100%;max-width:100rem;    /* Sania: 100rem, centered */
   margin:0 auto;
   padding:6rem 3.75rem;           /* Sania: 6rem 3.75rem */
-  background-color:#F6F5F1;color:#111111;text-decoration:none;text-align:center;
-  transition:background-color 0.45s cubic-bezier(0.25,0.46,0.45,0.94),color 0.45s cubic-bezier(0.25,0.46,0.45,0.94)}
-.footer-contact:hover{background-color:#111111;color:#F6F5F1}
+  background-color:#F6F5F1;color:#111111;text-decoration:none;text-align:center}
 /* YOUR heading font/text — unchanged */
 .footer-heading{font-family:var(--serif);font-style:italic;font-weight:700;
   font-size:clamp(38px,5.5vw,68px);color:inherit;text-align:center;max-width:559px;margin:0 auto}
@@ -246,15 +244,15 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   margin-top:-1.5rem;             /* Sania: pulled up slightly */
   object-fit:contain;display:block;
   transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)}
-.footer-contact:hover .footer-img{transform:scale(1.03)}
 /* YOUR eyebrow/cta text — unchanged */
-.footer-cta-row{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:inherit;
+.footer-cta-row{font-size:14px;font-family:var(--sans);letter-spacing:0.16em;text-transform:uppercase;color:#111111;
   display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
-.footer-link{color:inherit;text-decoration:none;position:relative}
-.footer-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;
-  background:#bada55;transition:width 0.35s ease}
-.footer-contact:hover .footer-link{color:#bada55}
-.footer-contact:hover .footer-link::after{width:100%}
+.footer-link{font-size:14px;font-family:var(--sans);color:#111111;text-decoration:none;
+  letter-spacing:0.16em;text-transform:uppercase;position:relative}
+.footer-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;
+  background:#BADA55;transition:width 0.35s ease}
+.footer-link:hover{color:#BADA55}
+.footer-link:hover::after{width:100%}
 .footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0;
   border-top:1px solid var(--line);width:100%;max-width:1600px;margin:0 auto}
 .footer-nav{display:flex;justify-content:space-between;align-items:center;
@@ -348,16 +346,16 @@ footer a:hover{color:#8067F2}
   <!-- FOOTER -->
   <div class="footer-outer">
     <footer>
-      <a class="footer-contact" href="mailto:Sapir7106@gmail.com">
+      <div class="footer-contact">
         <h2 class="footer-heading">let's work together</h2>
         <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg" alt="Let's work together" class="footer-img">
-        <div class="footer-cta-row">
+        <p class="footer-cta-row">
           GET IN TOUCH VIA
           <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
           /
           <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
-        </div>
-      </a>
+        </p>
+      </div>
       <div class="footer-nav">
         <a href="#" id="prevBtn">← Previous work</a>
         <a href="#" id="nextBtn">Next work →</a>
