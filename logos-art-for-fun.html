@@ -238,7 +238,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
-  padding: 8rem 0.9rem;
+  padding: 0 0.9rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -385,8 +385,8 @@ footer a:hover { color: #8067F2; }
 @media (max-width: 767px) {
   .footer-outer {
     max-width: 100%;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 0;
+    padding-bottom: 0;
     padding-left: 0;
     padding-right: 0;
   }
@@ -411,6 +411,8 @@ footer a:hover { color: #8067F2; }
 /* ── ≤479px — Sania's exact values */
 @media (max-width: 479px) {
   .footer-outer {
+    padding-top: 0;
+    padding-bottom: 0;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
