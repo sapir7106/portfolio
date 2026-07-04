@@ -216,65 +216,171 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   .sb-back{writing-mode:horizontal-tb;transform:none;margin:0 16px 0 auto;font-size:16px}
 }
 
-/* ── FOOTER ─────────────────────────────────────────────────── */
-/* ══════════════════════════════════════════════════════════════
-   FOOTER — responsive behavior reverse-engineered from Sania's
-   .footer-content + .img-together. Keeps YOUR fonts & text.
-   • Desktop: centered, gap 4rem, padding 6rem 3.75rem,
-     inner image max-width 28rem pulled up slightly (-1.5rem).
-   • ≤767px: gap 3rem, padding 4rem 1rem 5rem,
-     image grows to 90vw, margin-top 0.
-   • ≤479px: side padding 2rem, image 100vw, margin-bottom 2rem.
-   ══════════════════════════════════════════════════════════════ */
-.footer-outer{position:relative;z-index:200;background:var(--bg)}
-.footer-contact{
-  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
-  gap:4rem;                       /* Sania: 4rem */
-  width:100%;max-width:100rem;    /* Sania: 100rem, centered */
-  margin:0 auto;
-  padding:6rem 3.75rem;           /* Sania: 6rem 3.75rem */
-  background-color:#F6F5F1;color:#111111;text-decoration:none;text-align:center;
-  transition:background-color 0.45s cubic-bezier(0.25,0.46,0.45,0.94),color 0.45s cubic-bezier(0.25,0.46,0.45,0.94)}
-.footer-contact:hover{background-color:#111111;color:#F6F5F1}
-/* YOUR heading font/text — unchanged */
-.footer-heading{font-family:var(--serif);font-style:italic;font-weight:700;
-  font-size:clamp(38px,5.5vw,68px);color:inherit;text-align:center;max-width:559px;margin:0 auto}
-/* inner image behaves like Sania's .img-together */
-.footer-img{
-  width:auto;height:auto;
-  max-width:28rem;                /* Sania: 28rem */
-  margin-top:-1.5rem;             /* Sania: pulled up slightly */
-  object-fit:contain;display:block;
-  transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)}
-.footer-contact:hover .footer-img{transform:scale(1.03)}
-/* YOUR eyebrow/cta text — unchanged */
-.footer-cta-row{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:inherit;
-  display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
-.footer-link{color:inherit;text-decoration:none;position:relative}
-.footer-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;
-  background:#bada55;transition:width 0.35s ease}
-.footer-contact:hover .footer-link{color:#bada55}
-.footer-contact:hover .footer-link::after{width:100%}
-.footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0;
-  border-top:1px solid var(--line);width:100%;max-width:1600px;margin:0 auto}
-.footer-nav{display:flex;justify-content:space-between;align-items:center;
-  padding:32px 0.9rem 16px;max-width:1600px;margin:0 auto}
-footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(13px,1.6vw,16px);transition:color .2s}
-footer a:hover{color:#8067F2}
-
-/* ── FOOTER: ≤767px (Sania breakpoint) ─────────────────────── */
-@media(max-width:767px){
-  .footer-contact{gap:3rem;padding:4rem 1rem 5rem}
-  .footer-img{width:90vw;max-width:none;margin-top:0}
-  .footer-nav{padding:32px 16px 16px}
-  .footer-copy{padding:16px 16px}
+/* ── FOOTER OUTER
+   Above 767px: aligns with .g-section (same max-width + margin).
+   Acts as the transparent breathing-space wrapper. */
+.footer-outer {
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  position: relative;
+  z-index: 200;
 }
-/* ── FOOTER: ≤479px (Sania breakpoint) ─────────────────────── */
-@media(max-width:479px){
-  .footer-contact{padding-left:2rem;padding-right:2rem}
-  .footer-img{width:100vw;max-width:none;margin-bottom:2rem}
+
+/* ── FOOTER CONTENT
+   White card centered inside footer-outer.
+   Sania's exact .footer-content values. */
+.footer-content {
+  width: 100%;
+  max-width: 100rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 6rem 3.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4rem;
+  background-color: #fafafa;
+  color: #111111;
+  text-align: center;
+  cursor: default;
+  overflow: visible;
+  transition:
+    background-color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.footer-content:hover {
+  background-color: #111111;
+  color: #ffffff;
+}
+.footer-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: inherit;
+  margin: 0;
+}
+/* ── FOOTER IMAGE
+   Sania's exact .img-together values.
+   At desktop: constrained, pulled up slightly.
+   At mobile: overflows the card naturally — no calc needed. */
+.footer-img {
+  max-width: 28rem;
+  width: auto;
+  height: auto;
+  display: block;
+  margin-top: -1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Avenir', 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: inherit;
+  flex-wrap: wrap;
+}
+.footer-link {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #BADA55;
+  transition: width 0.35s ease;
+}
+.footer-link:hover { color: #BADA55; }
+.footer-link:hover::after { width: 100%; }
+.footer-content:hover .footer-link { color: #BADA55; }
+.footer-content:hover .footer-link::after { width: 100%; }
+
+footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
+.footer-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0 16px;border-top:none}
+.footer-nav #nextBtn{margin-left:auto}
+footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(15px,1.6vw,20px);transition:color .2s}footer a:hover{color:#8067F2}
+.footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
+
+/* ── ≤991px */
+@media (max-width: 991px) {
+  .footer-outer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ── ≤767px — Sania's exact values */
+@media (max-width: 767px) {
+  .footer-outer {
+    max-width: 100%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .footer-content {
+    gap: 3rem;
+    padding: 4rem 1rem 5rem;
+  }
+  .footer-img {
+    width: 90vw;
+    max-width: none;
+    height: auto;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ── ≤479px — Sania's exact values */
+@media (max-width: 479px) {
+  .footer-outer {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .footer-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .footer-img {
+    width: 100vw;
+    max-width: none;
+    height: auto;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 </style>
+<link rel="stylesheet" href="cursor.css">
 </head>
 <body>
 
@@ -346,21 +452,22 @@ footer a:hover{color:#8067F2}
   </div>
 
   <!-- FOOTER -->
+  <div class="footer-content">
+    <h2 class="footer-heading">let's work together</h2>
+    <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
+         alt="Let's work together" class="footer-img">
+    <div class="footer-cta-row">
+      GET IN TOUCH VIA
+      <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
+      /
+      <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
+    </div>
+  </div>
   <div class="footer-outer">
-    <footer>
-      <a class="footer-contact" href="mailto:Sapir7106@gmail.com">
-        <h2 class="footer-heading">let's work together</h2>
-        <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg" alt="Let's work together" class="footer-img">
-        <div class="footer-cta-row">
-          GET IN TOUCH VIA
-          <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
-          /
-          <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
-        </div>
-      </a>
+    <footer style="max-width:var(--wide);margin:0 auto">
       <div class="footer-nav">
-        <a href="#" id="prevBtn">← Previous work</a>
-        <a href="#" id="nextBtn">Next work →</a>
+        <a href="security-dashboard.html" id="prevBtn">← Previous work</a>
+        <a href="agents.html" id="nextBtn">Next work →</a>
       </div>
       <div class="footer-copy">© 2026 · Designed &amp; built by Sapir Levi</div>
     </footer>
@@ -599,18 +706,8 @@ document.addEventListener('click',e=>{
   if(!panel.contains(e.target)){const btn=document.querySelector('.sb-about');if(!btn||!btn.contains(e.target))closeAbout();}
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAbout();});
-
-// ═══════════════════════════════════════════════════════════════════════
-//  PROJECT NAV
-// ═══════════════════════════════════════════════════════════════════════
-const PROJECTS=['agents.html','dspm.html','violation-pane.html','retraining-model.html','security-dashboard.html','logos-art-for-fun.html'];
-const raw=window.location.pathname.split('/').pop();
-const currentFile=raw.endsWith('.html')?raw:raw+'.html';
-const currentIdx=PROJECTS.indexOf(currentFile);
-function getNav(d){if(currentIdx===-1)return'index.html';return PROJECTS[(currentIdx+d+PROJECTS.length)%PROJECTS.length];}
-const prevBtn=document.getElementById('prevBtn'),nextBtn=document.getElementById('nextBtn');
-if(currentIdx===0&&prevBtn)prevBtn.style.display='none';else if(prevBtn)prevBtn.href=getNav(-1);
-if(currentIdx===PROJECTS.length-1&&nextBtn)nextBtn.style.display='none';else if(nextBtn)nextBtn.href=getNav(+1);
 </script>
+<div id="custom-cursor"><span id="cursor-message"></span></div>
+<script src="cursor.js"></script>
 </body>
 </html>
