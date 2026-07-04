@@ -45,7 +45,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .lede strong{color:var(--ink);font-weight:600}
 mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
 
-.hero-shot{margin-top:52px;order:2}
+.hero-shot{margin-top:52px;order:3}
 
 /* hero-shot @500px — see consolidated block below */
 figure{margin:0}
@@ -219,6 +219,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   align-items:start;
   max-width:var(--col);
   margin:0 auto;
+  order:2;
 }
 .impact-label{
   font-size:11px;letter-spacing:.1em;text-transform:uppercase;
@@ -246,6 +247,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 .impact-quote{
   max-width:var(--col);
   margin:0 auto;
+  order:2;
 }
 .impact-quote .inner{
   border-left:2px solid var(--hi);
@@ -263,8 +265,46 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 /* about panel — injected from about-panel.html via about-loader.js */
 
 /* hero-shot — always centred, never cropped */
-.hero-shot{margin-top:52px;order:2;display:flex;justify-content:center}
+.hero-shot{margin-top:52px;order:3;display:flex;justify-content:center}
 .hero-shot figure{width:100%;max-width:var(--wide)}
+
+@media (max-width: 1024px) {
+  .hero-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-shot {
+    order: -1;
+    margin-top: 0;
+    margin-bottom: 32px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-shot figure {
+    overflow: hidden;
+  }
+
+  .hero-shot .ph,
+  .hero-shot img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    max-width: 100%;
+  }
+
+  .hero-shot figcaption {
+    display: none;
+  }
+
+  .hero {
+    padding: 24px 0 32px;
+  }
+}
 
 @media(max-width:500px){
   .hero-wrapper{display:flex;flex-direction:column}
@@ -334,8 +374,6 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   <p class="lede" style="margin-top:20px">The retraining experience was designed from the ground up: from user journeys and wireframes to visual design, design-system foundations, dev handoff, and build support. The core problem was confidence: retraining was technically complex, but the decision had to feel understandable. The key move was comparing the new model against the previous one side by side.</p>
 </header>
 
-</div><!-- /hero-wrapper -->
-
 <!-- ══════════════════════════════════════════════
      IMPACT BLOCK — השאירי רק מופע אחד פעיל!
      מופע 1: מספרים כמותיים → השתמשי ב-.impact-numbers
@@ -354,6 +392,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
     <figcaption>The retrain screen: comparing a new model's results against the previous one before deploying (PCB Defect Detection).</figcaption>
   </figure>
 </div>
+</div><!-- /hero-wrapper -->
 
 <div class="pinfo col rv">
   <div class="pi"><div class="pi-label">My role</div><div class="pi-role">Product Designer</div><p>User journeys, wireframes, visual design, design-system foundations, dev handoff and build support.</p></div>
