@@ -335,10 +335,19 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   text-transform: uppercase;
   color: inherit;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  line-height: 1.125rem;
+}
+
+.s-footer-links {
+  display: flex;
   align-items: center;
   gap: 6px;
-  flex-wrap: wrap;
-  justify-content: center;
+  white-space: nowrap;
 }
 
 .s-footer-link {
@@ -554,10 +563,12 @@ footer a:hover { color: #8067F2; }
           class="s-footer-img"
         >
         <div class="s-footer-eyebrow">
-          GET IN TOUCH VIA
-          <a href="mailto:Sapir7106@gmail.com" class="s-footer-link">EMAIL</a>
-          /
-          <a href="https://wa.me/972523665667" class="s-footer-link">WHATSAPP</a>
+          <span class="s-footer-label">GET IN TOUCH VIA</span>
+          <span class="s-footer-links">
+            <a href="mailto:Sapir7106@gmail.com" class="s-footer-link">EMAIL</a>
+            /
+            <a href="https://wa.me/972523665667" class="s-footer-link">WHATSAPP</a>
+          </span>
         </div>
       </div>
     </div>
