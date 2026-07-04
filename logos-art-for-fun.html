@@ -147,9 +147,11 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   }
   .g-item[data-file="02-collage-me"] {
     order: 1;
+    z-index: 1 !important;
   }
   .g-item[data-file="01-butterfly-alis-illustration"] {
     order: 2;
+    z-index: 2 !important;
   }
   .g-item[data-file="03-miluim-shenkar"] {
     order: 3;
@@ -556,7 +558,11 @@ const SECTIONS = [
   ],
   [
     { file:'12-red-hair-girl-illustration',  size:'medium', col:'left'  },
-    { file:'18-mamma-mia',                   size:'medium', col:'right' },
+    { file:'18-mamma-mia', size:'medium', col:'right',
+      override: {
+        marginBottom: '300px',
+      }
+    },
     { file:'14-kids-and-tree',               size:'small',  col:'left'  },
   ],
   [
