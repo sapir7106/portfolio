@@ -519,7 +519,14 @@ const SECTIONS = [
   [
     { file:'05-luna-colorful-illustration',  size:'medium', col:'right' },
     { file:'06-logotype-abarbanel',          size:'medium', col:'left'  },
-    { file:'07-logo-choclate',               size:'small',  col:'right' },
+    { file:'07-logo-choclate', size:'small', col:'right',
+      override: {
+        gridColumn: '6 / span 4',
+        top:        '100px',
+        marginTop:  '600px',
+        zIndex:     '3',
+      }
+    },
     { file:'08-me-frame-by-frame',           size:'small',  col:'left'  },
     { file:'09-bombing-area-illustration',   size:'large',  col:'right' },
   ],
@@ -621,6 +628,14 @@ function buildGallery(){
       el.style.top        = topOffset + 'px';
       el.style.marginTop  = marginTop + 'rem';
       el.style.zIndex     = String(i + 1);
+
+      if (item.override && window.innerWidth > 676) {
+        const ov = item.override;
+        if (ov.gridColumn) el.style.gridColumn = ov.gridColumn;
+        if (ov.top)        el.style.top        = ov.top;
+        if (ov.marginTop)  el.style.marginTop  = ov.marginTop;
+        if (ov.zIndex)     el.style.zIndex     = ov.zIndex;
+      }
 
       const ph = document.createElement('div');
       ph.className = 'g-ph';
