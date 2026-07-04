@@ -185,22 +185,41 @@
 }
 
 /* ── Responsive ── */
-@media (max-width:1200px) {
+@media (max-width:1200px) and (min-width:1025px) {
   .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px); grid-template-areas: "bio exp"; }
   .about-photo { display: none; }
 }
-@media (max-width:900px) {
-  .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px); grid-template-areas: "bio exp"; }
-}
-@media (max-width:1023px) {
-  #about-panel { left: 0; width: 100%; }
-}
-@media (max-width:767px) {
+@media (max-width:1024px) {
+  /* single-column stack: photo, headline+bio, contact+experience — see nav-bar spec */
+  #about-panel {
+    left: 0; width: 100%; padding: 40px 20px;
+    transform: translateY(-100%);
+  }
+  #about-panel.open { transform: translateY(0); }
+  /* the top-bar close button (per page) replaces this floating one at this width */
+  .about-close-btn { display: none; }
   .about-grid { grid-template-columns: 1fr; grid-template-areas: "photo" "bio" "exp" "contact"; }
-  #about-panel { padding: 40px 20px; }
   .about-photo { display: flex; position: static; order: -1; margin-bottom: 24px; }
   .about-photo-inner { width: 75%; max-width: 340px; }
   .about-photo-placeholder { aspect-ratio: 4/3; }
+
+  /* headline: mid-range (601-1024px) — smaller than desktop, avoid awkward breaks */
+  .about-quote { font-size: 28px; line-height: 1.3; }
+  .about-hi { white-space: nowrap; }
+
+  /* body copy: mid-range sizing */
+  .about-body { font-size: 16px; line-height: 1.65; max-width: 640px; }
+
+  /* darken secondary text for readability on small screens (light theme only —
+     dark theme's light-on-dark text would lose contrast if darkened) */
+  #about-panel[data-theme="light"] {
+    --p-sub: rgba(47,46,46,0.90);
+    --p-muted: #55544a;
+  }
+}
+@media (max-width:600px) {
+  .about-quote { font-size: 38px; line-height: 1.11; }
+  .about-body { font-size: 17px; line-height: 1.7; max-width: 640px; }
 }
 @media (max-width:500px) {
   .about-photo-inner { width: 100%; max-width: 100%; }
