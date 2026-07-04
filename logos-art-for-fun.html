@@ -17,7 +17,7 @@
   --wide:1080px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.72;
      background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
@@ -65,7 +65,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 
    All computed from the GALLERY data — you never touch CSS.
    ══════════════════════════════════════════════════════════════ */
-.s-work{position:relative;width:100%;z-index:1}
+.s-work{position:relative;width:100%;z-index:1;overflow-x:clip}
 
 .g-section{
   position:relative;
@@ -109,7 +109,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   .g-section{
     grid-template-columns:1fr 1fr;   /* two narrow columns, like Sania */
     gap:0.5rem;
-    padding:0 0 3rem !important;     /* small runway between sections */
+    padding:0 0 8px !important;     /* small runway between sections */
   }
   /* Every image: sticky STAYS, but pin all to top:0 so they stack.
      Full width within their column; keep natural proportions. */
@@ -135,7 +135,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   .g-section{
     grid-template-columns:1fr;       /* one column on small phones */
     gap:0.5rem;
-    padding:0 0 2.5rem !important;
+    padding:0 0 8px !important;
   }
   .g-item,
   .g-item[data-size]{
@@ -147,9 +147,11 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   }
   .g-item[data-file="02-collage-me"] {
     order: 1;
+    z-index: 1 !important;
   }
   .g-item[data-file="01-butterfly-alis-illustration"] {
     order: 2;
+    z-index: 2 !important;
   }
   .g-item[data-file="03-miluim-shenkar"] {
     order: 3;
@@ -360,14 +362,18 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .footer-content {
     gap: 3rem;
     padding: 4rem 1rem 5rem;
+    width: 100%;
+    max-width: 100%;
+    position: static;
   }
   .footer-img {
-    width: 90vw;
+    width: calc(100% + 2rem);
     max-width: none;
     height: auto;
+    margin-left: -1rem;
+    margin-right: -1rem;
     margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
+    display: block;
   }
 }
 
@@ -382,13 +388,14 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
     padding-right: 2rem;
   }
   .footer-img {
-    width: 100vw;
+    width: calc(100% + 4rem);
     max-width: none;
     height: auto;
+    margin-left: -2rem;
+    margin-right: -2rem;
     margin-top: 0;
     margin-bottom: 2rem;
-    margin-left: auto;
-    margin-right: auto;
+    display: block;
   }
 }
 </style>
@@ -547,11 +554,20 @@ const SECTIONS = [
   ],
   [
     { file:'11-me-illustration',             size:'large',  col:'center'},
-    { file:'18-mamma-mia',                   size:'medium', col:'center'},
+    { file:'13-goddess', size:'medium', col:'center',
+      override: {
+        gridColumn:   '3 / span 6',
+        marginBottom: '1000px',
+      }
+    },
   ],
   [
     { file:'12-red-hair-girl-illustration',  size:'medium', col:'left'  },
-    { file:'13-goddess',                     size:'medium', col:'right' },
+    { file:'18-mamma-mia', size:'medium', col:'right',
+      override: {
+        marginBottom: '300px',
+      }
+    },
     { file:'14-kids-and-tree',               size:'small',  col:'left'  },
   ],
   [
@@ -648,6 +664,7 @@ function buildGallery(){
         if (ov.gridColumn) el.style.gridColumn = ov.gridColumn;
         if (ov.top)        el.style.top        = ov.top;
         if (ov.marginTop)  el.style.marginTop  = ov.marginTop;
+        if (ov.marginBottom) el.style.marginBottom = ov.marginBottom;
         if (ov.zIndex)     el.style.zIndex     = ov.zIndex;
       }
 
