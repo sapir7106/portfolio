@@ -251,104 +251,80 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   z-index: 200;
 }
 
-/* ── SANIA FOOTER — 1:1 copy ── */
-
-/* Outer wrapper: full viewport height, bg transparent */
-.footer-sania {
-  background-image: none;
-  background-color: transparent;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  height: 100dvh;
-  max-height: 66rem;
-  padding: 8rem;
-}
-
-/* Sania's .container */
-.footer-sania-container {
-  max-width: 1600px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-/* Sania's .footer-content — white card */
-.footer-sania-content {
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 4rem;
-  background-color: #ffffff;
-  color: #111111;
-  text-align: center;
+/* ── FOOTER CONTENT
+   White card centered inside footer-outer.
+   Sania's exact .footer-content values. */
+.footer-content {
   width: 100%;
   max-width: 100rem;
   margin-left: auto;
   margin-right: auto;
   padding: 6rem 3.75rem;
-  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4rem;
+  background-color: #fafafa;
+  color: #111111;
+  text-align: center;
   cursor: default;
+  overflow: visible;
   transition:
-    background-color 0.45s cubic-bezier(0.25,0.46,0.45,0.94),
-    color 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+    background-color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.footer-sania-content:hover {
+.footer-content:hover {
   background-color: #111111;
-  color: #f5f5f5;
+  color: #ffffff;
 }
-
-/* Sania's .h1 inside footer — YOUR font kept */
-.footer-sania-heading {
+.footer-heading {
   font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
   font-weight: 900;
   font-size: clamp(48px, 6vw, 80px);
   line-height: 1.1;
   letter-spacing: -0.02em;
-  text-transform: none;
+  text-align: center;
   color: inherit;
   margin: 0;
 }
-
-/* Sania's .img-together */
-.footer-sania-img {
+/* ── FOOTER IMAGE
+   Sania's exact .img-together values.
+   At desktop: constrained, pulled up slightly.
+   At mobile: overflows the card naturally — no calc needed. */
+.footer-img {
   max-width: 28rem;
   width: auto;
   height: auto;
   display: block;
   margin-top: -1.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-/* Sania's .eyebrow — YOUR font kept */
-.footer-sania-eyebrow {
+.footer-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   font-family: 'Avenir', 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: inherit;
-  display: flex;
-  align-items: center;
-  gap: 6px;
   flex-wrap: wrap;
-  justify-content: center;
 }
-
-/* Links inside eyebrow */
-.footer-sania-link {
-  font-family: 'Avenir', 'Montserrat', sans-serif;
+.footer-link {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
-  font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: inherit;
   text-decoration: none;
   position: relative;
 }
-.footer-sania-link::after {
+.footer-link::after {
   content: '';
   position: absolute;
   bottom: -2px;
@@ -358,10 +334,10 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   background: #BADA55;
   transition: width 0.35s ease;
 }
-.footer-sania-link:hover { color: #BADA55; }
-.footer-sania-link:hover::after { width: 100%; }
-.footer-sania-content:hover .footer-sania-link { color: #BADA55; }
-.footer-sania-content:hover .footer-sania-link::after { width: 100%; }
+.footer-link:hover { color: #BADA55; }
+.footer-link:hover::after { width: 100%; }
+.footer-content:hover .footer-link { color: #BADA55; }
+.footer-content:hover .footer-link::after { width: 100%; }
 
 footer {
   width: 100%;
@@ -422,7 +398,6 @@ footer a:hover { color: #8067F2; }
     padding-left: 2rem;
     padding-right: 2rem;
   }
-  .footer-sania { padding-left: 2rem; padding-right: 2rem; }
 }
 
 /* ── ≤767px — Sania's exact values */
@@ -432,22 +407,21 @@ footer a:hover { color: #8067F2; }
     padding-left: 0;
     padding-right: 0;
   }
-  .footer-sania {
-    max-height: 60rem;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-  .footer-sania-content {
+  .footer-content {
     gap: 3rem;
     padding: 4rem 1rem 5rem;
+    width: 100%;
+    max-width: 100%;
+    position: static;
   }
-  .footer-sania-img {
+  .footer-img {
     width: calc(100% + 2rem);
     max-width: none;
     height: auto;
     margin-left: -1rem;
     margin-right: -1rem;
     margin-top: 0;
+    display: block;
   }
   .footer-copy {
     font-size: 13px;
@@ -460,22 +434,19 @@ footer a:hover { color: #8067F2; }
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  .footer-sania {
-    max-height: 50rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  .footer-sania-content {
+  .footer-content {
     padding-left: 2rem;
     padding-right: 2rem;
   }
-  .footer-sania-img {
+  .footer-img {
     width: calc(100% + 4rem);
     max-width: none;
     height: auto;
     margin-left: -2rem;
     margin-right: -2rem;
+    margin-top: 0;
     margin-bottom: 2rem;
+    display: block;
   }
 }
 </style>
@@ -551,23 +522,15 @@ footer a:hover { color: #8067F2; }
   </div>
 
   <!-- FOOTER -->
-  <div class="footer-sania">
-    <div class="footer-sania-container">
-      <div class="footer-sania-content">
-        <h4 class="footer-sania-heading">let's work together</h4>
-        <img
-          src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
-          alt="Let's work together"
-          class="footer-sania-img"
-          loading="lazy"
-        >
-        <div class="footer-sania-eyebrow">
-          GET IN TOUCH VIA
-          <a href="mailto:Sapir7106@gmail.com" class="footer-sania-link">EMAIL</a>
-          /
-          <a href="https://wa.me/972523665667" class="footer-sania-link">WHATSAPP</a>
-        </div>
-      </div>
+  <div class="footer-content">
+    <h2 class="footer-heading">let's work together</h2>
+    <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
+         alt="Let's work together" class="footer-img">
+    <div class="footer-cta-row">
+      GET IN TOUCH VIA
+      <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
+      /
+      <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
     </div>
   </div>
   <div class="footer-outer">
