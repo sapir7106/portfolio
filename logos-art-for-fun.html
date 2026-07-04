@@ -216,32 +216,43 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   .sb-back{writing-mode:horizontal-tb;transform:none;margin:0 16px 0 auto;font-size:16px}
 }
 
-/* FOOTER OUTER — aligns with .g-section above 767px */
+/* ── FOOTER OUTER
+   Above 767px: aligns with .g-section (same max-width + margin).
+   Acts as the transparent breathing-space wrapper. */
 .footer-outer {
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
   position: relative;
   z-index: 200;
-  background: transparent;
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 0.9rem;
 }
 
-/* FOOTER CONTENT — Sania's .footer-content structure */
+/* ── FOOTER CONTENT
+   White card centered inside footer-outer.
+   Sania's exact .footer-content values. */
 .footer-content {
   width: 100%;
   max-width: 100rem;
   margin-left: auto;
   margin-right: auto;
   padding: 6rem 3.75rem;
-  background-color: #ffffff;
-  color: #111111;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 4rem;
+  background-color: #fafafa;
+  color: #111111;
   text-align: center;
   cursor: default;
+  overflow: visible;
   transition:
     background-color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -261,17 +272,18 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   color: inherit;
   margin: 0;
 }
-/* FOOTER IMAGE — Sania's .img-together */
+/* ── FOOTER IMAGE
+   Sania's exact .img-together values.
+   At desktop: constrained, pulled up slightly.
+   At mobile: overflows the card naturally — no calc needed. */
 .footer-img {
   max-width: 28rem;
   width: auto;
   height: auto;
   display: block;
   margin-top: -1.5rem;
-  object-fit: contain;
-}
-.footer-content:hover .footer-img {
-  /* no zoom — intentionally removed */
+  margin-left: auto;
+  margin-right: auto;
 }
 .footer-cta-row {
   display: flex;
@@ -316,7 +328,7 @@ footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
 footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(15px,1.6vw,20px);transition:color .2s}footer a:hover{color:#8067F2}
 .footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
 
-/* ≤991px */
+/* ── ≤991px */
 @media (max-width: 991px) {
   .footer-outer {
     padding-left: 2rem;
@@ -324,12 +336,14 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   }
 }
 
-/* ≤767px — Sania's exact breakpoint */
+/* ── ≤767px — Sania's exact values */
 @media (max-width: 767px) {
   .footer-outer {
+    max-width: 100%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
     padding-left: 0;
     padding-right: 0;
-    max-width: 100%;
   }
   .footer-content {
     gap: 3rem;
@@ -338,24 +352,31 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .footer-img {
     width: 90vw;
     max-width: none;
-    margin-top: 0;
     height: auto;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-/* ≤479px — Sania's exact breakpoint */
+/* ── ≤479px — Sania's exact values */
 @media (max-width: 479px) {
+  .footer-outer {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
   .footer-content {
     padding-left: 2rem;
     padding-right: 2rem;
-    position: relative;
   }
   .footer-img {
     width: 100vw;
     max-width: none;
     height: auto;
-    margin-left: calc(-50vw + 50%);
+    margin-top: 0;
     margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>
