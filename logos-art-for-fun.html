@@ -34,6 +34,9 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;
   padding:0;margin-top:auto;margin-bottom:40px;transition:color .2s;text-decoration:none}
 .sb-back:hover{color:#8067F2}
+.sb-back-short{display:none}
+.sb-close{display:none;background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;transition:color .2s;text-decoration:none}
+.sb-close:hover{color:#8067F2}
 
 /* ── PAGE ──────────────────────────────────────────────────── */
 .page{position:relative;z-index:1;margin-left:var(--sw)}
@@ -219,15 +222,22 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   background:#8067F2;transition:width .3s ease}
 .about-cv:hover::after{width:100%}
 @media(max-width:1000px){.about-grid{grid-template-columns:1fr}}
-@media(max-width:700px){.about-grid{grid-template-columns:1fr}
-  #about-panel{width:100%;left:0;padding:40px 20px}}
+@media(max-width:700px){.about-grid{grid-template-columns:1fr}}
 
 /* ── MOBILE SIDEBAR ────────────────────────────────────────── */
-@media(max-width:680px){
+@media(max-width:1024px){
   .page{margin-left:0;margin-top:44px}
-  .sidebar{width:100%;height:44px;bottom:auto;flex-direction:row}
-  .sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;padding:0 20px;font-size:16px}
-  .sb-back{writing-mode:horizontal-tb;transform:none;margin:0 16px 0 auto;font-size:16px}
+  #about-panel{width:100%;left:0;padding:40px 20px}
+  .about-close-btn{display:none}
+  .sidebar{width:100%;height:44px;bottom:auto;flex-direction:row;align-items:center}
+  .sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;margin-left:auto;padding:0 20px;font-size:16px;order:2}
+  .sb-back{writing-mode:horizontal-tb;transform:none;margin:0;padding:0 20px;font-size:16px;order:1}
+  .sb-back-full{display:none}
+  .sb-back-short{display:inline}
+  .sb-close{display:none;padding:0 20px;font-size:16px;order:2;margin-left:auto}
+  body:has(#about-panel.open) .sb-back{display:none}
+  body:has(#about-panel.open) .sb-about{order:1;margin-left:0;pointer-events:none}
+  body:has(#about-panel.open) .sb-close{display:flex}
 }
 
 /* ── FOOTER OUTER
@@ -482,7 +492,8 @@ footer a:hover { color: #8067F2; }
 
 <aside class="sidebar">
   <button class="sb-about" onclick="toggleAbout(event)">About</button>
-  <a class="sb-back" href="index.html">Back to my projects</a>
+  <a class="sb-back" href="index.html"><span class="sb-back-full">Back to my projects</span><span class="sb-back-short">← Back</span></a>
+  <button class="sb-close" onclick="closeAbout()" aria-label="Close About">×</button>
 </aside>
 
 <div id="about-overlay" onclick="closeAbout()"></div>
