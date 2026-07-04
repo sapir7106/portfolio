@@ -226,13 +226,13 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 .footer-content {
   max-width: 1600px;
   margin: 0 auto;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0.9rem;
-  padding-right: 0.9rem;
+  margin-left: 0.9rem;
+  margin-right: 0.9rem;
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 80px;
   padding-bottom: 68px;
-  width: 100%;
+  width: auto;
   box-sizing: border-box;
   border-radius: 4px;
   overflow: hidden;
@@ -317,8 +317,8 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 /* ≤767px */
 @media (max-width: 767px) {
   .footer-content {
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding-top: 4rem;
     padding-bottom: 5rem;
     gap: 3rem;
@@ -335,8 +335,8 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 /* ≤479px */
 @media (max-width: 479px) {
   .footer-content {
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
   .footer-img {
     width: calc(100% + 40px);
