@@ -251,93 +251,109 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   z-index: 200;
 }
 
-/* ── FOOTER CONTENT
-   White card centered inside footer-outer.
-   Sania's exact .footer-content values. */
-.footer-content {
+/* ── Sania footer — 1:1 copy ── */
+
+.s-footer {
+  background-image: none;
+  background-position: 50%;
+  background-size: cover;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  max-height: 66rem;
+  padding: 8rem;
+  display: flex;
+}
+
+.s-footer-container {
+  width: 100%;
+  max-width: 124rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  display: block;
+}
+
+.s-footer-content {
+  row-gap: 4rem;
+  column-gap: 4rem;
+  background-color: #ffffff;
+  color: #111111;
+  text-align: center;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
   max-width: 100rem;
   margin-left: auto;
   margin-right: auto;
   padding: 6rem 3.75rem;
+  text-decoration: none;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 4rem;
-  background-color: #fafafa;
-  color: #111111;
-  text-align: center;
-  cursor: default;
-  overflow: visible;
+  cursor: pointer;
   transition:
-    background-color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background-color 0.45s ease,
+    color 0.45s ease;
 }
-.footer-content:hover {
+.s-footer-content:hover {
   background-color: #111111;
-  color: #ffffff;
+  color: #f5f5f5;
 }
-.footer-heading {
+
+.s-footer-h1 {
   font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.5rem, 5rem, 5rem);
   font-style: italic;
-  font-weight: 900;
-  font-size: clamp(48px, 6vw, 80px);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  text-align: center;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.06rem;
+  text-transform: none;
+  margin-top: 0;
+  margin-bottom: 0;
   color: inherit;
-  margin: 0;
 }
-/* ── FOOTER IMAGE
-   Sania's exact .img-together values.
-   At desktop: constrained, pulled up slightly.
-   At mobile: overflows the card naturally — no calc needed. */
-.footer-img {
+
+.s-footer-img {
   max-width: 28rem;
   width: auto;
   height: auto;
   display: block;
   margin-top: -1.5rem;
-  margin-left: auto;
-  margin-right: auto;
 }
-.footer-cta-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+
+.s-footer-eyebrow {
+  letter-spacing: .06rem;
+  text-transform: uppercase;
   font-family: 'Avenir', 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-size: .75rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  line-height: 1.125rem;
   color: inherit;
-  flex-wrap: wrap;
 }
-.footer-link {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: inherit;
-  text-decoration: none;
-  position: relative;
+
+/* ≤991px */
+@media screen and (max-width: 991px) {
+  .s-footer { padding-left: 2rem; padding-right: 2rem; }
+  .s-footer-container { padding-left: 2rem; padding-right: 2rem; }
 }
-.footer-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background: #BADA55;
-  transition: width 0.35s ease;
+
+/* ≤767px */
+@media screen and (max-width: 767px) {
+  .s-footer { max-height: 60rem; padding-top: 4rem; padding-bottom: 4rem; }
+  .s-footer-container { padding-left: 1rem; padding-right: 1rem; }
+  .s-footer-content { row-gap: 3rem; column-gap: 3rem; padding: 4rem 1rem 5rem; }
+  .s-footer-eyebrow { line-height: 1rem; }
+  .s-footer-img { width: 90vw; max-width: none; margin-top: 0; }
 }
-.footer-link:hover { color: #BADA55; }
-.footer-link:hover::after { width: 100%; }
-.footer-content:hover .footer-link { color: #BADA55; }
-.footer-content:hover .footer-link::after { width: 100%; }
+
+/* ≤479px */
+@media screen and (max-width: 479px) {
+  .s-footer { max-height: 50rem; padding-left: .5rem; padding-right: .5rem; }
+  .s-footer-content { padding-left: 2rem; padding-right: 2rem; position: relative; }
+  .s-footer-img { width: 100vw; margin-bottom: 2rem; }
+}
 
 footer {
   width: 100%;
@@ -407,22 +423,6 @@ footer a:hover { color: #8067F2; }
     padding-left: 0;
     padding-right: 0;
   }
-  .footer-content {
-    gap: 3rem;
-    padding: 4rem 1rem 5rem;
-    width: 100%;
-    max-width: 100%;
-    position: static;
-  }
-  .footer-img {
-    width: calc(100% + 2rem);
-    max-width: none;
-    height: auto;
-    margin-left: -1rem;
-    margin-right: -1rem;
-    margin-top: 0;
-    display: block;
-  }
   .footer-copy {
     font-size: 13px;
   }
@@ -433,20 +433,6 @@ footer a:hover { color: #8067F2; }
   .footer-outer {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-  }
-  .footer-content {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  .footer-img {
-    width: calc(100% + 4rem);
-    max-width: none;
-    height: auto;
-    margin-left: -2rem;
-    margin-right: -2rem;
-    margin-top: 0;
-    margin-bottom: 2rem;
-    display: block;
   }
 }
 </style>
@@ -522,17 +508,21 @@ footer a:hover { color: #8067F2; }
   </div>
 
   <!-- FOOTER -->
-  <div class="footer-content">
-    <h2 class="footer-heading">let's work together</h2>
-    <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
-         alt="Let's work together" class="footer-img">
-    <div class="footer-cta-row">
-      GET IN TOUCH VIA
-      <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
-      /
-      <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
+  <section class="s-footer">
+    <div class="s-footer-container">
+      <a href="mailto:Sapir7106@gmail.com" class="s-footer-content">
+        <h4 class="s-footer-h1">let's work together</h4>
+        <img
+          src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
+          loading="lazy"
+          sizes="(max-width: 479px) 100vw, (max-width: 767px) 90vw, 447.99px"
+          alt=""
+          class="s-footer-img"
+        >
+        <div class="s-footer-eyebrow">GET IN TOUCH &nbsp;→</div>
+      </a>
     </div>
-  </div>
+  </section>
   <div class="footer-outer">
     <footer style="max-width:var(--wide);margin:0 auto">
       <div class="footer-nav">
