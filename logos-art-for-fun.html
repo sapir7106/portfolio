@@ -232,7 +232,6 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   width: auto;
   box-sizing: border-box;
   border-radius: 4px;
-  overflow: hidden;
   background-color: #ffffff;
   color: #111111;
   display: flex;
@@ -254,8 +253,8 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   font-weight: 900;
   font-size: clamp(48px, 6vw, 80px);
   line-height: 1.1;
-  text-align: center;
   letter-spacing: -0.02em;
+  text-align: center;
   color: inherit;
   margin: 0;
 }
@@ -274,8 +273,9 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', 'Montserrat', sans-serif;
   font-size: 14px;
+  font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: inherit;
@@ -321,13 +321,13 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
     gap: 3rem;
   }
   .footer-img {
-    width: 90vw;
+    width: 100vw;
     max-width: none;
-    margin-left: 0;
-    margin-right: 0;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -340,8 +340,6 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .footer-img {
     width: 100vw;
     max-width: none;
-    margin-left: 0;
-    margin-right: 0;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
