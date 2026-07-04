@@ -510,47 +510,37 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 // ═══════════════════════════════════════════════════════════════════════
 
 const SECTIONS = [
-
-  // ══ Section 1 — opening: 5 images ═══════════════════════════
   [
-    { file:'01-butterfly-alis-illustration', size:'medium', col:'left'   },
-    { file:'02-collage-me',                  size:'small',  col:'right'  },
-    { file:'03-miluim-shenkar',              size:'small',  col:'right'  },
-    { file:'04-left-hand-drawing',           size:'medium', col:'left'   },
+    { file:'01-butterfly-alis-illustration', size:'medium', col:'left'  },
+    { file:'02-collage-me',                  size:'small',  col:'right' },
+    { file:'03-miluim-shenkar',              size:'small',  col:'right' },
+    { file:'04-left-hand-drawing',           size:'medium', col:'left'  },
   ],
-
-  // ══ Section 2 — 4 images ════════════════════════════════════
   [
-    { file:'05-luna-colorful-illustration',  size:'medium', col:'right'  },
-    { file:'06-logotype-abarbanel',          size:'medium', col:'left'   },
-    { file:'07-logo-choclate',               size:'small',  col:'right'  },
-    { file:'08-me-frame-by-frame',           size:'small',  col:'left'   },
+    { file:'05-luna-colorful-illustration',  size:'medium', col:'right' },
+    { file:'06-logotype-abarbanel',          size:'medium', col:'left'  },
+    { file:'07-logo-choclate',               size:'small',  col:'right' },
+    { file:'08-me-frame-by-frame',           size:'small',  col:'left'  },
+    { file:'09-bombing-area-illustration',   size:'large',  col:'right' },
   ],
-
-  // ══ Section 3 — calm single moment ══════════════════════════
   [
-    { file:'09-bombing-area-illustration',   size:'large',  col:'right'  },
-    { file:'10-luna-colorful-window',        size:'medium', col:'left'   },
+    { file:'10-luna-colorful-window',        size:'large',  col:'left'  },
   ],
-
-  // ══ Section 4 — 4 images ════════════════════════════════════
   [
-    { file:'11-me-illustration',             size:'medium', col:'left'   },
-    { file:'12-red-hair-girl-illustration',  size:'small',  col:'right'  },
-    { file:'13-goddess',                     size:'medium', col:'left'   },
-    { file:'14-kids-and-tree',               size:'small',  col:'right'  },
+    { file:'11-me-illustration',             size:'large',  col:'center'},
   ],
-
-  // ══ Section 5 — 3 images ════════════════════════════════════
   [
-    { file:'15-dont-stop-me-now',            size:'large',  col:'left'   },
+    { file:'12-red-hair-girl-illustration',  size:'medium', col:'left'  },
+    { file:'13-goddess',                     size:'medium', col:'right' },
+    { file:'14-kids-and-tree',               size:'small',  col:'left'  },
   ],
-
   [
-    { file:'16-oh-yes',                      size:'small',  col:'right'  },
-    { file:'17-luna-ai',                     size:'medium', col:'left'   },
+    { file:'15-dont-stop-me-now',            size:'large',  col:'left'  },
   ],
-
+  [
+    { file:'16-oh-yes',                      size:'small',  col:'right' },
+    { file:'17-luna-ai',                     size:'medium', col:'left'  },
+  ],
 ];
 
 // ── Size → column span (out of 9) ──────────────────────────────────────
@@ -587,6 +577,7 @@ function buildGallery(){
   SECTIONS.forEach((items, secIdx) => {
     const section = document.createElement('div');
     section.className = 'g-section';
+    section.id = 's' + (secIdx + 1);
 
     const count = items.length;
     const runway = count <= 1 ? 2 : 2 + count * 1.1;   // rem — scroll runway per stack
