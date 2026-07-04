@@ -238,7 +238,10 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 0.9rem;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -340,7 +343,7 @@ footer {
   width: 100%;
   max-width: var(--wide);
   margin: 0 auto;
-  padding: 0 16px 16px;
+  padding: 0 0 16px;
   font-size: 16px;
   color: var(--muted);
 }
@@ -371,6 +374,17 @@ footer a:hover { color: #8067F2; }
   footer {
     padding: 0 40px 16px;
   }
+  #prevBtn, #nextBtn {
+    font-size: 18px;
+  }
+}
+
+/* ── ≤1024px */
+@media (max-width: 1024px) {
+  .footer-outer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 /* ── ≤991px */
@@ -385,8 +399,6 @@ footer a:hover { color: #8067F2; }
 @media (max-width: 767px) {
   .footer-outer {
     max-width: 100%;
-    padding-top: 0;
-    padding-bottom: 0;
     padding-left: 0;
     padding-right: 0;
   }
@@ -411,8 +423,6 @@ footer a:hover { color: #8067F2; }
 /* ── ≤479px — Sania's exact values */
 @media (max-width: 479px) {
   .footer-outer {
-    padding-top: 0;
-    padding-bottom: 0;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
