@@ -145,6 +145,18 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
     margin-top:0 !important;
     background:var(--bg);
   }
+  .g-item[data-file="02-collage-me"] {
+    order: 1;
+  }
+  .g-item[data-file="01-butterfly-alis-illustration"] {
+    order: 2;
+  }
+  .g-item[data-file="03-miluim-shenkar"] {
+    order: 3;
+  }
+  .g-item[data-file="04-left-hand-drawing"] {
+    order: 4;
+  }
 }
 
 /* ── LIGHTBOX ──────────────────────────────────────────────── */
@@ -510,42 +522,45 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 // ═══════════════════════════════════════════════════════════════════════
 
 const SECTIONS = [
-
-  // ══ Section 1 — opening: 5 images (first pair side-by-side) ══
   [
-    { file:'01-butterfly', size:'medium', col:'left'   },
-    { file:'02-collage',   size:'small',  col:'right'  },
-    { file:'03-logotype',  size:'small',  col:'right'  },
-    { file:'04-luna',      size:'mini',   col:'left'   },
-    { file:'05-lefthand',  size:'medium', col:'center' },
+    { file:'01-butterfly-alis-illustration', size:'medium', col:'left'  },
+    { file:'02-collage-me',                  size:'small',  col:'right' },
+    { file:'03-miluim-shenkar',              size:'small',  col:'right' },
+    { file:'04-left-hand-drawing',           size:'medium', col:'left'  },
   ],
-
-  // ══ Section 2 — 4 images ════════════════════════════════════
   [
-    { file:'06-chocolate', size:'medium', col:'left'   },
-    { file:'07-frame',     size:'small',  col:'right'  },
-    { file:'08-bombing',   size:'medium', col:'right'  },
-    { file:'09-redhair',   size:'mini',   col:'left'   },
+    { file:'05-luna-colorful-illustration',  size:'medium', col:'right' },
+    { file:'06-logotype-abarbanel',          size:'medium', col:'left'  },
+    { file:'07-logo-choclate', size:'small', col:'right',
+      override: {
+        gridColumn: '6 / span 4',
+        top:        '100px',
+        marginTop:  '600px',
+        zIndex:     '3',
+      }
+    },
+    { file:'08-me-frame-by-frame',           size:'small',  col:'left'  },
   ],
-
-  // ══ Section 3 — 1 big calm moment ═══════════════════════════
   [
-    { file:'10-meillustration', size:'xl', col:'center' },
+    { file:'09-bombing-area-illustration',  size:'large', col:'right' },
+    { file:'10-luna-colorful-window',       size:'large', col:'left'  },
   ],
-
-  // ══ Section 4 — 3 images ════════════════════════════════════
   [
-    { file:'11-dontstop', size:'medium', col:'left'   },
-    { file:'12-lunaai',   size:'small',  col:'right'  },
-    { file:'13-extra',    size:'medium', col:'center' },
+    { file:'11-me-illustration',             size:'large',  col:'center'},
+    { file:'18-mamma-mia',                   size:'medium', col:'center'},
   ],
-
-  // ══ Section 5 — 2 images side by side ═══════════════════════
   [
-    { file:'14-extra', size:'medium', col:'left'  },
-    { file:'15-extra', size:'small',  col:'right' },
+    { file:'12-red-hair-girl-illustration',  size:'medium', col:'left'  },
+    { file:'13-goddess',                     size:'medium', col:'right' },
+    { file:'14-kids-and-tree',               size:'small',  col:'left'  },
   ],
-
+  [
+    { file:'15-dont-stop-me-now',            size:'large',  col:'center'},
+  ],
+  [
+    { file:'16-oh-yes',                      size:'small',  col:'right' },
+    { file:'17-luna-ai',                     size:'medium', col:'left'  },
+  ],
 ];
 
 // ── Size → column span (out of 9) ──────────────────────────────────────
@@ -582,6 +597,7 @@ function buildGallery(){
   SECTIONS.forEach((items, secIdx) => {
     const section = document.createElement('div');
     section.className = 'g-section';
+    section.id = 's' + (secIdx + 1);
 
     const count = items.length;
     const runway = count <= 1 ? 2 : 2 + count * 1.1;   // rem — scroll runway per stack
@@ -621,10 +637,19 @@ function buildGallery(){
       el.className = 'g-item';
       el.dataset.size     = item.size || 'medium';
       el.dataset.col      = item.col  || 'left';
+      el.dataset.file     = item.file;
       el.style.gridColumn = `${colStart} / span ${span}`;
       el.style.top        = topOffset + 'px';
       el.style.marginTop  = marginTop + 'rem';
       el.style.zIndex     = String(i + 1);
+
+      if (item.override && window.innerWidth > 676) {
+        const ov = item.override;
+        if (ov.gridColumn) el.style.gridColumn = ov.gridColumn;
+        if (ov.top)        el.style.top        = ov.top;
+        if (ov.marginTop)  el.style.marginTop  = ov.marginTop;
+        if (ov.zIndex)     el.style.zIndex     = ov.zIndex;
+      }
 
       const ph = document.createElement('div');
       ph.className = 'g-ph';
