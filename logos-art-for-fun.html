@@ -299,29 +299,10 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 .footer-content:hover .footer-link::after { width: 100%; }
 
 footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
-.footer-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:32px 0 16px;
-  border-top:none;
-}
+.footer-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0 16px;border-top:none}
 .footer-nav #nextBtn{margin-left:auto}
-footer a{
-  color:var(--ink);
-  text-decoration:none;
-  font-weight:400;
-  font-size:clamp(15px,1.6vw,20px);
-  transition:color .2s;
-}
-footer a:hover{color:#8067F2}
-.footer-copy{
-  color:var(--muted);
-  font-size:clamp(11px,1.5vw,14px);
-  text-align:center;
-  padding:16px 0 0;
-  border-top:1px solid var(--line);
-}
+footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(15px,1.6vw,20px);transition:color .2s}footer a:hover{color:#8067F2}
+.footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
 
 /* Responsive — Sania breakpoints, only for footer-content
    and footer-img. Do NOT change footer-nav responsiveness. */
@@ -420,8 +401,8 @@ footer a:hover{color:#8067F2}
     </div>
     <footer style="max-width:var(--wide);margin:0 auto">
       <div class="footer-nav">
-        <a href="#" id="prevBtn">← Previous work</a>
-        <a href="#" id="nextBtn">Next work →</a>
+        <a href="security-dashboard.html" id="prevBtn">← Previous work</a>
+        <a href="agents.html" id="nextBtn">Next work →</a>
       </div>
       <div class="footer-copy">© 2026 · Designed &amp; built by Sapir Levi</div>
     </footer>
@@ -660,18 +641,6 @@ document.addEventListener('click',e=>{
   if(!panel.contains(e.target)){const btn=document.querySelector('.sb-about');if(!btn||!btn.contains(e.target))closeAbout();}
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAbout();});
-
-// ═══════════════════════════════════════════════════════════════════════
-//  PROJECT NAV
-// ═══════════════════════════════════════════════════════════════════════
-const PROJECTS=['agents.html','dspm.html','violation-pane.html','retraining-model.html','security-dashboard.html','logos-art-for-fun.html'];
-const raw=window.location.pathname.split('/').pop();
-const currentFile=raw.endsWith('.html')?raw:raw+'.html';
-const currentIdx=PROJECTS.indexOf(currentFile);
-function getNav(d){if(currentIdx===-1)return'index.html';return PROJECTS[(currentIdx+d+PROJECTS.length)%PROJECTS.length];}
-const prevBtn=document.getElementById('prevBtn'),nextBtn=document.getElementById('nextBtn');
-if(currentIdx===0&&prevBtn)prevBtn.style.display='none';else if(prevBtn)prevBtn.href=getNav(-1);
-if(currentIdx===PROJECTS.length-1&&nextBtn)nextBtn.style.display='none';else if(nextBtn)nextBtn.href=getNav(+1);
 </script>
 <div id="custom-cursor"><span id="cursor-message"></span></div>
 <script src="cursor.js"></script>
