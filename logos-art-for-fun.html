@@ -547,7 +547,15 @@ const SECTIONS = [
   ],
   [
     { file:'11-me-illustration',             size:'large',  col:'center'},
-    { file:'13-goddess',                     size:'medium', col:'center'},
+    { file:'13-goddess', size:'medium', col:'center',
+      override: {
+        gridColumn:   '3 / span 5',
+        top:          '30px',
+        marginTop:    '0rem',
+        marginBottom: '1000px',
+        zIndex:       '2',
+      }
+    },
   ],
   [
     { file:'12-red-hair-girl-illustration',  size:'medium', col:'left'  },
@@ -648,6 +656,7 @@ function buildGallery(){
         if (ov.gridColumn) el.style.gridColumn = ov.gridColumn;
         if (ov.top)        el.style.top        = ov.top;
         if (ov.marginTop)  el.style.marginTop  = ov.marginTop;
+        if (ov.marginBottom) el.style.marginBottom = ov.marginBottom;
         if (ov.zIndex)     el.style.zIndex     = ov.zIndex;
       }
 
