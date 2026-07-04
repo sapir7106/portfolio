@@ -228,7 +228,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
-  padding: 20px;
+  padding: 96px 20px;
   width: auto;
   box-sizing: border-box;
   border-radius: 4px;
@@ -260,9 +260,9 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
 }
 .footer-img {
   width: 540px;
-  height: 390px;
-  object-fit: contain;
+  height: auto;
   display: block;
+  object-fit: contain;
   max-width: 100%;
   overflow: visible;
   position: relative;
@@ -316,15 +316,16 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .footer-content {
     margin-left: 20px;
     margin-right: 20px;
-    padding-top: 4rem;
-    padding-bottom: 5rem;
+    padding-top: 64px;
+    padding-bottom: 80px;
     gap: 3rem;
   }
   .footer-img {
     width: 100vw;
     max-width: none;
     height: auto;
-    margin-left: calc(-50vw + 50%);
+    display: block;
+    margin-left: calc((100% - 100vw) / 2);
     margin-right: 0;
     margin-top: 0;
     margin-bottom: 0;
@@ -344,8 +345,10 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
     width: 100vw;
     max-width: none;
     height: auto;
-    margin-left: calc(-50vw + 50%);
+    display: block;
+    margin-left: calc((100% - 100vw) / 2);
     margin-right: 0;
+    margin-top: 0;
     margin-bottom: 2rem;
     position: static;
     left: auto;
