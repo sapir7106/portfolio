@@ -3,821 +3,614 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Logos & Icons - Sapir Levi</title>
+<title>Logos & Icons — Sapir Levi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ── V1: WARM PAPER — editorial, generous whitespace, serif-led ── */
 :root{
   --bg:#F7F6F1;--bg2:#FBFAF7;--ink:#17160F;--soft:#3A382E;
   --muted:#8C897C;--line:#E3E0D6;--hi:#BADA55;
-  --sidebar:#242323;--sw:71px;
+  --sw:71px;
   --serif:'Playfair Display',Georgia,serif;
   --sans:'Avenir','Montserrat',sans-serif;
-  --col:720px;--wide:1080px;
+  --wide:1080px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.72;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.018'/%3E%3C/svg%3E")}
+body{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.72;
+     background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.018'/%3E%3C/svg%3E")}
 
-/* sidebar */
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:#ffffff;z-index:100;display:flex;flex-direction:column;align-items:center}
-.sb-about{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;letter-spacing:.01em;text-transform:none;padding:0;margin-top:48px;transition:color .2s;text-decoration:none;}
+/* ── SIDEBAR ───────────────────────────────────────────────── */
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:#fff;
+  z-index:100;display:flex;flex-direction:column;align-items:center}
+.sb-about{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;
+  cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;
+  padding:0;margin-top:48px;transition:color .2s;text-decoration:none}
 .sb-about:hover{color:#8067F2}
-.sb-back{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;letter-spacing:.01em;text-transform:none;padding:0;margin-top:auto;margin-bottom:40px;transition:color .2s;text-decoration:none;}
+.sb-back{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;
+  cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;
+  padding:0;margin-top:auto;margin-bottom:40px;transition:color .2s;text-decoration:none}
 .sb-back:hover{color:#8067F2}
 
-/* wrap — centered */
+/* ── PAGE ──────────────────────────────────────────────────── */
 .page{position:relative;z-index:1;margin-left:var(--sw)}
-.wrap{max-width:var(--wide);margin:0 auto;padding:0 48px}
-.col{max-width:var(--col);margin:0 auto}
 
-/* hero */
-.hero-wrapper{display:flex;flex-direction:column}
-.hero{padding:80px 0 48px;order:1}
-.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:22px}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;max-width:14ch;margin-bottom:28px}
-.hero h1 em{font-style:italic;font-weight:400}
-.lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch}
-.lede strong{color:var(--ink);font-weight:600}
-mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
-
-.hero-shot{margin-top:52px;order:2}
-
-/* hero-shot @500px — see consolidated block below */
-figure{margin:0}
-figcaption{font-size:14px;color:var(--muted);margin-top:16px;font-style:italic;text-align:center}
-.ph{background:var(--line);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;position:relative;min-height:220px;container-type:inline-size}
-.ph-id{display:none;position:absolute;top:10px;left:10px;background:var(--ink);color:var(--hi);font-size:10px;font-weight:600;font-family:monospace;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
-body.show-labels .ph-id{display:block}
-.ph svg{width:24px;height:24px;opacity:.3}
-
-/* real image inside placeholder — when it loads, it fills the width and
-   sets its own natural height, overriding the placeholder's aspect-ratio */
-.ph:has(.ph-img), .ph.has-img, .work-ph:has(.ph-img){aspect-ratio:auto !important;min-height:0;background:transparent;display:block}
-.work-ph:has(.ph-img) .ph-label{display:none}
-.ph-img{width:100%;height:auto;display:block;border-radius:6px;position:relative;z-index:2;box-shadow:0 1px 1px #0000000a, 0 4px 4px #0000000f, 0 16px 24px #00000014}
-/* hide the placeholder icon/label once a real image is present */
-.ph:has(.ph-img) > svg,
-.ph:has(.ph-img) > span,
-.ph.has-img > svg,
-.ph.has-img > span{display:none}
-
-/* project info */
-.pinfo{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:52px}
-.pi{background:var(--bg2);padding:22px 24px}
-.pi-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
-.pi-role{font-size:16px;font-weight:600;color:#8067F2;margin-bottom:5px}
-.pi p{font-size:16px;color:var(--soft);line-height:1.55}
-
-/* sections */
-section{padding:64px 0}
-.sec-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
-.sec-head{display:flex;align-items:center;gap:18px;margin-bottom:28px}
-.num{font-family:var(--serif);font-size:clamp(40px,5.5vw,55px);color:var(--hi);font-weight:700;flex:none;letter-spacing:-.02em;line-height:1;padding-bottom:.12em;position:relative;top:-2px}
-h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,3.6vw,44px);line-height:1.02;letter-spacing:-.02em}
-h2 em{font-style:italic;font-weight:400}
-.body p{max-width:700px;color:var(--soft);font-size:17px}.body p+p{margin-top:16px}
-.body strong{color:var(--ink);font-weight:600}
-.body ul{margin-top:16px;list-style:none;display:grid;gap:9px}
-.body ul li{font-size:17px;color:var(--soft);padding-left:28px;position:relative}
-.body ul li::before{content:"—";position:absolute;left:0;color:var(--hi);font-weight:800;font-size:19px;top:0.15em;line-height:1}
-
-/* image blocks */
-.img-mt{margin-top:32px}
-.img-mt .ph,.img-mt img{width:100%;display:block;border-radius:6px;background:var(--line)}
-.img-row{display:grid;gap:28px;margin-top:32px}
-.img-row.c2{grid-template-columns:1fr 1fr}
-.img-row.c3{
-  grid-template-columns:1fr 1fr 1fr;
-  max-width:var(--wide);
-  margin-left:auto;
-  margin-right:auto;
-  width:100%;
-  position:relative;
-}
-/* c3 inside a .col — break out to full wrap width */
-.col .img-row.c3{
-  left:50%;
-  right:50%;
-  margin-left:calc(var(--wide) / -2);
-  margin-right:calc(var(--wide) / -2);
-  width:var(--wide);
-  max-width:none;
-  position:relative;
-}
-.img-stack{display:grid;gap:100px;margin-top:32px}
-figcaption{font-size:14px;color:var(--soft);margin-top:16px;font-style:italic;text-align:center}
-
-/* stats */
-.stat-band{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:28px}
-.sb{background:var(--bg2);padding:20px 18px}
-.sb .v{font-family:var(--serif);font-size:38px;font-weight:700;line-height:1;letter-spacing:-.02em}
-.sb .l{font-size:16px;color:var(--soft);margin-top:7px;line-height:1.4}
-
-/* 2-col */
-.tcols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:24px}
-.tc{background:var(--bg2);padding:20px 22px}
-.tc h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:10px}
-.tc ul{list-style:none;display:grid;gap:8px}
-.tc ul li{font-size:16px;color:var(--soft);padding-left:22px;position:relative}
-.tc ul li::before{content:"→";position:absolute;left:0;font-weight:600;color:var(--ink)}
-.tc.ac h4{color:var(--ink)}.tc.ac{border-left:2px solid var(--hi)}
-
-/* callout — Quote style C */
-.callout{
-  border-left:2px solid var(--hi);
-  background:rgba(186,218,85,0.07);
-  border-radius:0 6px 6px 0;
-  padding:14px 18px;
-  margin-top:36px;
-  max-width:var(--col);
-  margin-left:auto;
-  margin-right:auto;
-}
-.callout p{
-  font-family:var(--sans);
-  font-size:20px;
-  font-weight:500;
-  font-style:italic;
-  line-height:1.55;
-  color:var(--ink);
-}
-
-/* footer */
-footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
-.footer-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0 16px;border-top:none}
-.footer-nav #nextBtn{margin-left:auto}
-footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(15px,1.6vw,20px);transition:color .2s}footer a:hover{color:#8067F2}
-.footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
-
-/* lightbox */
-.lightbox{display:none;position:fixed;inset:0;left:0;background:rgba(23,22,15,.95);z-index:9999;align-items:center;justify-content:center;padding:24px;flex-direction:column;gap:16px}
-.lightbox.open{display:flex}
-.lightbox img{max-width:90vw;max-height:80vh;width:auto;height:auto;border-radius:6px;display:block}
-.lb-ph{background:var(--bg2);border:1px solid var(--line);border-radius:8px;width:clamp(280px,90vw,1196px);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;font-family:monospace}
-.lb-caption{font-size:17px;color:rgba(242,239,232,0.75);font-family:var(--sans);font-weight:300;font-style:normal;text-align:center;max-width:70ch;line-height:1.5}
-.lb-close{position:fixed;top:20px;right:24px;background:none;border:none;cursor:pointer;color:#F2EFE8;font-size:28px;line-height:1;padding:4px 8px;transition:color .2s;z-index:10000}
-.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);cursor:pointer;color:#F2EFE8;font-size:24px;line-height:1;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;z-index:10000}
-.lb-nav:hover{background:rgba(255,255,255,0.18)}
-.lb-prev{left:24px}
-.lb-next{right:24px}
-.lb-nav[hidden]{display:none}
-.lb-close:hover{color:#BADA55}
-
-@media(min-width:601px){
-  .img-mt figure,.img-row figure,.img-stack figure{cursor:zoom-in}
-  .img-mt .ph,.img-row .ph,.img-stack .ph{cursor:zoom-in}
-}
-
-.rv{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.7,.2,1),transform .65s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
-
-@media(max-width:900px){.pinfo,.tcols,.stat-band{grid-template-columns:1fr}.img-row.c2,.img-row.c3{grid-template-columns:1fr}}
-@media(max-width:1023px){.page{margin-left:0;margin-top:44px}.sidebar{width:100%;height:auto;min-height:44px;bottom:auto;flex-direction:row;gap:8px;flex-wrap:wrap}.sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;padding:12px 16px;font-size:19px;min-height:44px;min-width:unset;display:flex;align-items:center;justify-content:center}.sb-back{writing-mode:horizontal-tb;transform:none;margin:0 0 0 auto;padding:12px 16px;font-size:19px;min-height:44px;min-width:unset;display:flex;align-items:center;justify-content:center}.wrap{padding:0 20px}}
-@media(max-width:767px){.sidebar{gap:8px;flex-wrap:wrap;min-height:52px}.sb-about,.sb-back{font-size:18px;min-height:44px;min-width:unset;padding:12px 16px}.sb-back{margin:0 0 0 auto}}
-@media(max-width:480px){
-  /* images never overflow */
-  .ph,.img-mt .ph,.img-mt img,.img-row .ph,.img-stack .ph,
-  .img-row img,.img-stack img{max-width:100%;width:100%;overflow:hidden}
-  figure{overflow:hidden;max-width:100%}
-  /* footer: buttons on top, copyright below with divider */
-  footer{flex-direction:column;align-items:stretch;gap:0;padding:0 0 40px}
-  .footer-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:none}
-  footer a{font-size:clamp(15px,4vw,18px)}
-  .footer-copy{text-align:center;padding-top:16px;border-top:1px solid var(--line);font-size:13px}
-}
-/* ── IMPACT BLOCK ────────────────────────────────
-   שני מופעים — רק אחד יופיע בכל עמוד.
-   מופע 1 (.impact-numbers): מספרים כמותיים
-   מופע 2 (.impact-quote): ציטוט טקסטואלי
-   ─────────────────────────────────────────────── */
-.impact-numbers{
-  border-top:0.5px solid var(--line);
-  border-bottom:0.5px solid var(--line);
-  padding:16px 0;
-  display:grid;
-  grid-template-columns:auto 1fr 1fr 1fr;
-  gap:0 24px;
-  align-items:start;
-  max-width:var(--col);
-  margin:0 auto;
-}
-.impact-label{
-  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  font-weight:500;color:var(--muted);font-family:var(--sans);
-  padding-top:4px;white-space:nowrap;
-}
-.impact-stat{padding-right:20px;border-right:0.5px solid var(--line)}
-.impact-stat.mid{border-right:0.5px solid var(--line);padding:0 20px}
-.impact-stat.last{padding-left:20px;border-right:none}
-.impact-stat .val{
-  font-family:var(--serif);font-size:40px;font-weight:700;
-  line-height:1;letter-spacing:-.025em;color:var(--ink);
-  font-variant-numeric:oldstyle-nums;
-}
-.impact-stat .lbl{
-  font-size:14px;font-weight:400;color:var(--muted);
-  font-family:var(--sans);margin-top:7px;line-height:1.4;
-}
-/* text fallback — same grid, text instead of numbers */
-.impact-stat .txt{
-  font-size:15px;font-weight:500;color:var(--ink);
-  font-family:var(--sans);line-height:1.45;
-}
-
-.impact-quote{
-  max-width:var(--col);
-  margin:0 auto;
-}
-.impact-quote .inner{
-  border-left:2px solid var(--hi);
-  padding:2px 0 2px 18px;
-}
-.impact-quote p{
-  font-family:var(--sans);
-  font-size:20px;font-weight:500;font-style:italic;
-  line-height:1.55;color:var(--ink);
-}
-/* about panel — injected from about-panel.html via about-loader.js */
-
-/* ── GALLERY PAGE — sania.io exact layout ── */
-.gallery-hero{padding:80px 12px 60px;text-align:center}
-.gallery-hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,6vw,76px);line-height:1.04;letter-spacing:-.025em;margin:0 auto 28px;max-width:18ch}
+/* ── HERO ──────────────────────────────────────────────────── */
+.gallery-wrap{padding:0 0.75rem;max-width:1600px;margin:0 auto}
+.gallery-hero{padding:80px 0.75rem 40px;position:relative;z-index:60;background:var(--bg);
+  max-width:1600px;margin:0 auto;text-align:center;display:flex;
+  flex-direction:column;align-items:center}
+.gallery-hero h1{font-family:var(--serif);font-weight:700;
+  font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;
+  margin-bottom:28px}
 .gallery-hero h1 em{font-style:italic;font-weight:400}
-.gallery-lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch;margin:0 auto}
+.gallery-lede{font-size:19px;line-height:1.6;color:var(--soft);max-width:58ch}
 
-/* ── SANIA STICKY GRID — exact ── */
-/* hero sits above the gallery so sticky images with negative top never cover it */
-.gallery-hero{position:relative;z-index:5;background:var(--bg)}
+/* ══════════════════════════════════════════════════════════════
+   SANIA-STYLE SECTION-BASED STICKY GALLERY
+
+   STRUCTURE:
+   • The gallery is a list of SECTIONS (.g-section).
+   • Each section holds 1–6 images that STACK on scroll.
+   • Within a section, each image is position:sticky with its own
+     top offset + z-index, so as you scroll they pile up near the top.
+   • The section itself has extra height (padding-bottom), which is
+     the "scroll runway" for the stack. When the section ends, the
+     NEXT section scrolls up and pushes the whole stack away —
+     so you never get an endless pile, just 1–6 per section.
+   • A section with a single image = a calm, no-stack moment.
+
+   All computed from the GALLERY data — you never touch CSS.
+   ══════════════════════════════════════════════════════════════ */
 .s-work{position:relative;width:100%;z-index:1}
-/* hidden gallery items — flip to display:none to reserve them for later */
-.work-ph.hidden-item,.work-img.hidden-item{display:none}
-/* a whole set whose images are all hidden — collapses the empty grid row */
-.work-grid.hidden-grid{display:none}
-.work-grid{
+
+.g-section{
+  position:relative;
   display:grid;
   grid-template-columns:repeat(9,1fr);
-  gap:12px;
-  max-width:1984px;
+  gap:0.9rem;
+  max-width:1600px;
   margin:0 auto;
-  padding:0 12px 120px;
-  background:#F7F6F1;
+  padding:0 0.9rem;
+  /* padding-bottom is set inline per section = the stack's scroll runway */
 }
-.work-img,.work-ph{
-  width:100%;display:block;
-  position:sticky;top:0;
-  border-radius:3px;
+
+.g-item{
+  position:sticky;
+  border-radius:4px;
+  /* top, grid-column, grid-row, margin-top, z-index set inline */
 }
-.work-img{height:auto;object-fit:cover}
-.work-ph{
-  aspect-ratio:auto;
-  min-height:60px;
+
+.g-ph{
+  width:100%;
   display:flex;align-items:center;justify-content:center;
-  font-family:monospace;font-size:11px;font-weight:600;
-  letter-spacing:.06em;color:rgba(0,0,0,0.28);
+  font-family:monospace;font-size:11px;font-weight:600;letter-spacing:.06em;
+  color:rgba(0,0,0,0.28);border-radius:4px;aspect-ratio:4/3;
 }
-.ph-label{pointer-events:none;user-select:none}
-/* real image dropped into a placeholder — fills it, hides the color tile + label */
-.work-ph{position:sticky}
-.work-img-real{position:relative;width:100%;height:auto;object-fit:contain;border-radius:3px;display:block;z-index:2}
-.work-ph:has(.work-img-real) .ph-label,
-.work-ph:has(.work-img-real) > span{display:none}
-.work-ph:has(.work-img-real){background:transparent!important;min-height:0;aspect-ratio:auto !important;display:block !important}
+.g-item img{
+  display:block;width:100%;height:auto;border-radius:4px;cursor:zoom-in;
+}
+.g-item.loaded .g-ph{display:none}
 
-/* per-image positions (1:1 with sania) */
-.g1-1{grid-column:span 5;grid-row:span 2;top:-640px}
-.g1-2{grid-column:span 4;grid-row:span 1;top:-576px;margin-top:-128px}
-.g1-3{grid-column:span 2;grid-row:span 1;top:0px;align-self:end}
-.g1-4{grid-column:span 2;grid-row:span 1;top:0px;align-self:end}
-.g1-5{grid-column:span 5;grid-row:span 1;top:0px}
-.g2-1{grid-column:span 11;grid-row:span 1;top:-640px}
-.g2-2{grid-column:span 10;grid-row:span 1;top:-480px}
-.g2-3{grid-column:8/12;grid-row:3/4;top:128px}
-.g2-4{grid-column:span 11;grid-row:span 1;top:0px;margin-top:224px}
-.g3-1{grid-column:span 11;grid-row:span 1;top:0px}
-.g4-1{grid-column:1/9;grid-row:1/2;top:-400px;padding-bottom:96px}
-.g4-2{grid-column:8/11;grid-row:2/4;top:0px;align-self:end}
-.g4-3{grid-column:5/8;grid-row:2/4;top:0px}
-.g5-1{grid-column:span 5;grid-row:span 1;top:0px}
-.g5-2{grid-column:span 4;grid-row:span 1;top:0px;margin-bottom:256px}
-.g5-3{grid-column:7/10;grid-row:2/3;top:0px}
-.g6-1{grid-column:span 7;grid-row:span 1;top:0px}
-.g6-2{grid-column:8/10;grid-row:1/2;top:0px}
-.g7-1{grid-column:span 6;grid-row:span 1;top:12px;margin-bottom:416px}
-.g7-2{grid-column:5/10;grid-row:2/3;top:0px}
-.g8-1{grid-column:span 6;grid-row:span 1;top:-432px;margin-bottom:160px}
-.g8-2{grid-column:1/3;grid-row:2/3;top:0px;margin-top:640px;align-self:end}
-.g8-3{grid-column:4/10;grid-row:2/3;top:-240px}
-.g9-1{grid-column:1/6;grid-row:1/2;top:-320px;margin-bottom:1240px}
-.g9-2{grid-column:5/10;grid-row:1/2;top:-160px;margin-bottom:160px}
-.g9-3{grid-column:span 7;grid-row:span 1;top:0px}
-.g10-1{grid-column:3/10;grid-row:1/2;top:-320px}
-.g10-2{grid-column:1/8;grid-row:2/3;top:0px;margin-bottom:320px}
-.g10-3{grid-column:3/10;grid-row:3/4;top:0px}
-.g11-1{grid-column:span 9;grid-row:span 1;top:0px;margin-bottom:384px}
-.g11-2{grid-column:span 9;grid-row:span 1;top:0px}
-.g12-1{grid-column:4/10;grid-row:2/3;top:12px}
-.g12-2{grid-column:1/7;grid-row:3/4;top:0px}
-.g12-3{grid-column:2/7;grid-row:1/2;top:-336px}
-.g13-1{grid-column:4/10;grid-row:1/2;top:-160px}
-.g13-2{grid-column:1/8;grid-row:2/3;top:0px}
-.g14-1{grid-column:4/8;grid-row:1/2;top:0px}
-.g15-1{grid-column:span 9;grid-row:span 1;top:-384px;margin-bottom:64px}
-.g15-2{grid-column:1/5;grid-row:3/4;top:0px}
-.g15-3{grid-column:3/10;grid-row:2/3;top:0px}
-.g16-1{grid-column:span 7;grid-row:span 1;top:-96px;margin-bottom:320px}
-.g16-2{grid-column:4/10;grid-row:2/3;top:0px}
-
-/* RESPONSIVE — tablet (601–900px): 2-col, stacking effect off */
-@media(min-width:601px) and (max-width:900px){
-  .work-grid{grid-template-columns:1fr 1fr;padding:1rem 12px 2rem}
-  .g1-1,.g1-2,.g1-3,.g1-4,.g1-5,.g2-1,.g2-2,.g2-3,.g2-4,.g3-1,.g4-1,.g4-2,.g4-3,.g5-1,.g5-2,.g5-3,.g6-1,.g6-2,.g7-1,.g7-2,.g8-1,.g8-2,.g8-3,.g9-1,.g9-2,.g9-3,.g10-1,.g10-2,.g10-3,.g11-1,.g11-2,.g12-1,.g12-2,.g12-3,.g13-1,.g13-2,.g14-1,.g15-1,.g15-2,.g15-3,.g16-1,.g16-2{
-    grid-column:auto!important;grid-row:auto!important;
-    top:0!important;position:relative!important;
-    margin-top:0!important;margin-bottom:0!important;
-    padding-bottom:0!important;align-self:auto!important;
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — reverse-engineered from Sania's own CSS (≤767px):
+   • Sections KEEP their grid structure (not collapsed to 1 column).
+   • Each section simplifies to a narrow grid.
+   • CRUCIALLY: every image gets top:0 (instead of the desktop's
+     negative/varied offsets) but STAYS position:sticky — so all
+     images pin at the same top line and each one covers the
+     previous as you scroll. That's how the stack survives on mobile.
+   • z-index is preserved (higher = later = covers earlier).
+   ══════════════════════════════════════════════════════════════ */
+@media(max-width:767px){
+  .g-section{
+    grid-template-columns:1fr 1fr;   /* two narrow columns, like Sania */
+    gap:0.5rem;
+    padding:0 0 3rem !important;     /* small runway between sections */
   }
+  /* Every image: sticky STAYS, but pin all to top:0 so they stack.
+     Full width within their column; keep natural proportions. */
+  .g-item,
+  .g-item[data-size]{
+    position:sticky !important;
+    top:0 !important;
+    margin-top:0 !important;
+    background:var(--bg);            /* opaque cover */
+  }
+  /* size → how many of the 2 columns the image spans */
+  .g-item[data-size="xl"]     { grid-column:span 2 !important; }
+  .g-item[data-size="large"]  { grid-column:span 2 !important; }
+  .g-item[data-size="medium"] { grid-column:span 1 !important; }
+  .g-item[data-size="small"]  { grid-column:span 1 !important; }
+  .g-item[data-size="mini"]   { grid-column:span 1 !important; }
+  .g-item[data-size="tiny"]   { grid-column:span 1 !important; }
+  .g-item img{ border-radius:4px; }
 }
-/* RESPONSIVE — mobile (≤600px): single column, stacking effect off */
-@media(max-width:600px){
-  .work-grid{grid-template-columns:1fr;gap:8px;padding:0 16px;margin-bottom:12px;position:relative}
-  .g1-1,.g1-2,.g1-3,.g1-4,.g1-5,.g2-1,.g2-2,.g2-3,.g2-4,.g3-1,.g4-1,.g4-2,.g4-3,.g5-1,.g5-2,.g5-3,.g6-1,.g6-2,.g7-1,.g7-2,.g8-1,.g8-2,.g8-3,.g9-1,.g9-2,.g9-3,.g10-1,.g10-2,.g10-3,.g11-1,.g11-2,.g12-1,.g12-2,.g12-3,.g13-1,.g13-2,.g14-1,.g15-1,.g15-2,.g15-3,.g16-1,.g16-2{
-    grid-column:1/-1!important;grid-row:auto!important;
-    top:0!important;position:relative!important;
-    margin:0!important;
-    padding-bottom:0!important;align-self:auto!important;
+
+/* ── PHONE (≤479px) — single column, still stacking ─────────── */
+@media(max-width:479px){
+  .g-section{
+    grid-template-columns:1fr;       /* one column on small phones */
+    gap:0.5rem;
+    padding:0 0 2.5rem !important;
+  }
+  .g-item,
+  .g-item[data-size]{
+    grid-column:1 / -1 !important;   /* full width */
+    position:sticky !important;
+    top:0 !important;
+    margin-top:0 !important;
+    background:var(--bg);
   }
 }
 
-/* hero-shot — always centred, never cropped */
-.hero-shot{margin-top:52px;order:2;display:flex;justify-content:center}
-.hero-shot figure{width:100%;max-width:var(--wide)}
+/* ── LIGHTBOX ──────────────────────────────────────────────── */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(23,22,15,.95);
+  z-index:9999;align-items:center;justify-content:center;padding:24px;
+  flex-direction:column;gap:16px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:80vh;width:auto;height:auto;border-radius:16px;display:block}
+.lb-caption{font-size:15px;color:rgba(242,239,232,0.7);text-align:center}
+.lb-close{position:fixed;top:20px;right:24px;background:none;border:none;cursor:pointer;
+  color:#F2EFE8;font-size:28px;padding:4px 8px;z-index:10000}
+.lb-close:hover{color:#BADA55}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.18);cursor:pointer;color:#F2EFE8;font-size:24px;
+  width:48px;height:48px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;transition:background .2s;z-index:10000}
+.lb-nav:hover{background:rgba(255,255,255,0.18)}
+.lb-prev{left:24px}.lb-next{right:24px}
+.lb-nav[hidden]{display:none}
 
-@media(max-width:500px){
-  .hero-wrapper{display:flex;flex-direction:column}
-  .hero-shot{
-    order:-1;
-    margin-top:32px;
-    margin-bottom:24px;
-    margin-left:0;
-    margin-right:0;
-    width:100%;
-    overflow:visible;
-    justify-content:center;
-  }
-  .hero-shot figure{overflow:visible;width:100%}
-  .hero-shot .ph{
-    border-radius:8px;
-    aspect-ratio:4/3;
-    width:100%;
-  }
-  .hero-shot img{
-    border-radius:8px;
-    width:100%;
-    height:auto;
-    aspect-ratio:auto;
-    object-fit:contain;
-    display:block;
-  }
-  .hero-shot figcaption{display:none}
-  .hero{padding:24px 0 32px}
-}
-@media(max-width:500px){
-  .impact-numbers{
-    grid-template-columns:1fr;
-    gap:16px 0;
-    padding:16px 0;
-  }
-  .impact-label{white-space:normal;padding-top:0;margin-bottom:8px}
-  .impact-stat{padding-right:0;border-right:none;border-bottom:0.5px solid var(--line);padding-bottom:16px}
-  .impact-stat.mid{padding:0 0 16px;border-right:none;border-bottom:0.5px solid var(--line)}
-  .impact-stat.last{padding-left:0;border-bottom:none;padding-bottom:0}
-}
-@media(max-width:500px){
-  .img-row.c3{grid-template-columns:1fr!important;left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
-  .col .img-row.c3{left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
-}
+/* ── ABOUT PANEL ───────────────────────────────────────────── */
+#about-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:49;
+  opacity:0;pointer-events:none;transition:opacity 0.5s cubic-bezier(0.4,0,0.2,1)}
+#about-overlay.open{opacity:1;pointer-events:all}
+#about-panel{position:fixed;top:0;left:var(--sw);
+  width:calc((100vw - var(--sw)) * 5 / 6);height:100vh;background:#F9F8F6;
+  z-index:50;overflow-y:auto;overflow-x:hidden;
+  padding:40px clamp(16px,2.5vw,32px) 32px clamp(20px,3vw,48px);
+  transform:translateX(-110%);transition:transform 0.5s cubic-bezier(0.4,0,0.2,1)}
+#about-panel.open{transform:translateX(0)}
+.about-close-btn{position:fixed;top:20px;right:20px;background:none;border:none;cursor:pointer;
+  color:#2F2E2E;font-size:20px;padding:4px 8px;transition:color .2s;z-index:200}
+.about-close-btn:hover{color:#8067F2}
+.about-back-btn{background:none;border:none;cursor:pointer;color:#888;font-family:var(--sans);
+  font-size:14px;padding:0;margin-bottom:24px;display:block;transition:color .2s}
+.about-back-btn:hover{color:#8067F2}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,200px) minmax(0,200px);
+  gap:40px 48px;max-width:1100px;margin:0 auto}
+.about-quote{font-family:var(--serif);font-size:clamp(22px,2.8vw,36px);line-height:1.4;
+  color:#2F2E2E;margin-bottom:40px;font-weight:700}
+.about-hi{background:#BADA55;color:#2F2E2E;padding:0 2px}
+.about-body{font-size:15px;line-height:1.7;color:#2F2E2E;max-width:595px;font-weight:400}
+.about-body p+p{margin-top:18px}
+.about-section-title{font-size:15px;font-weight:500;letter-spacing:.05em;color:#2F2E2E;margin-bottom:16px}
+.about-exp-list{list-style:none}
+.about-exp-list li{margin-bottom:16px;line-height:1.5}
+.about-company{display:block;font-size:15px;color:#2F2E2E;font-weight:500}
+.about-role{display:block;font-size:15px;color:#888;font-weight:300;margin-top:1px}
+.about-date{display:block;font-size:15px;color:#888;font-weight:300;margin-top:1px}
+.about-contact-list{list-style:none}
+.about-contact-list li{margin-bottom:12px}
+.about-contact-list a{font-size:15px;color:#2F2E2E;text-decoration:none;font-weight:400;
+  display:inline-block;position:relative;transition:color .2s}
+.about-contact-list a:not(.about-cv):hover{color:#8067F2}
+.about-cv{color:#8067F2!important;font-weight:500}
+.about-cv::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;
+  background:#8067F2;transition:width .3s ease}
+.about-cv:hover::after{width:100%}
+@media(max-width:1000px){.about-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.about-grid{grid-template-columns:1fr}
+  #about-panel{width:100%;left:0;padding:40px 20px}}
 
-/* ── CONTACT FOOTER ──────────────────────────────────── */
-.footer-outer {
-  margin-top: 0px;
-  margin-bottom: 120px;
-  padding: 0;
-}
-.footer-content {
-  max-width: 1984px;
-  margin: 0 auto;
-  padding: 80px 80px 68px;
-  background-color: #ffffff;
-  color: #111111;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 52px;
-  cursor: pointer;
-  transition:
-    background-color 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    color            0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.footer-content:hover {
-  background-color: #111111;
-  color: #ffffff;
-}
-.footer-heading {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-  font-weight: 900;
-  font-size: clamp(48px, 6vw, 80px);
-  line-height: 1.1;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: inherit;
-  margin: 0;
-}
-.footer-img-placeholder {
-  width: 540px;
-  height: 390px;
-  background-color: #e8e8e8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.footer-img-placeholder span {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #aaaaaa;
-}
-.footer-cta-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: inherit;
-}
-.footer-cta-link {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  color: inherit;
-  text-decoration: none;
-  position: relative;
-}
-.footer-cta-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: #bada55;
-  transition: width 0.35s ease;
-}
-.footer-cta-link:hover {
-  color: #bada55;
-}
-.footer-cta-link:hover::after {
-  width: 100%;
-}
-.footer-copy {
-  color: var(--muted);
-  font-size: clamp(11px,1.5vw,14px);
-  text-align: center;
-  padding: 16px 0;
-  border-top: 1px solid var(--line);
-  width: 100%;
-  max-width: var(--wide);
-  margin: 0 auto;
-}
-
+/* ── MOBILE SIDEBAR ────────────────────────────────────────── */
 @media(max-width:680px){
-  .footer-content { padding: 60px 24px 48px; gap: 36px; }
-  .footer-img { width: 200px; height: 145px; }
+  .page{margin-left:0;margin-top:44px}
+  .sidebar{width:100%;height:44px;bottom:auto;flex-direction:row}
+  .sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;padding:0 20px;font-size:16px}
+  .sb-back{writing-mode:horizontal-tb;transform:none;margin:0 16px 0 auto;font-size:16px}
 }
 
-.work-ph {
-  position: relative;
-}
-.work-ph .work-img-real,
-.work-ph .ph-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  position: relative;
-  z-index: 2;
-  border-radius: 3px;
-}
-.work-ph:has(.work-img-real),
-.work-ph:has(.ph-img) {
-  background: transparent;
-  aspect-ratio: unset;
-  min-height: 0;
-}
-.work-ph:has(.work-img-real) span,
-.work-ph:has(.ph-img) span {
-  display: none;
-}
+/* ── FOOTER ─────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   FOOTER — responsive behavior reverse-engineered from Sania's
+   .footer-content + .img-together. Keeps YOUR fonts & text.
+   • Desktop: centered, gap 4rem, padding 6rem 3.75rem,
+     inner image max-width 28rem pulled up slightly (-1.5rem).
+   • ≤767px: gap 3rem, padding 4rem 1rem 5rem,
+     image grows to 90vw, margin-top 0.
+   • ≤479px: side padding 2rem, image 100vw, margin-bottom 2rem.
+   ══════════════════════════════════════════════════════════════ */
+.footer-outer{position:relative;z-index:200;background:var(--bg)}
+.footer-contact{
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  gap:4rem;                       /* Sania: 4rem */
+  width:100%;max-width:100rem;    /* Sania: 100rem, centered */
+  margin:0 auto;
+  padding:6rem 3.75rem;           /* Sania: 6rem 3.75rem */
+  background-color:#F6F5F1;color:#111111;text-decoration:none;text-align:center;
+  transition:background-color 0.45s cubic-bezier(0.25,0.46,0.45,0.94),color 0.45s cubic-bezier(0.25,0.46,0.45,0.94)}
+.footer-contact:hover{background-color:#111111;color:#F6F5F1}
+/* YOUR heading font/text — unchanged */
+.footer-heading{font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(38px,5.5vw,68px);color:inherit;text-align:center;max-width:559px;margin:0 auto}
+/* inner image behaves like Sania's .img-together */
+.footer-img{
+  width:auto;height:auto;
+  max-width:28rem;                /* Sania: 28rem */
+  margin-top:-1.5rem;             /* Sania: pulled up slightly */
+  object-fit:contain;display:block;
+  transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)}
+.footer-contact:hover .footer-img{transform:scale(1.03)}
+/* YOUR eyebrow/cta text — unchanged */
+.footer-cta-row{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:inherit;
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
+.footer-link{color:inherit;text-decoration:none;position:relative}
+.footer-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;
+  background:#bada55;transition:width 0.35s ease}
+.footer-contact:hover .footer-link{color:#bada55}
+.footer-contact:hover .footer-link::after{width:100%}
+.footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0;
+  border-top:1px solid var(--line);width:100%;max-width:1600px;margin:0 auto}
+.footer-nav{display:flex;justify-content:space-between;align-items:center;
+  padding:32px 0.9rem 16px;max-width:1600px;margin:0 auto}
+footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(13px,1.6vw,16px);transition:color .2s}
+footer a:hover{color:#8067F2}
 
+/* ── FOOTER: ≤767px (Sania breakpoint) ─────────────────────── */
+@media(max-width:767px){
+  .footer-contact{gap:3rem;padding:4rem 1rem 5rem}
+  .footer-img{width:90vw;max-width:none;margin-top:0}
+  .footer-nav{padding:32px 16px 16px}
+  .footer-copy{padding:16px 16px}
+}
+/* ── FOOTER: ≤479px (Sania breakpoint) ─────────────────────── */
+@media(max-width:479px){
+  .footer-contact{padding-left:2rem;padding-right:2rem}
+  .footer-img{width:100vw;max-width:none;margin-bottom:2rem}
+}
 </style>
-<link rel="stylesheet" href="cursor.css">
 </head>
-<body data-content="logos-art-for-fun-content.txt" data-about="light">
+<body>
 
 <aside class="sidebar">
   <button class="sb-about" onclick="toggleAbout(event)">About</button>
   <a class="sb-back" href="index.html">Back to my projects</a>
 </aside>
 
-<!-- ABOUT OVERLAY -->
-<div class="page">
-
-<!-- HERO (centered) -->
-<div class="gallery-hero">
-  <h1>Logos, icons &amp; art for fun</h1>
-  <p class="gallery-lede">A selection of logos, icons, logotypes, and illustrations I have created over the years.</p>
-</div>
-
-<!-- GALLERY — sania.io exact composition, 16 sets / 42 images -->
-<div class="s-work">
-
-  <div class="work-grid">
-    <div class="work-ph g1-1" style="background:#E8E4DB" id="GALLERY-01"><span class="ph-label">GALLERY-01</span><img data-gallery="GALLERY-01" src="" alt="GALLERY-01" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g1-2" style="background:#DDD8CE" id="GALLERY-02"><span class="ph-label">GALLERY-02</span><img data-gallery="GALLERY-02" src="" alt="GALLERY-02" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g1-3" style="background:#E3E0D6;grid-column:span 4;margin-top:1rem" id="GALLERY-03"><span class="ph-label">GALLERY-03</span><img data-gallery="GALLERY-03" src="" alt="GALLERY-03" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g1-4" style="background:#D8D3C8;grid-column:span 3;margin-top:1rem" id="GALLERY-04"><span class="ph-label">GALLERY-04</span><img data-gallery="GALLERY-04" src="" alt="GALLERY-04" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g1-5" style="background:#E6E2D8" id="GALLERY-05"><span class="ph-label">GALLERY-05</span><img data-gallery="GALLERY-05" src="" alt="GALLERY-05" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid">
-    <div class="work-ph g2-1" style="background:#DEDAD0" id="GALLERY-06"><span class="ph-label">GALLERY-06</span><img data-gallery="GALLERY-06" src="" alt="GALLERY-06" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g2-2" style="background:#E0DCD2" id="GALLERY-07"><span class="ph-label">GALLERY-07</span><img data-gallery="GALLERY-07" src="" alt="GALLERY-07" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g2-3" style="background:#D5D0C5" id="GALLERY-08"><span class="ph-label">GALLERY-08</span><img data-gallery="GALLERY-08" src="" alt="GALLERY-08" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g2-4" style="background:#EAE6DC" id="GALLERY-09"><span class="ph-label">GALLERY-09</span><img data-gallery="GALLERY-09" src="" alt="GALLERY-09" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid">
-    <div class="work-ph g3-1" style="background:#D9D5CB" id="GALLERY-10"><span class="ph-label">GALLERY-10</span><img data-gallery="GALLERY-10" src="" alt="GALLERY-10" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid">
-    <div class="work-ph g4-1" style="background:#E5E1D7" id="GALLERY-11"><span class="ph-label">GALLERY-11</span><img data-gallery="GALLERY-11" src="" alt="GALLERY-11" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g4-2" style="background:#DAD6CC" id="GALLERY-12"><span class="ph-label">GALLERY-12</span><img data-gallery="GALLERY-12" src="" alt="GALLERY-12" class="work-img-real" loading="lazy" decoding="async" onerror="this.remove()"></div>
-    <div class="work-ph g4-3" style="background:#E7E3D9" id="GALLERY-13"><span class="ph-label">GALLERY-13</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-13.jpg" alt="GALLERY-13" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid">
-    <div class="work-ph g5-1" style="background:#DCDBCF" id="GALLERY-14"><span class="ph-label">GALLERY-14</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-14.jpg" alt="GALLERY-14" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g5-2" style="background:#E2DED4" id="GALLERY-15"><span class="ph-label">GALLERY-15</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-15.jpg" alt="GALLERY-15" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g5-3 hidden-item" style="background:#D7D3C9" id="GALLERY-16"><span class="ph-label">GALLERY-16</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-16.png" alt="GALLERY-16" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g6-1 hidden-item" style="background:#E9E5DB" id="GALLERY-17"><span class="ph-label">GALLERY-17</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-17.png" alt="GALLERY-17" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g6-2 hidden-item" style="background:#DCD8CE" id="GALLERY-18"><span class="ph-label">GALLERY-18</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-18.png" alt="GALLERY-18" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g7-1 hidden-item" style="background:#E4E0D6" id="GALLERY-19"><span class="ph-label">GALLERY-19</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-19.png" alt="GALLERY-19" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g7-2 hidden-item" style="background:#D6D2C8" id="GALLERY-20"><span class="ph-label">GALLERY-20</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-20.png" alt="GALLERY-20" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g8-1 hidden-item" style="background:#E8E4DB" id="GALLERY-21"><span class="ph-label">GALLERY-21</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-21.png" alt="GALLERY-21" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g8-2 hidden-item" style="background:#DDD8CE" id="GALLERY-22"><span class="ph-label">GALLERY-22</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-22.png" alt="GALLERY-22" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g8-3 hidden-item" style="background:#E3E0D6" id="GALLERY-23"><span class="ph-label">GALLERY-23</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-23.png" alt="GALLERY-23" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g9-1 hidden-item" style="background:#D8D3C8" id="GALLERY-24"><span class="ph-label">GALLERY-24</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-24.png" alt="GALLERY-24" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g9-2 hidden-item" style="background:#E6E2D8" id="GALLERY-25"><span class="ph-label">GALLERY-25</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-25.png" alt="GALLERY-25" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g9-3 hidden-item" style="background:#DEDAD0" id="GALLERY-26"><span class="ph-label">GALLERY-26</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-26.png" alt="GALLERY-26" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g10-1 hidden-item" style="background:#E0DCD2" id="GALLERY-27"><span class="ph-label">GALLERY-27</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-27.png" alt="GALLERY-27" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g10-2 hidden-item" style="background:#D5D0C5" id="GALLERY-28"><span class="ph-label">GALLERY-28</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-28.png" alt="GALLERY-28" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g10-3 hidden-item" style="background:#EAE6DC" id="GALLERY-29"><span class="ph-label">GALLERY-29</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-29.png" alt="GALLERY-29" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g11-1 hidden-item" style="background:#D9D5CB" id="GALLERY-30"><span class="ph-label">GALLERY-30</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-30.png" alt="GALLERY-30" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g11-2 hidden-item" style="background:#E5E1D7" id="GALLERY-31"><span class="ph-label">GALLERY-31</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-31.png" alt="GALLERY-31" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g12-1 hidden-item" style="background:#DAD6CC" id="GALLERY-32"><span class="ph-label">GALLERY-32</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-32.png" alt="GALLERY-32" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g12-2 hidden-item" style="background:#E7E3D9" id="GALLERY-33"><span class="ph-label">GALLERY-33</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-33.png" alt="GALLERY-33" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g12-3 hidden-item" style="background:#DCDBCF" id="GALLERY-34"><span class="ph-label">GALLERY-34</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-34.png" alt="GALLERY-34" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g13-1 hidden-item" style="background:#E2DED4" id="GALLERY-35"><span class="ph-label">GALLERY-35</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-35.png" alt="GALLERY-35" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g13-2 hidden-item" style="background:#D7D3C9" id="GALLERY-36"><span class="ph-label">GALLERY-36</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-36.png" alt="GALLERY-36" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g14-1 hidden-item" style="background:#E9E5DB" id="GALLERY-37"><span class="ph-label">GALLERY-37</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-37.png" alt="GALLERY-37" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g15-1 hidden-item" style="background:#DCD8CE" id="GALLERY-38"><span class="ph-label">GALLERY-38</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-38.png" alt="GALLERY-38" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g15-2 hidden-item" style="background:#E4E0D6" id="GALLERY-39"><span class="ph-label">GALLERY-39</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-39.png" alt="GALLERY-39" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g15-3 hidden-item" style="background:#D6D2C8" id="GALLERY-40"><span class="ph-label">GALLERY-40</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-40.png" alt="GALLERY-40" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-  <div class="work-grid hidden-grid">
-    <div class="work-ph g16-1 hidden-item" style="background:#E8E4DB" id="GALLERY-41"><span class="ph-label">GALLERY-41</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-41.png" alt="GALLERY-41" class="work-img-real" onerror="this.remove()"></div>
-    <div class="work-ph g16-2 hidden-item" style="background:#DDD8CE" id="GALLERY-42"><span class="ph-label">GALLERY-42</span><img src="portfolio%20images/logos-art-for-fun/GALLERY-42.png" alt="GALLERY-42" class="work-img-real" onerror="this.remove()"></div>
-  </div>
-
-</div><!-- /s-work -->
-
-<div style="height:40px"></div>
-
-<footer>
-  <div class="footer-outer">
-    <div class="footer-content">
-      <h2 class="footer-heading">let's work together</h2>
-      <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg" alt="IMG-00" class="work-img-real" style="width: 540px; height: 390px" loading="lazy" decoding="async" onerror="this.remove()">
-      <div class="footer-cta-row">
-        <span>GET IN TOUCH VIA</span>
-        <a class="footer-cta-link" href="mailto:Sapir7106@gmail.com">EMAIL</a>
-        <span>/</span>
-        <a class="footer-cta-link" href="https://wa.me/972523665667">WHATSAPP</a>
+<div id="about-overlay" onclick="closeAbout()"></div>
+<div id="about-panel">
+  <button class="about-close-btn" onclick="closeAbout()">✕</button>
+  <div class="about-grid">
+    <div>
+      <button class="about-back-btn" onclick="closeAbout()">← back</button>
+      <p class="about-quote">Good design in complex products isn't about 〰〰 making things pretty. It's about making hard things <span class="about-hi">feel inevitable</span>.</p>
+      <div class="about-body">
+        <p>I currently lead UX at PointFive, where I've helped build the product from the ground up alongside the founder, turning complex FinOps data into clear, actionable interfaces and shaping how people trust the AI agents that act on their cloud costs.</p>
+        <p>Before that I spent several years deep in cybersecurity and enterprise AI: at Laminar (data security), and earlier alongside teams like Sygnia (threat detection) and BeyondMinds (enterprise AI). I gravitate toward complex, technical products where good design genuinely changes how people work.</p>
+        <p>Across all of it, one thread repeats. I build the systems underneath the screens, establishing design systems from scratch: the components, tokens and standards that keep a whole product coherent as it scales.</p>
+        <p>I trained at Shenkar College in Visual Communication, and I still keep an active artistic practice on the side: drawing, sculpture, mixed media. It shapes how I approach product work, trusting intuition early and refining ruthlessly later.</p>
       </div>
     </div>
+    <div>
+      <h3 class="about-section-title">EXPERIENCE</h3>
+      <ul class="about-exp-list">
+        <li><span class="about-company">PointFive</span><span class="about-role">Senior Product Designer</span><span class="about-date">2023 – Present</span></li>
+        <li><span class="about-company">Laminar</span><span class="about-role">Senior Product Designer</span><span class="about-date">2022 – 2023</span></li>
+        <li><span class="about-company">BeyondMinds</span><span class="about-role">Product Designer · Enterprise AI</span><span class="about-date">2020 – 2022</span></li>
+        <li><span class="about-company">Sygnia</span><span class="about-role">Product Designer · Cyber</span><span class="about-date">2020 – 2022</span></li>
+        <li><span class="about-company">Freelance</span><span class="about-role">UX/UI &amp; Graphic Design</span><span class="about-date">2017 – 2021</span></li>
+      </ul>
+      <h3 class="about-section-title" style="margin-top:32px">EDUCATION</h3>
+      <ul class="about-exp-list">
+        <li><span class="about-company">Shenkar College</span><span class="about-role">BA Visual Communication</span><span class="about-date">2015 – 2019</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="about-section-title">CONTACT</h3>
+      <ul class="about-contact-list">
+        <li><a href="mailto:Sapir7106@gmail.com">Sapir7106@gmail.com</a></li>
+        <li><a href="tel:+972523665667">+972-523-665-667</a></li>
+        <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://wa.me/972523665667" target="_blank" rel="noopener">WhatsApp ↗</a></li>
+        <li><a href="#" class="about-cv">Download CV →</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-nav" style="max-width:var(--wide);margin:0 auto">
-    <a href="#" id="prevBtn">← Previous work</a>
-    <a href="#" id="nextBtn">Next work →</a>
+</div>
+
+<div class="page">
+
+  <div class="gallery-wrap">
+    <div class="gallery-hero">
+      <h1>Logos and icons<br><em>and art for fun</em></h1>
+      <p class="gallery-lede">A selection of logos, icons, logotypes, and illustrations I have created over the years.</p>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 · Designed &amp; built by Sapir Levi</div>
-</footer>
+
+  <!-- GALLERY rendered by JS -->
+  <div class="s-work" id="gallery-root"></div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+    <div id="lbContent"></div>
+    <p class="lb-caption" id="lbCaption"></p>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-outer">
+    <footer>
+      <a class="footer-contact" href="mailto:Sapir7106@gmail.com">
+        <h2 class="footer-heading">let's work together</h2>
+        <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg" alt="Let's work together" class="footer-img">
+        <div class="footer-cta-row">
+          GET IN TOUCH VIA
+          <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
+          /
+          <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
+        </div>
+      </a>
+      <div class="footer-nav">
+        <a href="#" id="prevBtn">← Previous work</a>
+        <a href="#" id="nextBtn">Next work →</a>
+      </div>
+      <div class="footer-copy">© 2026 · Designed &amp; built by Sapir Levi</div>
+    </footer>
+  </div>
 
 </div><!-- /page -->
 
 <script>
-function resolveGalleryImage(baseName, el) {
-  const extensions = ['jpg', 'JPG', 'jpeg', 'png', 'PNG', 'gif', 'GIF', 'webp'];
-  const base = '/portfolio images/logos-art-for-fun/' + baseName;
+// ═══════════════════════════════════════════════════════════════════════
+//  GALLERY MANIFEST  —  the ONLY thing you edit
+// ═══════════════════════════════════════════════════════════════════════
+//
+//  The gallery is a list of SECTIONS. Each section is a group of
+//  1–6 images that STACK on top of each other as you scroll.
+//  When a section ends, the next one pushes the stack up and away —
+//  so you never get an endless pile, just a few images per group.
+//
+//  A section with ONE image = a calm, single-image moment (no stacking).
+//
+//  ── HOW TO EDIT ──────────────────────────────────────────────
+//
+//  Each image row:  { file, size, col }
+//    file  → the filename WITHOUT extension, e.g. '01-butterfly'
+//            (extension .jpg/.png/.gif is auto-detected)
+//            You can also use { n:1 } as shorthand for 'GALLERY-01'.
+//    size  → 'xl' | 'large' | 'medium' | 'small' | 'mini' | 'tiny'
+//    col   → 'left' | 'center' | 'right'
+//
+//  • First TWO images in a section sit side-by-side at the top.
+//  • From the 3rd image, they stack on scroll (Sania effect).
+//  • Reorder inside a section → move rows up/down within its array
+//  • Move image to another section → cut/paste its row
+//  • Add a section → add a new [ ... ] array to SECTIONS
+//  • Remove a section → delete its array
+//  • Hide one image → delete its row
+//  • Resize → change size value
+//  • Add image → { file:'16-newname', size:'medium', col:'left' }
+//               + upload 16-newname.jpg to the folder
+//
+// ═══════════════════════════════════════════════════════════════════════
 
-  function tryNext(i) {
-    if (i >= extensions.length) return;
-    const img = new Image();
-    img.onload = () => { el.src = img.src; };
-    img.onerror = () => tryNext(i + 1);
-    img.src = base + '.' + extensions[i];
-  }
-  tryNext(0);
-}
+const SECTIONS = [
 
-document.addEventListener('keydown',e=>{
-  if(e.key==='l'||e.key==='L') document.body.classList.toggle('show-labels');
-  if(e.key==='Escape') closeAbout();
-});
+  // ══ Section 1 — opening: 5 images (first pair side-by-side) ══
+  [
+    { file:'01-butterfly', size:'medium', col:'left'   },
+    { file:'02-collage',   size:'small',  col:'right'  },
+    { file:'03-logotype',  size:'small',  col:'right'  },
+    { file:'04-luna',      size:'mini',   col:'left'   },
+    { file:'05-lefthand',  size:'medium', col:'center' },
+  ],
 
-function toggleAbout(e){
-  if(e) e.stopPropagation();
-  const panel=document.getElementById('about-panel');
-  const overlay=document.getElementById('about-overlay');
-  if(!panel||!overlay) return; /* הפאנל עדיין נטען מהמאסטר */
-  if(panel.classList.contains('open')) closeAbout();
-  else { panel.classList.add('open'); overlay.classList.add('open'); }
-}
-function closeAbout(){
-  const panel=document.getElementById('about-panel');
-  const overlay=document.getElementById('about-overlay');
-  if(panel) panel.classList.remove('open');
-  if(overlay) overlay.classList.remove('open');
-}
-// close on outside click
-document.addEventListener('click',function(e){
-  const panel=document.getElementById('about-panel');
-  if(!panel||!panel.classList.contains('open')) return;
-  if(!panel.contains(e.target)){
-    const btn=document.querySelector('.sb-about');
-    if(!btn||!btn.contains(e.target)) closeAbout();
-  }
-});
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -4% 0px'});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+  // ══ Section 2 — 4 images ════════════════════════════════════
+  [
+    { file:'06-chocolate', size:'medium', col:'left'   },
+    { file:'07-frame',     size:'small',  col:'right'  },
+    { file:'08-bombing',   size:'medium', col:'right'  },
+    { file:'09-redhair',   size:'mini',   col:'left'   },
+  ],
 
-// ── LIGHTBOX ──────────────────────────────────
-const lb      = document.getElementById('lightbox');
-const lbClose = document.getElementById('lbClose');
-const lbContent = document.getElementById('lbContent');
+  // ══ Section 3 — 1 big calm moment ═══════════════════════════
+  [
+    { file:'10-meillustration', size:'xl', col:'center' },
+  ],
 
-let lbGallery = [];   // array of {src, alt, caption} for current section
-let lbIndex = 0;
+  // ══ Section 4 — 3 images ════════════════════════════════════
+  [
+    { file:'11-dontstop', size:'medium', col:'left'   },
+    { file:'12-lunaai',   size:'small',  col:'right'  },
+    { file:'13-extra',    size:'medium', col:'center' },
+  ],
 
-function renderLightbox() {
-  const item = lbGallery[lbIndex];
-  if (!item) return;
-  lbContent.innerHTML = item.src
-    ? `<img src="${item.src}" alt="${item.alt||''}">`
-    : `<div class="lb-ph">${item.alt||'Image preview'}</div>`;
-  document.getElementById('lbCaption').textContent = item.caption || '';
-  // show/hide nav based on gallery size
-  const multi = lbGallery.length > 1;
-  document.getElementById('lbPrev').hidden = !multi;
-  document.getElementById('lbNext').hidden = !multi;
-}
+  // ══ Section 5 — 2 images side by side ═══════════════════════
+  [
+    { file:'14-extra', size:'medium', col:'left'  },
+    { file:'15-extra', size:'small',  col:'right' },
+  ],
 
-function openLightbox(gallery, index) {
-  if (window.innerWidth <= 600) return;
-  lbGallery = gallery;
-  lbIndex = index;
-  renderLightbox();
-  lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function lbStep(dir) {
-  if (lbGallery.length < 2) return;
-  lbIndex = (lbIndex + dir + lbGallery.length) % lbGallery.length;
-  renderLightbox();
-}
-
-function closeLightbox() {
-  lb.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-lbClose.addEventListener('click', closeLightbox);
-document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); lbStep(-1); });
-document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); lbStep(1); });
-lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
-document.addEventListener('keydown', e => {
-  if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') lbStep(-1);
-  if (e.key === 'ArrowRight') lbStep(1);
-});
-
-// build a gallery per section-container, attach click to each figure
-document.querySelectorAll('section, .img-row, .img-stack').forEach(container => {
-  const figs = [...container.querySelectorAll('.img-mt figure, .img-row figure, .img-stack figure')];
-  if (!figs.length) return;
-  // de-dup: only handle figures whose closest gallery container is THIS one
-  figs.forEach((fig) => {
-    if (fig.dataset.lbBound) return;
-    fig.dataset.lbBound = '1';
-    fig.addEventListener('click', () => {
-      if (window.innerWidth <= 600) return;
-      // gather all sibling figures within the same logical group
-      const group = fig.closest('.img-row, .img-stack') || fig.closest('section');
-      const groupFigs = [...group.querySelectorAll('figure')];
-      const gallery = groupFigs.map(f => {
-        const img = f.querySelector('img');
-        const ph  = f.querySelector('.ph');
-        const cap = f.querySelector('figcaption');
-        const captionText = cap ? cap.textContent : '';
-        const alt = img ? img.alt : (ph ? ph.querySelector('span')?.textContent : captionText);
-        return { src: img ? img.src : null, alt, caption: captionText };
-      });
-      const idx = groupFigs.indexOf(fig);
-      openLightbox(gallery, idx);
-    });
-  });
-});
-
-// ── PROJECT NAVIGATION ────────────────────────
-// לשינוי סדר: ערכי רק את הרשימה הזאת (ואת projects-order.js)
-const PROJECTS = [
-  'agents.html',             // Card 1 — ללא Previous work
-  'dspm.html',               // Card 2
-  'violation-pane.html',     // Card 3
-  'retraining-model.html',   // Card 4
-  'security-dashboard.html', // Card 5
-  'logos-art-for-fun.html'   // Card 6
 ];
 
-const raw = window.location.pathname.split('/').pop();
-const currentFile = raw.endsWith('.html') ? raw : raw + '.html';
-const currentIdx  = PROJECTS.indexOf(currentFile);
+// ── Size → column span (out of 9) ──────────────────────────────────────
+const SPAN = { xl:9, large:6, medium:5, small:4, mini:3, tiny:2 };
 
-function getNav(direction) {
-  if (currentIdx === -1) return 'index.html';
-  const total = PROJECTS.length;
-  const idx = (currentIdx + direction + total) % total;
-  return PROJECTS[idx];
+// ── Placeholder palette ────────────────────────────────────────────────
+const PH_COLORS = ['#E0DBD0','#D8D4C8','#E5E1D5','#CCCAB8','#D5D1C5','#E2DED2'];
+
+// ── Extension auto-detect ───────────────────────────────────────────────
+// Filenames use the format:  NN-name.ext   (e.g. 01-butterfly.jpg)
+// You provide the base name (without extension) via the `file` field,
+// OR just the number `n` and it falls back to GALLERY-NN.
+const EXTS = ['jpg','JPG','jpeg','png','PNG','gif','GIF','webp'];
+const IMG_BASE = '/portfolio images/logos-art-for-fun/';
+function resolveImg(img, baseName, onDone){
+  let i = 0;
+  (function next(){
+    if (i >= EXTS.length){ if(onDone) onDone(false); return; }
+    const probe = new Image();
+    probe.onload  = () => { img.src = probe.src; if(onDone) onDone(true); };
+    probe.onerror = next;
+    probe.src = IMG_BASE + baseName + '.' + EXTS[i++];
+  })();
 }
 
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+// ── Build ────────────────────────────────────────────────────────────────
+function buildGallery(){
+  const root = document.getElementById('gallery-root');
+  if (!root) return;
+  root.innerHTML = '';
+  const allImgs = [];
+  let phColorIdx = 0;
 
-// Card 1 (first in PROJECTS) never shows "Previous work"
-if (currentIdx === 0) {
-  if (prevBtn) prevBtn.style.display = 'none';
-} else {
-  if (prevBtn) prevBtn.href = getNav(-1);
+  SECTIONS.forEach((items, secIdx) => {
+    const section = document.createElement('div');
+    section.className = 'g-section';
+
+    const count = items.length;
+    const runway = count <= 1 ? 2 : 2 + count * 1.1;   // rem — scroll runway per stack
+    section.style.paddingBottom = runway + 'rem';
+    section.style.zIndex = String(secIdx + 1);
+
+    items.forEach((item, i) => {
+      const span = SPAN[item.size] || 5;
+      // baseName: use `file` if provided (e.g. '01-butterfly'),
+      // otherwise fall back to GALLERY-NN
+      const baseName = item.file
+        ? item.file
+        : 'GALLERY-' + String(item.n).padStart(2,'0');
+      const label = baseName;
+
+      // ── horizontal placement ──
+      let colStart;
+      if (item.col === 'left')        colStart = 1;
+      else if (item.col === 'right')  colStart = 9 - span + 1;
+      else                            colStart = Math.round((9 - span)/2) + 1;
+      if (colStart < 1) colStart = 1;
+
+      // ── vertical stacking ──
+      // First TWO images in a section sit side-by-side at the TOP
+      // (no downward stagger) — like Sania's opening pair.
+      // From the 3rd image onward, they stack with increasing offset.
+      let topOffset, marginTop;
+      if (i < 2){
+        topOffset = 30;          // both pinned near the top, same line
+        marginTop = 0;
+      } else {
+        topOffset = 30 + (i - 1) * 30;
+        marginTop = (i % 2 === 0 ? 4 : 7);  // rem stagger
+      }
+
+      const el = document.createElement('div');
+      el.className = 'g-item';
+      el.dataset.size     = item.size || 'medium';
+      el.dataset.col      = item.col  || 'left';
+      el.style.gridColumn = `${colStart} / span ${span}`;
+      el.style.top        = topOffset + 'px';
+      el.style.marginTop  = marginTop + 'rem';
+      el.style.zIndex     = String(i + 1);
+
+      const ph = document.createElement('div');
+      ph.className = 'g-ph';
+      ph.style.background = PH_COLORS[phColorIdx++ % PH_COLORS.length];
+      ph.textContent = label;
+      el.appendChild(ph);
+
+      const img = document.createElement('img');
+      img.alt = label.replace(/[-_]/g,' ');
+      img.loading  = i < 2 && secIdx === 0 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      img.style.display = 'none';
+      img.addEventListener('click', () => { if(img.src) openLB(img.src, img.alt); });
+      el.appendChild(img);
+
+      section.appendChild(el);
+      allImgs.push(img);
+
+      resolveImg(img, baseName, (found) => {
+        if (found){ img.style.display='block'; el.classList.add('loaded'); }
+      });
+    });
+
+    root.appendChild(section);
+  });
+
+  window._galleryImgs = allImgs;
 }
-if (nextBtn) nextBtn.href = getNav(+1);
+buildGallery();
 
-document.querySelectorAll('img[data-gallery]').forEach(el => {
-  resolveGalleryImage(el.dataset.gallery, el);
+// ═══════════════════════════════════════════════════════════════════════
+//  LIGHTBOX
+// ═══════════════════════════════════════════════════════════════════════
+const lb=document.getElementById('lightbox');
+const lbContent=document.getElementById('lbContent');
+const lbCaption=document.getElementById('lbCaption');
+let lbSrcs=[],lbIdx=0;
+function openLB(src,alt){
+  if(window.innerWidth<=560) return;
+  lbSrcs=(window._galleryImgs||[]).filter(i=>i.src&&i.naturalWidth>0).map(i=>({src:i.src,alt:i.alt}));
+  lbIdx=lbSrcs.findIndex(i=>i.src===src); if(lbIdx<0)lbIdx=0;
+  renderLB(); lb.classList.add('open'); document.body.style.overflow='hidden';
+}
+function renderLB(){
+  const item=lbSrcs[lbIdx]||{};
+  lbContent.innerHTML=item.src?`<img src="${item.src}" alt="${item.alt||''}">`:'';
+  lbCaption.textContent=item.alt||'';
+  document.getElementById('lbPrev').hidden=lbSrcs.length<2;
+  document.getElementById('lbNext').hidden=lbSrcs.length<2;
+}
+function closeLB(){lb.classList.remove('open');document.body.style.overflow='';}
+function lbStep(d){lbIdx=(lbIdx+d+lbSrcs.length)%lbSrcs.length;renderLB();}
+document.getElementById('lbClose').addEventListener('click',closeLB);
+document.getElementById('lbPrev').addEventListener('click',e=>{e.stopPropagation();lbStep(-1);});
+document.getElementById('lbNext').addEventListener('click',e=>{e.stopPropagation();lbStep(1);});
+lb.addEventListener('click',e=>{if(e.target===lb)closeLB();});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLB();
+  if(e.key==='ArrowLeft')lbStep(-1);
+  if(e.key==='ArrowRight')lbStep(1);
 });
+
+// ═══════════════════════════════════════════════════════════════════════
+//  ABOUT PANEL
+// ═══════════════════════════════════════════════════════════════════════
+function toggleAbout(e){
+  if(e)e.stopPropagation();
+  const panel=document.getElementById('about-panel'),overlay=document.getElementById('about-overlay');
+  panel.classList.contains('open')?closeAbout():(panel.classList.add('open'),overlay.classList.add('open'));
+}
+function closeAbout(){
+  document.getElementById('about-panel').classList.remove('open');
+  document.getElementById('about-overlay').classList.remove('open');
+}
+document.addEventListener('click',e=>{
+  const panel=document.getElementById('about-panel');
+  if(!panel.classList.contains('open'))return;
+  if(!panel.contains(e.target)){const btn=document.querySelector('.sb-about');if(!btn||!btn.contains(e.target))closeAbout();}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAbout();});
+
+// ═══════════════════════════════════════════════════════════════════════
+//  PROJECT NAV
+// ═══════════════════════════════════════════════════════════════════════
+const PROJECTS=['agents.html','dspm.html','violation-pane.html','retraining-model.html','security-dashboard.html','logos-art-for-fun.html'];
+const raw=window.location.pathname.split('/').pop();
+const currentFile=raw.endsWith('.html')?raw:raw+'.html';
+const currentIdx=PROJECTS.indexOf(currentFile);
+function getNav(d){if(currentIdx===-1)return'index.html';return PROJECTS[(currentIdx+d+PROJECTS.length)%PROJECTS.length];}
+const prevBtn=document.getElementById('prevBtn'),nextBtn=document.getElementById('nextBtn');
+if(currentIdx===0&&prevBtn)prevBtn.style.display='none';else if(prevBtn)prevBtn.href=getNav(-1);
+if(currentIdx===PROJECTS.length-1&&nextBtn)nextBtn.style.display='none';else if(nextBtn)nextBtn.href=getNav(+1);
 </script>
-<script src="about-loader.js"></script>
-<script src="about-content-loader.js"></script>
-<script src="content-loader.js"></script>
-<div id="custom-cursor"><span id="cursor-message"></span></div>
-<script src="cursor.js"></script>
 </body>
 </html>
