@@ -301,6 +301,10 @@ footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
 footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(15px,1.6vw,20px);transition:color .2s}footer a:hover{color:#8067F2}
 .footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
 
+@media (min-width: 768px) {
+  .footer-content { max-width: 1600px; margin-left: auto; margin-right: auto; padding-left: 0.9rem; padding-right: 0.9rem; }
+}
+
 /* Responsive — Sania breakpoints, only for footer-content
    and footer-img. Do NOT change footer-nav responsiveness. */
 @media (max-width: 767px) {
@@ -384,18 +388,18 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   </div>
 
   <!-- FOOTER -->
-  <div class="footer-outer">
-    <div class="footer-content">
-      <h2 class="footer-heading">let's work together</h2>
-      <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
-           alt="Let's work together" class="footer-img">
-      <div class="footer-cta-row">
-        GET IN TOUCH VIA
-        <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
-        /
-        <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
-      </div>
+  <div class="footer-content">
+    <h2 class="footer-heading">let's work together</h2>
+    <img src="/portfolio images/logos-art-for-fun/IMG-00.jpg"
+         alt="Let's work together" class="footer-img">
+    <div class="footer-cta-row">
+      GET IN TOUCH VIA
+      <a href="mailto:Sapir7106@gmail.com" class="footer-link">EMAIL</a>
+      /
+      <a href="https://wa.me/972523665667" class="footer-link">WHATSAPP</a>
     </div>
+  </div>
+  <div class="footer-outer">
     <footer style="max-width:var(--wide);margin:0 auto">
       <div class="footer-nav">
         <a href="security-dashboard.html" id="prevBtn">← Previous work</a>
