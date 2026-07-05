@@ -86,22 +86,30 @@
 /* ── Typography ── */
 .about-quote {
   font-family: var(--serif); font-size: 28px;
-  line-height: 1.2; font-weight: 700; margin-bottom: 36px;
+  line-height: 1.28; font-weight: 700; margin-bottom: 36px;
   color: var(--p-text, #2F2E2E);
 }
 @media (min-width: 480px) {
   .about-quote {
     font-size: 42px;
-    line-height: 1.15;
+    line-height: 1.22;
   }
 }
 @media (min-width: 1400px) {
   .about-quote {
     font-size: 44px;
-    line-height: 1.15;
+    line-height: 1.20;
   }
 }
-.about-hi { background: #BADA55; color: #2F2E2E; padding: 0 2px; border-radius: 2px; }
+.about-hi {
+  background: #BADA55;
+  color: #2F2E2E;
+  padding: 1px 3px;
+  border-radius: 2px;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
 
 .about-body {
   font-size: 15px; line-height: 1.7; font-weight: 300;
