@@ -188,6 +188,18 @@
 
 .about-tl li:last-child::after { display: none; }
 
+.about-tl li:last-child::after {
+  display: block;
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 12px;
+  bottom: -100px;
+  width: 1px;
+  z-index: 2;
+  background: var(--p-bg);
+}
+
 /* Shenkar — purple dot, no line */
 .about-tl li.edu::before { background: #8067F2; }
 .about-tl li.edu::after  { display: none; }
