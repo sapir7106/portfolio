@@ -50,6 +50,7 @@
 #about-panel {
   position: fixed; top: 0; left: var(--sw, var(--sidebar-w, 71px));
   width: calc((100vw - var(--sw, var(--sidebar-w, 71px))) * 5 / 6);
+  max-width: 1550px;
   height: 100vh;
   background: var(--p-bg, #F9F8F6);
   z-index: 50; overflow-y: auto; overflow-x: hidden;
@@ -217,6 +218,23 @@
   #about-panel[data-theme="light"] {
     --p-sub: rgba(47,46,46,0.90);
     --p-muted: #55544a;
+  }
+}
+@media (min-width: 480px) and (max-width: 1024px) {
+  .about-exp-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 32px;
+    align-items: start;
+  }
+  .about-contact-top {
+    order: 1;
+  }
+  .about-exp-section {
+    order: 2;
+  }
+  .about-bio-col {
+    max-width: 600px;
   }
 }
 @media (max-width:600px) {
