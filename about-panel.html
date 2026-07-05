@@ -155,8 +155,8 @@
 
 .about-tl li {
   padding-left: 20px;
-  padding-bottom: 13px;
   position: relative;
+  padding-bottom: 13px;
   margin-bottom: 0;
 }
 
@@ -173,27 +173,16 @@
 
 /* vertical line */
 .about-tl li::after {
-  display: none;
-}
-
-.about-tl li:last-child::after { display: none; }
-
-.about-tl li:last-child::after {
-  display: block;
   content: '';
   position: absolute;
   left: 3px;
-  top: 12px;
-  bottom: -100px;
+  top: 14px;
+  bottom: -13px;
   width: 1px;
-  z-index: 2;
-  background: var(--p-bg);
+  background: rgba(186,218,85,0.2);
 }
 
-.about-tl li:last-child::after {
-  top: 11px;
-  background: var(--p-bg) !important;
-}
+.about-tl li:last-child::after { display: none; }
 
 /* Shenkar — purple dot, no line */
 .about-tl li.edu::before { background: #8067F2; }
@@ -207,9 +196,6 @@
   background: #9c8aef;
 }
 #about-panel[data-theme="light"] .about-tl li::after {
-  background: #7e789d33;
-}
-#about-panel[data-theme="light"] .about-tl::before {
   background: #7e789d33;
 }
 
