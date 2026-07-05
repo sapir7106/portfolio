@@ -202,7 +202,8 @@
     .page { margin-left: 0; margin-top: 44px; }
 
     /* open state: About becomes a static label on the left, × closes on the right */
-    body:has(#about-panel.open) .sidebar-btn { margin-left: 0; pointer-events: none; }
+    body:has(#about-panel.open) .sidebar-btn { margin-left: 0; pointer-events: none; color: var(--p-text, #2F2E2E) !important; cursor: default; text-decoration: none; }
+    body[data-about="dark"]:has(#about-panel.open) .sidebar-btn { color: #F2EFE8 !important; }
     body:has(#about-panel.open) .sidebar-close { display: flex; margin-left: auto; }
   }
   @media (max-width: 767px) {
