@@ -50,6 +50,7 @@
 #about-panel {
   position: fixed; top: 0; left: var(--sw, var(--sidebar-w, 71px));
   width: calc((100vw - var(--sw, var(--sidebar-w, 71px))) * 5 / 6);
+  max-width: 1550px;
   height: 100vh;
   background: var(--p-bg, #F9F8F6);
   z-index: 50; overflow-y: auto; overflow-x: hidden;
@@ -84,17 +85,45 @@
 
 /* ── Typography ── */
 .about-quote {
-  font-family: var(--serif); font-size: clamp(24px, 4.5vw, 44px);
-  line-height: 1.4; font-weight: 700; margin-bottom: 36px;
+  font-family: var(--serif); font-size: 28px;
+  line-height: 1.28; font-weight: 700; margin-bottom: 36px;
   color: var(--p-text, #2F2E2E);
 }
-.about-hi { background: #BADA55; color: #2F2E2E; padding: 0 2px; border-radius: 2px; }
+@media (min-width: 480px) {
+  .about-quote {
+    font-size: 42px;
+    line-height: 1.22;
+  }
+}
+@media (min-width: 1400px) {
+  .about-quote {
+    font-size: 44px;
+    line-height: 1.20;
+  }
+}
+.about-hi {
+  color: #2F2E2E;
+  padding: 0 3px;
+  border-radius: 2px;
+  background-image: linear-gradient(#BADA55, #BADA55);
+  background-size: 100% 1em;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+}
 
 .about-body {
   font-size: 15px; line-height: 1.7; font-weight: 300;
   color: var(--p-sub, rgba(47,46,46,0.80)); max-width: 600px;
 }
 .about-body p + p { margin-top: 16px; }
+#about-panel[data-theme="light"] .about-body {
+  font-weight: 400;
+}
+@media (min-width: 1024px) {
+  #about-panel[data-theme="light"] .about-body {
+    font-size: 16px;
+  }
+}
 
 /* ── Labels + lists ── */
 .about-section-title {
@@ -112,15 +141,23 @@
 .about-company { display: block; font-size: 15px; font-weight: 500; color: var(--p-text, #2F2E2E); }
 .about-role    { display: block; font-size: 14px; font-weight: 300; margin-top: 2px; color: var(--p-muted, #6b6a5e); }
 .about-date    { display: block; font-size: 14px; font-weight: 300; margin-top: 2px; color: var(--p-muted, #6b6a5e); }
+#about-panel[data-theme="light"] .about-role,
+#about-panel[data-theme="light"] .about-date {
+  color: rgb(85, 84, 74);
+}
 .about-exp-section + .about-exp-section { margin-top: 32px; }
 
 /* ── Timeline ── */
-.about-tl { list-style: none; }
+.about-tl {
+  list-style: none;
+  position: relative;
+}
 
 .about-tl li {
   padding-left: 20px;
   position: relative;
-  margin-bottom: 16px;
+  padding-bottom: 13px;
+  margin-bottom: 0;
 }
 
 /* dot */
@@ -131,13 +168,16 @@
   width: 7px; height: 7px;
   border-radius: 50%;
   background: #BADA55;
+  z-index: 1;
 }
 
 /* vertical line */
 .about-tl li::after {
   content: '';
   position: absolute;
-  left: 3px; top: 14px; bottom: -16px;
+  left: 3px;
+  top: 14px;
+  bottom: -13px;
   width: 1px;
   background: rgba(186,218,85,0.2);
 }
@@ -147,6 +187,17 @@
 /* Shenkar — purple dot, no line */
 .about-tl li.edu::before { background: #8067F2; }
 .about-tl li.edu::after  { display: none; }
+
+/* Light mode only (case-study pages) */
+#about-panel[data-theme="light"] .about-tl li::before {
+  background: #4e5048;
+}
+#about-panel[data-theme="light"] .about-tl li.edu::before {
+  background: #9c8aef;
+}
+#about-panel[data-theme="light"] .about-tl li::after {
+  background: #7e789d33;
+}
 
 /* ── Contact ── */
 /* Vertical column by default; a full single-line row only once the
@@ -189,8 +240,7 @@
 
 /* ── Responsive ── */
 @media (max-width:1200px) and (min-width:1025px) {
-  .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px); grid-template-areas: "bio exp"; }
-  .about-photo { display: none; }
+  .about-grid { grid-template-columns: minmax(0,1fr) minmax(0,200px) minmax(0,200px); grid-template-areas: "bio exp photo"; }
 }
 @media (max-width:1024px) {
   /* single-column stack: photo, headline+bio, contact+experience — see nav-bar spec */
@@ -206,8 +256,6 @@
   .about-photo-inner { width: 75%; max-width: 340px; }
   .about-photo-placeholder { aspect-ratio: 4/3; }
 
-  /* headline: mid-range (601-1024px) — smaller than desktop, avoid awkward breaks */
-  .about-quote { font-size: 28px; line-height: 1.3; }
   .about-hi { white-space: nowrap; }
 
   /* body copy: mid-range sizing */
@@ -220,8 +268,25 @@
     --p-muted: #55544a;
   }
 }
+@media (min-width: 375px) and (max-width: 1024px) {
+  .about-exp-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 32px;
+    align-items: start;
+    max-width: 480px;
+  }
+  .about-contact-top {
+    order: 1;
+  }
+  .about-exp-section {
+    order: 2;
+  }
+  .about-bio-col {
+    max-width: 600px;
+  }
+}
 @media (max-width:600px) {
-  .about-quote { font-size: 38px; line-height: 1.11; }
   .about-body { font-size: 17px; line-height: 1.7; max-width: 640px; }
 }
 @media (max-width:500px) {
@@ -250,15 +315,17 @@
      common desktop sizes; overflow-y:auto (set on #about-panel)
      still allows scrolling if content genuinely doesn't fit. */
   #about-panel { padding-top: 28px; padding-bottom: 16px; }
-  .about-quote { font-size: 32px; line-height: 1.2; margin-bottom: 16px; }
+  .about-quote { margin-bottom: 16px; }
   .about-body p + p { margin-top: 10px; }
   .about-contact-top { margin-bottom: 20px; }
   .about-contact-list li { margin-bottom: 6px; }
   /* Light mode only (case-study pages) */
   #about-panel[data-theme="light"] .about-contact-top { margin-bottom: 28px; }
+  #about-panel[data-theme="dark"] .about-contact-top {
+    margin-bottom: 28px;
+  }
 }
 @media (min-width: 1440px) {
-  .about-quote { font-size: 42px; }
   .about-photo-inner { width: 88%; }
   .about-body { font-size: 17px; line-height: 1.55; }
   .about-grid {
@@ -271,6 +338,16 @@
      so only the exp<->photo gap is reduced (24px) without touching
      the bio<->exp gap, which still uses the grid's normal 48px. */
   .about-photo { margin-left: 0; }
+}
+@media (max-width: 1024px) {
+  .about-photo {
+    margin-top: 52px;
+  }
+}
+@media (max-width: 768px) {
+  .about-photo-img {
+    max-width: 340px;
+  }
 }
 </style>
 
