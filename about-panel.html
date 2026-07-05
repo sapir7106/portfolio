@@ -182,6 +182,17 @@
 .about-tl li.edu::before { background: #8067F2; }
 .about-tl li.edu::after  { display: none; }
 
+/* Light mode only (case-study pages) */
+#about-panel[data-theme="light"] .about-tl li::before {
+  background: #4e5048;
+}
+#about-panel[data-theme="light"] .about-tl li.edu::before {
+  background: #9c8aef;
+}
+#about-panel[data-theme="light"] .about-tl li::after {
+  background: #7e789d33;
+}
+
 /* ── Contact ── */
 /* Vertical column by default; a full single-line row only once the
    container is wide enough to fit every item — never a partial wrap. */
