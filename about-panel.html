@@ -96,6 +96,9 @@
   color: var(--p-sub, rgba(47,46,46,0.80)); max-width: 600px;
 }
 .about-body p + p { margin-top: 16px; }
+#about-panel[data-theme="light"] .about-body {
+  font-weight: 400;
+}
 
 /* ── Labels + lists ── */
 .about-section-title {
@@ -113,6 +116,10 @@
 .about-company { display: block; font-size: 15px; font-weight: 500; color: var(--p-text, #2F2E2E); }
 .about-role    { display: block; font-size: 14px; font-weight: 300; margin-top: 2px; color: var(--p-muted, #6b6a5e); }
 .about-date    { display: block; font-size: 14px; font-weight: 300; margin-top: 2px; color: var(--p-muted, #6b6a5e); }
+#about-panel[data-theme="light"] .about-role,
+#about-panel[data-theme="light"] .about-date {
+  color: rgb(85, 84, 74);
+}
 .about-exp-section + .about-exp-section { margin-top: 32px; }
 
 /* ── Timeline ── */
