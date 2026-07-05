@@ -156,7 +156,7 @@ footer{padding:0 0 16px;font-size:16px;color:var(--muted)}
 .footer-nav{display:flex;justify-content:space-between;align-items:center;padding:32px 0 16px;border-top:none}
 .footer-nav #nextBtn{margin-left:auto}
 footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(15px,1.6vw,20px);transition:color .2s}footer a:hover{color:#8067F2}
-.footer-copy{color:var(--muted);font-size:clamp(11px,1.5vw,14px);text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
+.footer-copy{color:var(--muted);font-weight:400;font-size:14px;text-align:center;padding:16px 0 0;border-top:1px solid var(--line)}
 /* hidden presentation entry — wraps the highlighted text, looks exactly like normal text, no hover/underline/cursor change */
 .secret-deck,.secret-deck mark{color:inherit;text-decoration:none;cursor:text}
 .secret-deck:hover,.secret-deck:hover mark{color:inherit;text-decoration:none;background:rgba(186,218,85,.42)}
@@ -209,6 +209,9 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .footer-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:none}
   footer a{font-size:clamp(15px,4vw,18px)}
   .footer-copy{text-align:center;padding-top:16px;border-top:1px solid var(--line);font-size:13px}
+}
+@media(max-width:480px){
+  footer{ padding-bottom:20px; }
 }
 /* ── IMPACT BLOCK ────────────────────────────────
    שני מופעים — רק אחד יופיע בכל עמוד.
