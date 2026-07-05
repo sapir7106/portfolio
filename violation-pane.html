@@ -28,6 +28,9 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .sb-about:hover{color:#8067F2}
 .sb-back{writing-mode:vertical-rl;transform:rotate(180deg);background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;font-size:20px;letter-spacing:.01em;text-transform:none;padding:0;margin-top:auto;margin-bottom:40px;transition:color .2s;text-decoration:none;}
 .sb-back:hover{color:#8067F2}
+.sb-back-short{display:none}
+.sb-close{display:none;background:none;border:none;cursor:pointer;color:#242323;font-family:var(--sans);font-weight:400;transition:color .2s;text-decoration:none;}
+.sb-close:hover{color:#8067F2}
 
 /* wrap — centered */
 .page{position:relative;z-index:1;margin-left:var(--sw)}
@@ -191,8 +194,8 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
     grid-template-columns:1fr!important;
   }
 }
-@media(max-width:1023px){.page{margin-left:0;margin-top:44px}.sidebar{width:100%;height:auto;min-height:44px;bottom:auto;flex-direction:row;gap:8px;flex-wrap:wrap}.sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;padding:12px 16px;font-size:19px;min-height:44px;min-width:unset;display:flex;align-items:center;justify-content:center}.sb-back{writing-mode:horizontal-tb;transform:none;margin:0 0 0 auto;padding:12px 16px;font-size:19px;min-height:44px;min-width:unset;display:flex;align-items:center;justify-content:center}.wrap{padding:0 20px}}
-@media(max-width:767px){.sidebar{gap:8px;flex-wrap:wrap;min-height:52px}.sb-about,.sb-back{font-size:18px;min-height:44px;min-width:unset;padding:12px 16px}.sb-back{margin:0 0 0 auto}}
+@media(max-width:1024px){.page{margin-left:0;margin-top:44px}.sidebar{width:100%;height:auto;min-height:44px;bottom:auto;flex-direction:row;align-items:center;gap:8px;flex-wrap:wrap}.sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;margin-left:auto;padding:12px 16px;font-size:19px;min-height:44px;min-width:unset;display:flex;align-items:center;justify-content:center;order:2}.sb-back{writing-mode:horizontal-tb;transform:none;margin:0;padding:12px 16px;font-size:19px;min-height:44px;min-width:unset;display:flex;align-items:center;justify-content:center;order:1}.sb-back-full{display:none}.sb-back-short{display:inline}.sb-close{font-size:28px;line-height:1;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;order:2;margin-left:auto}.wrap{padding:0 20px}body:has(#about-panel.open) .sb-back{display:none}body:has(#about-panel.open) .sb-about{order:1;margin-left:0;pointer-events:none;color:var(--p-text, #2F2E2E) !important;cursor:default;text-decoration:none}body:has(#about-panel.open) .sb-close{display:flex}}
+@media(max-width:767px){.sidebar{gap:8px;flex-wrap:wrap;min-height:52px}.sb-about,.sb-back{font-size:18px;min-height:44px;min-width:unset;padding:12px 16px}}
 @media(max-width:480px){
   /* images never overflow */
   .ph,.img-mt .ph,.img-mt img,.img-row .ph,.img-stack .ph,
@@ -358,7 +361,8 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 
 <aside class="sidebar">
   <button class="sb-about" onclick="toggleAbout(event)">About</button>
-  <a class="sb-back" href="index.html">Back to my projects</a>
+  <a class="sb-back" href="index.html"><span class="sb-back-full">Back to my projects</span><span class="sb-back-short">← Back</span></a>
+  <button class="sb-close" onclick="closeAbout()" aria-label="Close About">×</button>
 </aside>
 
 <!-- ABOUT OVERLAY -->
