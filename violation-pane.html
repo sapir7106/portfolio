@@ -102,7 +102,7 @@ h2 em{font-style:italic;font-weight:400}
   position:relative;
 }
 /* c3 inside a .col — break out to full wrap width on large screens only */
-@media(min-width:901px){
+@media(min-width:1025px){
   .col .img-row.c3{
     left:50%;
     right:50%;
@@ -357,8 +357,19 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   .col .img-row.c3{left:auto!important;right:auto!important;margin-left:0!important;margin-right:0!important;width:100%!important}
 }
 
+/* keyboard focus indicator */
+:focus-visible{
+  outline:2px solid #8067F2;
+  outline-offset:3px;
+  border-radius:2px;
+}
+a:focus-visible,button:focus-visible{
+  outline:2px solid #8067F2;
+  outline-offset:3px;
+}
 </style>
 <link rel="stylesheet" href="cursor.css">
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body data-content="violation-pane-content.txt" data-about="light">
 
@@ -605,6 +616,15 @@ document.querySelectorAll('section, .img-row, .img-stack').forEach(container => 
   figs.forEach((fig) => {
     if (fig.dataset.lbBound) return;
     fig.dataset.lbBound = '1';
+    fig.setAttribute('tabindex', '0');
+    fig.setAttribute('role', 'button');
+    fig.setAttribute('aria-label', 'Open image in full view');
+    fig.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        fig.click();
+      }
+    });
     fig.addEventListener('click', () => {
       if (window.innerWidth <= 600) return;
       // gather all sibling figures within the same logical group
