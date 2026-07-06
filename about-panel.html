@@ -63,10 +63,12 @@
 
 /* ── Buttons ── */
 .about-close-btn {
-  position: fixed; top: 20px; right: 20px;
+  position: fixed; top: 12px; right: 12px;
   background: none; border: none; cursor: pointer;
   color: var(--p-close, #2F2E2E);
-  font-size: 20px; line-height: 1; padding: 4px 8px;
+  font-size: 20px; line-height: 1;
+  padding: 12px 14px; min-width: 44px; min-height: 44px;
+  display: flex; align-items: center; justify-content: center;
   transition: color .2s; z-index: 200;
 }
 .about-close-btn:hover { color: #BADA55; }
@@ -85,8 +87,8 @@
 
 /* ── Typography ── */
 .about-quote {
-  font-family: var(--serif); font-size: 28px;
-  line-height: 1.28; font-weight: 700; margin-bottom: 36px;
+  font-family: var(--serif); font-size: 30px;
+  line-height: 1.25; font-weight: 700; margin-bottom: 36px;
   color: var(--p-text, #2F2E2E);
 }
 @media (min-width: 480px) {
@@ -287,7 +289,10 @@
   }
 }
 @media (max-width:600px) {
-  .about-body { font-size: 17px; line-height: 1.7; max-width: 640px; }
+  .about-body { font-size: 16px; line-height: 1.7; max-width: 640px; }
+}
+@media (max-width:676px) {
+  .about-body { font-size: 16px; }
 }
 @media (max-width:500px) {
   .about-photo-inner { width: 100%; max-width: 100%; }
