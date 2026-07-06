@@ -448,6 +448,16 @@ footer a:hover { color: #8067F2; }
     padding-right: 0.5rem;
   }
 }
+/* keyboard focus indicator */
+:focus-visible{
+  outline:2px solid #8067F2;
+  outline-offset:3px;
+  border-radius:2px;
+}
+a:focus-visible,button:focus-visible{
+  outline:2px solid #8067F2;
+  outline-offset:3px;
+}
 </style>
 <link rel="stylesheet" href="cursor.css">
 </head>
@@ -700,6 +710,15 @@ function buildGallery(){
       img.loading  = i < 2 && secIdx === 0 ? 'eager' : 'lazy';
       img.decoding = 'async';
       img.style.display = 'none';
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', 'Open image in full view');
+      img.addEventListener('keydown', function(e){
+        if(e.key==='Enter'||e.key===' '){
+          e.preventDefault();
+          img.click();
+        }
+      });
       img.addEventListener('click', () => { if(img.src) openLB(img.src, img.alt); });
       el.appendChild(img);
 
