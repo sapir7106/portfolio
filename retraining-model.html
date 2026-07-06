@@ -11,7 +11,7 @@
 /* ── V1: WARM PAPER — editorial, generous whitespace, serif-led ── */
 :root{
   --bg:#F7F6F1;--bg2:#FBFAF7;--ink:#17160F;--soft:#3A382E;
-  --muted:#8C897C;--line:#E3E0D6;--hi:#BADA55;
+  --muted:#6B6860;--detail:#756F67;--line:#E3E0D6;--hi:#BADA55;
   --sidebar:#242323;--sw:71px;
   --serif:'Playfair Display',Georgia,serif;
   --sans:'Avenir','Montserrat',sans-serif;
@@ -40,7 +40,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 /* hero */
 .hero-wrapper{display:flex;flex-direction:column}
 .hero{padding:80px 0 48px;order:1}
-.eyebrow{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:22px}
+.eyebrow{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--detail);font-weight:500;margin-bottom:22px}
 @media(max-width:676px){ .eyebrow{ font-size:11px; } }
 .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.5vw,70px);line-height:.98;letter-spacing:-.025em;max-width:14ch;margin-bottom:28px}
 .hero h1 em{font-style:italic;font-weight:400}
@@ -52,7 +52,6 @@ mark{background:rgba(186,218,85,.42);padding:0 .1em;border-radius:2px}
 
 /* hero-shot @500px — see consolidated block below */
 figure{margin:0}
-figcaption{font-size:14px;color:var(--muted);margin-top:16px;font-style:italic;text-align:center}
 .ph{background:var(--line);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;position:relative;min-height:220px;container-type:inline-size}
 .ph-id{display:none;position:absolute;top:10px;left:10px;background:var(--ink);color:var(--hi);font-size:10px;font-weight:600;font-family:monospace;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
 body.show-labels .ph-id{display:block}
@@ -71,13 +70,13 @@ body.show-labels .ph-id{display:block}
 /* project info */
 .pinfo{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:52px}
 .pi{background:var(--bg2);padding:22px 24px}
-.pi-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+.pi-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--detail);font-weight:600;margin-bottom:8px}
 .pi-role{font-size:16px;font-weight:600;color:#8067F2;margin-bottom:5px}
 .pi p{font-size:16px;color:var(--soft);line-height:1.55}
 
 /* sections */
 section{padding:64px 0}
-.sec-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
+.sec-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--detail);font-weight:600;margin-bottom:4px}
 .sec-head{display:flex;align-items:center;gap:18px;margin-bottom:28px}
 .num{font-family:var(--serif);font-size:clamp(40px,5.5vw,55px);color:var(--hi);font-weight:700;flex:none;letter-spacing:-.02em;line-height:1;padding-bottom:.12em;position:relative;top:-2px}
 h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,3.6vw,44px);line-height:1.02;letter-spacing:-.02em}
@@ -114,7 +113,7 @@ h2 em{font-style:italic;font-weight:400}
   }
 }
 .img-stack{display:grid;gap:100px;margin-top:32px}
-figcaption{font-size:14px;color:var(--soft);margin-top:16px;font-style:italic;text-align:center}
+figcaption{font-size:15px;color:#625B51;margin-top:16px;font-style:normal;text-align:center}
 
 /* stats */
 .stat-band{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:28px}
@@ -164,7 +163,7 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
 .lightbox img{max-width:90vw;max-height:80vh;width:auto;height:auto;border-radius:6px;display:block}
 .lb-ph{background:var(--bg2);border:1px solid var(--line);border-radius:8px;width:clamp(280px,90vw,1196px);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;font-family:monospace}
 .lb-caption{font-size:17px;color:rgba(242,239,232,0.75);font-family:var(--sans);font-weight:300;font-style:normal;text-align:center;max-width:70ch;line-height:1.5}
-.lb-close{position:fixed;top:20px;right:24px;background:none;border:none;cursor:pointer;color:#F2EFE8;font-size:28px;line-height:1;padding:4px 8px;transition:color .2s;z-index:10000}
+.lb-close{position:fixed;top:12px;right:16px;background:none;border:none;cursor:pointer;color:#F2EFE8;font-size:28px;line-height:1;padding:12px 14px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;transition:color .2s;z-index:10000}
 .lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);cursor:pointer;color:#F2EFE8;font-size:24px;line-height:1;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;z-index:10000}
 .lb-nav:hover{background:rgba(255,255,255,0.18)}
 .lb-prev{left:24px}
@@ -373,14 +372,14 @@ a:focus-visible,button:focus-visible{
 </head>
 <body data-content="retraining-model-content.txt" data-about="light">
 
-<aside class="sidebar">
+<nav class="sidebar" aria-label="Site navigation">
   <button class="sb-about" onclick="toggleAbout(event)">About</button>
   <a class="sb-back" href="index.html"><span class="sb-back-full">Back to my projects</span><span class="sb-back-short">← Back</span></a>
   <button class="sb-close" onclick="closeAbout()" aria-label="Close About">×</button>
-</aside>
+</nav>
 
 <!-- ABOUT OVERLAY -->
-<div class="page">
+<main class="page">
 <div class="wrap">
 
 <div class="hero-wrapper">
@@ -516,7 +515,7 @@ a:focus-visible,button:focus-visible{
   </div>
   <div class="footer-copy">© 2026 · Designed &amp; built by Sapir Levi</div>
 </footer>
-</div></div>
+</div></main>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
@@ -567,6 +566,7 @@ const lbContent = document.getElementById('lbContent');
 
 let lbGallery = [];   // array of {src, alt, caption} for current section
 let lbIndex = 0;
+let lbTrigger = null;
 
 function renderLightbox() {
   const item = lbGallery[lbIndex];
@@ -581,13 +581,15 @@ function renderLightbox() {
   document.getElementById('lbNext').hidden = !multi;
 }
 
-function openLightbox(gallery, index) {
+function openLightbox(gallery, index, triggerEl) {
   if (window.innerWidth <= 600) return;
   lbGallery = gallery;
   lbIndex = index;
+  lbTrigger = triggerEl || null;
   renderLightbox();
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => { lbClose.focus(); });
 }
 
 function lbStep(dir) {
@@ -599,6 +601,7 @@ function lbStep(dir) {
 function closeLightbox() {
   lb.classList.remove('open');
   document.body.style.overflow = '';
+  if (lbTrigger) { lbTrigger.focus(); lbTrigger = null; }
 }
 
 lbClose.addEventListener('click', closeLightbox);
@@ -610,6 +613,20 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') lbStep(-1);
   if (e.key === 'ArrowRight') lbStep(1);
+});
+
+lb.addEventListener('keydown', function(e) {
+  if (!lb.classList.contains('open')) return;
+  if (e.key !== 'Tab') return;
+  const focusable = [...lb.querySelectorAll('button:not([hidden])')];
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey) {
+    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+  } else {
+    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
 });
 
 // build a gallery per section-container, attach click to each figure
@@ -643,7 +660,7 @@ document.querySelectorAll('section, .img-row, .img-stack').forEach(container => 
         return { src: img ? img.src : null, alt, caption: captionText };
       });
       const idx = groupFigs.indexOf(fig);
-      openLightbox(gallery, idx);
+      openLightbox(gallery, idx, fig);
     });
   });
 });
