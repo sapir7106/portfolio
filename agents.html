@@ -81,7 +81,7 @@ section{padding:64px 0}
 .num{font-family:var(--serif);font-size:clamp(40px,5.5vw,55px);color:var(--hi);font-weight:700;flex:none;letter-spacing:-.02em;line-height:1;padding-bottom:.12em;position:relative;top:-2px}
 h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,3.6vw,44px);line-height:1.02;letter-spacing:-.02em}
 h2 em{font-style:italic;font-weight:400}
-.body p{max-width:700px;color:var(--soft);font-size:17px}.body p+p{margin-top:28px}
+.body p{max-width:660px;color:var(--soft);font-size:17px}.body p+p{margin-top:28px}
 .body strong{color:var(--ink);font-weight:600}
 .body ul{margin-top:16px;list-style:none;display:grid;gap:9px}
 .body ul li{font-size:17px;color:var(--soft);padding-left:28px;position:relative}
@@ -197,6 +197,21 @@ footer a{color:var(--ink);text-decoration:none;font-weight:400;font-size:clamp(1
   }
 }
 @media(max-width:1024px){.page{margin-left:0;margin-top:44px}.sidebar{width:100%;height:auto;min-height:44px;bottom:auto;flex-direction:row;align-items:center;gap:8px;flex-wrap:wrap}.sb-about{writing-mode:horizontal-tb;transform:none;margin-top:0;margin-left:auto;padding:12px 16px;font-size:19px;min-height:44px;min-width:unset;display:flex;align-items:center;justify-content:center;order:2}.sb-back{writing-mode:horizontal-tb;transform:none;margin:0;padding:12px 16px;font-size:19px;min-height:44px;min-width:unset;display:flex;align-items:center;justify-content:center;order:1}.sb-back-full{display:none}.sb-back-short{display:inline}.sb-close{font-size:28px;line-height:1;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;order:2;margin-left:auto}.wrap{padding:0 20px}body:has(#about-panel.open) .sb-back{display:none}body:has(#about-panel.open) .sb-about{order:1;margin-left:0;pointer-events:none;color:var(--p-text, #2F2E2E) !important;cursor:default;text-decoration:none}body:has(#about-panel.open) .sb-close{display:flex}}
+@media(max-width:768px){
+  .hero h1{font-size:40px}
+  h2{font-size:26px}
+  .body p{font-size:16px}
+  .body ul li{font-size:16px}
+  section{padding:40px 0}
+  .img-stack{gap:48px}
+  .pinfo{grid-template-columns:1fr}
+  .tcols{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .hero h1{font-size:34px}
+  h2{font-size:24px}
+  .num{font-size:32px}
+}
 @media(max-width:767px){.sidebar{gap:8px;flex-wrap:wrap;min-height:52px}.sb-about,.sb-back{font-size:18px;min-height:44px;min-width:unset;padding:12px 16px}}
 @media(max-width:480px){
   /* images never overflow */
