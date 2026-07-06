@@ -400,13 +400,13 @@ a:focus-visible,button:focus-visible{
 <body data-about="dark">
 
 <!-- SIDEBAR -->
-<aside class="sidebar">
+<nav class="sidebar" aria-label="Site navigation">
   <button class="sidebar-btn" id="sidebarBtn" onclick="toggleAbout(event)" aria-label="Toggle About page">About</button>
   <button class="sidebar-close" onclick="closeAbout()" aria-label="Close About">&times;</button>
-</aside>
+</nav>
 
 <!-- HOME PAGE -->
-<div id="page-home" class="page active">
+<main id="page-home" class="page active">
 
   <section class="hero" id="hero">
     <h1 class="hero-title">Hey,<br>I'm Sapir Levi.</h1>
@@ -485,7 +485,7 @@ a:focus-visible,button:focus-visible{
     <footer class="footer">© 2026 · Designed &amp; built by Sapir Levi</footer>
   </section>
 
-</div><!-- /page-home -->
+</main><!-- /page-home -->
 
 <script src="projects-order.js"></script>
 <script>

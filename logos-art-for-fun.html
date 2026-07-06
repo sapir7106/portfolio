@@ -470,13 +470,13 @@ a:focus-visible,button:focus-visible{
 </head>
 <body data-about="light">
 
-<aside class="sidebar">
+<nav class="sidebar" aria-label="Site navigation">
   <button class="sb-about" onclick="toggleAbout(event)">About</button>
   <a class="sb-back" href="index.html"><span class="sb-back-full">Back to my projects</span><span class="sb-back-short">← Back</span></a>
   <button class="sb-close" onclick="closeAbout()" aria-label="Close About">×</button>
-</aside>
+</nav>
 
-<div class="page">
+<main class="page">
 
   <div class="gallery-wrap">
     <div class="gallery-hero">
@@ -530,7 +530,7 @@ a:focus-visible,button:focus-visible{
     </footer>
   </div>
 
-</div><!-- /page -->
+</main><!-- /page -->
 
 <script>
 // ═══════════════════════════════════════════════════════════════════════
