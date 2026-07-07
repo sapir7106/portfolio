@@ -136,7 +136,7 @@ body{
   top:50%;
   right:10px;
   transform:translateY(-50%);
-  background:transparent;
+  background:transparent !important;
   border:none;
   padding:4px;
   margin:0;
@@ -355,6 +355,12 @@ function togglePwVisibility() {
 
 <div id="custom-cursor"><span id="cursor-message"></span></div>
 <script src="/cursor.js"></script>
+
+<script>
+  window.addEventListener('pagehide', function() {
+    document.documentElement.removeAttribute('lang');
+  });
+</script>
 
 </body>
 </html>
