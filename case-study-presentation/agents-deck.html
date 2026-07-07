@@ -6,6 +6,7 @@
 <title>Sapir Levi | Agents Presentation</title>
 <meta name="robots" content="noindex, noarchive">
 <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="stylesheet" href="/cursor.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -342,9 +343,15 @@ section.slide:nth-of-type(10) .text-md{margin-bottom:0 !important}
   color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4cqh
 }
 .research-col > div > p{ font-size:clamp(14px,1.1cqw,16px);color:var(--ink);line-height:1.6 }
+
+/* Emergency fallback: guarantee a visible cursor on this page */
+body, html, * { cursor: auto !important; }
+.custom-cursor-active * { cursor: none !important; }
 </style>
 </head>
 <body>
+
+<div id="custom-cursor"><span id="cursor-message"></span></div>
 
 <div id="deck">
 
@@ -957,5 +964,6 @@ window.addEventListener('resize',fitActiveThumb);
 show(0);
 </script>
 <div id="imgfs" onclick="this.classList.remove('open');event.stopPropagation()"><img id="imgfsimg" alt="" onclick="event.stopPropagation()"></div>
+<script src="/cursor.js"></script>
 </body>
 </html>
