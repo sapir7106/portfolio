@@ -25,7 +25,7 @@ P4: I trained at Shenkar College in Visual Communication, and I still keep an ac
 EXPERIENCE
 ----------
 Exp 1 company: PointFive
-Exp 1 role: Senior Product Designer
+Exp 1 role: Lead Product Designer
 Exp 1 date: 2023 – Present
 Exp 2 company: Laminar
 Exp 2 role: Senior Product Designer
