@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lock Screen — Agents Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p-close:#2F2E2E;
+  --protected-heading:#171512;
+  --protected-subtitle:#9B948A;
+  --protected-eyebrow:#AFA79C;
+  --protected-body:#756F67;
+  --protected-muted:#7A746B;
+  --protected-link:#171512;
+  --protected-placeholder:#B5AEA4;
+  --protected-input-border:#D8D2C8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#F7F6F1;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-bottom:14vh;
+}
+
+.container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  width:100%;
+  max-width:600px;
+  padding:0 32px;
+}
+
+.eyebrow{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--protected-eyebrow);
+  font-weight:600;
+  margin-bottom:70px;
+}
+
+.headline{
+  font-family:'Playfair Display',serif;
+  font-size:52px;
+  font-weight:700;
+  color:var(--protected-heading);
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.headline em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--protected-subtitle);
+}
+
+.description{
+  font-size:15px;
+  color:var(--protected-body);
+  line-height:1.7;
+  max-width:480px;
+  margin-bottom:32px;
+}
+
+/* Input + button combined field */
+.field{
+  display:flex;
+  gap:0;
+  border:1px solid var(--protected-input-border);
+  border-radius:6px;
+  overflow:hidden;
+  width:100%;
+  max-width:340px;
+  margin-bottom:12px;
+  transition:border-color .2s;
+}
+.field:focus-within{
+  border-color:#17160F;
+}
+.field.error{
+  border-color:#E24B4A;
+}
+
+.field input{
+  font-family:'Montserrat',sans-serif;
+  font-size:14px;
+  color:var(--protected-heading);
+  background:#FBFAF7;
+  border:none;
+  outline:none;
+  padding:13px 18px;
+  flex:1;
+  letter-spacing:.06em;
+  min-width:0;
+}
+.field input::placeholder{
+  color:var(--protected-placeholder);
+  letter-spacing:.04em;
+}
+
+.field button{
+  font-family:'Montserrat',sans-serif;
+  background:#17160F;
+  color:#F7F6F1;
+  border:none;
+  font-size:13px;
+  font-weight:600;
+  padding:13px 20px;
+  cursor:pointer;
+  letter-spacing:.04em;
+  white-space:nowrap;
+  transition:background .15s;
+}
+.field button:hover{
+  background:#2A2A28;
+}
+
+.error-msg{
+  font-size:12px;
+  color:#E24B4A;
+  min-height:18px;
+  opacity:0;
+  transition:opacity .2s;
+  margin-bottom:8px;
+}
+.error-msg.show{opacity:1}
+
+.request{
+  font-size:13px;
+  color:var(--protected-muted);
+  margin-top:4px;
+  text-align:center;
+  line-height:1.8;
+}
+.request-link{
+  color:var(--protected-link);
+  font-weight:500;
+  text-decoration:none;
+}
+.request-link:hover{
+  color:#8067F2;
+  text-decoration:none;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:480px){
+  .eyebrow{font-size:10px;letter-spacing:.16em;margin-bottom:28px}
+  .description{font-size:14px;margin-bottom:36px}
+  .field{flex-direction:column;border-radius:8px}
+  .field input{padding:14px 16px;border-bottom:1px solid #E3E0D6}
+  .field button{padding:14px 16px;border-radius:0}
+  body{padding-bottom:4vh}
+}
+
+@media(min-width:481px) and (max-width:768px){
+  .field{max-width:100%}
+}
+
+@media(max-width:474px){
+  .desc-br{display:none}
+}
+@media(min-width:677px){
+  .req-break{display:none}
+}
+@media(max-width:676px){
+  .req-wide{display:none}
+}
+
+.btn-back{
+  position:fixed;
+  top:28px;
+  left:28px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  color:var(--p-close, #2F2E2E);
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.04em;
+  font-family:'Montserrat',sans-serif;
+  padding:4px 0;
+  transition:color .2s;
+  text-decoration:none;
+}
+.btn-back:hover{color:#8067F2}
+
+
+.explore-link{
+  font-family:'Montserrat',sans-serif;
+  font-size:13px;
+  font-weight:500;
+  color:#8067F2;
+  text-decoration:none;
+  letter-spacing:.04em;
+  white-space:nowrap;
+  display:inline-block;
+  margin-top:32px;
+}
+.explore-link::after{
+  content:'';
+  display:block;
+  height:1px;
+  background:#8067F2;
+  width:0;
+  transition:width .3s ease;
+}
+.explore-link:hover::after{
+  width:100%;
+}
+</style>
+</head>
+<body>
+
+<button class="btn-back" onclick="goBack()" aria-label="Go back">← Back</button>
+
+<div class="container">
+  <div class="eyebrow">POINTFIVE · AI AGENTS · PROTECTED WORK</div>
+
+  <h1 class="headline">
+    AI Agents<br>
+    <em>Case Study</em>
+  </h1>
+
+  <p class="description">
+    This case study contains unreleased product work.<span class="desc-br"><br></span>
+    I share it selectively, enter the password or request access.
+  </p>
+
+  <div class="field" id="fieldWrap">
+    <input
+      type="password"
+      id="pwInput"
+      placeholder="Enter password"
+      autocomplete="current-password"
+    />
+    <button onclick="tryPassword()">Unlock</button>
+  </div>
+
+  <div class="error-msg" id="errMsg">
+    Incorrect password. Please try again or request access.
+  </div>
+
+  <p class="request">
+    Don't have the password?<br><span style="white-space:nowrap">Request access via
+    <a href="mailto:Sapir7106@gmail.com?subject=Access%20Request%20%E2%80%94%20Agents%20Case%20Study&body=Hi%20Sapir%2C%0A%0AI%27d%20like%20to%20request%20access%20to%20your%20Agents%20case%20study.%0A%0A%5BYour%20name%2C%20role%20and%20company%5D%0A%0ALooking%20forward%20to%20seeing%20the%20work." class="request-link">Email</a>
+    <span style="color:#C4C0B4;margin:0 4px">/</span>
+    <a href="https://wa.me/972523665667?text=%D7%94%D7%99%D7%99%20%D7%A1%D7%A4%D7%99%D7%A8%21%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%92%D7%99%D7%A9%D7%94%20%D7%9C%D7%A7%D7%99%D7%99%D7%A1%20%D7%A1%D7%98%D7%90%D7%93%D7%99%20%D7%A9%D7%9C%20%D7%94-Agents.%20%0A%D7%90%D7%A0%D7%99%20%5B%D7%A9%D7%9D%2C%20%D7%AA%D7%A4%D7%A7%D7%99%D7%93%20%D7%95%D7%97%D7%91%D7%A8%D7%94%5D" class="request-link" target="_blank">WhatsApp</a></span>
+  </p>
+  <a href="index.html" class="explore-link">Explore more of my work →</a>
+</div>
+
+<script>
+  const CORRECT = 'demo';
+
+  function tryPassword() {
+    const val = document.getElementById('pwInput').value;
+    const err = document.getElementById('errMsg');
+    const field = document.getElementById('fieldWrap');
+
+    if (val === CORRECT) {
+      err.textContent = '✓ Access granted';
+      err.style.color = '#3B6D11';
+      err.classList.add('show');
+      field.classList.remove('error');
+      // replace with: window.location.href = '/agents';
+    } else {
+      err.textContent = 'Incorrect password. Please try again or request access.';
+      err.style.color = '#E24B4A';
+      err.classList.add('show');
+      field.classList.add('error');
+      document.getElementById('pwInput').focus();
+    }
+  }
+
+  document.getElementById('pwInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') tryPassword();
+    if (this.value) {
+      document.getElementById('errMsg').classList.remove('show');
+      document.getElementById('fieldWrap').classList.remove('error');
+    }
+  });
+  function goBack() {
+    if (document.referrer && document.referrer !== window.location.href) {
+      window.history.back();
+    } else {
+      window.location.href = 'index.html';
+    }
+  }
+</script>
+
+</body>
+</html>
