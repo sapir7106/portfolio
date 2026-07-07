@@ -109,6 +109,35 @@ body{
   letter-spacing:.04em;
 }
 
+.pw-input-wrap{
+  position:relative;
+  flex:1;
+  display:flex;
+  min-width:0;
+}
+.pw-input-wrap input{
+  padding-right:40px;
+  width:100%;
+}
+.pw-toggle{
+  position:absolute;
+  top:50%;
+  right:10px;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  padding:4px;
+  margin:0;
+  line-height:0;
+  cursor:pointer;
+  color:var(--protected-muted);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.pw-toggle:hover{color:var(--protected-heading)}
+.pw-toggle svg{width:16px;height:16px;display:block}
+
 .field button{
   font-family:'Montserrat',sans-serif;
   background:#17160F;
@@ -238,12 +267,20 @@ body{
   </p>
 
   <div class="field" id="fieldWrap">
-    <input
-      type="password"
-      id="pwInput"
-      placeholder="Enter password"
-      autocomplete="current-password"
-    />
+    <div class="pw-input-wrap">
+      <input
+        type="password"
+        id="pwInput"
+        placeholder="Enter password"
+        autocomplete="current-password"
+      />
+      <button type="button" class="pw-toggle" id="pwToggle" aria-label="Show password" onclick="togglePwVisibility()">
+        <svg id="pwToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
     <button onclick="tryPassword()">Unlock</button>
   </div>
 
@@ -295,8 +332,16 @@ function goBack() {
     window.location.href = 'index.html';
   }
 }
+function togglePwVisibility() {
+  const input = document.getElementById('pwInput');
+  const btn = document.getElementById('pwToggle');
+  const isHidden = input.type === 'password';
+  input.type = isHidden ? 'text' : 'password';
+  btn.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+}
 </script>
 
+<div id="custom-cursor"><span id="cursor-message"></span></div>
 <script src="/cursor.js"></script>
 
 </body>
