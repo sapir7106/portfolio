@@ -11,6 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+  input[type="password"] {
+    font-size: 20px;
+    letter-spacing: 0.15em;
+  }
   #pw-gate{
     position:fixed;inset:0;z-index:99999;
     background:#15140F;
@@ -39,7 +43,7 @@
   .pw-sub{font-size:14px;color:#8C897C;margin-bottom:6px}
   .pw-row{display:flex;gap:10px;justify-content:center;align-items:flex-start}
   .pw-input-col{display:flex;flex-direction:column;gap:8px;max-width:240px;flex:1}
-  .pres-input-wrap{position:relative;display:flex}
+  .pw-input-wrap{position:relative;display:flex;flex:1;min-width:0}
   #presPwInput{
     height:32px;padding:0 40px 0 14px;font-size:15px;border-radius:4px;
     border:1px solid #3A382E;background:#1F1E18;color:#F2EFE8;
@@ -50,7 +54,8 @@
   #presPwInput:focus{border-color:#BADA55}
   #presPwInput.error,#presPwInput.error:focus{border-color:#E0726A}
   #presPwInput::placeholder{font-size:14px;letter-spacing:normal;color:#8C897C;opacity:1}
-  .pres-pw-toggle{
+  #presPwInput[type="password"]{font-size:20px;letter-spacing:.15em}
+  .pw-toggle{
     position:absolute;
     top:50%;
     right:8px;
@@ -66,8 +71,8 @@
     align-items:center;
     justify-content:center;
   }
-  .pres-pw-toggle:hover{color:#F2EFE8}
-  .pres-pw-toggle svg{width:15px;height:15px;display:block}
+  .pw-toggle:hover{color:#F2EFE8}
+  .pw-toggle svg{width:15px;height:15px;display:block}
   #pw-submit{
     height:32px;padding:0 18px;font-size:14px;font-weight:600;cursor:pointer;
     border:none;border-radius:4px;background:#BADA55;color:#15140F;
@@ -131,9 +136,9 @@
     <p class="pw-mobile-msg">Looks like you found my secret corner of the internet. For the best experience, this screen is available on desktop only&nbsp;✨</p>
     <div class="pw-row">
       <div class="pw-input-col">
-        <div class="pres-input-wrap">
+        <div class="pw-input-wrap">
           <input id="presPwInput" type="password" inputmode="numeric" autocomplete="off" placeholder="55555" autofocus>
-          <button type="button" class="pres-pw-toggle" id="presPwToggle" aria-label="Show password" onclick="toggleResPwVisibility()">
+          <button type="button" class="pw-toggle" id="presPwToggle" aria-label="Show password" onclick="togglePwVisibility()">
             <svg id="presPwToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
               <circle cx="12" cy="12" r="3"/>
@@ -170,7 +175,7 @@ document.getElementById('presPwInput').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') { tryPresPassword(); return; }
   document.getElementById('presErrMsg').classList.remove('show');
 });
-function toggleResPwVisibility() {
+function togglePwVisibility() {
   const input = document.getElementById('presPwInput');
   const btn = document.getElementById('presPwToggle');
   const isHidden = input.type === 'password';

@@ -21,6 +21,10 @@
   --protected-input-border:#D8D2C8;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+input[type="password"] {
+  font-size: 20px;
+  letter-spacing: 0.15em;
+}
 body{
   font-family:'Montserrat',sans-serif;
   background:#F7F6F1;
@@ -107,6 +111,11 @@ body{
 .field input::placeholder{
   color:var(--protected-placeholder);
   letter-spacing:.04em;
+  font-size:14px;
+}
+.field input[type="password"]{
+  font-size:20px;
+  letter-spacing:.15em;
 }
 
 .pw-input-wrap{
