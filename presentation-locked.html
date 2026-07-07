@@ -41,45 +41,59 @@
   .pw-img{max-width:480px;max-height:min(420px,42vh);width:100%;height:auto;object-fit:contain;margin-bottom:0;display:block}
   .pw-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);line-height:1.2;color:#F2EFE8;font-weight:700}
   .pw-sub{font-size:14px;color:#8C897C;margin-bottom:6px}
-  .pw-row{display:flex;gap:10px;justify-content:center;align-items:flex-start}
-  .pw-input-col{display:flex;flex-direction:column;gap:8px;max-width:240px;flex:1}
-  .pw-input-wrap{position:relative;display:flex;flex:1;min-width:0}
-  #presPwInput{
-    height:32px;padding:0 40px 0 14px;font-size:15px;border-radius:4px;
-    border:1px solid #3A382E;background:#1F1E18;color:#F2EFE8;
-    outline:none;text-align:center;letter-spacing:.1em;
-    font-family:'Montserrat',sans-serif;transition:border-color .2s;
+  /* Input + button combined field (same layout as agents-locked, inverted colors) */
+  .pres-field{
+    display:flex;
+    gap:0;
+    border:1px solid #3A382E;
+    border-radius:6px;
+    overflow:hidden;
     width:100%;
+    max-width:370px;
+    height:42px;
+    margin:0 auto;
+    transition:border-color .2s;
   }
-  #presPwInput:focus{border-color:#BADA55}
-  #presPwInput.error,#presPwInput.error:focus{border-color:#E0726A}
-  #presPwInput::placeholder{font-size:14px;letter-spacing:normal;color:#8C897C;opacity:1}
+  .pres-field:focus-within{border-color:#F2EFE8}
+  .pres-field.error{border-color:#E0726A}
+  .pres-input-wrap{position:relative;flex:1;display:flex;min-width:0}
+  #presPwInput{
+    height:100%;box-sizing:border-box;
+    padding:0 40px 0 14px;font-size:15px;
+    border:none;background:#1F1E18;color:#F2EFE8;
+    outline:none;text-align:left;letter-spacing:.1em;
+    font-family:'Montserrat',sans-serif;
+    flex:1;min-width:0;width:100%;
+  }
+  #presPwInput::placeholder{font-size:14px;letter-spacing:normal;color:#F2EFE8;opacity:1}
   #presPwInput[type="password"]{font-size:20px;letter-spacing:.15em}
-  .pw-toggle{
+  .pres-pw-toggle{
     position:absolute;
     top:50%;
-    right:8px;
+    right:10px;
     transform:translateY(-50%);
-    background:none;
+    background:transparent;
     border:none;
     padding:4px;
     margin:0;
     line-height:0;
     cursor:pointer;
-    color:#8C897C;
+    color:#F2EFE8;
     display:flex;
     align-items:center;
     justify-content:center;
   }
-  .pw-toggle:hover{color:#F2EFE8}
-  .pw-toggle svg{width:15px;height:15px;display:block}
-  #pw-submit{
-    height:32px;padding:0 18px;font-size:14px;font-weight:600;cursor:pointer;
-    border:none;border-radius:4px;background:#BADA55;color:#15140F;
-    transition:opacity .2s;font-family:'Montserrat',sans-serif;white-space:nowrap;
+  .pres-pw-toggle:hover{color:#B5AEA4}
+  .pres-pw-toggle svg{width:16px;height:16px;display:block}
+  .pres-field button{
+    height:100%;box-sizing:border-box;
+    padding:0 20px;font-size:13px;font-weight:600;cursor:pointer;
+    border:none;background:#F2EFE8;color:#17160F;
+    transition:background .15s;font-family:'Montserrat',sans-serif;
+    white-space:nowrap;letter-spacing:.04em;flex-shrink:0;
   }
-  #pw-submit:hover{opacity:.88}
-  #presErrMsg{font-size:14px;color:#E0726A;height:16px;opacity:0;transition:opacity .2s;text-align:center}
+  .pres-field button:hover{background:#D8D5CE}
+  #presErrMsg{font-size:14px;color:#E0726A;height:16px;opacity:0;transition:opacity .2s;text-align:center;margin-top:8px}
   #presErrMsg.show{opacity:1}
   #pw-exit-x{position:fixed;top:20px;right:24px;color:#8C897C;text-decoration:none;font-size:20px;line-height:1;padding:6px 8px;transition:color .2s;z-index:100000}
   #pw-exit-x:hover{color:#F2EFE8}
@@ -97,7 +111,8 @@
     #pw-gate{overflow:hidden}
     .pw-box{justify-content:center}
     .pw-img{max-width:400px;max-height:30vh;width:auto;height:auto;object-fit:contain}
-    .pw-row{display:none}
+    .pres-field{display:none}
+    #presErrMsg{display:none}
     .pw-title em{display:none}
     .pw-title{margin-top:40px!important}
     .pw-mobile-msg{
@@ -134,21 +149,19 @@
     <img class="pw-img" src="case-study-presentation/presentation-images/Shh.png" alt="" onerror="this.remove()">
     <div class="pw-title" style="margin-left:16px;margin-right:16px;margin-top:64px;margin-bottom:32px"><strong style="font-weight:700;color:#F2EFE8;font-style:italic">Well, well, well...</strong><br><em style="font-weight:400">looks like you found my secret corner of the internet</em></div>
     <p class="pw-mobile-msg">Looks like you found my secret corner of the internet. For the best experience, this screen is available on desktop only&nbsp;✨</p>
-    <div class="pw-row">
-      <div class="pw-input-col">
-        <div class="pw-input-wrap">
-          <input id="presPwInput" type="password" inputmode="numeric" autocomplete="off" placeholder="55555" autofocus>
-          <button type="button" class="pw-toggle" id="presPwToggle" aria-label="Show password" onclick="togglePwVisibility()">
-            <svg id="presPwToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>
-          </button>
-        </div>
-        <div id="presErrMsg">Incorrect password. Try again</div>
+    <div class="pres-field" id="presFieldWrap">
+      <div class="pres-input-wrap">
+        <input id="presPwInput" type="password" inputmode="numeric" autocomplete="off" placeholder="55555" autofocus>
+        <button type="button" class="pres-pw-toggle" id="presPwToggle" aria-label="Show password" onclick="togglePwVisibility()">
+          <svg id="presPwToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
       </div>
-      <button id="pw-submit" onclick="tryPresPassword()">Enter</button>
+      <button type="button" id="pw-submit" onclick="tryPresPassword()">Enter</button>
     </div>
+    <div id="presErrMsg">Incorrect password. Try again</div>
     <a href="/agents.html" id="pw-exit-btn">← Exit the rabbit hole</a>
   </div>
 </div>

@@ -85,7 +85,8 @@ body{
   border-radius:6px;
   overflow:hidden;
   width:100%;
-  max-width:340px;
+  max-width:370px;
+  height:42px;
   margin-bottom:12px;
   transition:border-color .2s;
 }
@@ -95,6 +96,8 @@ body{
 .field.error{
   border-color:#E24B4A;
 }
+.field input { height:100%; box-sizing:border-box; }
+.field button { height:100%; box-sizing:border-box; }
 
 .field input{
   font-family:'Montserrat',sans-serif;
@@ -133,13 +136,13 @@ body{
   top:50%;
   right:10px;
   transform:translateY(-50%);
-  background:none;
+  background:transparent;
   border:none;
   padding:4px;
   margin:0;
   line-height:0;
   cursor:pointer;
-  color:var(--protected-muted);
+  color:#17160F;
   display:flex;
   align-items:center;
   justify-content:center;

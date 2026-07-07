@@ -2,6 +2,7 @@
 
 /* cursor:none applied only after JS confirms the custom cursor is active */
 .custom-cursor-active * { cursor: none !important; }
+:root:not(.custom-cursor-active) * { cursor: auto; }
 
 #custom-cursor {
   position: fixed;

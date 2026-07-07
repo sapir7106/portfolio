@@ -31,5 +31,7 @@
   document.addEventListener('mouseout',  hide);
 
   // Only hide the native cursor once the custom cursor is confirmed active
-  document.documentElement.classList.add('custom-cursor-active');
+  if (document.getElementById('custom-cursor')) {
+    document.documentElement.classList.add('custom-cursor-active');
+  }
 })();
