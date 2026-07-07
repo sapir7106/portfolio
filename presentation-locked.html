@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sapir Levi | Private Presentation Access</title>
+<meta name="robots" content="noindex, noarchive">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  #pw-gate{
+    position:fixed;inset:0;z-index:99999;
+    background:#15140F;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    font-family:'Montserrat',sans-serif;
+    padding:24px;
+    animation:pwGateIn .4s ease forwards;
+  }
+  @keyframes pwGateIn{from{opacity:0}to{opacity:1}}
+  #pw-gate.unlocked{display:none}
+  /* playful staggered entrance */
+  @keyframes pwFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @keyframes pwPop{0%{opacity:0;transform:scale(.8) rotate(-4deg)}60%{transform:scale(1.04) rotate(1deg)}100%{opacity:1;transform:none}}
+  .pw-box>*{opacity:0;animation:pwFadeUp .55s cubic-bezier(.2,.7,.2,1) forwards}
+  .pw-img{animation:pwPop .7s cubic-bezier(.34,1.56,.64,1) forwards!important}
+  .pw-box>*:nth-child(1){animation-delay:.05s}
+  .pw-box>*:nth-child(2){animation-delay:.22s}
+  .pw-box>*:nth-child(3){animation-delay:.36s}
+  .pw-box>*:nth-child(4){animation-delay:.48s}
+  @media(prefers-reduced-motion:reduce){
+    .pw-box>*{animation:none;opacity:1}
+  }
+  .pw-box{display:flex;flex-direction:column;gap:14px;width:min(520px,90vw);text-align:center;align-items:center}
+  .pw-img{max-width:480px;max-height:min(420px,42vh);width:100%;height:auto;object-fit:contain;margin-bottom:0;display:block}
+  .pw-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);line-height:1.2;color:#F2EFE8;font-weight:700}
+  .pw-sub{font-size:14px;color:#8C897C;margin-bottom:6px}
+  .pw-row{display:flex;gap:10px;justify-content:center;align-items:flex-start}
+  .pw-input-col{display:flex;flex-direction:column;gap:8px;max-width:240px;flex:1}
+  #presPwInput{
+    height:32px;padding:0 14px;font-size:15px;border-radius:4px;
+    border:1px solid #3A382E;background:#1F1E18;color:#F2EFE8;
+    outline:none;text-align:center;letter-spacing:.1em;
+    font-family:'Montserrat',sans-serif;transition:border-color .2s;
+    width:100%;
+  }
+  #presPwInput:focus{border-color:#BADA55}
+  #presPwInput.error,#presPwInput.error:focus{border-color:#E0726A}
+  #presPwInput::placeholder{font-size:14px;letter-spacing:normal;color:#8C897C;opacity:1}
+  #pw-submit{
+    height:32px;padding:0 18px;font-size:14px;font-weight:600;cursor:pointer;
+    border:none;border-radius:4px;background:#BADA55;color:#15140F;
+    transition:opacity .2s;font-family:'Montserrat',sans-serif;white-space:nowrap;
+  }
+  #pw-submit:hover{opacity:.88}
+  #presErrMsg{font-size:14px;color:#E0726A;height:16px;opacity:0;transition:opacity .2s;text-align:center}
+  #presErrMsg.show{opacity:1}
+  #pw-exit-x{position:fixed;top:20px;right:24px;color:#8C897C;text-decoration:none;font-size:20px;line-height:1;padding:6px 8px;transition:color .2s;z-index:100000}
+  #pw-exit-x:hover{color:#F2EFE8}
+  #pw-exit-btn{position:static;transform:none;margin-top:8px;color:#BADA55;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:400;letter-spacing:.04em;padding:8px 16px;white-space:nowrap;align-self:center}
+  #pw-exit-btn::after{content:'';display:block;width:0;height:1.5px;background:#BADA55;transition:width .3s ease;margin:0 16px}
+  #pw-exit-btn:hover::after{width:calc(100% - 32px)}
+  @media(max-height:820px){
+    .pw-title{margin-top:32px!important}
+  }
+  @media(max-height:860px){
+    .pw-title{margin-top:32px!important;margin-bottom:20px!important}
+  }
+  .pw-mobile-msg{display:none}
+  @media(max-width:767px){
+    #pw-gate{overflow:hidden}
+    .pw-box{justify-content:center}
+    .pw-img{max-width:400px;max-height:30vh;width:auto;height:auto;object-fit:contain}
+    .pw-row{display:none}
+    .pw-title em{display:none}
+    .pw-title{margin-top:40px!important}
+    .pw-mobile-msg{
+      display:block;
+      font-family:'Montserrat',sans-serif;
+      font-size:14px;
+      line-height:1.55;
+      font-weight:400;
+      color:#8C897C;
+      margin:14px 0 0;
+      padding:0 8px;
+      text-align:center;
+    }
+    #pw-exit-btn{
+      position:static;
+      transform:none;
+      left:auto;bottom:auto;
+      margin-top:24px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      white-space:nowrap;
+      align-self:center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="pw-gate">
+  <a href="/agents.html" id="pw-exit-x" title="Exit">✕</a>
+  <div class="pw-box">
+    <img class="pw-img" src="case-study-presentation/presentation-images/Shh.png" alt="" onerror="this.remove()">
+    <div class="pw-title" style="margin-left:16px;margin-right:16px;margin-top:64px;margin-bottom:32px"><strong style="font-weight:700;color:#F2EFE8;font-style:italic">Well, well, well...</strong><br><em style="font-weight:400">looks like you found my secret corner of the internet</em></div>
+    <p class="pw-mobile-msg">Looks like you found my secret corner of the internet. For the best experience, this screen is available on desktop only&nbsp;✨</p>
+    <div class="pw-row">
+      <div class="pw-input-col">
+        <input id="presPwInput" type="password" inputmode="numeric" autocomplete="off" placeholder="55555" autofocus>
+        <div id="presErrMsg">Incorrect password. Try again</div>
+      </div>
+      <button id="pw-submit" onclick="tryPresPassword()">Enter</button>
+    </div>
+    <a href="/agents.html" id="pw-exit-btn">← Exit the rabbit hole</a>
+  </div>
+</div>
+
+<script>
+async function tryPresPassword() {
+  const val = document.getElementById('presPwInput').value.trim();
+  const err = document.getElementById('presErrMsg');
+  if (!val) return;
+  const res = await fetch('/api/presentation-login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password: val })
+  });
+  if (res.ok) {
+    window.location.href = '/case-study-presentation/agents-deck';
+  } else {
+    err.textContent = 'Incorrect password. Try again.';
+    err.classList.add('show');
+    document.getElementById('presPwInput').focus();
+  }
+}
+document.getElementById('presPwInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') { tryPresPassword(); return; }
+  document.getElementById('presErrMsg').classList.remove('show');
+});
+</script>
+
+</body>
+</html>

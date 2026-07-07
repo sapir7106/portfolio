@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Lock Screen — Agents Case Study</title>
+<title>Sapir Levi | Agents Case Study Access</title>
+<meta name="robots" content="noindex, noarchive">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="stylesheet" href="/cursor.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -258,43 +261,43 @@ body{
 </div>
 
 <script>
-  const CORRECT = 'demo';
-
-  function tryPassword() {
-    const val = document.getElementById('pwInput').value;
-    const err = document.getElementById('errMsg');
-    const field = document.getElementById('fieldWrap');
-
-    if (val === CORRECT) {
-      err.textContent = '✓ Access granted';
-      err.style.color = '#3B6D11';
-      err.classList.add('show');
-      field.classList.remove('error');
-      // replace with: window.location.href = '/agents';
-    } else {
-      err.textContent = 'Incorrect password. Please try again or request access.';
-      err.style.color = '#E24B4A';
-      err.classList.add('show');
-      field.classList.add('error');
-      document.getElementById('pwInput').focus();
-    }
-  }
-
-  document.getElementById('pwInput').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') tryPassword();
-    if (this.value) {
-      document.getElementById('errMsg').classList.remove('show');
-      document.getElementById('fieldWrap').classList.remove('error');
-    }
+async function tryPassword() {
+  const val = document.getElementById('pwInput').value.trim();
+  const err = document.getElementById('errMsg');
+  const field = document.getElementById('fieldWrap');
+  if (!val) return;
+  const res = await fetch('/api/agents-login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password: val })
   });
-  function goBack() {
-    if (document.referrer && document.referrer !== window.location.href) {
-      window.history.back();
-    } else {
-      window.location.href = 'index.html';
-    }
+  if (res.ok) {
+    window.location.href = '/agents';
+  } else {
+    err.textContent = 'Incorrect password. Please try again or request access.';
+    err.style.color = '#E24B4A';
+    err.classList.add('show');
+    field.classList.add('error');
+    document.getElementById('pwInput').focus();
   }
+}
+document.getElementById('pwInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') tryPassword();
+  if (this.value) {
+    document.getElementById('errMsg').classList.remove('show');
+    document.getElementById('fieldWrap').classList.remove('error');
+  }
+});
+function goBack() {
+  if (document.referrer && document.referrer !== window.location.href) {
+    window.history.back();
+  } else {
+    window.location.href = 'index.html';
+  }
+}
 </script>
+
+<script src="/cursor.js"></script>
 
 </body>
 </html>
