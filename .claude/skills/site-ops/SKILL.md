@@ -89,7 +89,7 @@ time"** — do this:
 | Colors, fonts, spacing, tokens, a component's look | `docs/DESIGN-SYSTEM.md` |
 | Breakpoints / how things behave on tablet & mobile | `docs/RESPONSIVE.md` |
 | The gallery layout, hide/show, or the 42-image build | `docs/GALLERY-SAPIR.md` |
-| The hidden presentation (slides, password, easter egg) | `docs/PRESENTATION.md` |
+| The hidden presentation, or the Agents/presentation password protection | `docs/PRESENTATION.md` |
 | Writing voice, rules, or case-study section structure | `.claude/skills/new-case-study/SKILL.md` |
 | How to do a build task, or this doc-update process itself | `.claude/skills/site-ops/SKILL.md` (this file) |
 | The setup or working steps Sapir follows | `START-HERE.md` |

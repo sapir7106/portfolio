@@ -25,7 +25,7 @@ copy so it can be reasoned about in isolation.
 | Colors, fonts, tokens, components | `docs/DESIGN-SYSTEM.md` |
 | Breakpoints & responsive behavior (+ known drift) | `docs/RESPONSIVE.md` |
 | The logos/art gallery ("Sapir gallery") — backup | `docs/GALLERY-SAPIR.md` |
-| The hidden interview presentation | `docs/PRESENTATION.md` |
+| The hidden interview presentation + password protection (both Agents & presentation) | `docs/PRESENTATION.md` |
 | Case study structure, typography, hero image, metadata card, scope rules | `docs/CASE-STUDY-TEMPLATE.md` |
 | Real About mechanism, what files are stale, how to edit About | `docs/ABOUT-PANEL.md` |
 
@@ -39,6 +39,13 @@ Pages: `index.html` (home / project cards), About (see below), and six project
 pages: `agents.html` (AI agents, PointFive), `dspm.html` (data security, Laminar),
 `violation-pane.html`, `retraining-model.html`, `security-dashboard.html`,
 `logos-art-for-fun.html` (gallery).
+
+The Agents case study (`agents.html`) and the hidden interview presentation
+(`case-study-presentation/agents-deck.html`) are both password-protected
+server-side via `functions/_middleware.js` on Cloudflare Pages. The homepage
+Agents card links to `/agents-locked` (the login screen), never directly to
+`/agents`. See `docs/PRESENTATION.md` for the full mechanism (routes, cookies,
+secrets).
 
 About is a sliding overlay panel loaded from `about-panel.html` via
 `about-loader.js`. Theme (dark/light) is set by the `data-about` attribute on
@@ -148,7 +155,13 @@ When updating visible copy or captions:
   Agents case study content; the hidden Agents interview deck; logos/art gallery
   layout (see version note in `docs/GALLERY-SAPIR.md`); image caption cleanup
   across Agents, DSPM, Violation Pane, Retraining and Security Dashboard pages
-  (colon structure, no em dashes, no debug labels — see §6 Image caption rules).
+  (colon structure, no em dashes, no debug labels — see §6 Image caption rules);
+  current-role rebrand to **"Lead Product Designer"** at PointFive (Laminar stays
+  "Senior Product Designer"); server-side password protection for the Agents
+  case study (`/agents-locked` → `/agents`) and the hidden presentation
+  (`/presentation-locked` → `/case-study-presentation/agents-deck`) via
+  Cloudflare Pages Functions — see `docs/PRESENTATION.md` and §6/§3 below for
+  the current mechanism (the old client-side/easter-egg password is gone).
 - **In progress / to verify:**
   - Reconcile the two gallery versions (20-image simplified vs 42-image sania build).
   - Align responsive breakpoints to the standard set (`docs/RESPONSIVE.md`).
@@ -156,8 +169,15 @@ When updating visible copy or captions:
   - Align sidebar width + purple accent across pages (`docs/DESIGN-SYSTEM.md`).
   - Swap remaining image placeholders for real images.
   - Finish GitHub → Cloudflare connection if not already auto-deploying.
+  - Roll out favicon `?v=2` cache-busting param consistently (currently only on
+    the two lock screens; other pages still link plain `/favicon.svg`).
+  - A custom 404 page is future/separate work — not yet implemented, don't build it.
 - **Decisions made:** static single-file pages; warm-paper design system; one
-  About entity via `?mode=`; nav keyed to project name; no invented metrics.
+  About entity loaded from `about-panel.html` via `about-loader.js` (no
+  `about.html`, no `?mode=` URL parameter); nav keyed to project name; no
+  invented metrics; Agents case study and hidden presentation are
+  password-protected server-side (never route to them directly — always through
+  their `-locked` gate).
 
 ## 8. Working preferences
 

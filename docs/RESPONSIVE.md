@@ -18,20 +18,37 @@ gallery sticky positioning is neutralized.
 width; lightbox **disabled** (≤600px); gallery becomes a single column with
 sticky/negative-top removed; images constrained so nothing overflows.
 
-## ⚠️ The inconsistency (this is the real issue)
+## ⚠️ The inconsistency (partially resolved — verify before assuming stale)
 
-Different pages use different breakpoint values for the *same* transitions:
+The sidebar → top-bar switch has since been **unified to `1024px`** (with the
+desktop side-nav rule keyed to `min-width:1025px`) on `index.html` and all six
+project pages (`agents.html`, `dspm.html`, `violation-pane.html`,
+`retraining-model.html`, `security-dashboard.html`, `logos-art-for-fun.html`)
+— this replaced the old `600px`/`680px` split described in earlier drafts of
+this doc. Don't reintroduce `600px`/`680px` for that transition. On case-study
+pages this same `1024px` breakpoint also moves the hero image above the
+eyebrow/intro in content flow (`.hero-shot{order:-1}`); `logos-art-for-fun.html`
+has no equivalent hero-reorder rule since it isn't a case-study-template page.
 
-| Transition | `index.html` | case-study pages | `logos-art-for-fun.html` (current) | sania-exact gallery build |
-| --- | --- | --- | --- | --- |
-| multi-col → fewer cols | `900px` | `900px` | `900px` | **`991px`** |
-| sidebar → top bar | `600px` | `680px` | `680px` | — |
-| → single column | `600px` | — | `600px` | **`767px`** |
-| extra mobile fixes | — | — | `500px`, `480px` | — |
+`900px` (multi-col → fewer cols, grids collapse) is still consistent across
+`index.html` and the case-study pages.
 
-So the gallery alone has two conflicting systems (`991/767` from the sania build
-vs `900/680/600/500/480` in the current file), and the sidebar-to-topbar switch
-fires at `600px` on the home page but `680px` elsewhere.
+`logos-art-for-fun.html` still runs its **own separate breakpoint set**
+inherited from the "sania-exact" gallery build, layered on top of the shared
+`1024px`/`1025px` sidebar rule:
+
+| Transition | `logos-art-for-fun.html` |
+| --- | --- |
+| sidebar → top bar (shared with rest of site) | `1024px` / `1025px` |
+| footer padding step 1 | `1024px` |
+| footer padding step 2 | `991px` |
+| footer padding + copy size ("Sania's exact values") | `767px` |
+| footer padding ("Sania's exact values") | `479px` |
+
+So the gallery page's footer/layout fine-tuning still has its own `991/767/479`
+tier system distinct from the `900px` grid-collapse breakpoint used elsewhere —
+that's the remaining piece of drift, not the sidebar switch (which is now
+unified).
 
 > Case study intro typography rules → see `docs/CASE-STUDY-TEMPLATE.md` (source of truth).
 > Summary: 17px at 768–1440px via `@media(min-width:768px) and (max-width:1440px)`.
@@ -40,15 +57,20 @@ fires at `600px` on the home page but `680px` elsewhere.
 
 ## Recommended standard (apply everywhere)
 
-Pick one set and use it on every page:
+The site now already uses this pair consistently for the sidebar switch — keep
+it that way, and use it as the target when cleaning up the gallery's remaining
+tiers:
 
 - **`900px`** — desktop → tablet (grids collapse, gallery sticky off)
-- **`680px`** — sidebar → horizontal top bar
-- **`600px`** — → single column; **disable lightbox** below this
+- **`1024px` / `1025px`** — sidebar ↔ horizontal top bar (mobile ≤1024px,
+  desktop side-nav ≥1025px) — already unified across `index.html` and all six
+  project pages
+- Below **`600px`**, disable the lightbox on the gallery page (verify current
+  cutoff in `logos-art-for-fun.html` before changing it — don't assume `600px`
+  is already wired up there).
 
-Then remove the stray `991px`, `767px`, `500px`, and `480px` rules (fold any
-genuinely needed fix into the three breakpoints above). Keep the lightbox-off
-rule tied to the same `600px` line everywhere.
+Then fold the gallery's stray `991px`, `767px`, and `479px` footer rules into
+the `900px`/`1024px` tiers above where a genuinely equivalent fix exists.
 
 ## Behavior rules worth keeping
 
