@@ -5,8 +5,15 @@
   if (window.innerWidth < 1024) return;
 
   let lastTarget = null;
+  let activated = false;
 
   function update(e) {
+    // Confirm the cursor is actually receiving real pointer events before
+    // hiding the native cursor — never hide it speculatively.
+    if (!activated) {
+      activated = true;
+      document.documentElement.classList.add('custom-cursor-active');
+    }
     requestAnimationFrame(function () {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top  = e.clientY + 'px';
@@ -29,7 +36,4 @@
   document.addEventListener('mousemove', update);
   document.addEventListener('mouseover', update);
   document.addEventListener('mouseout',  hide);
-
-  // Only hide the native cursor once the custom cursor is confirmed active
-  document.documentElement.classList.add('custom-cursor-active');
 })();

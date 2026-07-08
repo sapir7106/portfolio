@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sapir Levi | Private Presentation Access</title>
+<meta name="robots" content="noindex, noarchive">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="stylesheet" href="/cursor.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  input[type="password"] {
+    font-size: 20px;
+    letter-spacing: 0.15em;
+  }
+  #pw-gate{
+    position:fixed;inset:0;z-index:99999;
+    background:#15140F;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    font-family:'Montserrat',sans-serif;
+    padding:24px;
+    animation:pwGateIn .4s ease forwards;
+  }
+  @keyframes pwGateIn{from{opacity:0}to{opacity:1}}
+  #pw-gate.unlocked{display:none}
+  /* playful staggered entrance */
+  @keyframes pwFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @keyframes pwPop{0%{opacity:0;transform:scale(.8) rotate(-4deg)}60%{transform:scale(1.04) rotate(1deg)}100%{opacity:1;transform:none}}
+  .pw-box>*{opacity:0;animation:pwFadeUp .55s cubic-bezier(.2,.7,.2,1) forwards}
+  .pw-img{animation:pwPop .7s cubic-bezier(.34,1.56,.64,1) forwards!important}
+  .pw-box>*:nth-child(1){animation-delay:.05s}
+  .pw-box>*:nth-child(2){animation-delay:.22s}
+  .pw-box>*:nth-child(3){animation-delay:.36s}
+  .pw-box>*:nth-child(4){animation-delay:.48s}
+  @media(prefers-reduced-motion:reduce){
+    .pw-box>*{animation:none;opacity:1}
+  }
+  .pw-box{display:flex;flex-direction:column;gap:14px;width:min(520px,90vw);text-align:center;align-items:center}
+  .pw-img{max-width:480px;max-height:min(420px,42vh);width:100%;height:auto;object-fit:contain;margin-bottom:0;display:block}
+  .pw-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);line-height:1.2;color:#F2EFE8;font-weight:700}
+  .pw-sub{font-size:14px;color:#8C897C;margin-bottom:6px}
+  /* Input + button combined field (same layout as agents-locked, inverted colors) */
+  .pres-field{
+    display:flex;
+    gap:0;
+    border:1px solid #3A382E;
+    border-radius:6px;
+    overflow:hidden;
+    width:100%;
+    max-width:370px;
+    height:42px;
+    margin:0 auto;
+    transition:border-color .2s;
+  }
+  .pres-field:focus-within{border-color:#F2EFE8}
+  .pres-field.error{border-color:#E0726A}
+  .pres-input-wrap{position:relative;flex:1;display:flex;min-width:0}
+  #presPwInput{
+    height:100%;box-sizing:border-box;
+    padding:0 40px 0 14px;font-size:15px;
+    border:none;background:#1F1E18;color:#F2EFE8;
+    outline:none;text-align:left;letter-spacing:.1em;
+    font-family:'Montserrat',sans-serif;
+    flex:1;min-width:0;width:100%;
+  }
+  #presPwInput::placeholder{font-size:14px;letter-spacing:normal;color:#F2EFE8;opacity:1}
+  #presPwInput[type="password"]{font-size:20px;letter-spacing:.15em}
+  .pres-pw-toggle{
+    position:absolute;
+    top:50%;
+    right:10px;
+    transform:translateY(-50%);
+    background:transparent !important;
+    border:none;
+    padding:4px;
+    margin:0;
+    line-height:0;
+    cursor:pointer;
+    color:#F2EFE8 !important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .pres-pw-toggle:hover{color:#BADA55 !important}
+  .pres-pw-toggle svg{width:16px;height:16px;display:block}
+  .pres-field button{
+    height:100%;box-sizing:border-box;
+    padding:0 20px;font-size:13px;font-weight:600;cursor:pointer;
+    border:none;background:#F2EFE8;color:#17160F;
+    transition:background .15s;font-family:'Montserrat',sans-serif;
+    white-space:nowrap;letter-spacing:.04em;flex-shrink:0;
+  }
+  .pres-field button:hover{background:#D8D5CE}
+  #pw-submit {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  #presErrMsg{font-size:14px;color:#E0726A;height:16px;opacity:0;animation:none;transition:opacity .2s;text-align:center;margin-top:8px}
+  #presErrMsg.show{opacity:1}
+  /* #pw-gate (z-index:99999) would otherwise render above the shared
+     #custom-cursor (z-index:9999 in cursor.css), hiding it on this page. */
+  #custom-cursor{z-index:100001}
+  #pw-exit-x{position:fixed;top:20px;right:24px;color:#8C897C;text-decoration:none;font-size:20px;line-height:1;padding:6px 8px;transition:color .2s;z-index:100000}
+  #pw-exit-x:hover{color:#F2EFE8}
+  #pw-exit-btn{position:static;transform:none;margin-top:8px;color:#BADA55;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:400;letter-spacing:.04em;padding:8px 16px;white-space:nowrap;align-self:center}
+  #pw-exit-btn::after{content:'';display:block;width:0;height:1.5px;background:#BADA55;transition:width .3s ease;margin:0 16px}
+  #pw-exit-btn:hover::after{width:calc(100% - 32px)}
+  @media(max-height:820px){
+    .pw-title{margin-top:32px!important}
+  }
+  @media(max-height:860px){
+    .pw-title{margin-top:32px!important;margin-bottom:20px!important}
+  }
+  .pw-mobile-msg{display:none}
+  @media(max-width:767px){
+    #pw-gate{overflow:hidden}
+    .pw-box{justify-content:center}
+    .pw-img{max-width:400px;max-height:30vh;width:auto;height:auto;object-fit:contain}
+    .pres-field{display:none}
+    #presErrMsg{display:none}
+    .pw-title em{display:none}
+    .pw-title{margin-top:40px!important}
+    .pw-mobile-msg{
+      display:block;
+      font-family:'Montserrat',sans-serif;
+      font-size:14px;
+      line-height:1.55;
+      font-weight:400;
+      color:#8C897C;
+      margin:14px 0 0;
+      padding:0 8px;
+      text-align:center;
+    }
+    #pw-exit-btn{
+      position:static;
+      transform:none;
+      left:auto;bottom:auto;
+      margin-top:24px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      white-space:nowrap;
+      align-self:center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="pw-gate">
+  <a href="/agents.html" id="pw-exit-x" title="Exit">✕</a>
+  <div class="pw-box">
+    <img class="pw-img" src="case-study-presentation/presentation-images/Shh.png" alt="" onerror="this.remove()">
+    <div class="pw-title" style="margin-left:16px;margin-right:16px;margin-top:64px;margin-bottom:32px"><strong style="font-weight:700;color:#F2EFE8;font-style:italic">Well, well, well...</strong><br><em style="font-weight:400">looks like you found my secret corner of the internet</em></div>
+    <p class="pw-mobile-msg">Looks like you found my secret corner of the internet. For the best experience, this screen is available on desktop only&nbsp;✨</p>
+    <div class="pres-field" id="presFieldWrap">
+      <div class="pres-input-wrap">
+        <input id="presPwInput" type="password" autocomplete="off" placeholder="Enter password">
+        <button type="button" class="pres-pw-toggle" id="presPwToggle" aria-label="Show password" onclick="togglePwVisibility()">
+          <svg id="presPwToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <button type="button" id="pw-submit" onclick="tryPresPassword()">Enter</button>
+    </div>
+    <div id="presErrMsg">Incorrect password. Try again</div>
+    <a href="/agents.html" id="pw-exit-btn">← Exit the rabbit hole</a>
+  </div>
+</div>
+
+<script>
+async function tryPresPassword() {
+  const val = document.getElementById('presPwInput').value.trim();
+  const err = document.getElementById('presErrMsg');
+  if (!val) return;
+  let res;
+  try {
+    res = await fetch('/api/presentation-login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: val })
+    });
+  } catch {
+    err.textContent = 'Something went wrong. Please try again.';
+    err.classList.add('show');
+    return;
+  }
+  if (res.ok) {
+    window.location.href = '/case-study-presentation/agents-deck';
+  } else if (res.status === 401) {
+    err.textContent = (val === '55555') ? 'You wish ;)' : 'Incorrect password. Try again.';
+    err.classList.add('show');
+    document.getElementById('presPwInput').focus();
+  } else {
+    err.textContent = 'Something went wrong. Please try again.';
+    err.classList.add('show');
+  }
+}
+document.getElementById('presPwInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') { tryPresPassword(); return; }
+  document.getElementById('presErrMsg').classList.remove('show');
+});
+var EYE_ICON = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+var EYE_OFF_ICON = '<path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.44 18.44 0 0 1 5.06-5.94M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a18.47 18.47 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+function togglePwVisibility() {
+  const input = document.getElementById('presPwInput');
+  const btn = document.getElementById('presPwToggle');
+  const icon = document.getElementById('presPwToggleIcon');
+  const isHidden = input.type === 'password';
+  input.type = isHidden ? 'text' : 'password';
+  btn.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+  icon.innerHTML = isHidden ? EYE_OFF_ICON : EYE_ICON;
+}
+</script>
+
+<div id="custom-cursor"><span id="cursor-message"></span></div>
+<script src="/cursor.js"></script>
+
+<script>
+  window.addEventListener('pagehide', function() {
+    document.documentElement.removeAttribute('lang');
+  });
+</script>
+
+</body>
+</html>
