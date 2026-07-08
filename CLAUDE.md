@@ -173,9 +173,11 @@ When updating visible copy or captions:
     the two lock screens; other pages still link plain `/favicon.svg`).
   - A custom 404 page is future/separate work — not yet implemented, don't build it.
 - **Decisions made:** static single-file pages; warm-paper design system; one
-  About entity via `?mode=`; nav keyed to project name; no invented metrics;
-  Agents case study and hidden presentation are password-protected server-side
-  (never route to them directly — always through their `-locked` gate).
+  About entity loaded from `about-panel.html` via `about-loader.js` (no
+  `about.html`, no `?mode=` URL parameter); nav keyed to project name; no
+  invented metrics; Agents case study and hidden presentation are
+  password-protected server-side (never route to them directly — always through
+  their `-locked` gate).
 
 ## 8. Working preferences
 
