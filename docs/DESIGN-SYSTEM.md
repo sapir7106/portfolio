@@ -60,7 +60,7 @@ Keyboard: **`L`** toggles placeholder ID labels; **`Esc`** closes panel/lightbox
 ## Home (index.html) signature copy
 
 Hero: *"Hey, I'm Sapir Levi."* +
-*"A Senior Product Designer based in Tel Aviv 〰〰 Creative and tech-obsessed in
+*"Lead Product Designer based in Tel Aviv 〰〰 Creative and tech-obsessed in
 equal measure. I love taking messy, complex products (FinOps, security, AI) and
 **making them feel simple**. I build from the ground up: the design systems
 underneath the screens, and the AI agents people actually trust."*
