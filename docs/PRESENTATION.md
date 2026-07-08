@@ -27,8 +27,8 @@ Folder **`case-study-presentation/`** containing:
 
 ## How to open it (entry + gate) — current server-side mechanism
 
-The old client-side/sessionStorage password gate, including the old easter-egg link, is gone.
-link) is **gone**. Both the deck and the Agents case study are now protected
+The old client-side/sessionStorage password gate, including the old easter-egg
+link, is **gone**. Both the deck and the Agents case study are now protected
 server-side by Cloudflare Pages Functions, with real secrets (not readable via
 view-source).
 
