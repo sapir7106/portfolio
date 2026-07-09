@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found</title>
+  <!-- Google Fonts: Playfair Display (wordmark) + Montserrat (UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* ================================================================
+       CSS VARIABLES
+       Edit these to customise the whole page safely.
+    ================================================================ */
+    :root {
+      /* ── Colors (MEASURED) ─────────────────────────────────────── */
+      --bg:         #F7F1E9;   /* warm off-white / cream */
+      --ink:        #0B080D;   /* near-black for title, button, border */
+      --hud-ink:    #7e756a;   /* HUD text — muted warm gray */
+
+      /* ── Typography ────────────────────────────────────────────── */
+      --font-serif: Georgia, "Times New Roman", serif;      /* Canela fallback */
+      --font-mono:  "Courier New", Courier, monospace;      /* Maison Neue Mono fallback */
+
+      /* Title: 5vw desktop/tablet, 12vw mobile — one line always */
+      --title-size-desk:  5vw;   /* ← desktop/tablet (>=768px) */
+      --title-size-mob:  12vw;   /* ← mobile (<768px) */
+      --title-weight: 300;
+
+      /* HUD: MEASURED ≈ 0.833vw, with mobile floor */
+      --hud-size:     clamp(0.65rem, 0.833vw, 0.9rem);
+      --hud-weight:   500;
+
+      /* Button label: MEASURED ≈ 0.73vw */
+      --btn-size:     clamp(0.6rem, 0.73vw, 0.82rem);
+
+      /* Wordmark */
+      --wordmark-size:    clamp(2rem, 7.5vw, 6.5rem);
+      --wordmark-spacing: clamp(0.04em, 0.45vw, 0.22em);
+
+      /* ── Button ────────────────────────────────────────────────── */
+      --btn-border:  1px solid var(--ink);
+      --btn-radius:  0;          /* MEASURED: no border-radius */
+
+      /* ── Board geometry (INFERRED — tune freely) ───────────────── */
+      --board-cols: 8;
+      --board-rows: 20;
+      --cell-gap:   2;           /* px between cells (MEASURED-via-screenshot: 2–3px) */
+
+      /* ── Tetromino palette — MEASURED (7 monochrome + beige) ─────
+         Assign to pieces I / O / T / S / Z / J / L in order.
+         Exact per-piece mapping is UNKNOWN; palette values are MEASURED. */
+      --p0: #0B080D;
+      --p1: #333333;
+      --p2: #555555;
+      --p3: #777777;
+      --p4: #999999;
+      --p5: #C4B8A5;
+      --p6: #A89F8F;
+
+      /* ── Timing (INFERRED — ms) ────────────────────────────────── */
+      --gravity-ms:   600;
+      --soft-drop-ms: 80;
+
+      /* ── HUD position — desktop: top-right; ≤1199px: top-center ────
+         Tune --hud-top / --hud-right on desktop.
+         Mobile offset is handled by @media rule in .hud block.       */
+      --hud-top:   clamp(0.5rem, 1.5vw, 1.2rem);
+      --hud-right: clamp(1rem, 2vw, 2rem);
+      --hud-gap:   1rem;
+
+      /* ── Board boundary guide lines — values set by JS in resizeBoard() */
+      --board-x:     0px;   /* left edge of Tetris board, px */
+      --board-width: 480px; /* width of Tetris board, px */
+
+      /* ── HUD/wordmark collision — set by checkHudOverlap() JS */
+      --wordmark-bottom: 130px; /* wordmark bottom edge in px, updated by JS */
+    }
+
+    /* ================================================================
+       RESET & BASE
+    ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-serif);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ================================================================
+       PAGE SHELL
+    ================================================================ */
+    .page {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ================================================================
+       CANVAS — fixed behind all content (z-index 0)
+       MEASURED: position fixed, full viewport, behind article (z-index 1)
+    ================================================================ */
+    .tetris-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: block;
+      z-index: 0;
+      /* CSS size set by JS */
+    }
+
+    /* ================================================================
+       WORDMARK — "SAPIR'S PROTFOLIO"
+       Font: Playfair Display 700. Font-size is set by fitWordmark()
+       JS function to fill ~90vw. overflow:visible so board-boundary
+       lines show through the container (only text is opaque).
+    ================================================================ */
+    .wordmark {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      text-align: center;
+      padding: clamp(0.4rem, 1.2vw, 1rem) clamp(0.5rem, 2vw, 2rem) 0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 5vw, 5rem); /* fallback — JS overrides this */
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      background: transparent;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+      overflow: visible;
+    }
+
+    /* ================================================================
+       CENTERED CONTENT ARTICLE
+    ================================================================ */
+    .content {
+      position: relative;
+      z-index: 2;           /* above .board-boundaries (z-index 1) */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: clamp(1.2rem, 2.5vw, 2rem);
+      padding: 1rem clamp(1rem, 5vw, 3rem);
+    }
+
+    /* ── Title — Avenir/Montserrat, weight 400, warm dark color ────────
+       Desktop/tablet: 5vw. Mobile <768px: 12vw. One line always.
+    ────────────────────────────────────────────────────────────── */
+    .page-title {
+      font-family: 'Avenir', 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: var(--title-size-desk);
+      color: #3c3427;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
+      letter-spacing: normal;
+    }
+    @media (max-width: 767px) {
+      .page-title { font-size: var(--title-size-mob); }
+    }
+
+    /* ================================================================
+       BUTTON — Avenir/Montserrat, inline → arrow, 4px radius
+    ================================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      text-decoration: none;
+      border: var(--btn-border);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--ink);
+      font-family: 'Avenir', 'Montserrat', sans-serif;
+      font-size: clamp(16px, 1.6vw, 20px);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease;
+      animation: anim-fade 0.55s ease 0.85s both;
+    }
+
+    .btn:hover {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    /* .btn-label keeps the text; .btn-icon is hidden (no black box) */
+    .btn-label {
+      display: inline;
+    }
+    .btn-icon { display: none; }
+
+    /* ================================================================
+       HUD — top-right by default (all sizes ≥1200px).
+       padding-top: 20px keeps it off the very top edge at desktop.
+       Below 1200px the @media rule below zeroes padding and centers it.
+    ================================================================ */
+    .hud {
+      position: fixed;
+      top: var(--hud-top);
+      right: var(--hud-right);
+      bottom: auto;
+      left: auto;
+      transform: none;
+      z-index: 4;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: clamp(0.35rem, 2.2vw, 1rem);
+      padding-top: 20px;
+      font-family: Avenir, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: normal;
+      white-space: nowrap;
+      color: var(--hud-ink);
+      user-select: none;
+      pointer-events: auto;
+      max-width: calc(100vw - 24px);
+    }
+
+    /* ≤1199px: HUD padding removed; when JS adds .hud-below-wordmark it centers
+       the HUD below the wordmark with 52px spacing. The class is never added
+       by JS at ≥1200px, so this block never fires at desktop width. */
+    @media (max-width: 1199px) {
+      .hud {
+        padding-top: 0;
+      }
+      body.hud-below-wordmark .hud {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        top: calc(var(--wordmark-bottom, 130px) + 52px);
+        justify-content: center;
+        max-width: calc(100vw - 24px);
+        gap: clamp(0.35rem, 3vw, 1rem);
+      }
+    }
+
+    /* ================================================================
+       ENTRANCE ANIMATION
+       Letter masks: overflow:hidden wrapper + translateY child.
+       Tunable: anim-dur, anim-ease, wordmark/title stagger (in JS).
+       Button: anim-fade delay (above in .btn rule).
+    ================================================================ */
+    @keyframes anim-letter-up {
+      from { transform: translateY(110%); }
+      to   { transform: translateY(0);    }
+    }
+    @keyframes anim-fade {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Each letter is wrapped in .lm (mask) > .li (inner animated span) */
+    .lm {
+      display: inline-block;
+      overflow: hidden;
+      line-height: inherit;
+      vertical-align: bottom;
+    }
+    .li {
+      display: inline-block;
+      animation: anim-letter-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hud-item {
+      white-space: nowrap;
+      font-weight: 500;
+      color: var(--hud-ink); /* #7e756a */
+    }
+
+    /* ── Pause / Resume button ────────────────────────────────────────
+       Default: #0B080D (black), weight 500. Hover: #8067f2 + underline.
+       display:inline-flex + white-space:nowrap prevent icon/label split
+       even on very narrow screens (icon stays with "Pause"/"Resume").
+    ────────────────────────────────────────────────────────────── */
+    .hud-pause {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35em;
+      white-space: nowrap;
+      flex: 0 0 auto;
+      min-width: max-content;
+      word-break: keep-all;
+      font-family: 'Avenir', 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1;
+      color: #0B080D;
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s ease;
+    }
+    .hud-pause::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #8067f2;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.22s ease;
+    }
+    .hud-pause:hover {
+      color: #8067f2;
+    }
+    .hud-pause:hover::after {
+      transform: scaleX(1);
+    }
+    .hud-pause:focus-visible {
+      outline: 1px solid var(--hud-ink);
+      outline-offset: 3px;
+    }
+
+    /* ================================================================
+       BOARD BOUNDARY GUIDE LINES
+       Sized + positioned by JS via --board-x / --board-width.
+       Full viewport height, left+right borders only.
+       z-index 1: above canvas (0), below .content/.wordmark (2+).
+    ================================================================ */
+    .board-boundaries {
+      position: fixed;
+      top: 0;
+      left: var(--board-x, 0px);
+      width: var(--board-width, 480px);
+      height: 100vh;
+      border-left:  1px solid #E1D8CD;   /* ← tune border color here */
+      border-right: 1px solid #E1D8CD;
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <!-- Wordmark — "SAPIR'S PROTFOLIO" (exact spelling preserved) -->
+  <div class="wordmark" aria-hidden="true">SAPIR'S PROTFOLIO</div>
+
+  <!-- Tetris canvas — fixed, z-index 0, behind all content -->
+  <canvas class="tetris-canvas" id="tetrisCanvas" aria-hidden="true"></canvas>
+
+  <!-- Board boundary guide lines — positioned by JS via --board-x / --board-width -->
+  <div class="board-boundaries" aria-hidden="true"></div>
+
+  <!-- Centered content — z-index 1, overlaid on canvas
+       MEASURED: width ≈351px @1214px, vertically centered -->
+  <article class="content">
+    <!-- MEASURED: Canela Light serif, 5vw, weight 300 -->
+    <h1 class="page-title">Page not found</h1>
+
+    <!-- Button: Avenir/Montserrat, inline → arrow, 4px radius -->
+    <a class="btn" href="/">
+      <span class="btn-label">Back to home →</span>
+    </a>
+  </article>
+
+  <!-- HUD — top-right (desktop) / top-center (≤1199px) -->
+  <div class="hud" role="status" aria-live="polite" aria-atomic="true">
+    <span class="hud-item" id="hudScore">[ 0 ]</span>
+    <span class="hud-item" id="hudLevel">[ Lvl 1 ]</span>
+    <span class="hud-item" id="hudTimer">[ 00:00 ]</span>
+    <button class="hud-pause" id="pauseToggle" type="button" aria-label="Pause game">⏸ Pause</button>
+  </div>
+
+</main>
+
+<script>
+/* ================================================================
+   TETRIS GAME ENGINE — Archidomo 404 recreation
+   Single-file, zero dependencies, vanilla JS
+================================================================ */
+(function () {
+  'use strict';
+
+  /* ================================================================
+     TUNING VARIABLES — edit these to change feel / geometry
+  ================================================================ */
+
+  /* -- Board: fixed 12 columns × 20 rows */
+  var COLS = 12;  // ← columns (fixed at all viewport sizes)
+  var ROWS = 20;  // ← rows    (fixed; CELL_SIZE adapts to fill height)
+
+  /* -- Cell gap: cream gap is created by drawing (CELL_SIZE-GAP) px */
+  var GAP = 3;    // ← px, try 2–4
+
+  /* -- Gravity: one natural drop every DROP_INTERVAL ms, constant. */
+  var DROP_INTERVAL = 750; // ← ms, higher = slower (try 600–1100)
+
+  /* -- Tetromino palette — exact 7-color monochrome/beige set.
+        Color is chosen INDEPENDENTLY from shape (see randomColor below)
+        so tone distribution can be weighted. */
+  var PALETTE = ['#0B080D','#333333','#555555','#777777','#999999','#C4B8A5','#A89F8F'];
+
+  /* Weighted color selection: #0B080D appears sparingly.
+     Lean on mid-grays and beige. Tune weights to taste (must sum > 0). */
+  var COLOR_WEIGHTS = [1, 2, 3, 3, 3, 3, 3]; // index matches PALETTE
+  var COLOR_TOTAL   = 18; // sum of weights above
+
+  function randomColor() {
+    var r = Math.random() * COLOR_TOTAL, cum = 0;
+    for (var i = 0; i < PALETTE.length; i++) {
+      cum += COLOR_WEIGHTS[i];
+      if (r < cum) return PALETTE[i];
+    }
+    return PALETTE[PALETTE.length - 1];
+  }
+
+  /* ================================================================
+     COMPUTED GEOMETRY — recalculated by resizeBoard() on resize.
+     Formula (spec-exact):
+       CELL_SIZE  = floor(viewportHeight / ROWS)
+       boardWidth = COLS * CELL_SIZE
+       boardX     = (viewportWidth - boardWidth) / 2
+       boardY     = 0
+     ROWS and COLS are fixed. Only CELL_SIZE and boardX change.
+  ================================================================ */
+  var CELL_SIZE = 38;  // recomputed on resize
+  var boardX    = 0;   // CSS-px left edge of board
+  var boardY    = 0;   // always 0 (top-anchored)
+
+  /* ================================================================
+     TETROMINO SHAPES — standard 7 pieces.
+     0 = empty, 1 = filled.
+  ================================================================ */
+  var SHAPES = [
+    // I — 4×4
+    [[0,0,0,0],
+     [1,1,1,1],
+     [0,0,0,0],
+     [0,0,0,0]],
+    // O — 2×2
+    [[1,1],
+     [1,1]],
+    // T — 3×3
+    [[0,1,0],
+     [1,1,1],
+     [0,0,0]],
+    // S — 3×3
+    [[0,1,1],
+     [1,1,0],
+     [0,0,0]],
+    // Z — 3×3
+    [[1,1,0],
+     [0,1,1],
+     [0,0,0]],
+    // J — 3×3
+    [[1,0,0],
+     [1,1,1],
+     [0,0,0]],
+    // L — 3×3
+    [[0,0,1],
+     [1,1,1],
+     [0,0,0]],
+  ];
+
+  /* ================================================================
+     CANVAS
+  ================================================================ */
+  var canvas = document.getElementById('tetrisCanvas');
+  var ctx    = canvas.getContext('2d');
+  var dpr    = 1;
+
+  function resizeBoard() {
+    dpr = window.devicePixelRatio || 1;
+    var W = window.innerWidth;
+    var H = window.innerHeight;
+
+    /* Canvas: full viewport at physical resolution */
+    canvas.width        = Math.round(W * dpr);
+    canvas.height       = Math.round(H * dpr);
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
+    /* Resetting canvas.width clears the context transform — reapply DPR scale */
+    ctx.scale(dpr, dpr);
+
+    /* Cell size: primary driver is viewport HEIGHT (fills the vertical span).
+       Secondary cap: viewport WIDTH minus side padding so the board never
+       overflows horizontally on portrait/mobile viewports.
+       SIDE_PADDING: minimum px of breathing room on each side of the board. */
+    var SIDE_PADDING     = 16;                              // px each side — tune freely
+    var baseCellByHeight = Math.floor(H / ROWS);
+    var maxCellByWidth   = Math.floor((W - SIDE_PADDING * 2) / COLS);
+    var newCell          = Math.max(8, Math.min(baseCellByHeight, maxCellByWidth));
+
+    /* GAP scales with cell size (8% of cell, min 2px) so it stays proportional */
+    var newGAP = Math.max(2, Math.round(newCell * 0.08));
+
+    if (newCell !== CELL_SIZE || newGAP !== GAP) {
+      CELL_SIZE = newCell;
+      GAP       = newGAP;
+      if (grid && grid.length > 0) resetGame();
+    }
+
+    /* Board centered horizontally, top-anchored */
+    var boardWidth = COLS * CELL_SIZE;
+    boardX = Math.floor((W - boardWidth) / 2);
+    boardY = 0;
+
+    /* Push exact board geometry to CSS so .board-boundaries follows the board */
+    document.documentElement.style.setProperty('--board-x',     boardX + 'px');
+    document.documentElement.style.setProperty('--board-width', boardWidth + 'px');
+  }
+
+  /* ================================================================
+     GAME STATE
+  ================================================================ */
+  var grid    = [];   // grid[row][col] = color string | null
+  var active  = null; // { shape[][], x, y, color }
+  var score   = 0;
+  var elapsed = 0;    // integer seconds, counts up
+
+  /* RAF loop accumulators */
+  var lastTS   = null;
+  var gravAcc  = 0;
+  var timerAcc = 0;
+
+  /* ── Line-clear flash state ────────────────────────────────────
+     When a full row is detected, the game enters a brief flash phase
+     before actually removing the rows. Gravity/locking pause during flash.
+     Tune CLEAR_FLASH_DURATION and FLASH_COLOR to adjust the effect.  */
+  var CLEAR_FLASH_DURATION = 300;      // ms — try 250–400
+  var FLASH_COLOR = '#D4C8B8';         // warm taupe blink color — tune freely
+  var clearingRows = [];               // row indices currently flashing
+  var isClearing   = false;            // true while flash phase is running
+  var clearAcc     = 0;                // ms elapsed since flash started
+
+  /* DOM refs */
+  var elScore = document.getElementById('hudScore');
+  var elLevel = document.getElementById('hudLevel');
+  var elTimer = document.getElementById('hudTimer');
+  var elPause = document.getElementById('pauseToggle');
+
+  /* ── Pause state ───────────────────────────────────────────────
+     isPaused: true while game is frozen.
+     Clicking elPause toggles. While paused, loop renders but does
+     not advance timer, gravity, or line-clear flash.             */
+  var isPaused = false;
+
+  elPause.addEventListener('click', function() {
+    isPaused = !isPaused;
+    elPause.textContent  = isPaused ? '▶ Resume' : '⏸ Pause';
+    elPause.setAttribute('aria-label', isPaused ? 'Resume game' : 'Pause game');
+    if (!isPaused) {
+      /* Reset timing on resume to avoid a dt spike */
+      lastTS = null;
+    }
+  });
+
+  /* ================================================================
+     GRID
+  ================================================================ */
+  function makeGrid() {
+    var g = [];
+    for (var r = 0; r < ROWS; r++) {
+      g.push(new Array(COLS).fill(null));
+    }
+    return g;
+  }
+
+  /* ================================================================
+     PIECES
+  ================================================================ */
+  function randomPiece() {
+    var idx   = Math.floor(Math.random() * SHAPES.length);
+    var shape = SHAPES[idx].map(function(row) { return row.slice(); });
+    return {
+      shape : shape,
+      color : randomColor(),   /* weighted — #0B080D used sparingly */
+      x     : Math.floor((COLS - shape[0].length) / 2),
+      y     : 0,
+    };
+  }
+
+  /* Clockwise rotation — no wall-kicks */
+  function rotateCW(shape) {
+    var R = shape.length, C = shape[0].length;
+    var out = [];
+    for (var c = 0; c < C; c++) {
+      var row = [];
+      for (var r = R - 1; r >= 0; r--) row.push(shape[r][c]);
+      out.push(row);
+    }
+    return out;
+  }
+
+  /* ================================================================
+     COLLISION
+  ================================================================ */
+  function collides(shape, ox, oy) {
+    for (var r = 0; r < shape.length; r++) {
+      for (var c = 0; c < shape[r].length; c++) {
+        if (!shape[r][c]) continue;
+        var nx = ox + c, ny = oy + r;
+        if (nx < 0 || nx >= COLS) return true;
+        if (ny >= ROWS)           return true;
+        if (ny >= 0 && grid[ny][nx] !== null) return true;
+      }
+    }
+    return false;
+  }
+
+  /* ================================================================
+     LOCKING, LINE CLEAR, SPAWN, RESET
+  ================================================================ */
+  function lockPiece() {
+    var sh = active.shape, col = active.color, ox = active.x, oy = active.y;
+    for (var r = 0; r < sh.length; r++) {
+      for (var c = 0; c < sh[r].length; c++) {
+        if (!sh[r][c]) continue;
+        var nr = oy + r, nc = ox + c;
+        if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) grid[nr][nc] = col;
+      }
+    }
+  }
+
+  /* Detect completed rows and start the flash phase.
+     Returns the count of rows found (0 means nothing to clear — spawn immediately). */
+  function startLineClear() {
+    var rows = [];
+    for (var r = ROWS - 1; r >= 0; r--) {
+      if (grid[r].every(function(cell) { return cell !== null; })) {
+        rows.push(r);
+      }
+    }
+    if (rows.length > 0) {
+      clearingRows = rows;
+      isClearing   = true;
+      clearAcc     = 0;
+    }
+    return rows.length;
+  }
+
+  /* Called after the flash duration completes.
+     Removes cleared rows (descending so splice indices stay valid),
+     updates score, resets flash state, then spawns the next piece. */
+  function finishLineClear() {
+    clearingRows.sort(function(a, b) { return b - a; }); // descending
+    for (var i = 0; i < clearingRows.length; i++) {
+      grid.splice(clearingRows[i], 1);
+      grid.unshift(new Array(COLS).fill(null));
+    }
+    score += clearingRows.length * 100;
+    updateHUD();
+    clearingRows = [];
+    isClearing   = false;
+    clearAcc     = 0;
+    spawn();
+  }
+
+  function spawn() {
+    active = randomPiece();
+    if (collides(active.shape, active.x, active.y)) resetGame();
+  }
+
+  /* Silent auto-reset — no overlay, no "Game Over" text */
+  function resetGame() {
+    grid         = makeGrid();
+    score        = 0;
+    elapsed      = 0;
+    gravAcc      = 0;
+    timerAcc     = 0;
+    clearingRows = [];
+    isClearing   = false;
+    clearAcc     = 0;
+    active       = null;
+    updateHUD();
+    spawn();
+  }
+
+  /* ================================================================
+     HUD
+  ================================================================ */
+  function pad2(n) { return String(n).padStart(2, '0'); }
+
+  function updateHUD() {
+    elScore.textContent = '[ ' + score + ' ]';
+    elLevel.textContent = '[ Lvl 1 ]'; // level never changes
+    elTimer.textContent = '[ ' + pad2(Math.floor(elapsed / 60)) + ':' + pad2(elapsed % 60) + ' ]';
+  }
+
+  /* ================================================================
+     KEYBOARD CONTROLS
+     ─────────────────────────────────────────────────────────────
+     ArrowLeft  → move one column left
+     ArrowRight → move one column right
+     ArrowUp    → rotate clockwise
+     Space      → rotate clockwise (NEVER hard-drops)
+     ArrowDown  → move exactly one row down per keypress (soft-drop)
+     No hard-drop key. No pause key. No manual restart key.
+  ================================================================ */
+  var GAME_KEYS = [' ', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
+
+  document.addEventListener('keydown', function(e) {
+    /* Always block default browser scroll/jump for game keys */
+    if (GAME_KEYS.indexOf(e.key) !== -1) e.preventDefault();
+    /* Ignore game controls when paused, no active piece, or focus is on pause btn
+       (prevents Space on the pause button also rotating the piece) */
+    if (!active || isPaused || e.target === elPause) return;
+
+    switch (e.key) {
+      case 'ArrowLeft':
+        if (!collides(active.shape, active.x - 1, active.y)) active.x--;
+        break;
+
+      case 'ArrowRight':
+        if (!collides(active.shape, active.x + 1, active.y)) active.x++;
+        break;
+
+      case 'ArrowUp':
+      case ' ': {
+        /* Rotate clockwise. Space and ArrowUp are identical. No hard-drop. */
+        var rot = rotateCW(active.shape);
+        if (!collides(rot, active.x, active.y)) active.shape = rot;
+        break;
+      }
+
+      case 'ArrowDown':
+        /* Soft-drop: move exactly ONE row down per keypress.
+           Reset gravity accumulator so the piece doesn't double-drop. */
+        if (!collides(active.shape, active.x, active.y + 1)) {
+          active.y++;
+          gravAcc = 0;
+        } else {
+          /* Already on the floor — lock, hide piece, start flash or spawn */
+          lockPiece();
+          active = null; // hide piece immediately (flash shows grid cells)
+          if (!startLineClear()) spawn();
+          gravAcc = 0;
+        }
+        break;
+    }
+  });
+
+  /* ================================================================
+     RENDERING
+     Cells: flat fillRect only. No strokes, borders, shadows,
+     gradients, or rounded corners.
+     Gap effect: each cell occupies CELL_SIZE px of grid space but
+     only CELL_SIZE-GAP px are filled, leaving a cream gap.
+     Empty cells: not drawn — transparent canvas shows cream bg.
+     Opacity: blocks render at 60% (globalAlpha=0.6), reset to 1 after.
+     Flash: clearing rows blink between their color and FLASH_COLOR.
+  ================================================================ */
+  function drawCell(col, row, color) {
+    var x = boardX + col * CELL_SIZE;
+    var y = boardY + row * CELL_SIZE;
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, CELL_SIZE - GAP, CELL_SIZE - GAP);
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    /* Blocks render at 60% opacity */
+    ctx.globalAlpha = 0.6;
+
+    /* Flash calculation for clearing rows:
+       3 on/off blinks over CLEAR_FLASH_DURATION (e.g. 300ms → blink every 50ms).
+       flashPhase goes 0→1; we split into 6 slots and alternate even/odd. */
+    var flashIsOn = false;
+    if (isClearing) {
+      var flashPhase = Math.min(clearAcc / CLEAR_FLASH_DURATION, 0.9999);
+      flashIsOn = (Math.floor(flashPhase * 6) % 2 === 0);
+    }
+
+    /* Locked grid cells */
+    for (var r = 0; r < ROWS; r++) {
+      var isClearRow = isClearing && (clearingRows.indexOf(r) !== -1);
+      for (var c = 0; c < COLS; c++) {
+        if (grid[r][c] !== null) {
+          drawCell(c, r, (isClearRow && flashIsOn) ? FLASH_COLOR : grid[r][c]);
+        }
+      }
+    }
+
+    /* Active falling piece (null during flash phase and between lock→spawn) */
+    if (active) {
+      for (var pr = 0; pr < active.shape.length; pr++) {
+        for (var pc = 0; pc < active.shape[pr].length; pc++) {
+          if (active.shape[pr][pc]) drawCell(active.x + pc, active.y + pr, active.color);
+        }
+      }
+    }
+
+    /* Restore full opacity — canvas globalAlpha never leaks outside render() */
+    ctx.globalAlpha = 1;
+  }
+
+  /* ================================================================
+     GAME LOOP
+     Natural gravity: one drop every DROP_INTERVAL ms, constant.
+     Timer: counts up in MM:SS, resets on auto-reset.
+     No speed-up by score, level, lines cleared, or time.
+  ================================================================ */
+  function loop(ts) {
+    if (lastTS === null) lastTS = ts;
+    var dt = ts - lastTS;
+    lastTS = ts;
+    if (dt > 500) dt = 500; // clamp tab-wake spikes
+
+    /* While paused: render the current frame but freeze all game state */
+    if (isPaused) {
+      render();
+      requestAnimationFrame(loop);
+      return;
+    }
+
+    /* Count-up timer */
+    timerAcc += dt;
+    if (timerAcc >= 1000) {
+      elapsed  += Math.floor(timerAcc / 1000);
+      timerAcc %= 1000;
+      updateHUD();
+    }
+
+    /* Line-clear flash phase — gravity pauses until flash completes */
+    if (isClearing) {
+      clearAcc += dt;
+      if (clearAcc >= CLEAR_FLASH_DURATION) {
+        finishLineClear(); // removes rows, updates score, spawns next piece
+      }
+    } else {
+      /* Natural gravity — constant DROP_INTERVAL, never accelerates */
+      gravAcc += dt;
+      if (gravAcc >= DROP_INTERVAL && active) {
+        gravAcc -= DROP_INTERVAL;
+        if (!collides(active.shape, active.x, active.y + 1)) {
+          active.y++;
+        } else {
+          lockPiece();
+          active = null; // hide piece immediately during flash / before spawn
+          if (!startLineClear()) spawn();
+        }
+      }
+    }
+
+    render();
+    requestAnimationFrame(loop);
+  }
+
+  /* ================================================================
+     INIT
+  ================================================================ */
+
+  /* ── Entrance animation ────────────────────────────────────────
+     Splits an element's text into per-letter masked spans so each
+     letter can slide up independently with a stagger delay.
+     Tuning: baseDelay (ms before first letter), stagger (ms between letters).
+     CSS handles the actual animation (see .lm / .li rules in <style>).
+  ─────────────────────────────────────────────────────────────── */
+  function splitAndAnimate(el, baseDelay, stagger) {
+    var text = el.textContent;
+    el.textContent = '';
+    for (var i = 0; i < text.length; i++) {
+      var mask  = document.createElement('span');
+      mask.className = 'lm';               /* overflow:hidden wrapper */
+      var inner = document.createElement('span');
+      inner.className = 'li';              /* animated child */
+      /* Non-breaking space preserves width of space characters in mask */
+      inner.textContent = (text[i] === ' ') ? '\u00A0' : text[i];
+      inner.style.animationDelay = (baseDelay + i * stagger) + 'ms';
+      mask.appendChild(inner);
+      el.appendChild(mask);
+    }
+  }
+
+  /* ── fitWordmark ───────────────────────────────────────────────
+     Scales the wordmark font-size so it fills ~90% of viewport width.
+     MAX_WORDMARK_PX hard-caps the result to prevent collision with HUD.
+  ─────────────────────────────────────────────────────────────── */
+  var TARGET_VW       = 0.90; // ← fraction of vw to fill (0.85–0.95)
+  var MAX_WORDMARK_PX = 130;  // ← hard cap in px — tune freely
+
+  function fitWordmark() {
+    var el = document.querySelector('.wordmark');
+    if (!el) return;
+    var W = window.innerWidth;
+    var target90 = W * TARGET_VW;
+    var targetPx = target90;
+
+    /* At ≥1200px the HUD is top-right — shrink wordmark target so text
+       never reaches underneath the HUD. Use actual HUD rect if available. */
+    if (W >= 1200) {
+      var hud = document.querySelector('.hud');
+      var hudRect = hud ? hud.getBoundingClientRect() : null;
+      var safeGap = 32; /* px clearance between wordmark right edge and HUD */
+      if (hudRect && hudRect.left > 0) {
+        var viewportCenter = W / 2;
+        var maxRightEdge   = hudRect.left - safeGap;
+        var maxCentered    = Math.max(200, (maxRightEdge - viewportCenter) * 2);
+        targetPx = Math.min(target90, maxCentered);
+      }
+    }
+
+    var ghost = document.createElement('span');
+    ghost.style.cssText =
+      'position:absolute;top:-9999px;left:-9999px;visibility:hidden;' +
+      'white-space:nowrap;font-family:\'Playfair Display\',Georgia,serif;' +
+      'font-weight:700;font-size:100px;letter-spacing:0.01em;line-height:1;';
+    ghost.textContent = "SAPIR'S PROTFOLIO";
+    document.body.appendChild(ghost);
+
+    var w100  = ghost.offsetWidth || 1;
+    var ideal = (targetPx / w100) * 100;
+    ideal = Math.max(12, Math.min(ideal, MAX_WORDMARK_PX)); /* cap at 130px */
+
+    document.body.removeChild(ghost);
+    el.style.fontSize = ideal + 'px';
+  }
+
+  /* ── updateHudPlacement ────────────────────────────────────────
+     Controls whether the HUD sits in the top-right corner (default)
+     or is moved below the wordmark (only allowed at ≤1200px).
+     Above 1200px: always removes the stacking class → HUD stays top-right.
+     At ≤1200px: adds the class and publishes --wordmark-bottom so the
+     CSS rule can position the HUD 52px below the wordmark bottom.
+  ─────────────────────────────────────────────────────────────── */
+  function updateHudPlacement() {
+    var root     = document.documentElement;
+    var body     = document.body;
+    var wordmark = document.querySelector('.wordmark');
+
+    if (window.innerWidth >= 1200) {
+      /* ≥1200px: always top-right, never stacked below wordmark */
+      body.classList.remove('hud-below-wordmark');
+      root.style.removeProperty('--wordmark-bottom');
+      return;
+    }
+
+    /* <1200px: move HUD below wordmark, centered, 52px below */
+    if (!wordmark) return;
+    var wmRect = wordmark.getBoundingClientRect();
+    root.style.setProperty('--wordmark-bottom', wmRect.bottom + 'px');
+    body.classList.add('hud-below-wordmark');
+  }
+
+  function layoutUpdate() {
+    fitWordmark();
+    updateHudPlacement();
+  }
+
+  resizeBoard();
+  layoutUpdate();
+
+  window.addEventListener('resize', function() {
+    resizeBoard();
+    layoutUpdate();
+  });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function() { layoutUpdate(); });
+  }
+
+  resetGame();
+  updateHUD();
+  requestAnimationFrame(loop);
+
+  /* Letter-reveal animations:
+     Wordmark: 17 chars, starts immediately, 30ms stagger
+     Title:    14 chars, starts at 150ms,    32ms stagger
+     Button fades in at 850ms delay (CSS). */
+  splitAndAnimate(document.querySelector('.wordmark'),   0, 30);
+  splitAndAnimate(document.querySelector('.page-title'), 150, 32);
+
+  /* Re-run layout after DOM split so measurements reflect final span structure */
+  requestAnimationFrame(function() { layoutUpdate(); });
+
+}());
+</script>
+</body>
+</html>
