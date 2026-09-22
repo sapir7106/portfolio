@@ -89,6 +89,7 @@ body.fs .stage-wrap{padding:0;display:block}
 body.fs .stage{width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;box-shadow:none}
 
 .slide{position:absolute;inset:0;padding:6cqh 6.2cqw 5.4cqh;display:none;flex-direction:column;opacity:0;transition:opacity .35s ease}
+.slide-hidden{display:none !important}
 .slide.active{display:flex;opacity:1}
 .slide::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.02'/%3E%3C/svg%3E")}
 .slide>*{position:relative;z-index:1}
@@ -371,8 +372,8 @@ body, html, * { cursor: auto !important; }
   <a href="../agents.html" class="rail-back"><span class="ri">←</span><span class="rl">Back</span></a>
   <button data-go="0"><span class="ri">01</span><span class="rl">About me</span></button>
   <button data-go="3"><span class="ri">02</span><span class="rl">Case study</span></button>
-  <button data-go="18"><span class="ri">03</span><span class="rl">The design</span></button>
-  <button data-go="22"><span class="ri">04</span><span class="rl">Reflection</span></button>
+  <button data-go="15"><span class="ri">03</span><span class="rl">The design</span></button>
+  <button data-go="19"><span class="ri">04</span><span class="rl">Reflection</span></button>
 </nav>
 
 <div class="stage-wrap">
@@ -525,8 +526,8 @@ body, html, * { cursor: auto !important; }
   <div class="note"><b>🎙 SPEAKER NOTE:</b> "Look at the original screen: if you had 50 agents running across different systems, you had to click into 50 separate pages just to see if something was waiting for approval. That's not a workflow. That's a full-time job."</div>
 </section>
 
-<!-- 7 — Four things the old experience couldn't do -->
-<section class="slide">
+<!-- 7 — Four things the old experience couldn't do — HIDDEN for now -->
+<section class="slide-hidden" hidden>
   <div class="eyebrow">The starting point · what broke</div>
   <div class="two">
     <div style="display:flex;flex-direction:column;justify-content:center">
@@ -598,8 +599,8 @@ body, html, * { cursor: auto !important; }
   </div>
 </section>
 
-<!-- 10 -->
-<section class="slide">
+<!-- 10 — HIDDEN for now -->
+<section class="slide-hidden" hidden>
   <div class="eyebrow">Collaboration · partners</div>
   <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:64px;flex:1;align-items:center">
     <h2>Who I worked <em>with</em></h2>
@@ -676,8 +677,8 @@ body, html, * { cursor: auto !important; }
     </div>
   </section>
 
-<!-- 13 -->
-<section class="slide">
+<!-- 13 — HIDDEN for now -->
+<section class="slide-hidden" hidden>
     <div class="eyebrow">Research · synthesis</div>
     <div class="layout-a layout-a-principles">
       <div class="layout-a-left">
