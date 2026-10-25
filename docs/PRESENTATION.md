@@ -36,15 +36,15 @@ view-source).
   hidden clickable link (styled as a normal `<mark>`, no hover change) to the
   deck route, but there is **no public nav link** to it — it's an
   interview-only tool.
-- **Route protection (`functions/_middleware.js`):** requests to
-  `/agents`, `/agents/`, `/agents.html` (and `/portfolio%20images/agents/*`)
-  require a valid `agents_auth` cookie or get redirected to `/agents-locked`.
-  Requests to `/case-study-presentation/agents-deck` (and its trailing-slash /
-  `.html` variants, plus everything under
-  `/case-study-presentation/agents-deck/`) require a valid `pres_auth` cookie
-  or get redirected to `/presentation-locked`. Visiting `/agents-locked` or
-  `/presentation-locked` while already authenticated redirects forward to the
-  real page.
+- **Route protection (`functions/_middleware.js`):** the Agents page, its
+  `agents-content.txt` and the entire `portfolio images/agents/` asset directory
+  require `agents_auth`. The entire `case-study-presentation/` directory,
+  including concepts, script and images, requires `pres_auth`. URL decoding and
+  slash normalization happen before matching; ambiguous nested encodings fail
+  closed. Both authenticated resources and denied private requests use
+  `Cache-Control: private, no-store`. Login pages remain public. Existing CDN
+  cache rules and any previously cached private resources must be reviewed
+  before production approval; the local fix does not purge remote caches.
 - **Login endpoints:**
   - `functions/api/agents-login.js` checks the submitted password against the
     `AGENTS_CASE_PASSWORD` secret, then issues an HMAC-signed (SHA-256,
@@ -78,6 +78,40 @@ view-source).
 > strings (don't need to be memorized/typed by Sapir); access passwords are
 > stored safely by Sapir, never committed. `.env`, `.env.*`, and `.dev.vars`
 > are gitignored — never put secrets in HTML/JS/comments/screenshots/git.
+
+## Security hardening (2026-10-25, local branch)
+
+Login endpoints accept only JSON objects with a string password, stream at most
+2 KiB of request data, reject unexpected types, and reject a mismatched Origin.
+Responses are no-store. Signed cookies must contain a recognized area and a
+valid integer issue time, and cannot be expired or dated far in the future.
+
+Each endpoint limits attempts to 10 per 60 seconds per `CF-Connecting-IP` in a
+bounded, expiring map (maximum 2,048 clients). Missing IPs share a limited bucket;
+429 responses include Retry-After. This is best-effort per-isolate mitigation,
+not a distributed guarantee. Cloudflare isolates restart and do not share this
+map. Do not mark the distributed brute-force risk resolved by a local test.
+
+Before approving deployment, configure and verify an edge rate-limiting rule for
+POST requests to both `/api/agents-login` and `/api/presentation-login`: begin
+with 10 requests per IP per minute and a short block/challenge period, adjusted
+to the account's available plan controls. Verify the actual rule and behavior
+in an authorized preview using dummy credentials. No Cloudflare settings have
+been changed by the local hardening work.
+
+Cloudflare references: [Pages bindings](https://developers.cloudflare.com/pages/functions/bindings/),
+[isolate state lifecycle](https://developers.cloudflare.com/workers/reference/how-workers-works/).
+Persistent shared enforcement would require an appropriate shared service; a
+new backend or binding has not been silently installed.
+
+Content loaders escape draft HTML and attributes while retaining supported
+bold, highlight and safe link markers. Unsafe link schemes are removed.
+
+Regression check: `node tests/security.test.mjs` (dummy credentials only, no
+network or deployment). Covers every tracked private asset, anonymous and
+valid sessions, encoded paths, cookie tampering, request limits, throttling,
+and malicious draft content. These are local handler tests, not proof of live
+Cloudflare deployment parity.
 
 ## Image-loading caveat
 

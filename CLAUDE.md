@@ -163,6 +163,7 @@ When updating visible copy or captions:
   Cloudflare Pages Functions — see `docs/PRESENTATION.md` and §6/§3 below for
   the current mechanism (the old client-side/easter-egg password is gone).
 - **In progress / to verify:**
+  - Hercules hardening prepared on `security/hercules-hardening`: private supporting assets gated, bounded login validation/throttling, safe draft formatting and local regression tests. Not deployed; distributed edge rate limiting and live cache/routing verification remain required.
   - Reconcile the two gallery versions (20-image simplified vs 42-image sania build).
   - Align responsive breakpoints to the standard set (`docs/RESPONSIVE.md`).
   - Confirm `about.html` is a single entity and remove any `about-light.html`.
