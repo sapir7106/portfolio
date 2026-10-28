@@ -60,6 +60,14 @@ for(const path of paths){
  await test('authorized serves '+path,async()=>{const {res,next}=await route(path,cookies[area]);assert.equal(res.status,200);assert.equal(next,true);assert.equal(res.headers.get('cache-control'),'private, no-store');});
 }
 for(const path of ['/index.html','/agents-locked','/presentation-locked','/content-loader.js','/portfolio%20images/Main-images/Pointfive%20main.png'])await test('public accessible '+path,async()=>assert.equal((await route(path)).next,true));
+// Assets used by the public login pages must stay reachable without a cookie.
+for(const page of ['presentation-locked.html','agents-locked.html']){
+ const html=await fs.readFile(root+'/'+page,'utf8');
+ for(const [,ref] of html.matchAll(/(?:\bsrc|<link\b[^>]*\bhref)="([^"#:]+)"/g)){
+  const path=ref.startsWith('/')?ref:'/'+ref;
+  await test(page+' public asset '+path,async()=>assert.equal((await route(path)).next,true));
+ }
+}
 for(const path of ['/%61gents-content.txt','/case-study-presentation%2fConcept-01.html','/portfolio%20images/%61gents/IMG.png','//case-study-presentation//Concept-01.html'])await test('encoded private path blocked '+path,async()=>assert.equal((await route(path)).next,false));
 for(const path of ['/%2561gents-content.txt','/case-study-presentation%252fConcept-01.html','/bad%ZZ'])await test('ambiguous path rejected '+path,async()=>assert.equal((await route(path)).res.status,400));
 await test('cross-area cookie rejected',async()=>assert.equal((await route('/agents',cookies.presentation)).res.status,302));
