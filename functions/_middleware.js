@@ -7,7 +7,9 @@ function fromBase64Url(str) {
 async function verifyHmac(cookieVal, secret) {
   if (!secret) return false;
   try {
-    const [payload, sigB64] = cookieVal.split('.');
+    const parts = cookieVal.split('.');
+    if (parts.length !== 2) return false;
+    const [payload, sigB64] = parts;
     if (!payload || !sigB64) return false;
     const key = await crypto.subtle.importKey(
       'raw', new TextEncoder().encode(secret),
@@ -20,8 +22,9 @@ async function verifyHmac(cookieVal, secret) {
     if (!valid) return false;
     const data = JSON.parse(atob(fromBase64Url(payload)));
 
-    if (data.area === 'agents' && Date.now() - data.iat > 604800000) return false;
-    if (data.area === 'presentation' && Date.now() - data.iat > 43200000) return false;
+    const maxAge = { agents: 604800000, presentation: 43200000 }[data?.area];
+    if (!maxAge || !Number.isSafeInteger(data.iat) || data.iat > Date.now() + 60000) return false;
+    if (Date.now() - data.iat > maxAge) return false;
 
     return data;
   } catch { return false; }
@@ -32,42 +35,53 @@ function getCookie(cookieHeader, name) {
   return match ? match[1] : null;
 }
 
+function privateResponse(response) {
+  const result = new Response(response.body, response);
+  result.headers.set('Cache-Control', 'private, no-store');
+  result.headers.set('Vary', 'Cookie');
+  return result;
+}
+
 export async function onRequest(context) {
   const { request, env, next } = context;
   const url = new URL(request.url);
-  const path = url.pathname;
+  let path;
+  try {
+    path = decodeURIComponent(url.pathname).replace(/\\/g, '/').replace(/\/{2,}/g, '/');
+    // Reject ambiguous nested encodings and decoded traversal before route matching.
+    if (/%[0-9a-f]{2}/i.test(path) || path.split('/').some(part => part === '.' || part === '..')) {
+      return privateResponse(new Response('Bad request', { status: 400 }));
+    }
+  } catch {
+    return privateResponse(new Response('Bad request', { status: 400 }));
+  }
 
-  const AGENTS_PATHS = ['/agents', '/agents/', '/agents.html'];
-  const AGENTS_PRIVATE_PREFIXES = ['/portfolio%20images/agents/'];
-  const PRES_PATHS = [
-    '/case-study-presentation/agents-deck',
-    '/case-study-presentation/agents-deck/',
-    '/case-study-presentation/agents-deck.html'
-  ];
-  const PRES_PRIVATE_PREFIX = '/case-study-presentation/agents-deck/';
+  const AGENTS_PATHS = ['/agents', '/agents/', '/agents.html', '/agents-content.txt'];
+  const AGENTS_PRIVATE_PREFIX = '/portfolio images/agents';
+  const PRES_PRIVATE_PREFIX = '/case-study-presentation';
 
   const cookies = request.headers.get('Cookie') || '';
 
-  const isAgentsPath = AGENTS_PATHS.includes(path)
-    || AGENTS_PRIVATE_PREFIXES.some(prefix => path.startsWith(prefix));
-  const isPresPath = PRES_PATHS.includes(path) || path.startsWith(PRES_PRIVATE_PREFIX);
+  const isAgentsPath = AGENTS_PATHS.includes(path.replace(/\/+$/, ''))
+    || path === AGENTS_PRIVATE_PREFIX || path.startsWith(AGENTS_PRIVATE_PREFIX + '/');
+  const isPresPath = path === PRES_PRIVATE_PREFIX || path.startsWith(PRES_PRIVATE_PREFIX + '/');
 
   if (isAgentsPath) {
     const token = getCookie(cookies, 'agents_auth');
     if (token) {
       const data = await verifyHmac(token, env.AGENTS_COOKIE_SECRET);
-      if (data && data.area === 'agents') return next();
+      if (data && data.area === 'agents') return privateResponse(await next());
     }
-    return Response.redirect(new URL('/agents-locked', request.url).href, 302);
+    return privateResponse(Response.redirect(new URL('/agents-locked', request.url).href, 302));
   }
 
   if (isPresPath) {
     const token = getCookie(cookies, 'pres_auth');
     if (token) {
       const data = await verifyHmac(token, env.PRESENTATION_COOKIE_SECRET);
-      if (data && data.area === 'presentation') return next();
+      if (data && data.area === 'presentation') return privateResponse(await next());
     }
-    return Response.redirect(new URL('/presentation-locked', request.url).href, 302);
+    return privateResponse(Response.redirect(new URL('/presentation-locked', request.url).href, 302));
   }
 
   if (path === '/agents-locked') {

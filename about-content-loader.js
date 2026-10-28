@@ -28,8 +28,14 @@
     return null;
   };
   const fmt = (s) => s == null ? s :
-    s.replace(/==(.+?)==/g, '<mark>$1</mark>')
+    s.replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]))
+     .replace(/==(.+?)==/g, '<mark>$1</mark>')
      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+  const safeLink = (url) => {
+    try { return !/[\u0000-\u0020\u007f]/.test(url) && ['http:', 'https:'].includes(new URL(url, location.href).protocol); }
+    catch { return false; }
+  };
 
   const waitFor = (sel, tries = 60) => new Promise(resolve => {
     const check = () => {
@@ -104,8 +110,8 @@
     const as = ul.querySelectorAll('a');
     if (as[0] && email) { as[0].textContent = email; as[0].href = 'mailto:' + email; }
     if (as[1] && phone) { as[1].textContent = phone; as[1].href = 'tel:' + phone.replace(/[^+\d]/g,''); }
-    if (as[2] && linkedin) { as[2].href = linkedin; }
-    if (as[3] && whatsapp) { as[3].href = whatsapp; }
-    if (as[4] && cv) { as[4].href = cv; }
+    if (as[2] && linkedin && safeLink(linkedin)) { as[2].href = linkedin; }
+    if (as[3] && whatsapp && safeLink(whatsapp)) { as[3].href = whatsapp; }
+    if (as[4] && cv && safeLink(cv)) { as[4].href = cv; }
   });
 })();

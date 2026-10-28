@@ -41,21 +41,29 @@
     .filter(l => l.startsWith(key + ':'))
     .map(l => l.slice(key.length + 1).trim());
 
-  // convert inline emphasis markers to HTML
+  const escapeHTML = (s) => s.replace(/[&<>"']/g, ch => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[ch]));
+  const inline = (s) => escapeHTML(s)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/==(.+?)==/g, '<mark>$1</mark>');
+  const safeURL = (url) => {
+    if (/[\u0000-\u0020\u007f]/.test(url)) return false;
+    try { return ['http:', 'https:', 'mailto:', 'tel:'].includes(new URL(url, location.href).protocol); }
+    catch { return false; }
+  };
   const fmt = (s) => {
     if (s == null) return s;
-    let out = s;
-    // links with optional inner mark: [[text|url|class]]
-    out = out.replace(/\[\[(.+?)\|(.+?)(?:\|(.+?))?\]\]/g, (m, txt, url, cls) => {
-      let inner = txt;
-      inner = inner.replace(/==(.+?)==/g, '<mark>$1</mark>');
-      inner = inner.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      const c = cls ? ` class="${cls}"` : '';
-      return `<a href="${url}"${c}>${inner}</a>`;
-    });
-    out = out.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    out = out.replace(/==(.+?)==/g, '<mark>$1</mark>');
-    return out;
+    let result = '', offset = 0;
+    const links = /\[\[(.+?)\|(.+?)(?:\|(.+?))?\]\]/g;
+    for (const match of s.matchAll(links)) {
+      result += inline(s.slice(offset, match.index));
+      const [, text, url, cls] = match;
+      const c = cls && /^[a-zA-Z0-9_ -]+$/.test(cls) ? ` class="${escapeHTML(cls)}"` : '';
+      result += safeURL(url) ? `<a href="${escapeHTML(url)}"${c}>${inline(text)}</a>` : inline(text);
+      offset = match.index + match[0].length;
+    }
+    return result + inline(s.slice(offset));
   };
 
   const setText = (sel, val) => {
@@ -78,7 +86,7 @@
     const h1 = document.querySelector('.hero h1');
     if (h1) {
       h1.innerHTML = titleItalic
-        ? fmt(title) + ' <em>' + titleItalic + '</em>'
+        ? fmt(title) + ' <em>' + escapeHTML(titleItalic) + '</em>'
         : fmt(title);
     }
   }
