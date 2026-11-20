@@ -56,6 +56,14 @@ export async function onRequest(context) {
     return privateResponse(new Response('Bad request', { status: 400 }));
   }
 
+  // Repo-only files (agent instructions, docs, tests) are never served.
+  const lower = path.toLowerCase();
+  const INTERNAL_PREFIXES = ['/docs', '/tests', '/.claude', '/functions'];
+  if (lower.endsWith('.md') || lower.endsWith('.mjs')
+      || INTERNAL_PREFIXES.some(p => lower === p || lower.startsWith(p + '/'))) {
+    return privateResponse(new Response('Not found', { status: 404 }));
+  }
+
   const AGENTS_PATHS = ['/agents', '/agents/', '/agents.html', '/agents-content.txt'];
   const AGENTS_PRIVATE_PREFIX = '/portfolio images/agents';
   const PRES_PRIVATE_PREFIX = '/case-study-presentation';

@@ -53,7 +53,7 @@ for(const area of ['agents','presentation']){
  });
 }
 const files=execFileSync('git',['-C',root,'ls-files','-z'],{encoding:'utf8'}).split('\0');
-const paths=[...new Set(['/agents','/agents/','/agents.html','/agents-content.txt','/agents-content.txt/','/agents.html/',...files.filter(x=>x.startsWith('case-study-presentation/')||x.startsWith('portfolio images/agents/')).map(x=>'/'+x.split('/').map(encodeURIComponent).join('/'))])];
+const paths=[...new Set(['/agents','/agents/','/agents.html','/agents-content.txt','/agents-content.txt/','/agents.html/',...files.filter(x=>x.startsWith('case-study-presentation/')||x.startsWith('portfolio images/agents/')).filter(x=>!x.toLowerCase().endsWith('.md')).map(x=>'/'+x.split('/').map(encodeURIComponent).join('/'))])];
 for(const path of paths){
  const area=path.startsWith('/case-study-presentation/')?'presentation':'agents';
  await test('anonymous blocks '+path,async()=>{const {res,next}=await route(path);assert.equal(res.status,302);assert.equal(next,false);assert.equal(res.headers.get('cache-control'),'private, no-store');});
@@ -70,6 +70,8 @@ for(const page of ['presentation-locked.html','agents-locked.html']){
 }
 for(const path of ['/%61gents-content.txt','/case-study-presentation%2fConcept-01.html','/portfolio%20images/%61gents/IMG.png','//case-study-presentation//Concept-01.html'])await test('encoded private path blocked '+path,async()=>assert.equal((await route(path)).next,false));
 for(const path of ['/%2561gents-content.txt','/case-study-presentation%252fConcept-01.html','/bad%ZZ'])await test('ambiguous path rejected '+path,async()=>assert.equal((await route(path)).res.status,400));
+for(const path of ['/CLAUDE.md','/START-HERE.md','/GALLERY-INSTRUCTIONS.md','/claude.MD','/docs/PRESENTATION.md','/docs/','/docs','/tests/security.test.mjs','/.claude/skills/site-ops/SKILL.md','/case-study-presentation/TYPOGRAPHY.md','/%43LAUDE.md','//docs//DESIGN-SYSTEM.md'])await test('internal file not served '+path,async()=>{const r=await route(path,cookies.presentation);assert.equal(r.next,false);assert.equal(r.res.status,404);});
+for(const path of ['/','/dspm','/main-content.txt','/content-loader.js','/docs-like-page.html'])await test('public page still served '+path,async()=>assert.equal((await route(path)).next,true));
 await test('cross-area cookie rejected',async()=>assert.equal((await route('/agents',cookies.presentation)).res.status,302));
 await test('forged signature rejected',async()=>assert.equal((await route('/agents','agents_auth=bad.bad')).res.status,302));
 await test('cookie after another cookie works',async()=>assert.equal((await route('/agents','theme=light; '+cookies.agents)).res.status,200));
